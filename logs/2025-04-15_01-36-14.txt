@@ -1,0 +1,753 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: discord.py==2.3.2 in ./.local/lib/python3.12/site-packages (2.3.2)
+Requirement already satisfied: aiohttp<4,>=3.7.4 in ./.local/lib/python3.12/site-packages (from discord.py==2.3.2) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp==3.9.5 in ./.local/lib/python3.12/site-packages (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiomysql==0.2.0 in ./.local/lib/python3.12/site-packages (0.2.0)
+Requirement already satisfied: PyMySQL>=1.0 in ./.local/lib/python3.12/site-packages (from aiomysql==0.2.0) (1.1.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: redis==5.0.4 in ./.local/lib/python3.12/site-packages (5.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: cryptography==42.0.5 in ./.local/lib/python3.12/site-packages (42.0.5)
+Requirement already satisfied: cffi>=1.12 in ./.local/lib/python3.12/site-packages (from cryptography==42.0.5) (1.17.1)
+Requirement already satisfied: pycparser in ./.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography==42.0.5) (2.22)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp-session==2.12.0 in ./.local/lib/python3.12/site-packages (2.12.0)
+Requirement already satisfied: aiohttp>=3.8 in ./.local/lib/python3.12/site-packages (from aiohttp-session==2.12.0) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: python-dotenv==1.0.1 in ./.local/lib/python3.12/site-packages (1.0.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: Pillow==10.3.0 in ./.local/lib/python3.12/site-packages (10.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: PyTZ==2024.1 in ./.local/lib/python3.12/site-packages (2024.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: typing_extensions==4.11.0 in ./.local/lib/python3.12/site-packages (4.11.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jsonpickle==3.0.4 in ./.local/lib/python3.12/site-packages (3.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: regex==2024.5.15 in ./.local/lib/python3.12/site-packages (2024.5.15)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas==2.2.2 in ./.local/lib/python3.12/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.2.4)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas==2.2.2) (1.17.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-15 01:36:32,139 - __main__ - INFO - Starting main execution block (__name__ == '__main__')
+2025-04-15 01:36:32,140 - __main__ - INFO - --- Entered main() ---
+2025-04-15 01:36:32,140 - __main__ - INFO - Initializing BettingBot class...
+2025-04-15 01:36:32,140 - bot.core - INFO - --- BettingBot __init__ START ---
+2025-04-15 01:36:32,140 - bot.core - INFO - Initializing DB Manager instance...
+2025-04-15 01:36:32,140 - bot.core - INFO - Initializing Cache Manager instance...
+2025-04-15 01:36:32,140 - bot.core - INFO - Initializing Command Tree...
+2025-04-15 01:36:32,140 - bot.core - INFO - Initializing Game Service...
+2025-04-15 01:36:32,140 - bot.services.game_service - INFO - GameService initialized.
+2025-04-15 01:36:32,140 - bot.core - INFO - Initializing Voice Service...
+2025-04-15 01:36:32,140 - bot.core - INFO - Initializing Bet Service...
+2025-04-15 01:36:32,141 - bot.services.bet_service - INFO - BetService initialized.
+2025-04-15 01:36:32,141 - bot.core - INFO - Initializing Web App variable...
+2025-04-15 01:36:32,141 - bot.core - INFO - --- BettingBot __init__ END ---
+2025-04-15 01:36:32,141 - __main__ - INFO - BettingBot instance created.
+2025-04-15 01:36:32,141 - __main__ - INFO - Attempting to start bot...
+2025-04-15 01:36:32,141 - discord.client - INFO - logging in using static token
+2025-04-15 01:36:32,425 - bot.core - INFO - START: Running setup_hook...
+2025-04-15 01:36:32,425 - bot.core - INFO - STEP: Connecting to Database...
+2025-04-15 01:36:32,425 - bot.data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-15 01:36:32,436 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-15 01:36:32,437 - bot.data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) found in database 'customer_990306_Server_database'.
+2025-04-15 01:36:32,438 - bot.core - INFO - STEP COMPLETE: Database connected.
+2025-04-15 01:36:32,438 - bot.core - INFO - STEP: Connecting to Cache...
+2025-04-15 01:36:32,438 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-15 01:36:32,524 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-15 01:36:32,524 - bot.core - INFO - STEP COMPLETE: Cache connected.
+2025-04-15 01:36:32,524 - bot.core - INFO - STEP: Starting Game Service...
+2025-04-15 01:36:32,524 - api.sports_api - INFO - Sports API client session started
+2025-04-15 01:36:32,525 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-15 01:36:32,555 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-15 01:36:32,555 - bot.services.game_service - INFO - Game service polling started.
+2025-04-15 01:36:32,555 - bot.core - INFO - STEP COMPLETE: Game Service started.
+2025-04-15 01:36:32,555 - bot.core - INFO - STEP: Starting Voice Service...
+2025-04-15 01:36:32,556 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-15 01:36:32,556 - bot.core - INFO - STEP COMPLETE: Voice Service started.
+2025-04-15 01:36:32,556 - bot.core - INFO - STEP: Starting Bet Service (includes scheduler)...
+2025-04-15 01:36:32,556 - bot.services.bet_service - INFO - Bet service starting.
+2025-04-15 01:36:32,556 - bot.services.bet_service - INFO - Setting up APScheduler jobs for tallying.
+2025-04-15 01:36:32,579 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-15 01:36:32,580 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-15 01:36:32,580 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-15 01:36:32,581 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-15 01:36:32,581 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-15 01:36:32,581 - bot.services.bet_service - INFO - APScheduler started successfully.
+2025-04-15 01:36:32,581 - bot.services.bet_service - INFO - Bet service started.
+2025-04-15 01:36:32,581 - bot.core - INFO - STEP COMPLETE: Bet Service started.
+2025-04-15 01:36:32,581 - bot.core - INFO - STEP: Running startup reconciliation checks...
+2025-04-15 01:36:32,581 - bot.tasks.startup_checks - INFO - Running startup checks (Logic Update 2025-04-15 v3 - FINAL)...
+2025-04-15 01:36:32,581 - bot.tasks.startup_checks - INFO - Checking for pending bets (0/0) missing unit records (will insert units=0, total=0)...
+2025-04-15 01:36:32,581 - bot.tasks.startup_checks - INFO - No pending bets (0/0) found missing unit records.
+2025-04-15 01:36:32,582 - bot.tasks.startup_checks - INFO - Loaded 5 pending bets into memory. Created 0 missing placeholder unit records.
+2025-04-15 01:36:32,582 - bot.tasks.startup_checks - INFO - Reconciling 'units' column for ALL resolved bets (Create if Missing, Update if Exists AND units=0)...
+2025-04-15 01:36:32,582 - bot.tasks.startup_checks - INFO - Found 5 resolved bets to check/reconcile.
+2025-04-15 01:36:32,584 - bot.tasks.startup_checks - INFO - Checked resolved unit records. Updated 0 entries where units were 0. Created 0 missing records for resolved bets.
+2025-04-15 01:36:32,584 - bot.tasks.startup_checks - INFO - Startup checks completed.
+2025-04-15 01:36:32,584 - bot.core - INFO - STEP COMPLETE: Startup reconciliation checks finished.
+2025-04-15 01:36:32,584 - bot.core - INFO - STEP: Setting up web server...
+2025-04-15 01:36:32,585 - web.server - INFO - Web application setup complete.
+2025-04-15 01:36:32,585 - bot.core - INFO - STEP COMPLETE: Web server setup.
+2025-04-15 01:36:32,585 - bot.core - INFO - STEP: Starting web server task...
+2025-04-15 01:36:32,585 - bot.core - INFO - STEP COMPLETE: Web server task created.
+2025-04-15 01:36:32,585 - bot.core - INFO - STEP: Loading application commands conceptually...
+2025-04-15 01:36:32,586 - bot.core - INFO - Loaded command module: admin
+2025-04-15 01:36:32,586 - bot.core - WARNING - Command module admin missing setup(tree) function.
+2025-04-15 01:36:32,587 - bot.core - INFO - Loaded command module: subscription
+2025-04-15 01:36:32,587 - bot.core - WARNING - Command module subscription missing setup(tree) function.
+2025-04-15 01:36:32,587 - bot.core - INFO - Loaded command module: add_capper
+2025-04-15 01:36:32,588 - bot.core - INFO - Loaded command module: help
+2025-04-15 01:36:33,025 - bot.core - INFO - Loaded command module: leaderboard
+2025-04-15 01:36:33,025 - bot.core - INFO - Loaded command module: load_url
+2025-04-15 01:36:33,029 - bot.core - INFO - Loaded command module: profile
+2025-04-15 01:36:33,032 - bot.commands.setid - INFO - Registered /setid command globally.
+2025-04-15 01:36:33,032 - bot.core - INFO - Loaded command module: setid
+2025-04-15 01:36:33,033 - bot.core - INFO - Loaded command module: show_cappers
+2025-04-15 01:36:33,033 - bot.core - INFO - Loaded command module: stats
+2025-04-15 01:36:33,034 - bot.commands.load_logos - INFO - Registering /load_logos command globally.
+2025-04-15 01:36:33,034 - bot.core - INFO - Loaded command module: load_logos
+2025-04-15 01:36:33,034 - bot.core - INFO - Assuming 'bet', 'edit_units', 'cancel_bet' are registered by BetService.
+2025-04-15 01:36:33,034 - bot.core - INFO - STEP COMPLETE: Application commands conceptually loaded.
+2025-04-15 01:36:33,034 - bot.core - INFO - STEP: Syncing global commands...
+2025-04-15 01:36:33,036 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-15 01:36:33,255 - bot.core - INFO - STEP COMPLETE: Global commands synced.
+2025-04-15 01:36:33,255 - bot.core - INFO - Registered global commands: ['bet', 'edit_units', 'cancel_bet', 'admin', 'subscription', 'add_capper', 'help', 'leaderboard', 'load_url', 'profile', 'setid', 'show_cappers', 'stats', 'load_logos']
+2025-04-15 01:36:33,255 - bot.core - INFO - STEP: Syncing all commands to guild ID: 1328126227013439601...
+2025-04-15 01:36:33,360 - bot.core - INFO - STEP COMPLETE: All commands synced to guild ID: 1328126227013439601
+2025-04-15 01:36:33,360 - bot.core - INFO - Registered commands for guild 1328126227013439601: []
+2025-04-15 01:36:33,360 - bot.core - INFO - END: setup_hook completed successfully.
+2025-04-15 01:36:33,554 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 998541f17c3437a712a433eba5b12853).
+2025-04-15 01:36:35,589 - bot.services.game_service - INFO - GameService poll loop starting after bot ready.
+2025-04-15 01:36:35,589 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-15 01:36:35,589 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-15 01:36:35,589 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-15 01:36:35,589 - bot.core - INFO - Bot is ready and online.
+2025-04-15 01:36:40,594 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 01:37:05,367 - bot.commands.setid - INFO - Processing /setid for user 761388542965448767 in guild 1328126227013439601
+2025-04-15 01:37:05,367 - bot.services.setid_handler - INFO - Processing /setid for user 761388542965448767 in guild 1328126227013439601
+2025-04-15 01:37:05,678 - bot.services.setid_handler - INFO - Saved profile image for user 761388542965448767 to /home/container/bot/static/user_images/761388542965448767.jpg
+2025-04-15 01:37:07,466 - bot.services.setid_handler - WARNING - Could not edit button message for user 761388542965448767: Message not found
+2025-04-15 01:37:20,500 - bot.services.setid_handler - INFO - Modal submitted by user 761388542965448767 in guild 1328126227013439601
+2025-04-15 01:37:20,608 - bot.services.setid_handler - INFO - Executed cappers update for 761388542965448767 in guild 1328126227013439601. Rows affected: 2. Fields: ['display_name', 'banner_color', 'image_path']
+2025-04-15 01:37:37,557 - bot.services.bet_service - INFO - /bet initiated by authorized user 761388542965448767.
+2025-04-15 01:37:40,919 - bot.services.bet_service - INFO - League selected: nhl by 761388542965448767 (Serial: 202504150537673)
+2025-04-15 01:37:40,919 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'nhl'
+2025-04-15 01:37:43,414 - bot.services.bet_service - INFO - Bet Type selected: Straight by 761388542965448767 (Serial: 202504150537673)
+2025-04-15 01:37:46,002 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 761388542965448767 (Serial: 202504150537673)
+2025-04-15 01:37:59,260 - bot.services.bet_service - INFO - Team Bet Modal submitted by 761388542965448767 (Serial: 202504150537673): {'team': 'oilers', 'opponent': 'stars', 'line': 'ML', 'odds': '-110', 'path': 'Bet on a Team'}
+2025-04-15 01:37:59,353 - bot.services.bet_service - INFO - Generating preview for bet serial 202504150537673. Current leg data: {'team': 'oilers', 'opponent': 'stars', 'line': 'ML', 'odds': '-110', 'path': 'Bet on a Team'}
+2025-04-15 01:37:59,384 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-15 01:37:59,446 - bot.data.league.league_team_handler - INFO - Normalized 'oilers' to 'edmonton oilers' for league 'nhl'
+2025-04-15 01:37:59,508 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: False)
+2025-04-15 01:37:59,508 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'edmonton oilers' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/edmonton_oilers.png'
+2025-04-15 01:37:59,538 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/edmonton_oilers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-15 01:37:59,598 - bot.data.league.league_team_handler - INFO - Normalized 'stars' to 'dallas stars' for league 'nhl'
+2025-04-15 01:37:59,660 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: False)
+2025-04-15 01:37:59,660 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'dallas stars' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/dallas_stars.png'
+2025-04-15 01:37:59,691 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/dallas_stars.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-15 01:37:59,691 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504150537673: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/edmonton_oilers.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png', 'description': 'oilers vs stars\n\n**Pick:** oilers ML\n**Odds:** -110', 'team_display': 'oilers', 'opponent_display': 'stars'}
+2025-04-15 01:37:59,780 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/edmonton_oilers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-15 01:37:59,780 - bot.services.bet_service - INFO - Preview 202504150537673: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/edmonton_oilers.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png' for League='nhl', Entity='oilers'
+2025-04-15 01:37:59,781 - discord.ui.modal - ERROR - Ignoring exception in modal <TeamBetModal timeout=None children=4>:
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/modal.py", line 188, in _scheduled_task
+    await self.on_submit(interaction)
+  File "/home/container/bot/services/bet_service.py", line 870, in on_submit
+    await self.parent_view.show_preview()
+  File "/home/container/bot/services/bet_service.py", line 280, in show_preview
+    self.update_view()
+  File "/home/container/bot/services/bet_service.py", line 203, in update_view
+    self.add_item(EditButton())
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 326, in add_item
+    self.__weights.add_item(item)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 112, in add_item
+    raise ValueError(f'item would not fit at row {item.row} ({total} > 5 width)')
+ValueError: item would not fit at row 1 (6 > 5 width)
+2025-04-15 01:38:59,366 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 01:38:59,367 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:00:38:59 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 01:39:29,895 - bot.utils.buttons - INFO - Bet setup cancelled by 761388542965448767 for bet serial 202504150537673
+2025-04-15 01:40:00,590 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 01:40:00,591 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-15 01:40:00,591 - data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-15 01:40:00,642 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-15 01:40:00,643 - data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) found in database 'customer_990306_Server_database'.
+2025-04-15 01:40:00,644 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 01:41:40,602 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 01:45:00,657 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 01:45:00,659 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 01:46:40,633 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 01:47:47,074 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 01:47:47,074 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:00:47:47 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 01:50:00,683 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 01:50:00,685 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 01:51:40,675 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 01:55:00,720 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 01:55:00,722 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 01:56:40,688 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:00:00,727 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:00:00,729 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:01:40,701 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:05:00,746 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:05:00,748 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:06:40,735 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:06:57,756 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 02:06:57,757 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:01:06:57 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 02:10:00,776 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:10:00,778 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:11:40,740 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:15:00,817 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:15:00,819 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:16:40,756 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:20:00,828 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:20:00,829 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:21:40,782 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:25:00,849 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:25:00,852 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:26:40,820 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:30:00,883 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:30:00,884 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:31:40,829 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:31:51,319 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 02:31:51,321 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:01:31:51 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 02:35:00,886 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:35:00,888 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:36:40,848 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:40:00,900 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:40:00,902 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:41:40,864 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:45:00,926 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:45:00,928 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:46:40,906 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:49:01,714 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 02:49:01,715 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:01:49:01 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 02:50:00,964 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:50:00,966 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:51:40,918 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 02:55:00,971 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 02:55:00,973 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 02:56:40,941 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:00:00,990 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:00:00,991 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:01:40,955 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:05:01,019 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:05:01,020 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:06:40,960 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:06:42,187 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 03:06:42,188 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:02:06:42 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 03:10:00,058 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:10:00,060 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:11:40,975 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:15:00,068 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:15:00,070 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:16:41,002 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:20:00,089 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:20:00,090 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:21:41,015 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:24:05,203 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 03:24:05,203 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:02:24:05 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 03:25:00,122 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:25:00,124 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:26:41,024 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:30:00,125 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:30:00,126 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:31:41,044 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:35:00,138 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:35:00,140 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:36:41,075 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:40:00,164 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:40:00,165 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:41:41,075 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:41:47,099 - bot.core - WARNING - Bot disconnected.
+2025-04-15 03:41:47,236 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 998541f17c3437a712a433eba5b12853.
+2025-04-15 03:41:47,236 - bot.core - INFO - Bot resumed connection.
+2025-04-15 03:45:00,194 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:45:00,196 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:46:41,082 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:50:00,236 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:50:00,238 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:50:59,969 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 03:50:59,969 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:02:50:59 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 03:51:41,099 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 03:55:00,248 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 03:55:00,249 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 03:56:41,127 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:00:00,270 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:00:00,272 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:01:41,142 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:05:00,303 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:05:00,305 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:06:41,151 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:10:00,306 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:10:00,308 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:11:41,174 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:15:00,321 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:15:00,323 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:15:37,290 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 04:15:37,291 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:03:15:37 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 04:16:41,205 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:20:00,348 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:20:00,350 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:21:41,207 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:25:00,386 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:25:00,388 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:26:37,884 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 04:26:37,885 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:03:26:37 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 04:26:41,212 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:28:01,417 - bot.core - WARNING - Bot disconnected.
+2025-04-15 04:28:01,549 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 998541f17c3437a712a433eba5b12853.
+2025-04-15 04:28:01,549 - bot.core - INFO - Bot resumed connection.
+2025-04-15 04:30:00,425 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:30:00,427 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:31:41,225 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:35:00,433 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:35:00,435 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:36:41,251 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:37:24,924 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 04:37:24,925 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:03:37:24 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 04:40:00,452 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:40:00,454 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:41:41,267 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:45:00,483 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:45:00,485 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:46:41,274 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:50:00,525 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:50:00,526 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:51:41,292 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 04:55:00,537 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 04:55:00,539 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 04:56:41,321 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:00:00,561 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:00:00,563 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:01:41,337 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:01:58,315 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 05:01:58,315 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:04:01:58 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 05:05:00,596 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:05:00,598 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:06:41,347 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:10:00,601 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:10:00,603 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:11:41,369 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:15:00,616 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:15:00,618 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:16:41,404 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:20:00,644 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:20:00,646 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:21:41,407 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:25:00,682 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:25:00,684 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:26:41,421 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:30:00,690 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:30:00,692 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:31:41,445 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:31:48,702 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 05:31:48,703 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:04:31:48 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 05:35:00,710 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:35:00,712 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:36:41,481 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:40:00,742 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:40:00,744 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:40:11,941 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 05:40:11,941 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:04:40:11 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 05:41:41,488 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:45:00,784 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:45:00,786 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:46:41,506 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:50:00,797 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:50:00,799 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:51:41,536 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:55:00,820 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 05:55:00,822 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 05:56:41,577 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 05:58:50,247 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 05:58:50,247 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:04:58:50 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 06:00:00,856 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:00:00,858 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:01:41,587 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:05:00,861 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:05:00,862 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:06:41,611 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:10:00,877 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:10:00,879 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:11:41,643 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:15:00,905 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:15:00,907 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:16:41,647 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:20:00,944 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:20:00,946 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:20:36,122 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 06:20:36,125 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:05:20:36 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 06:21:41,661 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:25:00,953 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:25:00,955 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:26:41,688 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:30:00,973 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:30:00,975 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:31:41,725 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:32:32,363 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 06:32:32,364 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:05:32:32 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 06:35:01,005 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:35:01,006 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:35:22,899 - aiohttp.access - INFO - 34.75.19.245 [15/Apr/2025:05:35:22 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-15 06:36:41,732 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:40:00,045 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:40:00,047 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:41:41,748 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:45:00,057 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:45:00,059 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:46:41,777 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:50:00,080 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:50:00,082 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:51:41,818 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 06:52:16,687 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 06:52:16,688 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:05:52:16 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 06:55:00,114 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 06:55:00,116 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 06:56:41,830 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:00:00,118 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:00:00,121 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:01:41,844 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:05:00,135 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:05:00,137 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:06:41,878 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:10:00,162 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:10:00,164 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:11:41,881 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:15:00,200 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:15:00,202 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:15:04,565 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 07:15:04,566 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:06:15:04 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 07:16:41,896 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:20:00,208 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:20:00,210 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:21:41,912 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:25:00,227 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:25:00,229 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:26:41,949 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:30:00,257 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:30:00,259 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:31:41,957 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:35:00,299 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:35:00,301 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:36:41,976 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:39:39,828 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 07:39:39,828 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:06:39:39 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 07:40:00,311 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:40:00,313 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:41:41,991 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:45:00,334 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:45:00,336 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:46:42,031 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:50:00,369 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:50:00,371 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:51:40,739 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 07:51:40,739 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:06:51:40 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 07:51:42,033 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 07:55:00,373 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 07:55:00,375 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 07:56:42,056 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:00:00,390 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:00:00,392 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:01:42,071 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:05:00,417 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:05:00,419 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:06:42,074 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:10:00,455 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:10:00,457 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:11:05,745 - bot.core - WARNING - Bot disconnected.
+2025-04-15 08:11:05,879 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 998541f17c3437a712a433eba5b12853.
+2025-04-15 08:11:05,879 - bot.core - INFO - Bot resumed connection.
+2025-04-15 08:11:42,111 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:13:40,711 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 08:13:40,711 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:07:13:40 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-15 08:15:00,485 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:15:00,487 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:16:42,119 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:20:00,527 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:20:00,529 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:21:42,133 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:23:09,918 - bot.services.bet_service - INFO - Processing reaction '✅' by 821794684497690695 on msg 1361447267977924771 for bet 202504142103693
+2025-04-15 08:23:09,919 - bot.services.bet_service - ERROR - Unexpected error processing reaction for bet 202504142103693: name 'aiomysql' is not defined
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 1467, in handle_final_bet_reaction
+    async with conn.cursor(aiomysql.DictCursor) as cur:
+                           ^^^^^^^^
+NameError: name 'aiomysql' is not defined
+2025-04-15 08:23:22,864 - bot.services.bet_service - INFO - Processing reaction '❌' by 821794684497690695 on msg 1361466402212548668 for bet 202504142219609
+2025-04-15 08:23:22,865 - bot.services.bet_service - ERROR - Unexpected error processing reaction for bet 202504142219609: name 'aiomysql' is not defined
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 1467, in handle_final_bet_reaction
+    async with conn.cursor(aiomysql.DictCursor) as cur:
+                           ^^^^^^^^
+NameError: name 'aiomysql' is not defined
+2025-04-15 08:23:30,921 - bot.services.bet_service - INFO - Processing reaction '❌' by 821794684497690695 on msg 1361470467978035291 for bet 202504142236280
+2025-04-15 08:23:30,922 - bot.services.bet_service - ERROR - Unexpected error processing reaction for bet 202504142236280: name 'aiomysql' is not defined
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 1467, in handle_final_bet_reaction
+    async with conn.cursor(aiomysql.DictCursor) as cur:
+                           ^^^^^^^^
+NameError: name 'aiomysql' is not defined
+2025-04-15 08:25:00,539 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:25:00,541 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:26:42,164 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 08:30:00,562 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 08:30:00,563 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 08:31:42,205 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.

@@ -1,0 +1,159 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)': Expected end or semicolon (after version specifier)
+    discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)
+              ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)': Expected end or semicolon (after version specifier)
+    aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)
+           ~~~~~~~~~~~~^
+Hint: It looks like a path. File 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)': Expected end or semicolon (after version specifier)
+    aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)
+            ~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'redis==5.0.4       # Async Redis client (redis.asyncio)': Expected end or semicolon (after version specifier)
+    redis==5.0.4       # Async Redis client (redis.asyncio)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)': Expected end or semicolon (after version specifier)
+    cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)
+                ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)': Expected end or semicolon (after version specifier)
+    aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)
+                   ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)': Expected end or semicolon (after version specifier)
+    python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)
+                 ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'Pillow==10.3.0     # Image manipulation for user images (PIL.Image)': Expected end or semicolon (after version specifier)
+    Pillow==10.3.0     # Image manipulation for user images (PIL.Image)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'PyTZ==2024.1       # Timezone handling (pytz)': Expected end or semicolon (after version specifier)
+    PyTZ==2024.1       # Timezone handling (pytz)
+        ~~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)': Expected end or semicolon (after version specifier)
+    typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)
+                     ~~~~~~~~~~^
+Hint: It looks like a path. File 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)': Expected end or semicolon (after version specifier)
+    jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)
+              ~~~~~~~~~^
+Hint: It looks like a path. File 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'regex==2024.5.15   # Advanced regular expression support (re enhancement)': Expected end or semicolon (after version specifier)
+    regex==2024.5.15   # Advanced regular expression support (re enhancement)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)': Expected end or semicolon (after version specifier)
+    pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)
+          ~~~~~~~~~~~~~^
+2025-04-13 16:26:54,725 - __main__ - INFO - Initializing database connection...
+2025-04-13 16:26:54,725 - bot.data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-13 16:26:54,767 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'bets' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'cappers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'server_settings' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscribers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscriptions' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'unit_records' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'users' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'user_images' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'voice_bet_updates' already exists
+  await self._query(query)
+2025-04-13 16:26:54,773 - bot.data.db_manager - INFO - Database tables checked/created successfully
+2025-04-13 16:26:54,773 - __main__ - INFO - Initializing cache connection...
+2025-04-13 16:26:54,773 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-13 16:26:54,858 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-13 16:26:54,858 - __main__ - INFO - Initializing BettingBot...
+2025-04-13 16:26:54,859 - __main__ - INFO - Starting bot...
+2025-04-13 16:26:54,859 - discord.client - INFO - logging in using static token
+2025-04-13 16:26:55,247 - api.sports_api - INFO - Sports API client session started
+2025-04-13 16:26:55,247 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-13 16:26:55,247 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-13 16:26:55,247 - data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-13 16:26:55,259 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-13 16:26:55,266 - data.db_manager - INFO - Database tables checked/created successfully
+2025-04-13 16:26:55,267 - data.cache_manager - WARNING - Redis client not initialized. Attempting connection.
+2025-04-13 16:26:55,267 - data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-13 16:26:55,357 - data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-13 16:26:55,372 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-13 16:26:55,372 - bot.services.game_service - INFO - Game service polling started.
+2025-04-13 16:26:55,372 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-13 16:26:55,373 - web.server - INFO - Web application setup complete.
+2025-04-13 16:26:55,373 - bot.core - INFO - Loading application commands...
+2025-04-13 16:26:55,373 - bot.core - INFO - Loaded command: add_capper
+2025-04-13 16:26:55,375 - bot.core - INFO - Loaded command: admin
+2025-04-13 16:26:55,376 - bot.core - INFO - Loaded command: cancel_bet
+2025-04-13 16:26:55,376 - bot.core - INFO - Loaded command: help
+2025-04-13 16:26:55,872 - bot.core - INFO - Loaded command: leaderboard
+2025-04-13 16:26:55,873 - bot.core - INFO - Loaded command: load_url
+2025-04-13 16:26:55,875 - bot.core - INFO - Loaded command: profile
+2025-04-13 16:26:55,876 - bot.core - INFO - Loaded command: setid
+2025-04-13 16:26:55,876 - bot.core - INFO - Loaded command: show_cappers
+2025-04-13 16:26:55,877 - bot.core - INFO - Loaded command: stats
+2025-04-13 16:26:55,878 - bot.core - INFO - Loaded command: subscription
+2025-04-13 16:26:55,878 - bot.core - INFO - Assuming 'bet' command is handled by BetService internally.
+2025-04-13 16:26:55,878 - bot.core - INFO - Application commands loaded.
+2025-04-13 16:26:55,880 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-13 16:26:55,994 - bot.core - INFO - Commands synced to test guild ID: 1328126227013439601
+2025-04-13 16:26:56,200 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: a5c68e851a0f40748495622b30ce20f7).
+2025-04-13 16:26:58,206 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-13 16:26:58,206 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-13 16:26:58,206 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-13 16:26:58,206 - bot.core - INFO - Bot is ready and online.
+2025-04-13 16:27:00,883 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 16:27:27,911 - aiohttp.access - INFO - 104.196.23.152 [13/Apr/2025:15:27:27 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-13 16:30:00,225 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 16:30:00,227 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 16:32:00,889 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 16:35:00,255 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 16:35:00,258 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 16:37:00,917 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 16:40:00,259 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 16:40:00,261 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 16:42:00,956 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 16:45:00,273 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 16:45:00,275 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 16:47:00,966 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 16:50:00,298 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 16:50:00,300 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 16:52:00,986 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 16:55:00,329 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 16:55:00,331 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 16:57:01,019 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 17:00:00,336 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 17:00:00,339 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 17:02:01,021 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 17:05:00,355 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 17:05:00,358 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 17:07:01,034 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 17:10:00,372 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 17:10:00,375 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 17:12:01,059 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 17:15:00,413 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 17:15:00,415 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 17:17:01,094 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-13 17:20:00,424 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-13 17:20:00,426 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-13 17:22:01,100 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.

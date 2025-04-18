@@ -1,0 +1,23 @@
+betting-bot/
+├── bot/
+│   └── core.py            # Main bot logic and event handlers
+├── services/
+│   ├── bet_service.py     # Bet management
+│   ├── game_service.py    # Live game data
+│   └── voice_service.py   # Voice channel updates
+├── data/
+│   ├── db_manager.py      # MySQL pool and queries
+│   ├── cache_manager.py   # Redis caching
+│   └── schema.sql         # Database schema
+├── api/
+│   └── sports_api.py      # Unified sports API client
+├── web/
+│   └── server.py          # RESTful web server
+├── utils/
+│   ├── team_utils.py      # Team normalization and abbreviation
+│   ├── serial_utils.py    # Serial number generation
+│   └── logging.py         # Logging setup
+├── static/                # Static assets (logos, images)
+├── config/
+│   └── settings.py        # Environment vars and constants
+└── main.py                # Entry point

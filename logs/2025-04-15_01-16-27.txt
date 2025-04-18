@@ -1,0 +1,183 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)': Expected end or semicolon (after version specifier)
+    discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)
+              ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)': Expected end or semicolon (after version specifier)
+    aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)
+           ~~~~~~~~~~~~^
+Hint: It looks like a path. File 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)': Expected end or semicolon (after version specifier)
+    aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)
+            ~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'redis==5.0.4       # Async Redis client (redis.asyncio)': Expected end or semicolon (after version specifier)
+    redis==5.0.4       # Async Redis client (redis.asyncio)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)': Expected end or semicolon (after version specifier)
+    cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)
+                ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)': Expected end or semicolon (after version specifier)
+    aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)
+                   ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)': Expected end or semicolon (after version specifier)
+    python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)
+                 ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'Pillow==10.3.0     # Image manipulation for user images (PIL.Image)': Expected end or semicolon (after version specifier)
+    Pillow==10.3.0     # Image manipulation for user images (PIL.Image)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'PyTZ==2024.1       # Timezone handling (pytz)': Expected end or semicolon (after version specifier)
+    PyTZ==2024.1       # Timezone handling (pytz)
+        ~~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)': Expected end or semicolon (after version specifier)
+    typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)
+                     ~~~~~~~~~~^
+Hint: It looks like a path. File 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)': Expected end or semicolon (after version specifier)
+    jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)
+              ~~~~~~~~~^
+Hint: It looks like a path. File 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'regex==2024.5.15   # Advanced regular expression support (re enhancement)': Expected end or semicolon (after version specifier)
+    regex==2024.5.15   # Advanced regular expression support (re enhancement)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)': Expected end or semicolon (after version specifier)
+    pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-15 01:16:43,050 - __main__ - INFO - Starting main execution block (__name__ == '__main__')
+2025-04-15 01:16:43,051 - __main__ - INFO - --- Entered main() ---
+2025-04-15 01:16:43,051 - __main__ - INFO - Initializing BettingBot class...
+2025-04-15 01:16:43,051 - bot.core - INFO - --- BettingBot __init__ START ---
+2025-04-15 01:16:43,051 - bot.core - INFO - Initializing DB Manager instance...
+2025-04-15 01:16:43,051 - bot.core - INFO - Initializing Cache Manager instance...
+2025-04-15 01:16:43,051 - bot.core - INFO - Initializing Command Tree...
+2025-04-15 01:16:43,051 - bot.core - INFO - Initializing Game Service...
+2025-04-15 01:16:43,051 - bot.services.game_service - INFO - GameService initialized.
+2025-04-15 01:16:43,051 - bot.core - INFO - Initializing Voice Service...
+2025-04-15 01:16:43,051 - bot.core - INFO - Initializing Bet Service...
+2025-04-15 01:16:43,052 - bot.services.bet_service - INFO - BetService initialized.
+2025-04-15 01:16:43,052 - bot.core - INFO - Initializing Web App variable...
+2025-04-15 01:16:43,052 - bot.core - INFO - --- BettingBot __init__ END ---
+2025-04-15 01:16:43,052 - __main__ - INFO - BettingBot instance created.
+2025-04-15 01:16:43,052 - __main__ - INFO - Attempting to start bot...
+2025-04-15 01:16:43,052 - discord.client - INFO - logging in using static token
+2025-04-15 01:16:43,345 - bot.core - INFO - START: Running setup_hook...
+2025-04-15 01:16:43,345 - bot.core - INFO - STEP: Connecting to Database...
+2025-04-15 01:16:43,345 - bot.data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-15 01:16:43,355 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-15 01:16:43,356 - bot.data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) found in database 'customer_990306_Server_database'.
+2025-04-15 01:16:43,356 - bot.core - INFO - STEP COMPLETE: Database connected.
+2025-04-15 01:16:43,356 - bot.core - INFO - STEP: Connecting to Cache...
+2025-04-15 01:16:43,356 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-15 01:16:43,447 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-15 01:16:43,447 - bot.core - INFO - STEP COMPLETE: Cache connected.
+2025-04-15 01:16:43,447 - bot.core - INFO - STEP: Starting Game Service...
+2025-04-15 01:16:43,447 - api.sports_api - INFO - Sports API client session started
+2025-04-15 01:16:43,447 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-15 01:16:43,477 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-15 01:16:43,477 - bot.services.game_service - INFO - Game service polling started.
+2025-04-15 01:16:43,477 - bot.core - INFO - STEP COMPLETE: Game Service started.
+2025-04-15 01:16:43,477 - bot.core - INFO - STEP: Starting Voice Service...
+2025-04-15 01:16:43,477 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-15 01:16:43,477 - bot.core - INFO - STEP COMPLETE: Voice Service started.
+2025-04-15 01:16:43,477 - bot.core - INFO - STEP: Starting Bet Service (includes scheduler)...
+2025-04-15 01:16:43,478 - bot.services.bet_service - INFO - Bet service starting.
+2025-04-15 01:16:43,478 - bot.services.bet_service - INFO - Setting up APScheduler jobs for tallying.
+2025-04-15 01:16:43,495 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-15 01:16:43,495 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-15 01:16:43,496 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-15 01:16:43,496 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-15 01:16:43,496 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-15 01:16:43,496 - bot.services.bet_service - INFO - APScheduler started successfully.
+2025-04-15 01:16:43,496 - bot.services.bet_service - INFO - Bet service started.
+2025-04-15 01:16:43,496 - bot.core - INFO - STEP COMPLETE: Bet Service started.
+2025-04-15 01:16:43,496 - bot.core - INFO - STEP: Running startup reconciliation checks...
+2025-04-15 01:16:43,496 - bot.tasks.startup_checks - INFO - Running startup checks (Logic Update 2025-04-15 v3 - FINAL)...
+2025-04-15 01:16:43,496 - bot.tasks.startup_checks - INFO - Checking for pending bets (0/0) missing unit records (will insert units=0, total=0)...
+2025-04-15 01:16:43,496 - bot.tasks.startup_checks - INFO - No pending bets (0/0) found missing unit records.
+2025-04-15 01:16:43,497 - bot.tasks.startup_checks - INFO - Loaded 5 pending bets into memory. Created 0 missing placeholder unit records.
+2025-04-15 01:16:43,497 - bot.tasks.startup_checks - INFO - Reconciling 'units' column for ALL resolved bets (Create if Missing, Update if Exists AND units=0)...
+2025-04-15 01:16:43,497 - bot.tasks.startup_checks - INFO - Found 5 resolved bets to check/reconcile.
+2025-04-15 01:16:43,499 - bot.tasks.startup_checks - INFO - Checked resolved unit records. Updated 0 entries where units were 0. Created 0 missing records for resolved bets.
+2025-04-15 01:16:43,499 - bot.tasks.startup_checks - INFO - Startup checks completed.
+2025-04-15 01:16:43,499 - bot.core - INFO - STEP COMPLETE: Startup reconciliation checks finished.
+2025-04-15 01:16:43,499 - bot.core - INFO - STEP: Setting up web server...
+2025-04-15 01:16:43,500 - web.server - INFO - Web application setup complete.
+2025-04-15 01:16:43,500 - bot.core - INFO - STEP COMPLETE: Web server setup.
+2025-04-15 01:16:43,500 - bot.core - INFO - STEP: Starting web server task...
+2025-04-15 01:16:43,500 - bot.core - INFO - STEP COMPLETE: Web server task created.
+2025-04-15 01:16:43,500 - bot.core - INFO - STEP: Loading application commands conceptually...
+2025-04-15 01:16:43,501 - bot.core - INFO - Loaded command module: admin
+2025-04-15 01:16:43,501 - bot.core - WARNING - Command module admin missing setup(tree) function.
+2025-04-15 01:16:43,501 - bot.core - INFO - Loaded command module: subscription
+2025-04-15 01:16:43,501 - bot.core - WARNING - Command module subscription missing setup(tree) function.
+2025-04-15 01:16:43,502 - bot.core - INFO - Loaded command module: add_capper
+2025-04-15 01:16:43,502 - bot.core - INFO - Loaded command module: help
+2025-04-15 01:16:43,865 - bot.core - INFO - Loaded command module: leaderboard
+2025-04-15 01:16:43,865 - bot.core - INFO - Loaded command module: load_url
+2025-04-15 01:16:43,868 - bot.core - INFO - Loaded command module: profile
+2025-04-15 01:16:43,871 - bot.commands.setid - INFO - Registered /setid command globally.
+2025-04-15 01:16:43,871 - bot.core - INFO - Loaded command module: setid
+2025-04-15 01:16:43,871 - bot.core - INFO - Loaded command module: show_cappers
+2025-04-15 01:16:43,871 - bot.core - INFO - Loaded command module: stats
+2025-04-15 01:16:43,872 - bot.commands.load_logos - INFO - Registering /load_logos command globally.
+2025-04-15 01:16:43,872 - bot.core - INFO - Loaded command module: load_logos
+2025-04-15 01:16:43,872 - bot.core - INFO - Assuming 'bet', 'edit_units', 'cancel_bet' are registered by BetService.
+2025-04-15 01:16:43,872 - bot.core - INFO - STEP COMPLETE: Application commands conceptually loaded.
+2025-04-15 01:16:43,872 - bot.core - INFO - STEP: Syncing global commands...
+2025-04-15 01:16:43,873 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-15 01:16:45,667 - bot.core - INFO - STEP COMPLETE: Global commands synced.
+2025-04-15 01:16:45,667 - bot.core - INFO - Registered global commands: ['bet', 'edit_units', 'cancel_bet', 'admin', 'subscription', 'add_capper', 'help', 'leaderboard', 'load_url', 'profile', 'setid', 'show_cappers', 'stats', 'load_logos']
+2025-04-15 01:16:45,667 - bot.core - INFO - STEP: Syncing all commands to guild ID: 1328126227013439601...
+2025-04-15 01:16:45,772 - bot.core - INFO - STEP COMPLETE: All commands synced to guild ID: 1328126227013439601
+2025-04-15 01:16:45,772 - bot.core - INFO - Registered commands for guild 1328126227013439601: []
+2025-04-15 01:16:45,772 - bot.core - INFO - END: setup_hook completed successfully.
+2025-04-15 01:16:46,069 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 7ace019ef400f684f084f8272ec0dbbd).
+2025-04-15 01:16:48,073 - bot.services.game_service - INFO - GameService poll loop starting after bot ready.
+2025-04-15 01:16:48,073 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-15 01:16:48,073 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-15 01:16:48,073 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-15 01:16:48,073 - bot.core - INFO - Bot is ready and online.
+2025-04-15 01:16:53,079 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 01:17:17,958 - bot.commands.setid - INFO - Processing /setid for user 761388542965448767 in guild 1328126227013439601
+2025-04-15 01:17:17,958 - bot.services.setid_handler - INFO - Processing /setid for user 761388542965448767 in guild 1328126227013439601
+2025-04-15 01:17:18,285 - bot.services.setid_handler - INFO - Saved profile image for user 761388542965448767 to /home/container/bot/static/user_images/761388542965448767.jpg
+2025-04-15 01:17:18,405 - bot.services.setid_handler - ERROR - Failed to send modal to user 761388542965448767: 'Member' object has no attribute 'send_modal'
+Traceback (most recent call last):
+  File "/home/container/bot/services/setid_handler.py", line 167, in handle_setid_command
+    await interaction.user.send_modal(modal)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Member' object has no attribute 'send_modal'
+2025-04-15 01:19:17,713 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-15 01:19:17,714 - aiohttp.access - INFO - 156.146.63.199 [15/Apr/2025:00:19:17 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"

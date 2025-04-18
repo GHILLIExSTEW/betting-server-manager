@@ -1,0 +1,271 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: discord.py==2.3.2 in ./.local/lib/python3.12/site-packages (2.3.2)
+Requirement already satisfied: aiohttp<4,>=3.7.4 in ./.local/lib/python3.12/site-packages (from discord.py==2.3.2) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp==3.9.5 in ./.local/lib/python3.12/site-packages (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiomysql==0.2.0 in ./.local/lib/python3.12/site-packages (0.2.0)
+Requirement already satisfied: PyMySQL>=1.0 in ./.local/lib/python3.12/site-packages (from aiomysql==0.2.0) (1.1.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: redis==5.0.4 in ./.local/lib/python3.12/site-packages (5.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: cryptography==42.0.5 in ./.local/lib/python3.12/site-packages (42.0.5)
+Requirement already satisfied: cffi>=1.12 in ./.local/lib/python3.12/site-packages (from cryptography==42.0.5) (1.17.1)
+Requirement already satisfied: pycparser in ./.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography==42.0.5) (2.22)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp-session==2.12.0 in ./.local/lib/python3.12/site-packages (2.12.0)
+Requirement already satisfied: aiohttp>=3.8 in ./.local/lib/python3.12/site-packages (from aiohttp-session==2.12.0) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: python-dotenv==1.0.1 in ./.local/lib/python3.12/site-packages (1.0.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: Pillow==10.3.0 in ./.local/lib/python3.12/site-packages (10.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: PyTZ==2024.1 in ./.local/lib/python3.12/site-packages (2024.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: typing_extensions==4.11.0 in ./.local/lib/python3.12/site-packages (4.11.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jsonpickle==3.0.4 in ./.local/lib/python3.12/site-packages (3.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: regex==2024.5.15 in ./.local/lib/python3.12/site-packages (2024.5.15)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas==2.2.2 in ./.local/lib/python3.12/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.2.4)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas==2.2.2) (1.17.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-15 18:01:33,435 - __main__ - INFO - Starting main execution block (__name__ == '__main__')
+2025-04-15 18:01:33,435 - __main__ - INFO - --- Entered main() ---
+2025-04-15 18:01:33,435 - __main__ - INFO - Initializing BettingBot class...
+2025-04-15 18:01:33,435 - bot.core - INFO - --- BettingBot __init__ START ---
+2025-04-15 18:01:33,436 - bot.core - INFO - Initializing DB Manager instance...
+2025-04-15 18:01:33,436 - bot.core - INFO - Initializing Cache Manager instance...
+2025-04-15 18:01:33,436 - bot.core - INFO - Initializing Command Tree...
+2025-04-15 18:01:33,436 - bot.core - INFO - Initializing Game Service...
+2025-04-15 18:01:33,436 - bot.services.game_service - INFO - GameService initialized.
+2025-04-15 18:01:33,436 - bot.core - INFO - Initializing Voice Service...
+2025-04-15 18:01:33,436 - bot.core - INFO - Initializing Bet Service...
+2025-04-15 18:01:33,436 - bot.services.bet_service - INFO - BetService initialized.
+2025-04-15 18:01:33,437 - bot.core - INFO - Initializing Web App variable...
+2025-04-15 18:01:33,437 - bot.core - INFO - --- BettingBot __init__ END ---
+2025-04-15 18:01:33,437 - __main__ - INFO - BettingBot instance created.
+2025-04-15 18:01:33,437 - __main__ - INFO - Attempting to start bot...
+2025-04-15 18:01:33,437 - discord.client - INFO - logging in using static token
+2025-04-15 18:01:33,822 - bot.core - INFO - --- Running setup_hook ---
+2025-04-15 18:01:33,822 - bot.core - INFO - STEP: Connecting to Database...
+2025-04-15 18:01:33,822 - bot.data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-15 18:01:33,872 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-15 18:01:33,874 - bot.data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-15 18:01:33,874 - bot.core - INFO - STEP COMPLETE: Database connected.
+2025-04-15 18:01:33,874 - bot.core - INFO - STEP: Connecting to Cache...
+2025-04-15 18:01:33,874 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-15 18:01:33,965 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-15 18:01:33,965 - bot.core - INFO - STEP COMPLETE: Cache connected.
+2025-04-15 18:01:33,965 - bot.core - INFO - STEP: Starting Game Service...
+2025-04-15 18:01:33,965 - api.sports_api - INFO - Sports API client session started
+2025-04-15 18:01:33,965 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-15 18:01:33,997 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-15 18:01:33,997 - bot.services.game_service - INFO - Game service polling started.
+2025-04-15 18:01:33,997 - bot.core - INFO - STEP COMPLETE: Game Service started.
+2025-04-15 18:01:33,997 - bot.core - INFO - STEP: Starting Voice Service...
+2025-04-15 18:01:33,997 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-15 18:01:33,997 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-15 18:01:33,997 - bot.services.voice_service - INFO - Voice service started.
+2025-04-15 18:01:33,997 - bot.core - INFO - STEP COMPLETE: Voice Service started.
+2025-04-15 18:01:33,997 - bot.core - INFO - STEP: Starting Bet Service (includes scheduler)...
+2025-04-15 18:01:33,997 - bot.services.bet_service - INFO - Bet service starting.
+2025-04-15 18:01:33,997 - bot.services.bet_service - INFO - Setting up APScheduler jobs for tallying.
+2025-04-15 18:01:34,000 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-15 18:01:34,000 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-15 18:01:34,001 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-15 18:01:34,001 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-15 18:01:34,001 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-15 18:01:34,001 - bot.services.bet_service - INFO - APScheduler started successfully.
+2025-04-15 18:01:34,001 - bot.services.bet_service - INFO - Bet service started.
+2025-04-15 18:01:34,001 - bot.core - INFO - STEP COMPLETE: Bet Service started.
+2025-04-15 18:01:34,001 - bot.core - INFO - STEP: Running startup reconciliation checks...
+2025-04-15 18:01:34,001 - bot.tasks.startup_checks - INFO - Running startup checks (Logic Update 2025-04-15 v3 - FINAL)...
+2025-04-15 18:01:34,001 - bot.tasks.startup_checks - INFO - Checking for pending bets (0/0) missing unit records (will insert units=0, total=0)...
+2025-04-15 18:01:34,002 - bot.tasks.startup_checks - INFO - No pending bets (0/0) found missing unit records.
+2025-04-15 18:01:34,002 - bot.tasks.startup_checks - INFO - Loaded 0 pending bets into memory. Created 0 missing placeholder unit records. Resolved 0 bets by reaction. Skipped 0 bets.
+2025-04-15 18:01:34,002 - bot.tasks.startup_checks - INFO - Reconciling 'units' column for ALL resolved bets (Create if Missing, Update if Exists AND units=0)...
+2025-04-15 18:01:34,003 - bot.tasks.startup_checks - INFO - Found 10 resolved bets to check/reconcile.
+2025-04-15 18:01:34,007 - bot.tasks.startup_checks - INFO - Checked resolved unit records. Updated 0 entries where units were 0. Created 0 missing records for resolved bets.
+2025-04-15 18:01:34,007 - bot.tasks.startup_checks - INFO - Startup checks completed.
+2025-04-15 18:01:34,007 - bot.core - INFO - STEP COMPLETE: Startup reconciliation checks finished.
+2025-04-15 18:01:34,007 - bot.core - INFO - STEP: Setting up web server...
+2025-04-15 18:01:34,007 - web.server - INFO - Web application setup complete.
+2025-04-15 18:01:34,007 - bot.core - INFO - STEP COMPLETE: Web server setup.
+2025-04-15 18:01:34,007 - bot.core - INFO - STEP: Starting web server task...
+2025-04-15 18:01:34,007 - bot.core - INFO - STEP COMPLETE: Web server task created/started.
+2025-04-15 18:01:34,007 - bot.core - INFO - STEP: Loading command definitions...
+2025-04-15 18:01:34,007 - bot.core - INFO - --- Starting Command Loading ---
+2025-04-15 18:01:34,007 - bot.core - INFO - Loading GLOBAL commands...
+2025-04-15 18:01:34,009 - bot.core - INFO - Loaded and set up GLOBAL command module: admin
+2025-04-15 18:01:34,009 - bot.core - INFO - Loaded and set up GLOBAL command module: subscription
+2025-04-15 18:01:34,010 - bot.core - INFO - Loaded and set up GLOBAL command module: help
+2025-04-15 18:01:34,010 - bot.core - INFO - Loading GUILD command modules (storing setup functions)...
+2025-04-15 18:01:34,385 - bot.core - INFO - Loaded GUILD command module: leaderboard (setup stored)
+2025-04-15 18:01:34,385 - bot.core - INFO - Loaded GUILD command module: show_cappers (setup stored)
+2025-04-15 18:01:34,387 - bot.core - INFO - Loaded GUILD command module: profile (setup stored)
+2025-04-15 18:01:34,388 - bot.core - INFO - Loaded GUILD command module: stats (setup stored)
+2025-04-15 18:01:34,389 - bot.core - INFO - Loaded GUILD command module: load_url (setup stored)
+2025-04-15 18:01:34,389 - bot.core - INFO - Loaded GUILD command module: load_logos (setup stored)
+2025-04-15 18:01:34,390 - bot.core - INFO - Loaded GUILD command module: add_capper (setup stored)
+2025-04-15 18:01:34,391 - bot.core - INFO - Loaded GUILD command module: setid (setup stored)
+2025-04-15 18:01:34,391 - bot.core - INFO - Command loading process finished.
+2025-04-15 18:01:34,391 - bot.core - INFO - Stored setup functions for GUILD commands: ['leaderboard', 'show_cappers', 'profile', 'stats', 'load_url', 'load_logos', 'add_capper', 'setid']
+2025-04-15 18:01:34,391 - bot.core - INFO - STEP COMPLETE: Command definitions loaded.
+2025-04-15 18:01:34,391 - bot.core - INFO - STEP: Syncing GLOBAL commands...
+2025-04-15 18:01:34,392 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-15 18:01:34,553 - bot.core - INFO - STEP COMPLETE: Global commands synced: ['bet', 'edit_units', 'cancel_bet', 'admin', 'subscription', 'help']
+2025-04-15 18:01:34,553 - bot.core - INFO - STEP: Fetching configured guilds for command registration...
+2025-04-15 18:01:34,554 - bot.core - INFO - Found 0 guilds marked as configured.
+2025-04-15 18:01:34,554 - bot.core - INFO - No previously configured guilds found or error occurred. Skipping guild command registration.
+2025-04-15 18:01:34,554 - bot.core - INFO - END: setup_hook completed successfully.
+2025-04-15 18:01:34,769 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: b905506fdd0b7fcc8fbcfe7a04fc9f28).
+2025-04-15 18:01:36,774 - bot.services.game_service - INFO - GameService poll loop starting after bot ready.
+2025-04-15 18:01:36,774 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-15 18:01:36,774 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-15 18:01:36,774 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-15 18:01:36,774 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-15 18:01:36,774 - bot.core - INFO - Bot is ready and online.
+2025-04-15 18:01:40,635 - bot.services.bet_service - INFO - /bet initiated by authorized user 761388542965448767.
+2025-04-15 18:01:41,775 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 18:01:43,653 - bot.services.bet_service - INFO - League selected: nba by 761388542965448767 (Serial: 202504152201859)
+2025-04-15 18:01:43,653 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'nba'
+2025-04-15 18:01:45,886 - bot.services.bet_service - INFO - Bet Type selected: Straight by 761388542965448767 (Serial: 202504152201859)
+2025-04-15 18:01:48,018 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Player' by 761388542965448767 (Serial: 202504152201859)
+2025-04-15 18:02:25,652 - bot.services.bet_service - INFO - Player Bet Modal submitted by 761388542965448767 (Serial: 202504152201859): {'team': 'Lakers', 'opponent': 'Celtics', 'player_name': 'Lebron James', 'prop': 'Pussy hurt <10 min', 'odds': '-110', 'path': 'Bet on a Player'}
+2025-04-15 18:02:25,785 - bot.services.bet_service - INFO - Generating preview for bet serial 202504152201859. Current leg data: {'team': 'Lakers', 'opponent': 'Celtics', 'player_name': 'Lebron James', 'prop': 'Pussy hurt <10 min', 'odds': '-110', 'path': 'Bet on a Player'}
+2025-04-15 18:02:25,815 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:25,903 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/los_angeles_lakers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:25,991 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/boston_celtics.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:25,991 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504152201859: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/los_angeles_lakers.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png', 'description': '**Matchup:** Lakers vs Celtics\n\n**Player:** Lebron James\n**Prop:** Pussy hurt <10 min\n**Odds:** -110', 'team_display': 'Lakers', 'opponent_display': 'Celtics'}
+2025-04-15 18:02:26,078 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/los_angeles_lakers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:26,079 - bot.services.bet_service - INFO - Preview 202504152201859: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/los_angeles_lakers.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png' for League='nba', Entity='Lakers'
+2025-04-15 18:02:26,236 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504152201859
+2025-04-15 18:02:26,337 - aiohttp.access - INFO - 35.196.132.85 [15/Apr/2025:17:02:26 -0500] "GET /static/logos/nba/los_angeles_lakers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-15 18:02:26,388 - aiohttp.access - INFO - 35.227.62.178 [15/Apr/2025:17:02:26 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-15 18:02:27,252 - aiohttp.access - INFO - 34.73.62.161 [15/Apr/2025:17:02:27 -0500] "GET /static/logos/nba/los_angeles_lakers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-15 18:02:31,846 - bot.services.bet_service - INFO - Channel selected: 1357136356022816798 by 761388542965448767 (Serial: 202504152201859)
+2025-04-15 18:02:31,987 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:32,074 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/los_angeles_lakers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:32,163 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/boston_celtics.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:35,077 - bot.services.bet_service - INFO - Units selected: 3 by 761388542965448767 (Serial: 202504152201859)
+2025-04-15 18:02:35,186 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:35,278 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/los_angeles_lakers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:35,366 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/boston_celtics.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-15 18:02:38,684 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504152201859 for user 761388542965448767
+2025-04-15 18:02:38,685 - bot.data.db_manager - ERROR - Database query fetch_one failed: SELECT display_name, user_image FROM cappers WHERE user_id = %s AND guild_id = %s... | Params: (761388542965448767, 1328126227013439601) | Error: (1054, "Unknown column 'user_image' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 181, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'user_image' in 'field list'")
+2025-04-15 18:02:38,686 - bot.utils.errors - ERROR - DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'user_image' in 'field list'") | Query: SELECT display_name, user_image FROM cappers WHERE user_id = %s AND guild_id = %s
+2025-04-15 18:02:38,686 - bot.services.bet_service - ERROR - DB Error fetching capper info for 761388542965448767: Query fetch_one failed: (1054, "Unknown column 'user_image' in 'field list'") | Query: SELECT display_name, user_image FROM cappers WHERE user_id = %s AND guild_id = %s. Using Discord defaults.
+2025-04-15 18:02:39,051 - aiohttp.access - INFO - 34.74.113.139 [15/Apr/2025:17:02:39 -0500] "GET /static/logos/nba/los_angeles_lakers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-15 18:02:39,088 - aiohttp.access - INFO - 35.243.226.206 [15/Apr/2025:17:02:39 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-15 18:02:39,478 - bot.services.bet_service - INFO - Bet 202504152201859 message 1361824066528346203 posted via webhook 1358991230196776991 in channel 1357136356022816798.
+2025-04-15 18:02:39,479 - bot.services.bet_service - INFO - Bet 202504152201859 saved to database.
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Data truncated for column 'total' at row 1
+  await self._query(query)
+2025-04-15 18:02:39,481 - bot.services.bet_service - INFO - Inserted into unit_records for bet 202504152201859: risked=3.0, potential_profit=2.73 (No embed_id assumed)
+2025-04-15 18:02:39,481 - bot.data.db_manager - ERROR - Database query execution failed: 
+                INSERT INTO cappers (guild_id, user_id, display_name, user_image) VALUES (%s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE display_name = VALUES(display_name), user_image = VAL... | Params: (1328126227013439601, 761388542965448767, 'GHILLIE STEW', 'https://cdn.discordapp.com/avatars/761388542965448767/9f873abb4ea36bec02d8a92cae957528.png?size=1024') | Error: (1054, "Unknown column 'user_image' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 147, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'user_image' in 'field list'")
+2025-04-15 18:02:39,482 - bot.utils.errors - ERROR - DatabaseQueryError: Query execution failed: (1054, "Unknown column 'user_image' in 'field list'") | Query: 
+                INSERT INTO cappers (guild_id, user_id, display_name, user_image) VALUES (%s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE display_name = VALUES(display_name), user_image = VALUES(user_image)
+            
+2025-04-15 18:02:39,482 - bot.services.bet_service - WARNING - Error confirming bet 202504152201859: Query execution failed: (1054, "Unknown column 'user_image' in 'field list'") | Query: 
+                INSERT INTO cappers (guild_id, user_id, display_name, user_image) VALUES (%s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE display_name = VALUES(display_name), user_image = VALUES(user_image)
+            
+2025-04-15 18:05:00,815 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 18:05:00,815 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-15 18:05:00,815 - data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-15 18:05:00,868 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-15 18:05:00,870 - data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-15 18:05:00,870 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-15 18:05:00,871 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-15 18:05:01,098 - bot.services.voice_service - INFO - Updated CURRENT UNITS channel 1357135914622779402 to 'CURRENT UNITS: +3.0' in guild 1328126227013439601
+2025-04-15 18:05:01,293 - bot.services.voice_service - INFO - Updated UNITS THIS YEAR channel 1361698479428079676 to 'UNITS THIS YEAR: +52.7' in guild 1328126227013439601
+2025-04-15 18:05:01,294 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-15 18:06:41,783 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-15 18:10:00,305 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-15 18:10:00,306 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-15 18:10:00,307 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-15 18:10:00,502 - bot.services.voice_service - INFO - Updated UNITS THIS YEAR channel 1361698479428079676 to 'UNITS THIS YEAR: +50.0' in guild 1328126227013439601
+2025-04-15 18:10:00,503 - bot.services.voice_service - INFO - Voice service update cycle finished.

@@ -1,0 +1,975 @@
+2025-04-10 18:50:40 [INFO] root: Logging configured successfully
+2025-04-10 18:50:40 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-10 18:50:40 [INFO] __main__: Initializing database connection...
+2025-04-10 18:50:40 [INFO] bot.data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-10 18:50:40 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-10 18:50:40 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-10 18:50:40 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-10 18:50:40 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-10 18:50:40 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-10 18:50:40 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-10 18:50:40 [INFO] __main__: Initializing cache connection...
+2025-04-10 18:50:40 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-10 18:50:41 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-10 18:50:41 [INFO] __main__: Starting database logo synchronization...
+2025-04-10 18:50:41 [INFO] bot.utils.image_utils.helpers: Starting logo synchronization from database...
+2025-04-10 18:50:41 [DEBUG] bot.data.db_manager: Fetching DB query: SELECT league, conference, team, logo_image FROM league_teams_logos with params: None
+2025-04-10 18:50:41 [ERROR] bot.data.db_manager: Database query fetch failed: SELECT league, conference, team, logo_image FROM league_teams_logos | Params: None | Error: (1146, "Table 'customer_990306_bet_tracker_bot.league_teams_logos' doesn't exist")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'customer_990306_bet_tracker_bot.league_teams_logos' doesn't exist")
+2025-04-10 18:50:41 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1146, "Table 'customer_990306_bet_tracker_bot.league_teams_logos' doesn't exist") | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+2025-04-10 18:50:41 [ERROR] bot.utils.errors: DatabaseQueryError: Database query or processing failed during logo sync | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+2025-04-10 18:50:41 [INFO] bot.data.db_manager: Database connection pool closed
+2025-04-10 18:50:41 [DEBUG] bot.utils.image_utils.helpers: Database connection closed after logo synchronization.
+2025-04-10 18:50:41 [ERROR] __main__: ERROR during logo synchronization: Database query or processing failed during logo sync | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'customer_990306_bet_tracker_bot.league_teams_logos' doesn't exist")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/utils/image_utils/logo_sync.py", line 27, in sync_logos_from_db
+    results = await db_manager.fetch(query)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 185, in fetch
+    raise DatabaseQueryError(message=f"Query fetch failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch failed: (1146, "Table 'customer_990306_bet_tracker_bot.league_teams_logos' doesn't exist") | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/main.py", line 34, in main
+    await sync_logos_from_db()
+  File "/home/container/bot/utils/image_utils/logo_sync.py", line 134, in sync_logos_from_db
+    raise DatabaseQueryError(
+bot.utils.errors.DatabaseQueryError: Database query or processing failed during logo sync | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+2025-04-10 18:50:41 [INFO] __main__: Initializing BettingBot...
+2025-04-10 18:50:41 [INFO] __main__: Starting bot...
+2025-04-10 18:50:41 [INFO] bot.data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-10 18:50:41 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-10 18:50:41 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-10 18:50:41 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-10 18:50:41 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-10 18:50:41 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-10 18:50:41 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-10 18:50:41 [DEBUG] bot.data.cache_manager: Redis connection already active.
+2025-04-10 18:50:41 [INFO] api.sports_api: Sports API client session started
+2025-04-10 18:50:41 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-10 18:50:41 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-10 18:50:41 [INFO] data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-10 18:50:41 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-10 18:50:41 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-10 18:50:41 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-10 18:50:41 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-10 18:50:41 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-10 18:50:41 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-10 18:50:41 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-10 18:50:41 [ERROR] data.db_manager: Database query fetch failed: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:50:41 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+            
+2025-04-10 18:50:41 [ERROR] bot.services.game_service: Database error fetching initial games: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+            
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/game_service.py", line 52, in _fetch_initial_games
+    pending_bets = await db_manager.fetch(query)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 185, in fetch
+    raise DatabaseQueryError(message=f"Query fetch failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+            
+2025-04-10 18:50:41 [INFO] bot.services.game_service: Game service polling started.
+2025-04-10 18:50:41 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-10 18:50:41 [INFO] web.server: Web application setup complete.
+2025-04-10 18:50:41 [INFO] bot.core: Loading application commands...
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: add_capper
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: admin
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: help
+2025-04-10 18:50:41 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-10 18:50:41 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-10 18:50:41 [DEBUG] matplotlib: interactive is False
+2025-04-10 18:50:41 [DEBUG] matplotlib: platform is linux
+2025-04-10 18:50:41 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-10 18:50:41 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: leaderboard
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: load_url
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: profile
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: setid
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: show_cappers
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: stats
+2025-04-10 18:50:41 [INFO] bot.core: Loaded command: subscription
+2025-04-10 18:50:41 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-10 18:50:41 [INFO] bot.core: Application commands loaded.
+2025-04-10 18:50:41 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-10 18:50:42 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-10 18:50:44 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-10 18:50:44 [DEBUG] bot.services.voice_service: Voice service sleeping for 256.00 seconds until next 5-min mark.
+2025-04-10 18:50:44 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-10 18:50:44 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-10 18:50:44 [INFO] bot.core: Bot is ready and online.
+2025-04-10 18:50:46 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:50:46 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:50:46 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:50:46 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:50:46 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:51:46 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:51:46 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:51:46 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:51:46 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:51:46 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:52:46 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:52:46 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:52:46 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:52:46 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:52:46 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:53:46 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:53:46 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:53:46 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:53:46 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:53:46 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:54:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:54:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:54:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:54:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:54:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:55:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-10 18:55:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-10 18:55:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-10 18:55:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-10 18:55:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: No
+2025-04-10 18:55:00 [DEBUG] bot.services.voice_service: No Total Units channel set for guild 1328126227013439601
+2025-04-10 18:55:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 9, 18, 55, 0, 254803, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 12, 18, 55, 0, 254803, tzinfo=datetime.timezone.utc))
+2025-04-10 18:55:00 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 | Params: (1328126227013439601, datetime.datetime(2025, 4, 9, 18, 55, 0, 254803, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 12, 18, 55, 0, 254803, tzinfo=datetime.timezone.utc)) | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:55:00 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                
+2025-04-10 18:55:00 [ERROR] bot.services.voice_service: Error in voice update loop: name 'DatabaseQueryError' is not defined
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/voice_service.py", line 141, in _update_all_guilds
+    pending_bets: List[Dict] = await db_manager.fetch(pending_bets_query, (guild.id, start_window, end_window))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 185, in fetch
+    raise DatabaseQueryError(message=f"Query fetch failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/voice_service.py", line 289, in _update_loop
+    await self._update_all_guilds()
+  File "/home/container/bot/services/voice_service.py", line 245, in _update_all_guilds
+    except DatabaseQueryError as e:
+           ^^^^^^^^^^^^^^^^^^
+NameError: name 'DatabaseQueryError' is not defined
+2025-04-10 18:55:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:55:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:55:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:55:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:55:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:56:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 240.00 seconds until next 5-min mark.
+2025-04-10 18:56:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:56:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:56:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:56:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:56:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:57:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:57:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:57:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:57:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:57:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:58:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:58:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:58:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:58:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:58:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:59:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 18:59:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 18:59:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 18:59:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 18:59:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 19:00:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-10 19:00:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-10 19:00:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-10 19:00:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-10 19:00:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: No
+2025-04-10 19:00:00 [DEBUG] bot.services.voice_service: No Total Units channel set for guild 1328126227013439601
+2025-04-10 19:00:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 9, 19, 0, 0, 290558, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 12, 19, 0, 0, 290558, tzinfo=datetime.timezone.utc))
+2025-04-10 19:00:00 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 | Params: (1328126227013439601, datetime.datetime(2025, 4, 9, 19, 0, 0, 290558, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 12, 19, 0, 0, 290558, tzinfo=datetime.timezone.utc)) | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 19:00:00 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                
+2025-04-10 19:00:00 [ERROR] bot.services.voice_service: Error in voice update loop: name 'DatabaseQueryError' is not defined
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/voice_service.py", line 141, in _update_all_guilds
+    pending_bets: List[Dict] = await db_manager.fetch(pending_bets_query, (guild.id, start_window, end_window))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 185, in fetch
+    raise DatabaseQueryError(message=f"Query fetch failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/voice_service.py", line 289, in _update_loop
+    await self._update_all_guilds()
+  File "/home/container/bot/services/voice_service.py", line 245, in _update_all_guilds
+    except DatabaseQueryError as e:
+           ^^^^^^^^^^^^^^^^^^
+NameError: name 'DatabaseQueryError' is not defined
+2025-04-10 19:00:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 19:00:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 19:00:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 19:00:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 19:00:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 19:01:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 240.00 seconds until next 5-min mark.
+2025-04-10 19:01:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 19:01:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 19:01:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 19:01:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 19:01:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 19:02:47 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-10 19:02:47 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-10 19:02:47 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 | Params: None | Error: (1054, "Unknown column 'bet_won' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'bet_won' in 'where clause'")
+2025-04-10 19:02:47 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                
+2025-04-10 19:02:47 [ERROR] bot.services.game_service: Database error during game polling loop: Query fetch failed: (1054, "Unknown column 'bet_won' in 'where clause'") | Query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                

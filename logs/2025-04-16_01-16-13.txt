@@ -1,0 +1,215 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: discord.py==2.3.2 in ./.local/lib/python3.12/site-packages (2.3.2)
+Requirement already satisfied: aiohttp<4,>=3.7.4 in ./.local/lib/python3.12/site-packages (from discord.py==2.3.2) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp==3.9.5 in ./.local/lib/python3.12/site-packages (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiomysql==0.2.0 in ./.local/lib/python3.12/site-packages (0.2.0)
+Requirement already satisfied: PyMySQL>=1.0 in ./.local/lib/python3.12/site-packages (from aiomysql==0.2.0) (1.1.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: redis==5.0.4 in ./.local/lib/python3.12/site-packages (5.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: cryptography==42.0.5 in ./.local/lib/python3.12/site-packages (42.0.5)
+Requirement already satisfied: cffi>=1.12 in ./.local/lib/python3.12/site-packages (from cryptography==42.0.5) (1.17.1)
+Requirement already satisfied: pycparser in ./.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography==42.0.5) (2.22)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp-session==2.12.0 in ./.local/lib/python3.12/site-packages (2.12.0)
+Requirement already satisfied: aiohttp>=3.8 in ./.local/lib/python3.12/site-packages (from aiohttp-session==2.12.0) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: python-dotenv==1.0.1 in ./.local/lib/python3.12/site-packages (1.0.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: Pillow==10.3.0 in ./.local/lib/python3.12/site-packages (10.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: PyTZ==2024.1 in ./.local/lib/python3.12/site-packages (2024.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: typing_extensions==4.11.0 in ./.local/lib/python3.12/site-packages (4.11.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jsonpickle==3.0.4 in ./.local/lib/python3.12/site-packages (3.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: regex==2024.5.15 in ./.local/lib/python3.12/site-packages (2024.5.15)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas==2.2.2 in ./.local/lib/python3.12/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.2.4)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas==2.2.2) (1.17.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-16 01:16:32,847 - __main__ - INFO - Starting main execution block (__name__ == '__main__')
+2025-04-16 01:16:32,847 - __main__ - INFO - --- Entered main() ---
+2025-04-16 01:16:32,847 - __main__ - INFO - Initializing BettingBot class...
+2025-04-16 01:16:32,847 - bot.core - INFO - --- BettingBot __init__ START ---
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing DB Manager instance...
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing Cache Manager instance...
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing Command Tree...
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing Game Service...
+2025-04-16 01:16:32,848 - bot.services.game_service - INFO - GameService initialized.
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing Voice Service...
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing Bet Service...
+2025-04-16 01:16:32,848 - bot.services.bet_service - INFO - BetService initialized.
+2025-04-16 01:16:32,848 - bot.core - INFO - Initializing Web App variable...
+2025-04-16 01:16:32,848 - bot.core - INFO - --- BettingBot __init__ END ---
+2025-04-16 01:16:32,848 - __main__ - INFO - BettingBot instance created.
+2025-04-16 01:16:32,848 - __main__ - INFO - Attempting to start bot...
+2025-04-16 01:16:32,848 - discord.client - INFO - logging in using static token
+2025-04-16 01:16:33,201 - bot.core - INFO - --- Running setup_hook ---
+2025-04-16 01:16:33,201 - bot.core - INFO - STEP: Connecting to Database...
+2025-04-16 01:16:33,201 - bot.data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-16 01:16:33,213 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-16 01:16:33,214 - bot.data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-16 01:16:33,215 - bot.core - INFO - STEP COMPLETE: Database connected.
+2025-04-16 01:16:33,215 - bot.core - INFO - STEP: Connecting to Cache...
+2025-04-16 01:16:33,215 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-16 01:16:33,319 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-16 01:16:33,320 - bot.core - INFO - STEP COMPLETE: Cache connected.
+2025-04-16 01:16:33,320 - bot.core - INFO - STEP: Starting Game Service...
+2025-04-16 01:16:33,320 - api.sports_api - INFO - Sports API client session started
+2025-04-16 01:16:33,320 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-16 01:16:33,351 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-16 01:16:33,351 - bot.services.game_service - INFO - Game service polling started.
+2025-04-16 01:16:33,351 - bot.core - INFO - STEP COMPLETE: Game Service started.
+2025-04-16 01:16:33,351 - bot.core - INFO - STEP: Starting Voice Service...
+2025-04-16 01:16:33,351 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-16 01:16:33,351 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-16 01:16:33,351 - bot.services.voice_service - INFO - Voice service started.
+2025-04-16 01:16:33,351 - bot.core - INFO - STEP COMPLETE: Voice Service started.
+2025-04-16 01:16:33,351 - bot.core - INFO - STEP: Starting Bet Service (includes scheduler)...
+2025-04-16 01:16:33,351 - bot.services.bet_service - INFO - Bet service starting.
+2025-04-16 01:16:33,351 - bot.services.bet_service - INFO - Setting up APScheduler jobs for tallying.
+2025-04-16 01:16:33,372 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-16 01:16:33,372 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-16 01:16:33,372 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-16 01:16:33,373 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-16 01:16:33,373 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 01:16:33,373 - bot.services.bet_service - INFO - APScheduler started successfully.
+2025-04-16 01:16:33,373 - bot.services.bet_service - INFO - Bet service started.
+2025-04-16 01:16:33,373 - bot.core - INFO - STEP COMPLETE: Bet Service started.
+2025-04-16 01:16:33,373 - bot.core - INFO - STEP: Running startup reconciliation checks...
+2025-04-16 01:16:33,373 - bot.tasks.startup_checks - INFO - Running startup checks (Logic Update 2025-04-15 v3 - FINAL)...
+2025-04-16 01:16:33,373 - bot.tasks.startup_checks - INFO - Checking for pending bets (0/0) missing unit records (will insert units=0, total=0)...
+2025-04-16 01:16:33,373 - bot.tasks.startup_checks - INFO - No pending bets (0/0) found missing unit records.
+2025-04-16 01:16:33,516 - bot.tasks.startup_checks - INFO - Fetched guild 1328126227013439601 via API for bet 202504152219804
+2025-04-16 01:16:33,626 - bot.tasks.startup_checks - INFO - Fetched channel 1328126391073505422 for bet 202504152219804
+2025-04-16 01:16:33,892 - bot.tasks.startup_checks - INFO - Fetched guild 1328126227013439601 via API for bet 202504152225262
+2025-04-16 01:16:33,983 - bot.tasks.startup_checks - INFO - Fetched channel 1328126391073505422 for bet 202504152225262
+2025-04-16 01:16:34,219 - bot.tasks.startup_checks - INFO - Fetched guild 1328126227013439601 via API for bet 202504152230339
+2025-04-16 01:16:34,321 - bot.tasks.startup_checks - INFO - Fetched channel 1328126391073505422 for bet 202504152230339
+2025-04-16 01:16:34,449 - bot.tasks.startup_checks - INFO - Loaded 3 pending bets into memory. Created 0 missing placeholder unit records. Resolved 0 bets by reaction. Skipped 0 bets.
+2025-04-16 01:16:34,449 - bot.tasks.startup_checks - INFO - Reconciling 'units' column for ALL resolved bets (Create if Missing, Update if Exists AND units=0)...
+2025-04-16 01:16:34,450 - bot.tasks.startup_checks - INFO - Found 10 resolved bets to check/reconcile.
+2025-04-16 01:16:34,453 - bot.tasks.startup_checks - INFO - Checked resolved unit records. Updated 0 entries where units were 0. Created 0 missing records for resolved bets.
+2025-04-16 01:16:34,453 - bot.tasks.startup_checks - INFO - Startup checks completed.
+2025-04-16 01:16:34,453 - bot.core - INFO - STEP COMPLETE: Startup reconciliation checks finished.
+2025-04-16 01:16:34,453 - bot.core - INFO - STEP: Setting up web server...
+2025-04-16 01:16:34,454 - web.server - INFO - Web application setup complete.
+2025-04-16 01:16:34,454 - bot.core - INFO - STEP COMPLETE: Web server setup.
+2025-04-16 01:16:34,454 - bot.core - INFO - STEP: Starting web server task...
+2025-04-16 01:16:34,454 - bot.core - INFO - STEP COMPLETE: Web server task created/started.
+2025-04-16 01:16:34,454 - bot.core - INFO - STEP: Loading command definitions...
+2025-04-16 01:16:34,454 - bot.core - INFO - --- Starting Command Loading ---
+2025-04-16 01:16:34,454 - bot.core - INFO - Loading GLOBAL commands...
+2025-04-16 01:16:34,456 - bot.core - INFO - Loaded and set up GLOBAL command module: admin
+2025-04-16 01:16:34,456 - bot.core - INFO - Loaded and set up GLOBAL command module: subscription
+2025-04-16 01:16:34,457 - bot.core - INFO - Loaded and set up GLOBAL command module: help
+2025-04-16 01:16:34,457 - bot.core - INFO - Loading GUILD command modules (storing setup functions)...
+2025-04-16 01:16:34,874 - bot.core - INFO - Loaded GUILD command module: leaderboard (setup stored)
+2025-04-16 01:16:34,875 - bot.core - INFO - Loaded GUILD command module: show_cappers (setup stored)
+2025-04-16 01:16:34,877 - bot.core - INFO - Loaded GUILD command module: profile (setup stored)
+2025-04-16 01:16:34,878 - bot.core - INFO - Loaded GUILD command module: stats (setup stored)
+2025-04-16 01:16:34,879 - bot.core - INFO - Loaded GUILD command module: load_url (setup stored)
+2025-04-16 01:16:34,880 - bot.core - INFO - Loaded GUILD command module: load_logos (setup stored)
+2025-04-16 01:16:34,880 - bot.core - INFO - Loaded GUILD command module: add_capper (setup stored)
+2025-04-16 01:16:34,881 - bot.core - INFO - Loaded GUILD command module: setid (setup stored)
+2025-04-16 01:16:34,881 - bot.core - INFO - Command loading process finished.
+2025-04-16 01:16:34,881 - bot.core - INFO - Stored setup functions for GUILD commands: ['leaderboard', 'show_cappers', 'profile', 'stats', 'load_url', 'load_logos', 'add_capper', 'setid']
+2025-04-16 01:16:34,881 - bot.core - INFO - STEP COMPLETE: Command definitions loaded.
+2025-04-16 01:16:34,881 - bot.core - INFO - STEP: Syncing GLOBAL commands...
+2025-04-16 01:16:34,882 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-16 01:16:35,109 - bot.core - INFO - STEP COMPLETE: Global commands synced: ['bet', 'edit_units', 'cancel_bet', 'admin', 'subscription', 'help']
+2025-04-16 01:16:35,109 - bot.core - INFO - STEP: Fetching configured guilds for command registration...
+2025-04-16 01:16:35,109 - bot.core - INFO - Found 0 guilds marked as configured.
+2025-04-16 01:16:35,110 - bot.core - INFO - No previously configured guilds found or error occurred. Skipping guild command registration.
+2025-04-16 01:16:35,110 - bot.core - INFO - END: setup_hook completed successfully.
+2025-04-16 01:16:35,330 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 1ed078f767209d3df2a5dfdc5eeb126a).
+2025-04-16 01:16:37,335 - bot.services.game_service - INFO - GameService poll loop starting after bot ready.
+2025-04-16 01:16:37,335 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-16 01:16:37,335 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-16 01:16:37,336 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-16 01:16:37,336 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-16 01:16:37,336 - bot.core - INFO - Bot is ready and online.
+2025-04-16 01:16:42,342 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 01:17:00,712 - bot.services.bet_service - INFO - /bet initiated by authorized user 761388542965448767.
+2025-04-16 01:17:05,779 - bot.services.bet_service - INFO - League selected: nfl by 761388542965448767 (Serial: 202504160517139)
+2025-04-16 01:17:05,779 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'nfl'
+2025-04-16 01:17:08,756 - bot.services.bet_service - INFO - Bet Type selected: Straight by 761388542965448767 (Serial: 202504160517139)
+2025-04-16 01:17:10,649 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 761388542965448767 (Serial: 202504160517139)
+2025-04-16 01:17:45,254 - bot.services.bet_service - INFO - Team Bet Modal submitted by 761388542965448767 (Serial: 202504160517139): {'team': 'bengals', 'opponent': 'steelers', 'line': 'ml', 'odds': '-110', 'path': 'Bet on a Team'}
+2025-04-16 01:17:45,367 - bot.services.bet_service - INFO - Generating preview for bet serial 202504160517139. Current leg data: {'team': 'bengals', 'opponent': 'steelers', 'line': 'ml', 'odds': '-110', 'path': 'Bet on a Team'}
+2025-04-16 01:17:45,398 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nfl_logos.csv' (Need Team: False, Need League: True)
+2025-04-16 01:17:45,398 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nfl' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:17:45,428 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:17:45,521 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nfl_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 01:17:45,521 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'cincinnati bengals' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png'
+2025-04-16 01:17:45,552 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:17:45,645 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nfl_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 01:17:45,645 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'pittsburgh steelers' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/pittsburgh_steelers.png'
+2025-04-16 01:17:45,676 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/pittsburgh_steelers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:17:45,676 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504160517139: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png', 'description': 'bengals vs steelers\n\n**Pick:** bengals ml\n**Odds:** -110', 'team_display': 'bengals', 'opponent_display': 'steelers'}
+2025-04-16 01:17:45,770 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:17:45,770 - bot.services.bet_service - INFO - Preview 202504160517139: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png' for League='nfl', Entity='bengals'
+2025-04-16 01:17:46,162 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504160517139
+2025-04-16 01:19:07,110 - bot.services.bet_service - INFO - /bet initiated by authorized user 761388542965448767.
+2025-04-16 01:19:26,604 - bot.services.bet_service - INFO - League selected: nfl by 761388542965448767 (Serial: 202504160519242)
+2025-04-16 01:19:26,604 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'nfl'
+2025-04-16 01:19:29,379 - bot.services.bet_service - INFO - Bet Type selected: Straight by 761388542965448767 (Serial: 202504160519242)
+2025-04-16 01:19:31,052 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 761388542965448767 (Serial: 202504160519242)
+2025-04-16 01:19:55,638 - bot.services.bet_service - INFO - Team Bet Modal submitted by 761388542965448767 (Serial: 202504160519242): {'team': 'BENGALS', 'opponent': 'STEELERS', 'line': 'ML', 'odds': '-110', 'path': 'Bet on a Team'}
+2025-04-16 01:19:55,753 - bot.services.bet_service - INFO - Generating preview for bet serial 202504160519242. Current leg data: {'team': 'BENGALS', 'opponent': 'STEELERS', 'line': 'ML', 'odds': '-110', 'path': 'Bet on a Team'}
+2025-04-16 01:19:55,784 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:19:55,875 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:19:55,967 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/pittsburgh_steelers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:19:55,967 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504160519242: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png', 'description': 'BENGALS vs STEELERS\n\n**Pick:** BENGALS ML\n**Odds:** -110', 'team_display': 'BENGALS', 'opponent_display': 'STEELERS'}
+2025-04-16 01:19:56,061 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png'
+2025-04-16 01:19:56,061 - bot.services.bet_service - INFO - Preview 202504160519242: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/cincinnati_bengals.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/nfl/nfl.png' for League='nfl', Entity='BENGALS'
+2025-04-16 01:19:56,204 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504160519242
+2025-04-16 01:20:00,338 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 01:20:00,338 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-16 01:20:00,338 - data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-16 01:20:00,349 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-16 01:20:00,350 - data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-16 01:20:00,351 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 01:20:00,351 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 01:20:00,355 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 01:21:42,349 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.

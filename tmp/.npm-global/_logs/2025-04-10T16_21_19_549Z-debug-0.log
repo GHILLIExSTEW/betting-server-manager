@@ -1,0 +1,21 @@
+0 verbose cli /home/container/tmp/node-v23.1.0-linux-x64/bin/node /home/container/tmp/node-v23.1.0-linux-x64/bin/npm
+1 info using npm@10.9.0
+2 info using node@v23.1.0
+3 silly config load:file:/home/container/tmp/node-v23.1.0-linux-x64/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/container/.npmrc
+5 silly config load:file:/home/container/etc/npmrc
+6 verbose title npm install
+7 verbose argv "install" "--build-from-resource" "--no-bin-links" "--cache" "/home/container/tmp/.npm-global" "--update-notifier" "false" "--prefix" "/home/container/"
+8 verbose logfile logs-max:10 dir:/home/container/tmp/.npm-global/_logs/2025-04-10T16_21_19_549Z-
+9 verbose logfile /home/container/tmp/.npm-global/_logs/2025-04-10T16_21_19_549Z-debug-0.log
+10 silly logfile done cleaning log files
+11 silly packumentCache heap:549453824 maxSize:137363456 maxEntrySize:68681728
+12 silly idealTree buildDeps
+13 silly reify moves {}
+14 silly audit report null
+15 verbose cwd /home/container
+16 verbose os Linux 4.18.0-553.16.1.el8_10.x86_64
+17 verbose node v23.1.0
+18 verbose npm  v10.9.0
+19 verbose exit 0
+20 info ok

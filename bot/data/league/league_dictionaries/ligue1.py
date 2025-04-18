@@ -1,0 +1,20 @@
+LIGUE1_ABBREVIATIONS = {
+    "aj auxerre": "AJA",
+    "montpellier hsc": "MONT",
+    "paris saint-germain": "PSG",
+    "olympique lyonnais": "OL",
+    "as monaco": "ASM",
+    "lille osc": "LOSC",
+    "stade rennais": "REN",
+    "ogc nice": "NICE",
+    "rc lens": "LENS",
+    "olympique de marseille": "OM",
+    "stade brestois 29": "BREST",
+    "fc nantes": "FCN",
+    "as saint-étienne": "ASSE",
+    "rc strasbourg alsace": "RCSA",
+    "toulouse fc": "TFC",
+    "le havre ac": "HAC",
+    "stade de reims": "REIMS",
+    "angers sco": "SCO"
+}

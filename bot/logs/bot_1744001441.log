@@ -1,0 +1,689 @@
+2025-04-06 21:50:40 [INFO] root: Logging configured successfully
+2025-04-06 21:50:40 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-06 21:50:40 [INFO] root: Logging configured successfully
+2025-04-06 21:50:40 [INFO] __main__: Starting bot initialization
+2025-04-06 21:50:40 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 21:50:41 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-06 21:50:41 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-06 21:50:41 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-06 21:50:41 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-06 21:50:41 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-06 21:50:41 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-06 21:50:41 [INFO] __main__: Database connected successfully
+2025-04-06 21:50:41 [DEBUG] __main__: Starting bot with Discord token (first 5 chars: MTM0M...)
+2025-04-06 21:50:41 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 21:50:42 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-06 21:50:42 [INFO] api.sports_api: Sports API client session started
+2025-04-06 21:50:42 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-06 21:50:42 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-06 21:50:42 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 21:50:42 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-06 21:50:42 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-06 21:50:42 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-06 21:50:42 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-06 21:50:43 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-06 21:50:43 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-06 21:50:43 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-06 21:50:43 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 21:50:43 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-06 21:50:43 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-06 21:50:43 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 21:50:43 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-06 21:50:43 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-06 21:50:43 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-06 21:50:43 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-06 21:50:43 [INFO] bot.services.game_service: Game service polling started.
+2025-04-06 21:50:43 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-06 21:50:43 [INFO] web.server: Web application setup complete.
+2025-04-06 21:50:43 [INFO] bot.core: Loading application commands...
+2025-04-06 21:50:43 [INFO] bot.core: Loaded command: add_capper
+2025-04-06 21:50:43 [INFO] bot.core: Loaded command: admin
+2025-04-06 21:50:43 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-06 21:50:43 [INFO] bot.core: Loaded command: help
+2025-04-06 21:50:43 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-06 21:50:43 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-06 21:50:43 [DEBUG] matplotlib: interactive is False
+2025-04-06 21:50:43 [DEBUG] matplotlib: platform is linux
+2025-04-06 21:50:43 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-06 21:50:43 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: leaderboard
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: load_url
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: profile
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: setid
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: show_cappers
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: stats
+2025-04-06 21:50:44 [INFO] bot.core: Loaded command: subscription
+2025-04-06 21:50:44 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-06 21:50:44 [INFO] bot.core: Application commands loaded.
+2025-04-06 21:50:44 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-06 21:50:44 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-06 21:50:46 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-06 21:50:46 [DEBUG] bot.services.voice_service: Voice service sleeping for 254.00 seconds until next 5-min mark.
+2025-04-06 21:50:46 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-06 21:50:46 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-06 21:50:46 [INFO] bot.core: Bot is ready and online.
+2025-04-06 21:50:49 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-06 21:50:49 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-06 21:50:49 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 21:50:49 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-06 21:51:16 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 21:51:16 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'default_banner_color' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+2025-04-06 21:51:16 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:16 [ERROR] bot.services.admin_handler: Failed to fetch server settings or subscription for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 42, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:27 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 21:51:27 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'default_banner_color' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+2025-04-06 21:51:27 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:27 [ERROR] bot.services.admin_handler: Failed to fetch server settings or subscription for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 42, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:30 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 21:51:30 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'default_banner_color' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+2025-04-06 21:51:30 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:30 [ERROR] bot.services.admin_handler: Failed to fetch server settings or subscription for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 42, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:32 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 21:51:32 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'default_banner_color' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+2025-04-06 21:51:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:32 [ERROR] bot.services.admin_handler: Failed to fetch server settings or subscription for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 42, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:33 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 21:51:33 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'default_banner_color' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+2025-04-06 21:51:33 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:33 [ERROR] bot.services.admin_handler: Failed to fetch server settings or subscription for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 42, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:34 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 21:51:34 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'default_banner_color' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+2025-04-06 21:51:34 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:51:34 [ERROR] bot.services.admin_handler: Failed to fetch server settings or subscription for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'default_banner_color' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 42, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'default_banner_color' in 'field list'") | Query: 
+            SELECT
+                embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                admin_channel_1, admin_role, authorized_role, -- Changed admin_channel_id to admin_channel_1
+                daily_report_time, voice_channel_id, bot_name_mask, bot_image_mask,
+                default_banner_color
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-06 21:55:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-06 21:55:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-06 21:55:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-06 21:55:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 21:55:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 21:55:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-06 21:55:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-06 21:55:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 21:55:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: 46.0
+2025-04-06 21:55:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 6, 4, 55, 0, 601266, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 9, 4, 55, 0, 601266, tzinfo=datetime.timezone.utc))
+2025-04-06 21:55:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 21:55:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-06 21:55:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-06 21:55:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.
+2025-04-06 21:55:49 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-06 21:55:49 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-06 21:55:49 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 21:55:49 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.

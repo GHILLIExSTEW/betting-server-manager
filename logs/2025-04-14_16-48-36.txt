@@ -1,0 +1,126 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)': Expected end or semicolon (after version specifier)
+    discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)
+              ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)': Expected end or semicolon (after version specifier)
+    aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)
+           ~~~~~~~~~~~~^
+Hint: It looks like a path. File 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)': Expected end or semicolon (after version specifier)
+    aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)
+            ~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'redis==5.0.4       # Async Redis client (redis.asyncio)': Expected end or semicolon (after version specifier)
+    redis==5.0.4       # Async Redis client (redis.asyncio)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)': Expected end or semicolon (after version specifier)
+    cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)
+                ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)': Expected end or semicolon (after version specifier)
+    aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)
+                   ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)': Expected end or semicolon (after version specifier)
+    python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)
+                 ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'Pillow==10.3.0     # Image manipulation for user images (PIL.Image)': Expected end or semicolon (after version specifier)
+    Pillow==10.3.0     # Image manipulation for user images (PIL.Image)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'PyTZ==2024.1       # Timezone handling (pytz)': Expected end or semicolon (after version specifier)
+    PyTZ==2024.1       # Timezone handling (pytz)
+        ~~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)': Expected end or semicolon (after version specifier)
+    typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)
+                     ~~~~~~~~~~^
+Hint: It looks like a path. File 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)': Expected end or semicolon (after version specifier)
+    jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)
+              ~~~~~~~~~^
+Hint: It looks like a path. File 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'regex==2024.5.15   # Advanced regular expression support (re enhancement)': Expected end or semicolon (after version specifier)
+    regex==2024.5.15   # Advanced regular expression support (re enhancement)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)': Expected end or semicolon (after version specifier)
+    pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-14 16:48:52,699 - __main__ - INFO - Initializing database connection...
+2025-04-14 16:48:52,699 - bot.data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-14 16:48:52,814 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'bets' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'cappers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'server_settings' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscribers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscriptions' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'unit_records' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'users' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'user_images' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'voice_bet_updates' already exists
+  await self._query(query)
+2025-04-14 16:48:52,823 - bot.data.db_manager - INFO - Database tables checked/created successfully
+2025-04-14 16:48:52,823 - __main__ - INFO - Initializing cache connection...
+2025-04-14 16:48:52,823 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-14 16:48:52,918 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-14 16:48:52,919 - __main__ - INFO - Initializing BettingBot...
+Traceback (most recent call last):
+  File "/home/container/bot/main.py", line 55, in <module>
+    asyncio.run(main())
+  File "/python/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/container/bot/main.py", line 37, in main
+    bot = BettingBot(intents=intents)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/core.py", line 33, in __init__
+    self.bet_service = BetService(self, self.command_tree)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/services/bet_service.py", line 1062, in __init__
+    self._setup_scheduler()
+  File "/home/container/bot/services/bet_service.py", line 1072, in _setup_scheduler
+    args=[datetime.now().year, datetime.now().month]
+          ^^^^^^^^^^^^
+AttributeError: module 'datetime' has no attribute 'now'
+Exception ignored in: <function Connection.__del__ at 0x7f18634698a0>
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1131, in __del__
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 339, in close
+  File "/python/lib/python3.12/asyncio/selector_events.py", line 1213, in close
+  File "/python/lib/python3.12/asyncio/selector_events.py", line 875, in close
+  File "/python/lib/python3.12/asyncio/base_events.py", line 799, in call_soon
+  File "/python/lib/python3.12/asyncio/base_events.py", line 545, in _check_closed
+RuntimeError: Event loop is closed

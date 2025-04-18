@@ -1,0 +1,1416 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)': Expected end or semicolon (after version specifier)
+    discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)
+              ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)': Expected end or semicolon (after version specifier)
+    aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)
+           ~~~~~~~~~~~~^
+Hint: It looks like a path. File 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)': Expected end or semicolon (after version specifier)
+    aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)
+            ~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'redis==5.0.4       # Async Redis client (redis.asyncio)': Expected end or semicolon (after version specifier)
+    redis==5.0.4       # Async Redis client (redis.asyncio)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)': Expected end or semicolon (after version specifier)
+    cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)
+                ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)': Expected end or semicolon (after version specifier)
+    aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)
+                   ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)': Expected end or semicolon (after version specifier)
+    python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)
+                 ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'Pillow==10.3.0     # Image manipulation for user images (PIL.Image)': Expected end or semicolon (after version specifier)
+    Pillow==10.3.0     # Image manipulation for user images (PIL.Image)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'PyTZ==2024.1       # Timezone handling (pytz)': Expected end or semicolon (after version specifier)
+    PyTZ==2024.1       # Timezone handling (pytz)
+        ~~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)': Expected end or semicolon (after version specifier)
+    typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)
+                     ~~~~~~~~~~^
+Hint: It looks like a path. File 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)': Expected end or semicolon (after version specifier)
+    jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)
+              ~~~~~~~~~^
+Hint: It looks like a path. File 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'regex==2024.5.15   # Advanced regular expression support (re enhancement)': Expected end or semicolon (after version specifier)
+    regex==2024.5.15   # Advanced regular expression support (re enhancement)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)': Expected end or semicolon (after version specifier)
+    pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-14 17:02:43,021 - __main__ - INFO - Initializing database connection...
+2025-04-14 17:02:43,021 - bot.data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-14 17:02:43,043 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'bets' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'cappers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'server_settings' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscribers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscriptions' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'unit_records' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'users' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'user_images' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'voice_bet_updates' already exists
+  await self._query(query)
+2025-04-14 17:02:43,050 - bot.data.db_manager - INFO - Database tables checked/created successfully
+2025-04-14 17:02:43,050 - __main__ - INFO - Initializing cache connection...
+2025-04-14 17:02:43,050 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-14 17:02:43,131 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-14 17:02:43,131 - __main__ - INFO - Initializing BettingBot...
+2025-04-14 17:02:43,133 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-14 17:02:43,134 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-14 17:02:43,134 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-14 17:02:43,134 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-14 17:02:43,134 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-14 17:02:43,134 - __main__ - INFO - Starting bot...
+2025-04-14 17:02:43,134 - discord.client - INFO - logging in using static token
+2025-04-14 17:02:43,442 - api.sports_api - INFO - Sports API client session started
+2025-04-14 17:02:43,443 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-14 17:02:43,443 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-14 17:02:43,443 - data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-14 17:02:43,494 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-14 17:02:43,502 - data.db_manager - INFO - Database tables checked/created successfully
+2025-04-14 17:02:43,503 - data.cache_manager - WARNING - Redis client not initialized. Attempting connection.
+2025-04-14 17:02:43,503 - data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-14 17:02:43,584 - data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-14 17:02:43,599 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-14 17:02:43,599 - bot.services.game_service - INFO - Game service polling started.
+2025-04-14 17:02:43,599 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-14 17:02:43,600 - web.server - INFO - Web application setup complete.
+2025-04-14 17:02:43,600 - bot.core - INFO - Loading application commands...
+2025-04-14 17:02:43,601 - bot.core - INFO - Loaded global command: admin
+2025-04-14 17:02:43,602 - bot.core - INFO - Loaded global command: subscription
+2025-04-14 17:02:43,602 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-14 17:02:43,603 - bot.core - INFO - Loaded command: add_capper
+2025-04-14 17:02:43,603 - bot.core - INFO - Loaded command: help
+2025-04-14 17:02:44,136 - bot.core - INFO - Loaded command: leaderboard
+2025-04-14 17:02:44,137 - bot.core - INFO - Loaded command: load_url
+2025-04-14 17:02:44,139 - bot.core - INFO - Loaded command: profile
+2025-04-14 17:02:44,140 - bot.core - INFO - Loaded command: setid
+2025-04-14 17:02:44,142 - bot.core - INFO - Loaded command: show_cappers
+2025-04-14 17:02:44,143 - bot.core - INFO - Loaded command: stats
+2025-04-14 17:02:44,144 - bot.core - INFO - Assuming 'bet', 'edit_units', and 'cancel_bet' commands are handled by BetService internally.
+2025-04-14 17:02:44,144 - bot.core - INFO - Application commands loaded.
+2025-04-14 17:02:44,144 - bot.core - INFO - Cleared all global commands.
+2025-04-14 17:02:44,266 - bot.core - INFO - Global commands (/admin, /subscription) synced.
+2025-04-14 17:02:44,266 - bot.core - INFO - Registered global commands: []
+2025-04-14 17:02:44,504 - bot.core - INFO - Guild commands synced to guild ID: 1328126227013439601
+2025-04-14 17:02:44,504 - bot.core - INFO - Registered guild commands for guild 1328126227013439601: ['bet', 'edit_units', 'cancel_bet', 'admin', 'subscription', 'add_capper', 'help', 'leaderboard', 'load_url', 'profile', 'setid', 'show_cappers', 'stats']
+2025-04-14 17:02:44,727 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: fe65bbb1db07e3d4db62168b97a69a92).
+2025-04-14 17:02:46,732 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-14 17:02:46,732 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-14 17:02:46,732 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-14 17:02:46,732 - bot.core - INFO - Bot is ready and online.
+2025-04-14 17:02:48,604 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:03:19,604 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 17:03:19,604 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 17:03:19,604 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 17:03:19,604 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 17:03:19,604 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 17:03:19,604 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 17:03:19,604 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 17:03:19,604 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 17:03:19,604 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 17:03:19,604 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 17:03:19,604 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 17:03:19,604 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 17:03:19,604 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 17:03:19,605 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 17:03:19,605 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 17:03:19,605 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 17:03:19,605 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 17:03:23,453 - bot.services.bet_service - INFO - League selected: NHL by 821794684497690695 (Serial: 202504142103693)
+2025-04-14 17:03:23,453 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'NHL' (Normalized AlphaNum: 'nhl', Original Lower: 'nhl')
+2025-04-14 17:03:25,637 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142103693)
+2025-04-14 17:03:26,928 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Player' by 821794684497690695 (Serial: 202504142103693)
+2025-04-14 17:04:17,254 - bot.services.bet_service - INFO - Player Bet Modal submitted by 821794684497690695 (Serial: 202504142103693): {'team': 'Utah Hockey Club', 'opponent': 'Nashville Predators', 'player_name': 'Nick Schmaltz', 'prop': '2+ SOG', 'odds': '-175', 'path': 'Bet on a Player'}
+2025-04-14 17:04:17,373 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142103693. Current data: {'team': 'Utah Hockey Club', 'opponent': 'Nashville Predators', 'player_name': 'Nick Schmaltz', 'prop': '2+ SOG', 'odds': '-175', 'path': 'Bet on a Player'}
+2025-04-14 17:04:17,403 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 17:04:17,404 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nhl' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,433 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,494 - bot.data.league.league_team_handler - INFO - Normalized 'Utah Hockey Club' to 'utah hockey club' for league 'nhl'
+2025-04-14 17:04:17,494 - bot.utils.image_utils.team_logos - INFO - Normalized 'Utah Hockey Club' to 'utah hockey club'
+2025-04-14 17:04:17,553 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 17:04:17,553 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nhl' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,554 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'utah hockey club' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/utah_hockey_club.png'
+2025-04-14 17:04:17,613 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/utah_hockey_club.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,673 - bot.data.league.league_team_handler - INFO - Normalized 'Nashville Predators' to 'nashville predators' for league 'nhl'
+2025-04-14 17:04:17,673 - bot.utils.image_utils.team_logos - INFO - Normalized 'Nashville Predators' to 'nashville predators'
+2025-04-14 17:04:17,733 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 17:04:17,733 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'nashville predators' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nashville_predators.png'
+2025-04-14 17:04:17,733 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nhl' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,795 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nashville_predators.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,795 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142103693: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/utah_hockey_club.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png', 'description': '**Matchup:** Utah Hockey Club vs Nashville Predators\n\n**Player:** Nick Schmaltz\n**Prop:** 2+ SOG\n**Odds:** -175', 'team_display': 'Utah Hockey Club', 'opponent_display': 'Nashville Predators'}
+2025-04-14 17:04:17,825 - bot.utils.image_utils.team_logos - INFO - Normalized 'Utah Hockey Club' to 'utah hockey club'
+2025-04-14 17:04:17,885 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 17:04:17,886 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nhl' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,886 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'utah hockey club' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/utah_hockey_club.png'
+2025-04-14 17:04:17,946 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/utah_hockey_club.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:17,946 - bot.services.bet_service - INFO - Preview 202504142103693: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/utah_hockey_club.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-14 17:04:18,104 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142103693
+2025-04-14 17:04:18,227 - aiohttp.access - INFO - 35.227.62.178 [14/Apr/2025:16:04:18 -0500] "GET /static/logos/nhl/utah_hockey_club.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:04:18,230 - aiohttp.access - INFO - 35.196.132.85 [14/Apr/2025:16:04:18 -0500] "GET /static/logos/nhl/nhl.png HTTP/1.1" 200 239 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:04:18,781 - aiohttp.access - INFO - 104.196.23.152 [14/Apr/2025:16:04:18 -0500] "GET /static/logos/nhl/utah_hockey_club.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:05:00,745 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:05:00,748 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:05:06,754 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504142103693)
+2025-04-14 17:05:08,611 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504142103693)
+2025-04-14 17:05:22,815 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504142103693 for user 821794684497690695
+2025-04-14 17:05:23,333 - aiohttp.access - INFO - 104.196.222.45 [14/Apr/2025:16:05:23 -0500] "GET /static/logos/nhl/nhl.png HTTP/1.1" 200 239 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:05:23,335 - aiohttp.access - INFO - 104.196.222.45 [14/Apr/2025:16:05:23 -0500] "GET /static/logos/nhl/utah_hockey_club.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:05:24,185 - bot.services.bet_service - INFO - Bet 202504142103693 message 1361447267977924771 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-14 17:05:24,193 - bot.services.bet_service - INFO - Bet 202504142103693 saved to database for user 821794684497690695.
+2025-04-14 17:05:24,194 - bot.data.db_manager - ERROR - Database query execution failed: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+             | Params: (1328126227013439601, 1361447267977924771, 821794684497690695, 1.0, 0.5714285714285714) | Error: (1054, "Unknown column 'embed_id' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+2025-04-14 17:05:24,196 - utils.errors - ERROR - DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 17:05:24,197 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504142103693: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 658, in callback
+    await db_manager.execute(unit_records_query, unit_records_params)
+  File "/home/container/bot/data/db_manager.py", line 214, in execute
+    raise DatabaseQueryError(message=f"Query execution failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 17:05:24,312 - aiohttp.access - INFO - 35.243.226.206 [14/Apr/2025:16:05:24 -0500] "GET /static/logos/nhl/utah_hockey_club.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:05:24,314 - aiohttp.access - INFO - 35.243.226.206 [14/Apr/2025:16:05:24 -0500] "GET /static/logos/nhl/nhl.png HTTP/1.1" 200 239 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 17:07:48,609 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:10:00,772 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:10:00,774 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:12:19,443 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 17:12:19,444 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:16:12:19 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 17:12:48,636 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:15:00,809 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:15:00,811 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:17:48,676 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:20:00,816 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:20:00,818 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:22:40,648 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 17:22:40,649 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:16:22:40 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 17:22:48,686 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:25:00,835 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:25:00,838 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:27:48,706 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:30:00,865 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:30:00,867 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:32:48,738 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:35:00,876 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:35:00,879 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:37:48,739 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:40:00,888 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:40:00,890 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:42:48,752 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:44:17,271 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 17:44:17,272 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:16:44:17 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 17:45:00,911 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:45:00,913 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:47:48,777 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:50:00,945 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:50:00,947 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:52:48,813 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 17:55:00,948 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:55:00,951 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 17:57:48,819 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:00:00,964 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:00:00,967 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:02:48,835 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:05:00,991 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:05:00,993 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:07:48,861 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:09:52,016 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:09:52,017 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:09:52,017 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:09:55,715 - bot.services.bet_service - INFO - League selected: NHL by 821794684497690695 (Serial: 202504142209987)
+2025-04-14 18:09:55,715 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'NHL' (Normalized AlphaNum: 'nhl', Original Lower: 'nhl')
+2025-04-14 18:10:00,996 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:10:00,998 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:11:39,504 - aiohttp.access - INFO - 35.227.34.53 [14/Apr/2025:17:11:39 -0500] "GET /static/logos/nhl/utah_hockey_club.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:11:39,824 - aiohttp.access - INFO - 104.196.222.45 [14/Apr/2025:17:11:39 -0500] "GET /static/logos/nhl/utah_hockey_club.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:11:40,636 - bot.services.bet_service - INFO - /bet initiated by authorized user 1179625165332676632 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:11:40,636 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:11:40,636 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:12:48,889 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:13:49,034 - bot.services.bet_service - INFO - League selected: MLB by 1179625165332676632 (Serial: 202504142211156)
+2025-04-14 18:13:49,034 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:13:51,506 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1179625165332676632 (Serial: 202504142211156)
+2025-04-14 18:13:53,822 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 1179625165332676632 (Serial: 202504142211156)
+2025-04-14 18:14:29,901 - bot.services.bet_service - INFO - Team Bet Modal submitted by 1179625165332676632 (Serial: 202504142211156): {'team': 'Tigers', 'opponent': 'Brewers', 'line': 'F5 -.5', 'odds': '-136', 'path': 'Bet on a Team'}
+2025-04-14 18:14:30,032 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142211156. Current data: {'team': 'Tigers', 'opponent': 'Brewers', 'line': 'F5 -.5', 'odds': '-136', 'path': 'Bet on a Team'}
+2025-04-14 18:14:30,062 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:14:30,062 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,092 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,153 - bot.data.league.league_team_handler - INFO - Normalized 'Tigers' to 'detroit tigers' for league 'mlb'
+2025-04-14 18:14:30,153 - bot.utils.image_utils.team_logos - INFO - Normalized 'Tigers' to 'detroit tigers'
+2025-04-14 18:14:30,212 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:14:30,212 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'detroit tigers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/detroit_tigers.png'
+2025-04-14 18:14:30,212 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,272 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/detroit_tigers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,333 - bot.data.league.league_team_handler - INFO - Normalized 'Brewers' to 'milwaukee brewers' for league 'mlb'
+2025-04-14 18:14:30,333 - bot.utils.image_utils.team_logos - INFO - Normalized 'Brewers' to 'milwaukee brewers'
+2025-04-14 18:14:30,393 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:14:30,393 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'milwaukee brewers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/milwaukee_brewers.png'
+2025-04-14 18:14:30,393 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,453 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/milwaukee_brewers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,453 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142211156: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/detroit_tigers.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Tigers vs Brewers\n\n**Pick:** Tigers F5 -.5\n**Odds:** -136', 'team_display': 'Tigers', 'opponent_display': 'Brewers'}
+2025-04-14 18:14:30,483 - bot.utils.image_utils.team_logos - INFO - Normalized 'Tigers' to 'detroit tigers'
+2025-04-14 18:14:30,543 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:14:30,543 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'detroit tigers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/detroit_tigers.png'
+2025-04-14 18:14:30,543 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,603 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/detroit_tigers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,603 - bot.services.bet_service - INFO - Preview 202504142211156: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/detroit_tigers.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:14:30,768 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142211156
+2025-04-14 18:14:30,882 - aiohttp.access - INFO - 35.196.132.85 [14/Apr/2025:17:14:30 -0500] "GET /static/logos/mlb/detroit_tigers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:14:30,960 - aiohttp.access - INFO - 35.196.132.85 [14/Apr/2025:17:14:30 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:14:31,349 - aiohttp.access - INFO - 104.196.23.152 [14/Apr/2025:17:14:31 -0500] "GET /static/logos/mlb/detroit_tigers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:14:37,053 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 1179625165332676632 (Serial: 202504142211156)
+2025-04-14 18:14:39,134 - bot.services.bet_service - INFO - Units selected: 1 by 1179625165332676632 (Serial: 202504142211156)
+2025-04-14 18:14:41,321 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504142211156 for user 1179625165332676632
+2025-04-14 18:14:41,743 - aiohttp.access - INFO - 34.138.20.118 [14/Apr/2025:17:14:41 -0500] "GET /static/logos/mlb/detroit_tigers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:14:41,797 - aiohttp.access - INFO - 34.138.20.118 [14/Apr/2025:17:14:41 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:14:42,134 - bot.services.bet_service - INFO - Bet 202504142211156 message 1361464710045761546 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-14 18:14:42,135 - bot.services.bet_service - INFO - Bet 202504142211156 saved to database for user 1179625165332676632.
+2025-04-14 18:14:42,136 - bot.data.db_manager - ERROR - Database query execution failed: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+             | Params: (1328126227013439601, 1361464710045761546, 1179625165332676632, 1.0, 0.7352941176470588) | Error: (1054, "Unknown column 'embed_id' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+2025-04-14 18:14:42,136 - utils.errors - ERROR - DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:14:42,137 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504142211156: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 658, in callback
+    await db_manager.execute(unit_records_query, unit_records_params)
+  File "/home/container/bot/data/db_manager.py", line 214, in execute
+    raise DatabaseQueryError(message=f"Query execution failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:14:54,578 - aiohttp.access - INFO - 34.74.113.139 [14/Apr/2025:17:14:54 -0500] "GET /static/logos/mlb/detroit_tigers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:14:57,959 - bot.services.bet_service - INFO - Bet setup timed out for bet serial 202504142209987 (User: 821794684497690695)
+2025-04-14 18:15:01,001 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:15:01,003 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:15:04,918 - bot.services.bet_service - INFO - /bet initiated by authorized user 1179625165332676632 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:15:04,918 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:15:04,918 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:15:04,919 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:15:04,919 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:15:15,102 - bot.services.bet_service - INFO - League selected: MLB by 1179625165332676632 (Serial: 202504142215007)
+2025-04-14 18:15:15,103 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:15:18,578 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1179625165332676632 (Serial: 202504142215007)
+2025-04-14 18:15:20,408 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 1179625165332676632 (Serial: 202504142215007)
+2025-04-14 18:15:52,955 - bot.services.bet_service - INFO - Team Bet Modal submitted by 1179625165332676632 (Serial: 202504142215007): {'team': 'Dodgers', 'opponent': 'Rockies', 'line': '-2.5', 'odds': '+107', 'path': 'Bet on a Team'}
+2025-04-14 18:15:53,074 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142215007. Current data: {'team': 'Dodgers', 'opponent': 'Rockies', 'line': '-2.5', 'odds': '+107', 'path': 'Bet on a Team'}
+2025-04-14 18:15:53,104 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:15:53,104 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,134 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,195 - bot.data.league.league_team_handler - INFO - Normalized 'Dodgers' to 'los angeles dodgers' for league 'mlb'
+2025-04-14 18:15:53,195 - bot.utils.image_utils.team_logos - INFO - Normalized 'Dodgers' to 'los angeles dodgers'
+2025-04-14 18:15:53,254 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:15:53,254 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'los angeles dodgers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png'
+2025-04-14 18:15:53,254 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,314 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,374 - bot.data.league.league_team_handler - INFO - Normalized 'Rockies' to 'colorado rockies' for league 'mlb'
+2025-04-14 18:15:53,374 - bot.utils.image_utils.team_logos - INFO - Normalized 'Rockies' to 'colorado rockies'
+2025-04-14 18:15:53,434 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:15:53,434 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'colorado rockies' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/colorado_rockies.png'
+2025-04-14 18:15:53,434 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,494 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/colorado_rockies.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,494 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142215007: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Dodgers vs Rockies\n\n**Pick:** Dodgers -2.5\n**Odds:** +107', 'team_display': 'Dodgers', 'opponent_display': 'Rockies'}
+2025-04-14 18:15:53,524 - bot.utils.image_utils.team_logos - INFO - Normalized 'Dodgers' to 'los angeles dodgers'
+2025-04-14 18:15:53,584 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:15:53,584 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'los angeles dodgers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png'
+2025-04-14 18:15:53,584 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,644 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,644 - bot.services.bet_service - INFO - Preview 202504142215007: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:15:53,803 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142215007
+2025-04-14 18:15:53,897 - aiohttp.access - INFO - 35.196.132.85 [14/Apr/2025:17:15:53 -0500] "GET /static/logos/mlb/los_angeles_dodgers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:15:54,379 - aiohttp.access - INFO - 35.237.169.55 [14/Apr/2025:17:15:54 -0500] "GET /static/logos/mlb/los_angeles_dodgers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:15:56,559 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 1179625165332676632 (Serial: 202504142215007)
+2025-04-14 18:15:59,429 - bot.services.bet_service - INFO - Units selected: 1 by 1179625165332676632 (Serial: 202504142215007)
+2025-04-14 18:16:00,996 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504142215007 for user 1179625165332676632
+2025-04-14 18:16:01,323 - aiohttp.access - INFO - 35.243.226.206 [14/Apr/2025:17:16:01 -0500] "GET /static/logos/mlb/los_angeles_dodgers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:16:01,755 - bot.services.bet_service - INFO - Bet 202504142215007 message 1361465043752849571 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-14 18:16:01,755 - bot.services.bet_service - INFO - Bet 202504142215007 saved to database for user 1179625165332676632.
+2025-04-14 18:16:01,756 - bot.data.db_manager - ERROR - Database query execution failed: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+             | Params: (1328126227013439601, 1361465043752849571, 1179625165332676632, 1.0, 1.07) | Error: (1054, "Unknown column 'embed_id' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+2025-04-14 18:16:01,757 - utils.errors - ERROR - DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:16:01,757 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504142215007: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 658, in callback
+    await db_manager.execute(unit_records_query, unit_records_params)
+  File "/home/container/bot/data/db_manager.py", line 214, in execute
+    raise DatabaseQueryError(message=f"Query execution failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:16:46,454 - bot.services.bet_service - INFO - /bet initiated by authorized user 1179625165332676632 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:16:46,454 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:16:46,454 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:16:49,897 - bot.services.bet_service - INFO - League selected: MLB by 1179625165332676632 (Serial: 202504142216904)
+2025-04-14 18:16:49,897 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:16:53,232 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1179625165332676632 (Serial: 202504142216904)
+2025-04-14 18:16:54,891 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 1179625165332676632 (Serial: 202504142216904)
+2025-04-14 18:17:48,179 - bot.services.bet_service - INFO - Team Bet Modal submitted by 1179625165332676632 (Serial: 202504142216904): {'team': 'Dodgers', 'opponent': 'Rockies', 'line': 'O8.5', 'odds': '-108', 'path': 'Bet on a Team'}
+2025-04-14 18:17:48,294 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142216904. Current data: {'team': 'Dodgers', 'opponent': 'Rockies', 'line': 'O8.5', 'odds': '-108', 'path': 'Bet on a Team'}
+2025-04-14 18:17:48,325 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:17:48,325 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,355 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,385 - bot.utils.image_utils.team_logos - INFO - Normalized 'Dodgers' to 'los angeles dodgers'
+2025-04-14 18:17:48,445 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:17:48,445 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'los angeles dodgers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png'
+2025-04-14 18:17:48,445 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,505 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,535 - bot.utils.image_utils.team_logos - INFO - Normalized 'Rockies' to 'colorado rockies'
+2025-04-14 18:17:48,596 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:17:48,596 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'colorado rockies' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/colorado_rockies.png'
+2025-04-14 18:17:48,596 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,657 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/colorado_rockies.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,657 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142216904: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Dodgers vs Rockies\n\n**Pick:** Dodgers O8.5\n**Odds:** -108', 'team_display': 'Dodgers', 'opponent_display': 'Rockies'}
+2025-04-14 18:17:48,687 - bot.utils.image_utils.team_logos - INFO - Normalized 'Dodgers' to 'los angeles dodgers'
+2025-04-14 18:17:48,748 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:17:48,748 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'los angeles dodgers' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png'
+2025-04-14 18:17:48,748 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,808 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,808 - bot.services.bet_service - INFO - Preview 202504142216904: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/los_angeles_dodgers.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:17:48,891 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:17:49,017 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142216904
+2025-04-14 18:17:51,396 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 1179625165332676632 (Serial: 202504142216904)
+2025-04-14 18:17:57,936 - bot.services.bet_service - INFO - Bet setup cancelled by 1179625165332676632 for bet serial 202504142216904
+2025-04-14 18:18:03,970 - bot.services.bet_service - INFO - /bet initiated by authorized user 1179625165332676632 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:18:03,970 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:18:03,970 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:18:07,343 - bot.services.bet_service - INFO - League selected: MLB by 1179625165332676632 (Serial: 202504142218158)
+2025-04-14 18:18:07,343 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:18:09,522 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1179625165332676632 (Serial: 202504142218158)
+2025-04-14 18:18:14,351 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Player' by 1179625165332676632 (Serial: 202504142218158)
+2025-04-14 18:19:41,587 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:19:41,587 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:19:41,587 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:19:45,355 - bot.services.bet_service - INFO - League selected: MLB by 821794684497690695 (Serial: 202504142219609)
+2025-04-14 18:19:45,355 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:19:47,591 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142219609)
+2025-04-14 18:19:48,845 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Player' by 821794684497690695 (Serial: 202504142219609)
+2025-04-14 18:20:00,006 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:20:00,008 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:20:28,238 - bot.services.bet_service - INFO - Player Bet Modal submitted by 821794684497690695 (Serial: 202504142219609): {'team': 'Giants', 'opponent': 'Phillies', 'player_name': 'Landen Roupp', 'prop': 'U4.5 K’s', 'odds': '-110', 'path': 'Bet on a Player'}
+2025-04-14 18:20:28,358 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142219609. Current data: {'team': 'Giants', 'opponent': 'Phillies', 'player_name': 'Landen Roupp', 'prop': 'U4.5 K’s', 'odds': '-110', 'path': 'Bet on a Player'}
+2025-04-14 18:20:28,388 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:20:28,388 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,418 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,478 - bot.data.league.league_team_handler - INFO - Normalized 'Giants' to 'san francisco giants' for league 'mlb'
+2025-04-14 18:20:28,478 - bot.utils.image_utils.team_logos - INFO - Normalized 'Giants' to 'san francisco giants'
+2025-04-14 18:20:28,544 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:20:28,544 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,544 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'san francisco giants' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/san_francisco_giants.png'
+2025-04-14 18:20:28,606 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/san_francisco_giants.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,666 - bot.data.league.league_team_handler - INFO - Normalized 'Phillies' to 'philadelphia phillies' for league 'mlb'
+2025-04-14 18:20:28,666 - bot.utils.image_utils.team_logos - INFO - Normalized 'Phillies' to 'philadelphia phillies'
+2025-04-14 18:20:28,726 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:20:28,727 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,727 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'philadelphia phillies' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/philadelphia_phillies.png'
+2025-04-14 18:20:28,787 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/philadelphia_phillies.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,787 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142219609: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/san_francisco_giants.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': '**Matchup:** Giants vs Phillies\n\n**Player:** Landen Roupp\n**Prop:** U4.5 K’s\n**Odds:** -110', 'team_display': 'Giants', 'opponent_display': 'Phillies'}
+2025-04-14 18:20:28,817 - bot.utils.image_utils.team_logos - INFO - Normalized 'Giants' to 'san francisco giants'
+2025-04-14 18:20:28,877 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:20:28,877 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,877 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'san francisco giants' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/san_francisco_giants.png'
+2025-04-14 18:20:28,937 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/san_francisco_giants.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:28,937 - bot.services.bet_service - INFO - Preview 202504142219609: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/san_francisco_giants.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:20:29,097 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142219609
+2025-04-14 18:20:29,217 - aiohttp.access - INFO - 35.227.62.178 [14/Apr/2025:17:20:29 -0500] "GET /static/logos/mlb/san_francisco_giants.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:20:29,644 - aiohttp.access - INFO - 35.243.226.206 [14/Apr/2025:17:20:29 -0500] "GET /static/logos/mlb/san_francisco_giants.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:21:20,191 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504142219609)
+2025-04-14 18:21:23,102 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504142219609)
+2025-04-14 18:21:24,901 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504142219609 for user 821794684497690695
+2025-04-14 18:21:25,233 - aiohttp.access - INFO - 34.74.113.139 [14/Apr/2025:17:21:25 -0500] "GET /static/logos/mlb/san_francisco_giants.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:21:25,401 - bot.services.bet_service - INFO - Bet 202504142219609 message 1361466402212548668 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-14 18:21:25,403 - bot.services.bet_service - INFO - Bet 202504142219609 saved to database for user 821794684497690695.
+2025-04-14 18:21:25,403 - bot.data.db_manager - ERROR - Database query execution failed: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+             | Params: (1328126227013439601, 1361466402212548668, 821794684497690695, 1.0, 0.9090909090909091) | Error: (1054, "Unknown column 'embed_id' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+2025-04-14 18:21:25,404 - utils.errors - ERROR - DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:21:25,404 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504142219609: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 658, in callback
+    await db_manager.execute(unit_records_query, unit_records_params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 214, in execute
+    raise DatabaseQueryError(message=f"Query execution failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:22:25,359 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 18:22:25,360 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:17:22:25 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 18:22:48,902 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:23:14,356 - bot.services.bet_service - INFO - Bet setup timed out for bet serial 202504142218158 (User: 1179625165332676632)
+2025-04-14 18:25:00,035 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:25:00,037 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:27:48,933 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:29:22,739 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:29:22,740 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:29:22,740 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:29:32,385 - bot.services.bet_service - INFO - League selected: MLB by 821794684497690695 (Serial: 202504142229272)
+2025-04-14 18:29:32,385 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:29:34,745 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142229272)
+2025-04-14 18:29:40,589 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142229272)
+2025-04-14 18:30:00,044 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:30:00,047 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:30:31,633 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142229272): {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'Game Total O8.5 Runs', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:30:31,750 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142229272. Current data: {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'Game Total O8.5 Runs', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:30:31,780 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:30:31,781 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:31,815 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:31,875 - bot.data.league.league_team_handler - WARNING - Could not normalize 'KC Royals' for 'mlb'
+2025-04-14 18:30:31,875 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:30:31,905 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:30:31,906 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:31,936 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:31,936 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get team logo URL for team 'KC Royals'.
+2025-04-14 18:30:31,996 - bot.data.league.league_team_handler - WARNING - Could not normalize 'NY Yankees' for 'mlb'
+2025-04-14 18:30:31,996 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'NY Yankees' for 'mlb'.
+2025-04-14 18:30:32,027 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:30:32,027 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:32,057 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:32,057 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get opponent logo URL for team 'NY Yankees'.
+2025-04-14 18:30:32,057 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142229272: {'team_logo_url': 'https://cdn.discordapp.com/embed/avatars/0.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'KC Royals vs NY Yankees\n\n**Pick:** KC Royals Game Total O8.5 Runs\n**Odds:** -140', 'team_display': 'KC Royals', 'opponent_display': 'NY Yankees'}
+2025-04-14 18:30:32,087 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:30:32,117 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:30:32,117 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:32,147 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:32,148 - bot.services.bet_service - INFO - Preview 202504142229272: Attempting to use Team Logo='None', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:30:32,148 - discord.ui.modal - ERROR - Ignoring exception in modal <TeamBetModal timeout=None children=4>:
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/modal.py", line 188, in _scheduled_task
+    await self.on_submit(interaction)
+  File "/home/container/bot/services/bet_service.py", line 759, in on_submit
+    await self.parent_view.show_preview()
+  File "/home/container/bot/services/bet_service.py", line 233, in show_preview
+    if league_logo_url and isinstance(league_logo_url, str) and team_logo_url.lower().startswith(('http://', 'https://')):
+                                                                ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+2025-04-14 18:30:50,924 - bot.services.bet_service - INFO - Bet setup cancelled by 821794684497690695 for bet serial 202504142229272
+2025-04-14 18:31:02,867 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:31:02,868 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:31:02,868 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:31:12,210 - bot.services.bet_service - INFO - League selected: MLB by 821794684497690695 (Serial: 202504142231507)
+2025-04-14 18:31:12,210 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:31:18,811 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142231507)
+2025-04-14 18:31:24,492 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142231507)
+2025-04-14 18:31:57,448 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142231507): {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'O8.5 Runs', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:31:57,564 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142231507. Current data: {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'O8.5 Runs', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:31:57,594 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:31:57,595 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,625 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,655 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:31:57,685 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:31:57,685 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,715 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,715 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get team logo URL for team 'KC Royals'.
+2025-04-14 18:31:57,745 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'NY Yankees' for 'mlb'.
+2025-04-14 18:31:57,775 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:31:57,775 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,805 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,805 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get opponent logo URL for team 'NY Yankees'.
+2025-04-14 18:31:57,805 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142231507: {'team_logo_url': 'https://cdn.discordapp.com/embed/avatars/0.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'KC Royals vs NY Yankees\n\n**Pick:** KC Royals O8.5 Runs\n**Odds:** -140', 'team_display': 'KC Royals', 'opponent_display': 'NY Yankees'}
+2025-04-14 18:31:57,835 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:31:57,865 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:31:57,865 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,895 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,895 - bot.services.bet_service - INFO - Preview 202504142231507: Attempting to use Team Logo='None', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:31:57,895 - discord.ui.modal - ERROR - Ignoring exception in modal <TeamBetModal timeout=None children=4>:
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/modal.py", line 188, in _scheduled_task
+    await self.on_submit(interaction)
+  File "/home/container/bot/services/bet_service.py", line 759, in on_submit
+    await self.parent_view.show_preview()
+  File "/home/container/bot/services/bet_service.py", line 233, in show_preview
+    if league_logo_url and isinstance(league_logo_url, str) and team_logo_url.lower().startswith(('http://', 'https://')):
+                                                                ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+2025-04-14 18:32:03,830 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x16\x03\x01'
+      ^
+2025-04-14 18:32:03,831 - aiohttp.access - INFO - 167.94.146.57 [14/Apr/2025:17:32:03 -0500] "UNKNOWN / HTTP/1.0" 400 213 "-" "-"
+2025-04-14 18:32:08,796 - aiohttp.access - INFO - 167.94.146.57 [14/Apr/2025:17:32:08 -0500] "GET / HTTP/1.1" 200 5106 "-" "-"
+2025-04-14 18:32:12,370 - aiohttp.access - INFO - 167.94.146.57 [14/Apr/2025:17:32:12 -0500] "GET / HTTP/1.1" 200 5106 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+2025-04-14 18:32:13,022 - aiohttp.access - INFO - 167.94.146.57 [14/Apr/2025:17:32:12 -0500] "GET /favicon.ico HTTP/1.1" 200 274 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+2025-04-14 18:32:14,494 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-04-14 18:32:14,495 - aiohttp.access - INFO - 167.94.146.57 [14/Apr/2025:17:32:14 -0500] "UNKNOWN / HTTP/1.0" 400 195 "-" "-"
+2025-04-14 18:32:17,892 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x16\x03\x01'
+      ^
+2025-04-14 18:32:17,893 - aiohttp.access - INFO - 167.94.146.57 [14/Apr/2025:17:32:17 -0500] "UNKNOWN / HTTP/1.0" 400 213 "-" "-"
+2025-04-14 18:32:48,934 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:33:02,424 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:33:02,424 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:33:02,424 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:33:06,340 - bot.services.bet_service - INFO - League selected: MLB by 821794684497690695 (Serial: 202504142233779)
+2025-04-14 18:33:06,340 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:33:08,750 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142233779)
+2025-04-14 18:33:11,608 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142233779)
+2025-04-14 18:33:30,976 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142233779): {'team': 'Royals', 'opponent': 'Yankees', 'line': 'ML', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:33:31,113 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142233779. Current data: {'team': 'Royals', 'opponent': 'Yankees', 'line': 'ML', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:33:31,143 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:33:31,144 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,173 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,233 - bot.data.league.league_team_handler - INFO - Normalized 'Royals' to 'kansas city royals' for league 'mlb'
+2025-04-14 18:33:31,234 - bot.utils.image_utils.team_logos - INFO - Normalized 'Royals' to 'kansas city royals'
+2025-04-14 18:33:31,293 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:33:31,293 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'kansas city royals' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png'
+2025-04-14 18:33:31,294 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,354 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,413 - bot.data.league.league_team_handler - INFO - Normalized 'Yankees' to 'new york yankees' for league 'mlb'
+2025-04-14 18:33:31,413 - bot.utils.image_utils.team_logos - INFO - Normalized 'Yankees' to 'new york yankees'
+2025-04-14 18:33:31,473 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:33:31,473 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,473 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'new york yankees' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/new_york_yankees.png'
+2025-04-14 18:33:31,533 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/new_york_yankees.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,533 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142233779: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Royals vs Yankees\n\n**Pick:** Royals ML\n**Odds:** -140', 'team_display': 'Royals', 'opponent_display': 'Yankees'}
+2025-04-14 18:33:31,563 - bot.utils.image_utils.team_logos - INFO - Normalized 'Royals' to 'kansas city royals'
+2025-04-14 18:33:31,623 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:33:31,623 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'kansas city royals' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png'
+2025-04-14 18:33:31,623 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,683 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,683 - bot.services.bet_service - INFO - Preview 202504142233779: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:33:31,853 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142233779
+2025-04-14 18:33:31,914 - aiohttp.access - INFO - 35.237.4.214 [14/Apr/2025:17:33:31 -0500] "GET /static/logos/mlb/kansas_city_royals.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:33:37,427 - bot.services.bet_service - INFO - Edit initiated by 821794684497690695 for bet serial 202504142233779. Returning to path selection.
+2025-04-14 18:33:41,116 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142233779)
+2025-04-14 18:34:01,809 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142233779): {'team': 'Royals', 'opponent': 'Yankees', 'line': 'O8.5', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:34:01,940 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142233779. Current data: {'team': 'Royals', 'opponent': 'Yankees', 'line': 'O8.5', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:34:01,971 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:34:01,971 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,002 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,046 - bot.utils.image_utils.team_logos - INFO - Normalized 'Royals' to 'kansas city royals'
+2025-04-14 18:34:02,109 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:34:02,109 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'kansas city royals' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png'
+2025-04-14 18:34:02,109 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,169 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,199 - bot.utils.image_utils.team_logos - INFO - Normalized 'Yankees' to 'new york yankees'
+2025-04-14 18:34:02,259 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:34:02,259 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,259 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'new york yankees' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/new_york_yankees.png'
+2025-04-14 18:34:02,321 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/new_york_yankees.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,321 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142233779: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Royals vs Yankees\n\n**Pick:** Royals O8.5\n**Odds:** -140', 'team_display': 'Royals', 'opponent_display': 'Yankees'}
+2025-04-14 18:34:02,351 - bot.utils.image_utils.team_logos - INFO - Normalized 'Royals' to 'kansas city royals'
+2025-04-14 18:34:02,411 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:34:02,411 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'kansas city royals' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png'
+2025-04-14 18:34:02,411 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,471 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,471 - bot.services.bet_service - INFO - Preview 202504142233779: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:02,658 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142233779
+2025-04-14 18:34:17,271 - bot.services.bet_service - INFO - Edit initiated by 821794684497690695 for bet serial 202504142233779. Returning to path selection.
+2025-04-14 18:34:20,323 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142233779)
+2025-04-14 18:34:54,295 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142233779): {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'Game Total O8.5', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:34:54,410 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142233779. Current data: {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'Game Total O8.5', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:34:54,440 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:34:54,440 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,470 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,500 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:34:54,530 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:34:54,531 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,560 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,561 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get team logo URL for team 'KC Royals'.
+2025-04-14 18:34:54,590 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'NY Yankees' for 'mlb'.
+2025-04-14 18:34:54,620 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:34:54,620 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,650 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,650 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get opponent logo URL for team 'NY Yankees'.
+2025-04-14 18:34:54,651 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142233779: {'team_logo_url': 'https://cdn.discordapp.com/embed/avatars/0.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'KC Royals vs NY Yankees\n\n**Pick:** KC Royals Game Total O8.5\n**Odds:** -140', 'team_display': 'KC Royals', 'opponent_display': 'NY Yankees'}
+2025-04-14 18:34:54,680 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:34:54,710 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:34:54,710 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,740 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,740 - bot.services.bet_service - INFO - Preview 202504142233779: Attempting to use Team Logo='None', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:34:54,741 - discord.ui.modal - ERROR - Ignoring exception in modal <TeamBetModal timeout=None children=4>:
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/modal.py", line 188, in _scheduled_task
+    await self.on_submit(interaction)
+  File "/home/container/bot/services/bet_service.py", line 759, in on_submit
+    await self.parent_view.show_preview()
+  File "/home/container/bot/services/bet_service.py", line 233, in show_preview
+    if league_logo_url and isinstance(league_logo_url, str) and team_logo_url.lower().startswith(('http://', 'https://')):
+                                                                ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+2025-04-14 18:35:00,052 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:35:00,054 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:35:04,530 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142233779)
+2025-04-14 18:35:22,834 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142233779): {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'ML', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:35:23,003 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142233779. Current data: {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'ML', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:35:23,035 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:35:23,035 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,065 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,095 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:35:23,125 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:35:23,125 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,155 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,155 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get team logo URL for team 'KC Royals'.
+2025-04-14 18:35:23,185 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'NY Yankees' for 'mlb'.
+2025-04-14 18:35:23,215 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:35:23,216 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,246 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,246 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get opponent logo URL for team 'NY Yankees'.
+2025-04-14 18:35:23,246 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142233779: {'team_logo_url': 'https://cdn.discordapp.com/embed/avatars/0.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'KC Royals vs NY Yankees\n\n**Pick:** KC Royals ML\n**Odds:** -140', 'team_display': 'KC Royals', 'opponent_display': 'NY Yankees'}
+2025-04-14 18:35:23,276 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:35:23,306 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:35:23,306 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,336 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,336 - bot.services.bet_service - INFO - Preview 202504142233779: Attempting to use Team Logo='None', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:35:23,336 - discord.ui.modal - ERROR - Ignoring exception in modal <TeamBetModal timeout=None children=4>:
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/modal.py", line 188, in _scheduled_task
+    await self.on_submit(interaction)
+  File "/home/container/bot/services/bet_service.py", line 759, in on_submit
+    await self.parent_view.show_preview()
+  File "/home/container/bot/services/bet_service.py", line 233, in show_preview
+    if league_logo_url and isinstance(league_logo_url, str) and team_logo_url.lower().startswith(('http://', 'https://')):
+                                                                ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+2025-04-14 18:35:35,416 - bot.services.bet_service - INFO - Bet setup cancelled by 821794684497690695 for bet serial 202504142233779
+2025-04-14 18:35:40,335 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:35:40,335 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:35:40,335 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:35:40,335 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:35:40,335 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:35:40,335 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:35:40,335 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:35:40,335 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:35:40,335 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:35:40,336 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:35:40,336 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:35:40,336 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:35:40,336 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:35:40,336 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:35:40,336 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:35:40,336 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:35:40,336 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:35:45,625 - bot.services.bet_service - INFO - League selected: MLB by 821794684497690695 (Serial: 202504142235024)
+2025-04-14 18:35:45,625 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:35:47,620 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142235024)
+2025-04-14 18:35:49,626 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142235024)
+2025-04-14 18:36:11,956 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142235024): {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'ML', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:36:12,072 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142235024. Current data: {'team': 'KC Royals', 'opponent': 'NY Yankees', 'line': 'ML', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:36:12,102 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:36:12,103 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,132 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,162 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:36:12,192 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:36:12,192 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,222 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,223 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get team logo URL for team 'KC Royals'.
+2025-04-14 18:36:12,253 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'NY Yankees' for 'mlb'.
+2025-04-14 18:36:12,282 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:36:12,283 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,313 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,313 - bot.services.sport_handler - WARNING - TeamSportHandler (mlb): Did not get opponent logo URL for team 'NY Yankees'.
+2025-04-14 18:36:12,313 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142235024: {'team_logo_url': 'https://cdn.discordapp.com/embed/avatars/0.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'KC Royals vs NY Yankees\n\n**Pick:** KC Royals ML\n**Odds:** -140', 'team_display': 'KC Royals', 'opponent_display': 'NY Yankees'}
+2025-04-14 18:36:12,343 - bot.utils.image_utils.team_logos - WARNING - Could not normalize 'KC Royals' for 'mlb'.
+2025-04-14 18:36:12,373 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:36:12,373 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,403 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,403 - bot.services.bet_service - INFO - Preview 202504142235024: Attempting to use Team Logo='None', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:36:12,403 - discord.ui.modal - ERROR - Ignoring exception in modal <TeamBetModal timeout=None children=4>:
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/modal.py", line 188, in _scheduled_task
+    await self.on_submit(interaction)
+  File "/home/container/bot/services/bet_service.py", line 759, in on_submit
+    await self.parent_view.show_preview()
+  File "/home/container/bot/services/bet_service.py", line 233, in show_preview
+    if league_logo_url and isinstance(league_logo_url, str) and team_logo_url.lower().startswith(('http://', 'https://')):
+                                                                ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+2025-04-14 18:36:20,936 - bot.services.bet_service - INFO - Bet setup cancelled by 821794684497690695 for bet serial 202504142235024
+2025-04-14 18:36:24,495 - bot.services.bet_service - INFO - Bet setup timed out for bet serial 202504142231507 (User: 821794684497690695)
+2025-04-14 18:36:26,905 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695 in Channel 1344085704984100934, Guild 1328126227013439601.
+2025-04-14 18:36:26,905 - bot.data.league.league_team_handler - WARNING - League input 'UFC' ('ufc') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'UFC' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'ATP' ('atp') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'ATP' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'WTA' ('wta') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'WTA' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'CS:GO' ('cs:go') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'CS:GO' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'LoL' ('lol') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'LoL' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'LPGA' ('lpga') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'LPGA' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'European Tour' ('european tour') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'European Tour' in options: Could not standardize.
+2025-04-14 18:36:26,906 - bot.data.league.league_team_handler - WARNING - League input 'Kentucky Derby' ('kentucky derby') does not map to a supported standard code.
+2025-04-14 18:36:26,906 - bot.services.bet_service - WARNING - Skipping league 'Kentucky Derby' in options: Could not standardize.
+2025-04-14 18:36:31,260 - bot.services.bet_service - INFO - League selected: MLB by 821794684497690695 (Serial: 202504142236280)
+2025-04-14 18:36:31,260 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for 'MLB' (Normalized AlphaNum: 'mlb', Original Lower: 'mlb')
+2025-04-14 18:36:34,933 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504142236280)
+2025-04-14 18:36:37,895 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504142236280)
+2025-04-14 18:37:08,206 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504142236280): {'team': 'Royals', 'opponent': 'Yankees', 'line': 'Game Total O8.5', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:37:08,326 - bot.services.bet_service - INFO - Generating preview for bet serial 202504142236280. Current data: {'team': 'Royals', 'opponent': 'Yankees', 'line': 'Game Total O8.5', 'odds': '-140', 'path': 'Bet on a Team'}
+2025-04-14 18:37:08,356 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: False, Need League: True)
+2025-04-14 18:37:08,356 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,386 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='None', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,416 - bot.utils.image_utils.team_logos - INFO - Normalized 'Royals' to 'kansas city royals'
+2025-04-14 18:37:08,477 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:37:08,477 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'kansas city royals' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png'
+2025-04-14 18:37:08,477 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,538 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,568 - bot.utils.image_utils.team_logos - INFO - Normalized 'Yankees' to 'new york yankees'
+2025-04-14 18:37:08,628 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:37:08,628 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,628 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'new york yankees' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/new_york_yankees.png'
+2025-04-14 18:37:08,689 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/new_york_yankees.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,689 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504142236280: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Royals vs Yankees\n\n**Pick:** Royals Game Total O8.5\n**Odds:** -140', 'team_display': 'Royals', 'opponent_display': 'Yankees'}
+2025-04-14 18:37:08,719 - bot.utils.image_utils.team_logos - INFO - Normalized 'Royals' to 'kansas city royals'
+2025-04-14 18:37:08,779 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: True)
+2025-04-14 18:37:08,779 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'kansas city royals' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png'
+2025-04-14 18:37:08,779 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'mlb' URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,841 - bot.utils.image_utils.team_logos - INFO - RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:08,841 - bot.services.bet_service - INFO - Preview 202504142236280: Attempting to use Team Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/kansas_city_royals.png', League Logo='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-14 18:37:09,077 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504142236280
+2025-04-14 18:37:21,632 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504142236280)
+2025-04-14 18:37:23,584 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504142236280)
+2025-04-14 18:37:34,289 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504142236280 for user 821794684497690695
+2025-04-14 18:37:34,605 - aiohttp.access - INFO - 35.243.226.206 [14/Apr/2025:17:37:34 -0500] "GET /static/logos/mlb/kansas_city_royals.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 18:37:34,940 - bot.services.bet_service - INFO - Bet 202504142236280 message 1361470467978035291 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-14 18:37:34,941 - bot.services.bet_service - INFO - Bet 202504142236280 saved to database for user 821794684497690695.
+2025-04-14 18:37:34,941 - bot.data.db_manager - ERROR - Database query execution failed: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+             | Params: (1328126227013439601, 1361470467978035291, 821794684497690695, 1.0, 0.7142857142857143) | Error: (1054, "Unknown column 'embed_id' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+2025-04-14 18:37:34,942 - utils.errors - ERROR - DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:37:34,942 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504142236280: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 209, in execute
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'embed_id' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 658, in callback
+    await db_manager.execute(unit_records_query, unit_records_params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 214, in execute
+    raise DatabaseQueryError(message=f"Query execution failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query execution failed: (1054, "Unknown column 'embed_id' in 'field list'") | Query: 
+                INSERT INTO unit_records (guild_id, embed_id, user_id, units, timestamp, total)
+                VALUES (%s, %s, %s, %s, NOW(), %s)
+            
+2025-04-14 18:37:48,944 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:40:00,073 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:40:00,075 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:42:48,968 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:43:01,689 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 18:43:01,690 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:17:43:01 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 18:45:00,107 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:45:00,110 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:47:49,002 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:50:00,111 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:50:00,113 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:52:49,008 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 18:55:00,125 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 18:55:00,127 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 18:57:49,027 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:00:00,150 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:00:00,152 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:02:38,742 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 19:02:38,743 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:18:02:38 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 19:02:49,039 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:05:00,158 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:05:00,159 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:07:49,078 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:10:00,163 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:10:00,165 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:10:09,286 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 19:10:09,286 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:18:10:09 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 19:12:49,088 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:15:00,181 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:15:00,183 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:17:49,109 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:20:00,210 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:20:00,212 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:22:49,141 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:25:00,250 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:25:00,253 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:27:49,143 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:28:33,756 - aiohttp.access - INFO - 104.196.23.152 [14/Apr/2025:18:28:33 -0500] "GET /static/logos/mlb/los_angeles_dodgers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 19:28:33,784 - aiohttp.access - INFO - 35.227.34.53 [14/Apr/2025:18:28:33 -0500] "GET /static/logos/mlb/san_francisco_giants.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-14 19:30:00,262 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:30:00,264 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:32:49,155 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:33:16,506 - bot.core - WARNING - Bot disconnected.
+2025-04-14 19:33:16,656 - discord.gateway - INFO - Shard ID None has successfully RESUMED session fe65bbb1db07e3d4db62168b97a69a92.
+2025-04-14 19:33:16,656 - bot.core - INFO - Bot resumed connection.
+2025-04-14 19:35:00,286 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:35:00,472 - bot.services.voice_service - INFO - Updated Total Units channel 1357135914622779402 to 'Total Units: +1.0' in guild 1328126227013439601
+2025-04-14 19:35:00,474 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:37:49,182 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:40:00,506 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:40:00,509 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:42:49,219 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:45:00,512 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:45:00,515 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:46:44,554 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 19:46:44,555 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:18:46:44 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 19:47:49,227 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:50:00,530 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:50:00,532 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:52:49,245 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 19:55:00,559 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 19:55:00,561 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 19:57:33,257 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 19:57:33,257 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:18:57:33 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 19:57:49,262 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 20:00:00,598 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 20:00:00,601 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 20:02:49,302 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 20:05:00,607 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 20:05:00,609 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 20:07:49,312 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 20:10:00,627 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 20:10:00,629 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 20:12:49,335 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 20:15:00,658 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 20:15:00,660 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-14 20:16:49,390 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 20:16:49,390 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:19:16:49 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 20:17:49,367 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 20:20:00,666 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 20:20:00,668 - bot.services.voice_service - INFO - Voice service update cycle finished.

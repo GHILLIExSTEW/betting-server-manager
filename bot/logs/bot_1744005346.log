@@ -1,0 +1,229 @@
+2025-04-06 22:55:45 [INFO] root: Logging configured successfully
+2025-04-06 22:55:45 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-06 22:55:45 [INFO] root: Logging configured successfully
+2025-04-06 22:55:45 [INFO] __main__: Starting bot initialization
+2025-04-06 22:55:45 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 22:55:46 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-06 22:55:46 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-06 22:55:46 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-06 22:55:46 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-06 22:55:46 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-06 22:55:46 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-06 22:55:46 [INFO] __main__: Database connected successfully
+2025-04-06 22:55:46 [DEBUG] __main__: Starting bot with Discord token (first 5 chars: MTM0M...)
+2025-04-06 22:55:46 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 22:55:47 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-06 22:55:47 [INFO] api.sports_api: Sports API client session started
+2025-04-06 22:55:47 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-06 22:55:47 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-06 22:55:47 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 22:55:47 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-06 22:55:47 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-06 22:55:47 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-06 22:55:47 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-06 22:55:47 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-06 22:55:47 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-06 22:55:47 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-06 22:55:47 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 22:55:47 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-06 22:55:47 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-06 22:55:47 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 22:55:47 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-06 22:55:47 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-06 22:55:47 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-06 22:55:47 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-06 22:55:47 [INFO] bot.services.game_service: Game service polling started.
+2025-04-06 22:55:47 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-06 22:55:47 [INFO] web.server: Web application setup complete.
+2025-04-06 22:55:47 [INFO] bot.core: Loading application commands...
+2025-04-06 22:55:47 [INFO] bot.core: Loaded command: add_capper
+2025-04-06 22:55:47 [INFO] bot.core: Loaded command: admin
+2025-04-06 22:55:47 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-06 22:55:47 [INFO] bot.core: Loaded command: help
+2025-04-06 22:55:48 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-06 22:55:48 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-06 22:55:48 [DEBUG] matplotlib: interactive is False
+2025-04-06 22:55:48 [DEBUG] matplotlib: platform is linux
+2025-04-06 22:55:48 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-06 22:55:48 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: leaderboard
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: load_url
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: profile
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: setid
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: show_cappers
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: stats
+2025-04-06 22:55:48 [INFO] bot.core: Loaded command: subscription
+2025-04-06 22:55:48 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-06 22:55:48 [INFO] bot.core: Application commands loaded.
+2025-04-06 22:55:48 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-06 22:55:48 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-06 22:55:50 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-06 22:55:50 [DEBUG] bot.services.voice_service: Voice service sleeping for 250.00 seconds until next 5-min mark.
+2025-04-06 22:55:50 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-06 22:55:50 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-06 22:55:50 [INFO] bot.core: Bot is ready and online.
+2025-04-06 22:55:53 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-06 22:55:53 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-06 22:55:53 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 22:55:53 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-06 22:56:40 [INFO] bot.services.admin_handler: Admin command invoked by ghilliestew (ID: 761388542965448767) in guild 1328126227013439601
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Deferred initial /admin interaction
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Fetching settings for guild_id: 1328126227013439601
+2025-04-06 22:56:41 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 22:56:41 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Raw settings data: {'embed_channel_1': '1328126391073505422', 'embed_channel_2': '1357136356022816798', 'command_channel_1': '1344085704984100934', 'command_channel_2': '1357136356022816798', 'admin_channel_1': '1328139233285902379', 'admin_role': 'Server Admin', 'authorized_role': 'Cappers', 'daily_report_time': '20:00', 'voice_channel_id': 1357135914622779402, 'bot_name_mask': "Cookin' Books AI", 'bot_image_mask': None}
+2025-04-06 22:56:41 [DEBUG] bot.data.db_manager: Fetching one DB query: SELECT subscription_status FROM subscribers WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 22:56:41 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Raw subscription data: {'subscription_status': 'paid'}
+2025-04-06 22:56:41 [WARNING] bot.services.admin_handler: Value for 'admin_role' non-numeric for guild 1328126227013439601: 'Server Admin'. Treating as None.
+2025-04-06 22:56:41 [WARNING] bot.services.admin_handler: Value for 'authorized_role' non-numeric for guild 1328126227013439601: 'Cappers'. Treating as None.
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Processed settings: {'embed_channel_1': 1328126391073505422, 'embed_channel_2': 1357136356022816798, 'command_channel_1': 1344085704984100934, 'command_channel_2': 1357136356022816798, 'admin_role': None, 'authorized_role': None, 'daily_report_time': '20:00', 'voice_channel_id': 1357135914622779402, 'bot_name_mask': "Cookin' Books AI", 'bot_image_mask': None, 'admin_channel_id': 1328139233285902379, 'subscription_status': 'paid'}
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Creating AdminSettingsView...
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: AdminSettingsView initialized for guild 1328126227013439601. Paid: True
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: [View Build] Building main view for guild 1328126227013439601
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Main view built successfully.
+2025-04-06 22:56:41 [DEBUG] bot.services.admin_handler: Sending initial view via followup...
+2025-04-06 22:56:41 [INFO] bot.services.admin_handler: Admin settings view sent to user 761388542965448767
+2025-04-06 22:56:42 [DEBUG] bot.services.admin_handler: Interaction check passed for user 761388542965448767
+2025-04-06 22:56:42 [DEBUG] bot.services.admin_handler: Starting channels config...
+2025-04-06 22:56:43 [DEBUG] bot.services.admin_handler: [View Build] Building channel config step: EMBED_CH_1 for guild 1328126227013439601
+2025-04-06 22:56:43 [ERROR] discord.ui.view: Ignoring exception in view <AdminSettingsView timeout=360 children=1> for item <Button style=<ButtonStyle.primary: 1> url=None disabled=False label='Text Channels' emoji=None row=0>
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/container/bot/services/admin_handler.py", line 697, in start_channels_config
+    await self._build_channel_config_step(interaction)
+  File "/home/container/bot/services/admin_handler.py", line 400, in _build_channel_config_step
+    self._add_common_buttons(self.next_channel_step_callback, self.cancel_sequential_config_callback, final_step=is_final_step)
+  File "/home/container/bot/services/admin_handler.py", line 304, in _add_common_buttons
+    self._add_item_safe(save_btn)
+  File "/home/container/bot/services/admin_handler.py", line 292, in _add_item_safe
+    self.add_item(item)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 326, in add_item
+    self.__weights.add_item(item)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 112, in add_item
+    raise ValueError(f'item would not fit at row {item.row} ({total} > 5 width)')
+ValueError: item would not fit at row 0 (6 > 5 width)
+2025-04-06 22:56:48 [DEBUG] bot.services.admin_handler: Interaction check passed for user 761388542965448767
+2025-04-06 22:56:48 [DEBUG] bot.services.admin_handler: Starting roles config...
+2025-04-06 22:56:48 [DEBUG] bot.services.admin_handler: [View Build] Building role config step: ADMIN_ROLE for guild 1328126227013439601
+2025-04-06 22:56:48 [ERROR] discord.ui.view: Ignoring exception in view <AdminSettingsView timeout=360 children=1> for item <Button style=<ButtonStyle.primary: 1> url=None disabled=False label='Roles' emoji=None row=0>
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/container/bot/services/admin_handler.py", line 704, in start_roles_config
+    await self._build_role_config_step(interaction)
+  File "/home/container/bot/services/admin_handler.py", line 450, in _build_role_config_step
+    self._add_common_buttons(self.next_role_step_callback, self.cancel_sequential_config_callback, final_step=is_final_step)
+  File "/home/container/bot/services/admin_handler.py", line 304, in _add_common_buttons
+    self._add_item_safe(save_btn)
+  File "/home/container/bot/services/admin_handler.py", line 292, in _add_item_safe
+    self.add_item(item)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 326, in add_item
+    self.__weights.add_item(item)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 112, in add_item
+    raise ValueError(f'item would not fit at row {item.row} ({total} > 5 width)')
+ValueError: item would not fit at row 0 (6 > 5 width)
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: Interaction check passed for user 761388542965448767
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: Configure other button pressed.
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: Fetching settings for guild_id: 1328126227013439601
+2025-04-06 22:56:49 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 22:56:49 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: Raw settings data: {'embed_channel_1': '1328126391073505422', 'embed_channel_2': '1357136356022816798', 'command_channel_1': '1344085704984100934', 'command_channel_2': '1357136356022816798', 'admin_channel_1': '1328139233285902379', 'admin_role': 'Server Admin', 'authorized_role': 'Cappers', 'daily_report_time': '20:00', 'voice_channel_id': 1357135914622779402, 'bot_name_mask': "Cookin' Books AI", 'bot_image_mask': None}
+2025-04-06 22:56:49 [DEBUG] bot.data.db_manager: Fetching one DB query: SELECT subscription_status FROM subscribers WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 22:56:49 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: Raw subscription data: {'subscription_status': 'paid'}
+2025-04-06 22:56:49 [WARNING] bot.services.admin_handler: Value for 'admin_role' non-numeric for guild 1328126227013439601: 'Server Admin'. Treating as None.
+2025-04-06 22:56:49 [WARNING] bot.services.admin_handler: Value for 'authorized_role' non-numeric for guild 1328126227013439601: 'Cappers'. Treating as None.
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: Processed settings: {'embed_channel_1': 1328126391073505422, 'embed_channel_2': 1357136356022816798, 'command_channel_1': 1344085704984100934, 'command_channel_2': 1357136356022816798, 'admin_role': None, 'authorized_role': None, 'daily_report_time': '20:00', 'voice_channel_id': 1357135914622779402, 'bot_name_mask': "Cookin' Books AI", 'bot_image_mask': None, 'admin_channel_id': 1328139233285902379, 'subscription_status': 'paid'}
+2025-04-06 22:56:49 [DEBUG] bot.services.admin_handler: OtherSettingsModal sent.
+2025-04-06 22:56:53 [DEBUG] bot.services.admin_handler: Interaction check passed for user 761388542965448767
+2025-04-06 22:56:53 [DEBUG] bot.services.admin_handler: Configure subscription button pressed.
+2025-04-06 22:56:53 [ERROR] discord.ui.view: Ignoring exception in view <AdminSettingsView timeout=360 children=1> for item <Button style=<ButtonStyle.secondary: 2> url=None disabled=False label='Subscription (Status: PAID)' emoji=None row=1>
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/container/bot/services/admin_handler.py", line 727, in configure_subscription_callback
+    latest_settings = await self._get_latest_settings(interaction); # Uses helper which defers
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AdminSettingsView' object has no attribute '_get_latest_settings'
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: Interaction check passed for user 761388542965448767
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: Configure appearance button pressed.
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: Fetching settings for guild_id: 1328126227013439601
+2025-04-06 22:56:57 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-06 22:56:57 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: Raw settings data: {'embed_channel_1': '1328126391073505422', 'embed_channel_2': '1357136356022816798', 'command_channel_1': '1344085704984100934', 'command_channel_2': '1357136356022816798', 'admin_channel_1': '1328139233285902379', 'admin_role': 'Server Admin', 'authorized_role': 'Cappers', 'daily_report_time': '20:00', 'voice_channel_id': 1357135914622779402, 'bot_name_mask': "Cookin' Books AI", 'bot_image_mask': None}
+2025-04-06 22:56:57 [DEBUG] bot.data.db_manager: Fetching one DB query: SELECT subscription_status FROM subscribers WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 22:56:57 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: Raw subscription data: {'subscription_status': 'paid'}
+2025-04-06 22:56:57 [WARNING] bot.services.admin_handler: Value for 'admin_role' non-numeric for guild 1328126227013439601: 'Server Admin'. Treating as None.
+2025-04-06 22:56:57 [WARNING] bot.services.admin_handler: Value for 'authorized_role' non-numeric for guild 1328126227013439601: 'Cappers'. Treating as None.
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: Processed settings: {'embed_channel_1': 1328126391073505422, 'embed_channel_2': 1357136356022816798, 'command_channel_1': 1344085704984100934, 'command_channel_2': 1357136356022816798, 'admin_role': None, 'authorized_role': None, 'daily_report_time': '20:00', 'voice_channel_id': 1357135914622779402, 'bot_name_mask': "Cookin' Books AI", 'bot_image_mask': None, 'admin_channel_id': 1328139233285902379, 'subscription_status': 'paid'}
+2025-04-06 22:56:57 [DEBUG] bot.services.admin_handler: BotAppearanceModal sent.
+2025-04-06 22:58:34 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+                    SELECT command_channel_1, command_channel_2, embed_channel_1, embed_channel_2
+                    FROM server_settings
+                    WHERE guild_id = %s
+                 with params: (1328126227013439601,)
+2025-04-06 22:58:34 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 22:59:18 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+                    SELECT command_channel_1, command_channel_2, embed_channel_1, embed_channel_2
+                    FROM server_settings
+                    WHERE guild_id = %s
+                 with params: (1328126227013439601,)
+2025-04-06 22:59:18 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:00:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-06 23:00:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-06 23:00:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-06 23:00:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 23:00:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:00:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-06 23:00:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-06 23:00:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:00:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: 46.0
+2025-04-06 23:00:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 6, 6, 0, 0, 772539, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 9, 6, 0, 0, 772539, tzinfo=datetime.timezone.utc))
+2025-04-06 23:00:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 23:00:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-06 23:00:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-06 23:00:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.

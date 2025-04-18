@@ -1,0 +1,182 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)': Expected end or semicolon (after version specifier)
+    discord.py==2.3.2  # Discord API wrapper for bot functionality (discord, discord.app_commands)
+              ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)': Expected end or semicolon (after version specifier)
+    aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)
+           ~~~~~~~~~~~~^
+Hint: It looks like a path. File 'aiohttp==3.9.5     # Asynchronous HTTP client/server for API calls and web server (aiohttp)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)': Expected end or semicolon (after version specifier)
+    aiomysql==0.2.0    # Asynchronous MySQL client for database operations (aiomysql)
+            ~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'redis==5.0.4       # Async Redis client (redis.asyncio)': Expected end or semicolon (after version specifier)
+    redis==5.0.4       # Async Redis client (redis.asyncio)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)': Expected end or semicolon (after version specifier)
+    cryptography==42.0.5  # Fernet encryption and password hashing (cryptography.fernet, cryptography.hazmat.primitives)
+                ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)': Expected end or semicolon (after version specifier)
+    aiohttp-session==2.12.0  # Session management for aiohttp web server (aiohttp_session)
+                   ~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)': Expected end or semicolon (after version specifier)
+    python-dotenv==1.0.1  # Load environment variables from .env (dotenv.load_dotenv)
+                 ~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'Pillow==10.3.0     # Image manipulation for user images (PIL.Image)': Expected end or semicolon (after version specifier)
+    Pillow==10.3.0     # Image manipulation for user images (PIL.Image)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'PyTZ==2024.1       # Timezone handling (pytz)': Expected end or semicolon (after version specifier)
+    PyTZ==2024.1       # Timezone handling (pytz)
+        ~~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)': Expected end or semicolon (after version specifier)
+    typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)
+                     ~~~~~~~~~~^
+Hint: It looks like a path. File 'typing_extensions==4.11.0  # Enhanced typing support (typing.Optional/Dict/List/Any)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)': Expected end or semicolon (after version specifier)
+    jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)
+              ~~~~~~~~~^
+Hint: It looks like a path. File 'jsonpickle==3.0.4  # JSON serialization/deserialization (json, enhanced functionality)' does not exist.
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'regex==2024.5.15   # Advanced regular expression support (re enhancement)': Expected end or semicolon (after version specifier)
+    regex==2024.5.15   # Advanced regular expression support (re enhancement)
+         ~~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: 'pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)': Expected end or semicolon (after version specifier)
+    pandas==2.2.2      # Data manipulation for CSV files (e.g., get_team_logo_url_from_csv)
+          ~~~~~~~~~~~~~^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-14 16:57:59,929 - __main__ - INFO - Initializing database connection...
+2025-04-14 16:57:59,929 - bot.data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-14 16:57:59,949 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'bets' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'cappers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'server_settings' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscribers' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'subscriptions' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'unit_records' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'users' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'user_images' already exists
+  await self._query(query)
+/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py:239: Warning: Table 'voice_bet_updates' already exists
+  await self._query(query)
+2025-04-14 16:57:59,954 - bot.data.db_manager - INFO - Database tables checked/created successfully
+2025-04-14 16:57:59,954 - __main__ - INFO - Initializing cache connection...
+2025-04-14 16:57:59,954 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-14 16:58:00,043 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-14 16:58:00,043 - __main__ - INFO - Initializing BettingBot...
+2025-04-14 16:58:00,046 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-14 16:58:00,046 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-14 16:58:00,047 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-14 16:58:00,047 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-14 16:58:00,047 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-14 16:58:00,047 - __main__ - INFO - Starting bot...
+2025-04-14 16:58:00,047 - discord.client - INFO - logging in using static token
+2025-04-14 16:58:00,515 - api.sports_api - INFO - Sports API client session started
+2025-04-14 16:58:00,515 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-14 16:58:00,515 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-14 16:58:00,515 - data.db_manager - INFO - Attempting to connect to database customer_990306_Server_database at na05-sql.pebblehost.com:3306
+2025-04-14 16:58:00,526 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-14 16:58:00,533 - data.db_manager - INFO - Database tables checked/created successfully
+2025-04-14 16:58:00,534 - data.cache_manager - WARNING - Redis client not initialized. Attempting connection.
+2025-04-14 16:58:00,534 - data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-14 16:58:00,610 - data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-14 16:58:00,625 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-14 16:58:00,625 - bot.services.game_service - INFO - Game service polling started.
+2025-04-14 16:58:00,625 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-14 16:58:00,626 - web.server - INFO - Web application setup complete.
+2025-04-14 16:58:00,626 - bot.core - INFO - Loading application commands...
+2025-04-14 16:58:00,627 - bot.core - INFO - Loaded global command: admin
+2025-04-14 16:58:00,628 - bot.core - INFO - Loaded global command: subscription
+2025-04-14 16:58:00,629 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-14 16:58:00,630 - bot.core - ERROR - Unexpected error loading guild command add_capper: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:00,630 - bot.core - ERROR - Unexpected error loading guild command help: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,038 - bot.core - ERROR - Unexpected error loading guild command leaderboard: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,039 - bot.core - ERROR - Unexpected error loading guild command load_url: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,041 - bot.core - ERROR - Unexpected error loading guild command profile: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,042 - bot.core - ERROR - Unexpected error loading guild command setid: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,044 - bot.core - ERROR - Unexpected error loading guild command show_cappers: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,045 - bot.core - ERROR - Unexpected error loading guild command stats: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 109, in load_commands
+    module.setup(self.command_tree, guild=guild_obj)
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-14 16:58:01,045 - bot.core - INFO - Assuming 'bet', 'edit_units', and 'cancel_bet' commands are handled by BetService internally.
+2025-04-14 16:58:01,045 - bot.core - INFO - Application commands loaded.
+2025-04-14 16:58:01,045 - bot.core - INFO - Cleared all global commands.
+2025-04-14 16:58:01,412 - bot.core - INFO - Global commands (/admin, /subscription) synced.
+2025-04-14 16:58:01,521 - bot.core - INFO - Guild commands synced to guild ID: 1328126227013439601
+2025-04-14 16:58:01,725 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 3f43223a744e0ffe32cb97c901ac0346).
+2025-04-14 16:58:03,734 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-14 16:58:03,734 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-14 16:58:03,734 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-14 16:58:03,734 - bot.core - INFO - Bot is ready and online.
+2025-04-14 16:58:05,632 - bot.services.game_service - INFO - No active leagues with pending bets found. Skipping API poll.
+2025-04-14 16:58:15,058 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-14 16:58:15,059 - aiohttp.access - INFO - 156.146.63.199 [14/Apr/2025:15:58:15 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-14 17:00:00,772 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-14 17:00:00,775 - bot.services.voice_service - INFO - Voice service update cycle finished.

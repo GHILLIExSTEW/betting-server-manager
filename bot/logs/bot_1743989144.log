@@ -1,0 +1,109 @@
+2025-04-06 18:25:44 [INFO] root: Logging configured successfully
+2025-04-06 18:25:44 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-06 18:25:44 [INFO] root: Logging configured successfully
+2025-04-06 18:25:44 [INFO] __main__: Starting bot initialization
+2025-04-06 18:25:44 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 18:25:44 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-06 18:25:44 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-06 18:25:44 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-06 18:25:44 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-06 18:25:45 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-06 18:25:45 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-06 18:25:45 [INFO] __main__: Database connected successfully
+2025-04-06 18:25:45 [DEBUG] __main__: Starting bot with Discord token (first 5 chars: MTM0M...)
+2025-04-06 18:25:45 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-06 18:25:45 [INFO] api.sports_api: Sports API client session started
+2025-04-06 18:25:45 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-06 18:25:45 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 18:25:46 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-06 18:25:46 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-06 18:25:46 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-06 18:25:46 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-06 18:25:46 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-06 18:25:46 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-06 18:25:46 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                 with params: None
+2025-04-06 18:25:46 [ERROR] data.db_manager: Database query fetch failed: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                 | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:25:46 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                
+2025-04-06 18:25:46 [ERROR] bot.services.game_service: Failed to fetch initial games: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                
+2025-04-06 18:25:46 [INFO] bot.services.voice_service: Voice service started
+2025-04-06 18:25:46 [CRITICAL] bot.core: CRITICAL ERROR during setup_hook: not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 56, in setup_hook
+    self.web_app, self.web_runner = await setup_server(self)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+2025-04-06 18:25:46 [INFO] bot.core: Closing bot...
+2025-04-06 18:25:46 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:25:46 [INFO] api.sports_api: Sports API client session closed
+2025-04-06 18:25:46 [INFO] bot.services.game_service: Game service stopped
+2025-04-06 18:25:46 [INFO] bot.services.voice_service: Voice service stopped
+2025-04-06 18:25:46 [INFO] bot.services.bet_service: Bet service stopped
+2025-04-06 18:25:46 [INFO] bot.data.db_manager: Database connection pool closed
+2025-04-06 18:25:46 [ERROR] __main__: Error during bot startup: 'Redis' object has no attribute 'closed'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 56, in setup_hook
+    self.web_app, self.web_runner = await setup_server(self)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/main.py", line 40, in main
+    await bot.start(DISCORD_TOKEN)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/client.py", line 777, in start
+    await self.login(token)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/client.py", line 621, in login
+    await self.setup_hook()
+  File "/home/container/bot/core.py", line 80, in setup_hook
+    await self.close()
+  File "/home/container/bot/core.py", line 198, in close
+    await self.cache_manager.close()
+  File "/home/container/bot/data/cache_manager.py", line 106, in close
+    if self._client and not self._client.closed:
+                            ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Redis' object has no attribute 'closed'. Did you mean: 'close'?
+2025-04-06 18:25:46 [INFO] bot.core: Closing bot...
+2025-04-06 18:25:46 [INFO] bot.services.game_service: Game service stopped
+2025-04-06 18:25:46 [INFO] bot.services.voice_service: Voice service stopped
+2025-04-06 18:25:46 [INFO] bot.services.bet_service: Bet service stopped
+2025-04-06 18:25:46 [ERROR] asyncio: Unclosed connector
+connections: ['[(<aiohttp.client_proto.ResponseHandler object at 0x7f434c21a0f0>, 7566346.712563135)]']
+connector: <aiohttp.connector.TCPConnector object at 0x7f434e738b60>

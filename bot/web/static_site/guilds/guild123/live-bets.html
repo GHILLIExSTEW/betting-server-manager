@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guild Live Bets - Betting Bot</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        color: #ecf0f1;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      nav {
+        background: #1c2526;
+        padding: 15px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #3498db;
+      }
+      h1 {
+        color: #ecf0f1;
+        text-align: center;
+        margin: 20px 0;
+        font-size: 2.5em;
+      }
+      .section {
+        background: #34495e;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: #3d566e;
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #4a6785;
+        text-align: left;
+        color: #ecf0f1;
+      }
+      th {
+        background: #3498db;
+        color: #ecf0f1;
+        font-weight: 500;
+      }
+      tr:hover {
+        background: #4a6785;
+      }
+      .chart-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        background: #3d566e;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        color: #3498db;
+        font-weight: 500;
+      }
+      .error {
+        color: #e74c3c;
+      }
+      img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 8px;
+        border-radius: 4px;
+      }
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        h1 {
+          font-size: 1.8em;
+        }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="/guilds/guild123/index.html">Home</a>
+      <a href="/guilds/guild123/admin.html">Admin</a>
+      <a href="/guilds/guild123/capper-stats.html">Capper Stats</a>
+      <a href="/guilds/guild123/place-bet.html">Place Bet</a>
+      <a href="/guilds/guild123/leaderboard.html">Leaderboard</a>
+      <a href="/guilds/guild123/live-bets.html">Live Bets</a>
+      <a href="/guilds/guild123/news.html">News</a>
+      <a href="/guilds/guild123/bet-history.html">Bet History</a>
+      <a href="/guilds/guild123/challenges.html">Challenges</a>
+    </nav>
+    <div class="container">
+      <h1 id="guild-name">Guild Live Bets</h1>
+      <div class="section">
+        <h2>Pending Bets</h2>
+        <div class="loading" id="loading">Loading live bets...</div>
+        <p id="error" class="error"></p>
+        <table id="bets-table">
+          <thead>
+            <tr>
+              <th>Serial</th>
+              <th>User</th>
+              <th>League</th>
+              <th>Bet Details</th>
+              <th>Units</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="chart-container">
+          <canvas id="betTypesChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <script>
+      const API_BASE_URL = 'https://api.betting-server-manager.us';
+      const guildId = "123"; // Replace dynamically
+      let betsData = [];
+
+      function showLoading(show) {
+        document.getElementById("loading").style.display = show
+          ? "block"
+          : "none";
+        document.getElementById("error").textContent = "";
+      }
+
+      async function fetchLiveBets() {
+        showLoading(true);
+        try {
+          const response = await fetch(
+            `${API_BASE_URL}/api/guilds/${guildId}/bets?status=pending`
+          );
+          if (!response.ok)
+            throw new Error(`Bets fetch failed: ${response.status}`);
+          betsData = await response.json();
+          renderBetsTable(betsData);
+          renderBetTypesChart(betsData);
+        } catch (error) {
+          console.error("Error fetching live bets:", error);
+          document.getElementById(
+            "error"
+          ).textContent = `Error: ${error.message}`;
+          document
+            .getElementById("bets-table")
+            .querySelector("tbody").innerHTML =
+            '<tr><td colspan="5">Error loading bets.</td></tr>';
+        } finally {
+          showLoading(false);
+        }
+      }
+
+      function renderBetsTable(bets) {
+        const tbody = document
+          .getElementById("bets-table")
+          .querySelector("tbody");
+        tbody.innerHTML = "";
+        bets.forEach((bet) => {
+          const row = tbody.insertRow();
+          let teamLogoHtml = bet.team_logo
+            ? `<img src="${bet.team_logo}" alt="${bet.team || ""} logo">`
+            : '<img src="/static/fallback.png" alt="No logo">';
+          let oppLogoHtml = bet.opponent_logo
+            ? `<img src="${bet.opponent_logo}" alt="${
+                bet.opponent || ""
+              } logo">`
+            : '<img src="/static/fallback.png" alt="No logo">';
+          let betDetails =
+            bet.bet_type === "prop"
+              ? `Player ${bet.player_id || "N/A"} (${bet.prop_type || ""}): ${
+                  bet.opponent || "N/A"
+                }`
+              : `${teamLogoHtml}${bet.team || "N/A"} vs ${oppLogoHtml}${
+                  bet.opponent || "N/A"
+                }`;
+          row.innerHTML = `
+                    <td>${bet.bet_serial || "N/A"}</td>
+                    <td>${bet.user_id || "N/A"}</td>
+                    <td>${bet.league || "N/A"}</td>
+                    <td>${betDetails}</td>
+                    <td>${bet.units || 0}</td>
+                `;
+        });
+      }
+
+      function renderBetTypesChart(bets) {
+        const types = { standard: 0, prop: 0 };
+        bets.forEach((bet) => {
+          types[bet.bet_type || "standard"]++;
+        });
+        const ctx = document.getElementById("betTypesChart").getContext("2d");
+        new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: ["Standard", "Prop"],
+            datasets: [
+              {
+                data: [types.standard, types.prop],
+                backgroundColor: ["#2ecc71", "#f1c40f"],
+                borderColor: "#1c2526",
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            animation: { duration: 1000, easing: "easeInOutQuad" },
+            plugins: {
+              legend: { position: "bottom", labels: { color: "#ecf0f1" } },
+              title: { display: true, text: "Bet Types", color: "#ecf0f1" },
+            },
+          },
+        });
+      }
+
+      fetchLiveBets();
+      setInterval(fetchLiveBets, 30000); // Auto-refresh every 30 seconds
+    </script>
+  </body>
+</html>

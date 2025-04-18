@@ -1,0 +1,146 @@
+2025-04-07 15:29:56 [INFO] root: Logging configured successfully
+2025-04-07 15:29:56 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-07 15:29:56 [INFO] __main__: Initializing database connection...
+2025-04-07 15:29:56 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-07 15:29:57 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-07 15:29:57 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-07 15:29:57 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-07 15:29:57 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-07 15:29:57 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-07 15:29:57 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-07 15:29:57 [INFO] __main__: Initializing cache connection...
+2025-04-07 15:29:57 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-07 15:29:57 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-07 15:29:57 [INFO] __main__: Starting database logo synchronization...
+2025-04-07 15:29:57 [INFO] bot.utils.image_utils: Starting logo synchronization from database...
+2025-04-07 15:29:57 [DEBUG] bot.data.db_manager: Fetching DB query: SELECT league, conference, team, image_logo FROM league_teams_logos with params: None
+2025-04-07 15:29:57 [ERROR] bot.data.db_manager: Database query fetch failed: SELECT league, conference, team, image_logo FROM league_teams_logos | Params: None | Error: (1054, "Unknown column 'image_logo' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'image_logo' in 'field list'")
+2025-04-07 15:29:57 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'image_logo' in 'field list'") | Query: SELECT league, conference, team, image_logo FROM league_teams_logos
+2025-04-07 15:29:57 [ERROR] bot.utils.image_utils: Error during logo synchronization: Query fetch failed: (1054, "Unknown column 'image_logo' in 'field list'") | Query: SELECT league, conference, team, image_logo FROM league_teams_logos
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'image_logo' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/utils/image_utils.py", line 49, in sync_logos_from_db
+    results = await db_manager.fetch(query)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 185, in fetch
+    raise DatabaseQueryError(message=f"Query fetch failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'image_logo' in 'field list'") | Query: SELECT league, conference, team, image_logo FROM league_teams_logos
+2025-04-07 15:29:57 [INFO] bot.data.db_manager: Database connection pool closed
+2025-04-07 15:29:57 [INFO] __main__: Database logo synchronization finished.
+2025-04-07 15:29:57 [INFO] __main__: Initializing BettingBot...
+2025-04-07 15:29:57 [INFO] __main__: Starting bot...
+2025-04-07 15:29:57 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-07 15:29:58 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-07 15:29:58 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-07 15:29:58 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-07 15:29:58 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-07 15:29:58 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-07 15:29:58 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-07 15:29:58 [DEBUG] bot.data.cache_manager: Redis connection already active.
+2025-04-07 15:29:58 [INFO] api.sports_api: Sports API client session started
+2025-04-07 15:29:58 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-07 15:29:58 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-07 15:29:58 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-07 15:29:58 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-07 15:29:58 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-07 15:29:58 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-07 15:29:58 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-07 15:29:58 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-07 15:29:58 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-07 15:29:58 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-07 15:29:58 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-07 15:29:58 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-07 15:29:58 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-07 15:29:58 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-07 15:29:58 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-07 15:29:58 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-07 15:29:58 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-07 15:29:58 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-07 15:29:58 [INFO] bot.services.game_service: Game service polling started.
+2025-04-07 15:29:58 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-07 15:29:58 [INFO] web.server: Web application setup complete.
+2025-04-07 15:29:58 [INFO] bot.core: Loading application commands...
+2025-04-07 15:29:58 [INFO] bot.core: Loaded command: add_capper
+2025-04-07 15:29:58 [INFO] bot.core: Loaded command: admin
+2025-04-07 15:29:58 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-07 15:29:58 [INFO] bot.core: Loaded command: help
+2025-04-07 15:29:59 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-07 15:29:59 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-07 15:29:59 [DEBUG] matplotlib: interactive is False
+2025-04-07 15:29:59 [DEBUG] matplotlib: platform is linux
+2025-04-07 15:29:59 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-07 15:29:59 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: leaderboard
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: load_url
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: profile
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: setid
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: show_cappers
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: stats
+2025-04-07 15:29:59 [INFO] bot.core: Loaded command: subscription
+2025-04-07 15:29:59 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-07 15:29:59 [INFO] bot.core: Application commands loaded.
+2025-04-07 15:29:59 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-07 15:30:00 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-07 15:30:02 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-07 15:30:02 [DEBUG] bot.services.voice_service: Voice service sleeping for 298.00 seconds until next 5-min mark.
+2025-04-07 15:30:02 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-07 15:30:02 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-07 15:30:02 [INFO] bot.core: Bot is ready and online.
+2025-04-07 15:30:04 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-07 15:30:04 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-07 15:30:04 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-07 15:30:04 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.

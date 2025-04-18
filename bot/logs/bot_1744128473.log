@@ -1,0 +1,206 @@
+2025-04-08 09:07:52 [INFO] root: Logging configured successfully
+2025-04-08 09:07:52 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-08 09:07:52 [INFO] __main__: Initializing database connection...
+2025-04-08 09:07:52 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-08 09:07:53 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-08 09:07:53 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-08 09:07:53 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-08 09:07:53 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-08 09:07:53 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-08 09:07:53 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-08 09:07:53 [INFO] __main__: Initializing cache connection...
+2025-04-08 09:07:53 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-08 09:07:53 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-08 09:07:53 [INFO] __main__: Starting database logo synchronization...
+2025-04-08 09:07:53 [INFO] bot.utils.image_utils.helpers: Starting logo synchronization from database...
+2025-04-08 09:07:53 [DEBUG] bot.data.db_manager: Fetching DB query: SELECT league, conference, team, logo_image FROM league_teams_logos with params: None
+2025-04-08 09:07:54 [DEBUG] bot.data.db_manager: Query fetch successful. Row count: 492
+2025-04-08 09:07:54 [INFO] bot.utils.image_utils.helpers: Fetched 492 logo records from database.
+2025-04-08 09:07:54 [ERROR] bot.utils.errors: DatabaseQueryError: Database query or processing failed during logo sync | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+2025-04-08 09:07:54 [INFO] bot.data.db_manager: Database connection pool closed
+2025-04-08 09:07:54 [DEBUG] bot.utils.image_utils.helpers: Database connection closed after logo synchronization.
+2025-04-08 09:07:54 [ERROR] __main__: ERROR during logo synchronization: Database query or processing failed during logo sync | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+Traceback (most recent call last):
+  File "/home/container/bot/utils/image_utils/logo_sync.py", line 43, in sync_logos_from_db
+    base_url = LOGO_BASE_URL if LOGO_BASE_URL.endswith('/') else LOGO_BASE_URL + "/"
+                                ^^^^^^^^^^^^^
+NameError: name 'LOGO_BASE_URL' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/main.py", line 34, in main
+    await sync_logos_from_db()
+  File "/home/container/bot/utils/image_utils/logo_sync.py", line 133, in sync_logos_from_db
+    raise DatabaseQueryError(
+bot.utils.errors.DatabaseQueryError: Database query or processing failed during logo sync | Query: SELECT league, conference, team, logo_image FROM league_teams_logos
+2025-04-08 09:07:54 [INFO] __main__: Initializing BettingBot...
+2025-04-08 09:07:54 [INFO] __main__: Starting bot...
+2025-04-08 09:07:54 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-08 09:07:55 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-08 09:07:55 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-08 09:07:55 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-08 09:07:55 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-08 09:07:55 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-08 09:07:55 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-08 09:07:55 [DEBUG] bot.data.cache_manager: Redis connection already active.
+2025-04-08 09:07:55 [INFO] api.sports_api: Sports API client session started
+2025-04-08 09:07:55 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-08 09:07:55 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-08 09:07:55 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-08 09:07:55 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-08 09:07:55 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-08 09:07:55 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-08 09:07:55 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-08 09:07:55 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-08 09:07:55 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-08 09:07:55 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-08 09:07:55 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:07:55 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-08 09:07:55 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-08 09:07:55 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-08 09:07:55 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-08 09:07:55 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-08 09:07:55 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-08 09:07:55 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-08 09:07:55 [INFO] bot.services.game_service: Game service polling started.
+2025-04-08 09:07:55 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-08 09:07:55 [INFO] web.server: Web application setup complete.
+2025-04-08 09:07:55 [INFO] bot.core: Loading application commands...
+2025-04-08 09:07:55 [INFO] bot.core: Loaded command: add_capper
+2025-04-08 09:07:55 [INFO] bot.core: Loaded command: admin
+2025-04-08 09:07:55 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-08 09:07:55 [INFO] bot.core: Loaded command: help
+2025-04-08 09:07:56 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-08 09:07:56 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-08 09:07:56 [DEBUG] matplotlib: interactive is False
+2025-04-08 09:07:56 [DEBUG] matplotlib: platform is linux
+2025-04-08 09:07:56 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-08 09:07:56 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-08 09:07:56 [INFO] bot.core: Loaded command: leaderboard
+2025-04-08 09:07:56 [INFO] bot.core: Loaded command: load_url
+2025-04-08 09:07:56 [INFO] bot.core: Loaded command: profile
+2025-04-08 09:07:56 [ERROR] bot.core: Failed load command setid: cannot import name 'fetch_image' from 'utils.image_utils' (/home/container/bot/utils/image_utils/__init__.py)
+2025-04-08 09:07:56 [INFO] bot.core: Loaded command: show_cappers
+2025-04-08 09:07:56 [INFO] bot.core: Loaded command: stats
+2025-04-08 09:07:56 [INFO] bot.core: Loaded command: subscription
+2025-04-08 09:07:56 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-08 09:07:56 [INFO] bot.core: Application commands loaded.
+2025-04-08 09:07:56 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-08 09:07:56 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-08 09:07:59 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-08 09:07:59 [DEBUG] bot.services.voice_service: Voice service sleeping for 121.00 seconds until next 5-min mark.
+2025-04-08 09:07:59 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-08 09:07:59 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-08 09:07:59 [INFO] bot.core: Bot is ready and online.
+2025-04-08 09:08:01 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-08 09:08:01 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-08 09:08:01 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:08:01 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-08 09:10:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-08 09:10:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-08 09:10:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-08 09:10:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-08 09:10:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-08 09:10:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-08 09:10:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-08 09:10:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-08 09:10:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: None
+2025-04-08 09:10:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 7, 16, 10, 0, 179303, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 10, 16, 10, 0, 179303, tzinfo=datetime.timezone.utc))
+2025-04-08 09:10:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:10:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-08 09:10:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-08 09:10:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.
+2025-04-08 09:13:01 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-08 09:13:01 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-08 09:13:01 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:13:01 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-08 09:15:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-08 09:15:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-08 09:15:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-08 09:15:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-08 09:15:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-08 09:15:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-08 09:15:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-08 09:15:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-08 09:15:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: None
+2025-04-08 09:15:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 7, 16, 15, 0, 231584, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 10, 16, 15, 0, 231584, tzinfo=datetime.timezone.utc))
+2025-04-08 09:15:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:15:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-08 09:15:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-08 09:15:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.
+2025-04-08 09:18:01 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-08 09:18:01 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-08 09:18:01 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:18:01 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-08 09:20:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-08 09:20:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-08 09:20:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-08 09:20:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-08 09:20:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-08 09:20:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-08 09:20:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-08 09:20:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-08 09:20:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: None
+2025-04-08 09:20:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 7, 16, 20, 0, 303795, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 10, 16, 20, 0, 303795, tzinfo=datetime.timezone.utc))
+2025-04-08 09:20:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-08 09:20:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-08 09:20:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-08 09:20:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.

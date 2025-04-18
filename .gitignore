@@ -1,0 +1,17 @@
+# Temporary files from previous attempt
+tmp/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Log files (you have a logs/ directory)
+logs/
+*.log
+
+# Environment variables file (if you use one like .env)
+.env
+
+# Add any other sensitive files or large directories like node_modules if applicable
+# node_modules/

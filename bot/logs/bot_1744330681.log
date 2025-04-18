@@ -1,0 +1,171 @@
+2025-04-11 00:18:01 [INFO] root: Logging configured successfully
+2025-04-11 00:18:01 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-11 00:18:01 [INFO] __main__: Initializing database connection...
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-11 00:18:01 [INFO] __main__: Initializing cache connection...
+2025-04-11 00:18:01 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-11 00:18:01 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-11 00:18:01 [INFO] __main__: Starting database logo synchronization...
+2025-04-11 00:18:01 [INFO] bot.utils.image_utils.helpers: Starting logo synchronization from database...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Fetching DB query: SELECT league, conference, team, logo_image FROM league_teams_logos with params: None
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:18:01 [INFO] bot.utils.image_utils.helpers: Fetched 0 logo records from database.
+2025-04-11 00:18:01 [WARNING] bot.utils.image_utils.helpers: No logo records found in database.
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Database connection pool closed
+2025-04-11 00:18:01 [DEBUG] bot.utils.image_utils.helpers: Database connection closed after logo synchronization.
+2025-04-11 00:18:01 [INFO] __main__: Database logo synchronization finished.
+2025-04-11 00:18:01 [INFO] __main__: Initializing BettingBot...
+2025-04-11 00:18:01 [INFO] __main__: Starting bot...
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-11 00:18:01 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-11 00:18:01 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-11 00:18:01 [DEBUG] bot.data.cache_manager: Redis connection already active.
+2025-04-11 00:18:01 [INFO] api.sports_api: Sports API client session started
+2025-04-11 00:18:01 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-11 00:18:01 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-11 00:18:01 [INFO] data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-11 00:18:01 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-11 00:18:01 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-11 00:18:01 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-11 00:18:01 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-11 00:18:01 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-11 00:18:01 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-11 00:18:01 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-11 00:18:01 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:18:01 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-11 00:18:01 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-11 00:18:01 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-11 00:18:02 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-11 00:18:02 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-11 00:18:02 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-11 00:18:02 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-11 00:18:02 [INFO] bot.services.game_service: Game service polling started.
+2025-04-11 00:18:02 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-11 00:18:02 [INFO] web.server: Web application setup complete.
+2025-04-11 00:18:02 [INFO] bot.core: Loading application commands...
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: add_capper
+2025-04-11 00:18:02 [ERROR] bot.core: Unexpected error loading command admin: expected an indented block after function definition on line 294 (admin_handler.py, line 295)
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 69, in load_commands
+    module = importlib.import_module(f".{cmd_name}", package=commands_dir)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/python/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/container/bot/commands/admin.py", line 6, in <module>
+    from bot.services.admin_handler import admin_settings_command_handler # <<< Ensure this line matches
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/services/admin_handler.py", line 295
+    """Adds standardized Save/Next and Cancel buttons for sequential flows."""
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndentationError: expected an indented block after function definition on line 294
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: help
+2025-04-11 00:18:02 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-11 00:18:02 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-11 00:18:02 [DEBUG] matplotlib: interactive is False
+2025-04-11 00:18:02 [DEBUG] matplotlib: platform is linux
+2025-04-11 00:18:02 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-11 00:18:02 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: leaderboard
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: load_url
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: profile
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: setid
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: show_cappers
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: stats
+2025-04-11 00:18:02 [INFO] bot.core: Loaded command: subscription
+2025-04-11 00:18:02 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-11 00:18:02 [INFO] bot.core: Application commands loaded.
+2025-04-11 00:18:02 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-11 00:18:03 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-11 00:18:06 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-11 00:18:06 [DEBUG] bot.services.voice_service: Voice service sleeping for 114.00 seconds until next 5-min mark.
+2025-04-11 00:18:06 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-11 00:18:06 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-11 00:18:06 [INFO] bot.core: Bot is ready and online.
+2025-04-11 00:18:06 [ERROR] discord.app_commands.tree: Ignoring exception in command tree
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1089, in wrapper
+    await self._call(interaction)
+  File "/home/container/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1221, in _call
+    command, options = self._get_app_command_options(data)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1125, in _get_app_command_options
+    raise CommandNotFound(name, parents)
+discord.app_commands.errors.CommandNotFound: Application command 'adminsetup' not found
+2025-04-11 00:18:07 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-11 00:18:07 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-11 00:18:07 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:18:07 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-11 00:20:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-11 00:20:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-11 00:20:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-11 00:20:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-11 00:20:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: No
+2025-04-11 00:20:00 [DEBUG] bot.services.voice_service: No Total Units channel set for guild 1328126227013439601
+2025-04-11 00:20:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 10, 0, 20, 0, 143655, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 13, 0, 20, 0, 143655, tzinfo=datetime.timezone.utc))
+2025-04-11 00:20:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:20:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-11 00:20:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-11 00:20:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.
+2025-04-11 00:23:07 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-11 00:23:07 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-11 00:23:07 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:23:07 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-11 00:25:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-11 00:25:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-11 00:25:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-11 00:25:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-11 00:25:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: No
+2025-04-11 00:25:00 [DEBUG] bot.services.voice_service: No Total Units channel set for guild 1328126227013439601
+2025-04-11 00:25:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 10, 0, 25, 0, 149101, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 13, 0, 25, 0, 149101, tzinfo=datetime.timezone.utc))
+2025-04-11 00:25:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:25:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-11 00:25:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-11 00:25:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.

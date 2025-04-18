@@ -1,0 +1,936 @@
+2025-04-07 16:33:50 [INFO] root: Logging configured successfully
+2025-04-07 16:33:50 [INFO] root: Logging configured successfully
+2025-04-07 16:33:50 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-07 16:33:50 [INFO] __main__: Initializing database connection...
+2025-04-07 16:33:50 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-07 16:33:51 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-07 16:33:51 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-07 16:33:51 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-07 16:33:51 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-07 16:33:51 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-07 16:33:51 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-07 16:33:51 [INFO] __main__: Initializing cache connection...
+2025-04-07 16:33:51 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-07 16:33:51 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-07 16:33:51 [INFO] __main__: Starting database logo synchronization...
+2025-04-07 16:33:51 [INFO] bot.utils.image_utils: Starting logo synchronization from database...
+2025-04-07 16:33:51 [DEBUG] bot.data.db_manager: Fetching DB query: SELECT league, conference, team, logo_image FROM league_teams_logos with params: None
+2025-04-07 16:33:51 [DEBUG] bot.data.db_manager: Query fetch successful. Row count: 492
+2025-04-07 16:33:51 [INFO] bot.utils.image_utils: Fetched 492 logo records from database.
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Processing 21 logos for DB league 'epl' (standard: 'epl')
+2025-04-07 16:33:51 [WARNING] bot.utils.image_utils: Skipping invalid record epl: Team='', Blob valid=True, Row={'league': 'epl', 'conference': '', 'team': '', 'logo_image': '<BLOB>'}
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: afc bournemouth -> afc bournemouth for league epl
+2025-04-07 16:33:51 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:afc bournemouth
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: afc bournemouth -> AFC
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Abbreviated 'afc bournemouth' to 'AFC' for 'epl'
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/AFC.png
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: arsenal fc -> arsenal fc for league epl
+2025-04-07 16:33:51 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:arsenal fc
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: arsenal fc -> ARS
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Abbreviated 'arsenal fc' to 'ARS' for 'epl'
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/ARS.png
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: aston villa fc -> aston villa fc for league epl
+2025-04-07 16:33:51 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:aston villa fc
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: aston villa fc -> AST
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Abbreviated 'aston villa fc' to 'AST' for 'epl'
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 24643
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 24643
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/AST.png
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: brentford fc -> brentford fc for league epl
+2025-04-07 16:33:51 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:brentford fc
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: brentford fc -> BRE
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Abbreviated 'brentford fc' to 'BRE' for 'epl'
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/BRE.png
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: brighton & hove albion -> brighton  hove albion for league epl
+2025-04-07 16:33:51 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:brighton  hove albion
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: brighton & hove albion -> BRI
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Abbreviated 'brighton & hove albion' to 'BRI' for 'epl'
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/BRI.png
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: chelsea fc -> chelsea fc for league epl
+2025-04-07 16:33:51 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:chelsea fc
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: chelsea fc -> CHE
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Abbreviated 'chelsea fc' to 'CHE' for 'epl'
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:51 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:51 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/CHE.png
+2025-04-07 16:33:51 [DEBUG] bot.data.league.league_team_handler: Normalized team name: crystal palace fc -> crystal palace fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:crystal palace fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: crystal palace fc -> CRY
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'crystal palace fc' to 'CRY' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/CRY.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: everton fc -> everton fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:everton fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: everton fc -> EVE
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'everton fc' to 'EVE' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/EVE.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: fulham fc -> fulham fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:fulham fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: fulham fc -> FUL
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'fulham fc' to 'FUL' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 16948
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 16948
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/FUL.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: ipswich town fc -> ipswich town fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:ipswich town fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: ipswich town fc -> IPS
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'ipswich town fc' to 'IPS' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/IPS.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: leicester city fc -> leicester city fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:leicester city fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: leicester city fc -> LEI
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'leicester city fc' to 'LEI' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/LEI.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: liverpool fc -> liverpool fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:liverpool fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: liverpool fc -> LIV
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'liverpool fc' to 'LIV' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/LIV.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: manchester city fc -> manchester city fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:manchester city fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: manchester city fc -> MAN
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'manchester city fc' to 'MAN' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/MAN.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: manchester united fc -> manchester united fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:manchester united fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: manchester united fc -> MAN
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'manchester united fc' to 'MAN' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/MAN.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: newcastle united -> newcastle united for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:newcastle united
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: newcastle united -> NEW
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'newcastle united' to 'NEW' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/NEW.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: nottingham forest fc -> nottingham forest fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:nottingham forest fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: nottingham forest fc -> NOT
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'nottingham forest fc' to 'NOT' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 26096
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 26096
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/NOT.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: southampton fc -> southampton fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:southampton fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: southampton fc -> SOU
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'southampton fc' to 'SOU' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/SOU.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: tottenham hotspur -> tottenham hotspur for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:tottenham hotspur
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: tottenham hotspur -> TOT
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'tottenham hotspur' to 'TOT' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 31293
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 31293
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/TOT.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: west ham united fc -> west ham united fc for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:west ham united fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: west ham united fc -> WES
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'west ham united fc' to 'WES' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 31686
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 31686
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/WES.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: wolverhampton wanderers -> wolverhampton wanderers for league epl
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:epl:wolverhampton wanderers
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: wolverhampton wanderers -> WOL
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'wolverhampton wanderers' to 'WOL' for 'epl'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 21327
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 21327
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/epl/WOL.png
+2025-04-07 16:33:52 [INFO] bot.utils.image_utils: Wrote 20 entries to /home/container/bot/static/logos/epl_logos.csv
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Processing 22 logos for DB league 'la liga' (standard: 'laliga')
+2025-04-07 16:33:52 [WARNING] bot.utils.image_utils: Skipping invalid record laliga: Team='', Blob valid=True, Row={'league': 'la liga', 'conference': '', 'team': '', 'logo_image': '<BLOB>'}
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: athletic bilbao -> athletic bilbao for league laliga
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:athletic bilbao
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: athletic bilbao -> ATH
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'athletic bilbao' to 'ATH' for 'laliga'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'PLTE' 114 663
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tRNS' 789 61
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 862 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: b'bKGD' 862 1 (unknown)
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 875 9
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 896 5232
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'PLTE' 114 663
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tRNS' 789 61
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 862 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: b'bKGD' 862 1 (unknown)
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 875 9
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 896 5232
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 6140 37
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 6189 37
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 6238 25
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/ATH.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: atletico madrid -> atletico madrid for league laliga
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:atletico madrid
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: atletico madrid -> ATL
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'atletico madrid' to 'ATL' for 'laliga'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 4821
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 4821
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 4986 37
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5035 37
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5084 25
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/ATL.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: barcelona fc -> barcelona fc for league laliga
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:barcelona fc
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: barcelona fc -> BAR
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'barcelona fc' to 'BAR' for 'laliga'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 8128
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 8128
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/BAR.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: celta de vigo -> celta de vigo for league laliga
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:celta de vigo
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: celta de vigo -> CEL
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'celta de vigo' to 'CEL' for 'laliga'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 5080
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 5080
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5245 37
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5294 37
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5343 25
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/CEL.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: deportivo de la coruna -> deportivo de la coruna for league laliga
+2025-04-07 16:33:52 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:deportivo de la coruna
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: deportivo de la coruna -> DEP
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Abbreviated 'deportivo de la coruna' to 'DEP' for 'laliga'
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 16447
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:52 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 16447
+2025-04-07 16:33:52 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/DEP.png
+2025-04-07 16:33:52 [DEBUG] bot.data.league.league_team_handler: Normalized team name: getafe -> getafe for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:getafe
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: getafe -> GET
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'getafe' to 'GET' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 10425
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 10425
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/GET.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: granada -> granada for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:granada
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: granada -> GRA
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'granada' to 'GRA' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing BlpImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing BmpImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing BufrStubImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing CurImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing DcxImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing DdsImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing EpsImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing FitsImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing FliImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing FpxImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Image: failed to import FpxImagePlugin: No module named 'olefile'
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing FtexImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing GbrImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing GifImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing GribStubImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing Hdf5StubImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing IcnsImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing IcoImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing ImImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing ImtImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing IptcImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing JpegImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing Jpeg2KImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing McIdasImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing MicImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Image: failed to import MicImagePlugin: No module named 'olefile'
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing MpegImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing MpoImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing MspImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PalmImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PcdImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PcxImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PdfImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PixarImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PngImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PpmImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing PsdImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing QoiImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing SgiImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing SpiderImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing SunImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing TgaImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing TiffImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing WebPImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing WmfImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing XbmImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing XpmImagePlugin
+2025-04-07 16:33:53 [DEBUG] PIL.Image: Importing XVThumbImagePlugin
+2025-04-07 16:33:53 [ERROR] bot.utils.image_utils: Failed to identify image format for granada (laliga). BLOB size: 59038 bytes
+Traceback (most recent call last):
+  File "/home/container/bot/utils/image_utils.py", line 109, in sync_logos_from_db
+    with Image.open(io.BytesIO(logo_blob)) as img:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/PIL/Image.py", line 3339, in open
+    raise UnidentifiedImageError(msg)
+PIL.UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x7f1ee6c6c4f0>
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: levante -> levante for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:levante
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: levante -> LEV
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'levante' to 'LEV' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 57 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 101 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 101 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tIME' 119 7
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'tIME' 119 7 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 138 32768
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 57 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 101 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 101 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tIME' 119 7
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'tIME' 119 7 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 138 32768
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 170132 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 170181 37
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/LEV.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: malaga -> malaga for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:malaga
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: malaga -> MAL
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'malaga' to 'MAL' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 9181
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 9181
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/MAL.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: mallorca -> mallorca for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:mallorca
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: mallorca -> MAL
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'mallorca' to 'MAL' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 15400
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 15400
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 15565 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 15614 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 15663 25
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/MAL.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: osasuna -> osasuna for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:osasuna
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: osasuna -> OSA
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'osasuna' to 'OSA' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 57 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 101 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 101 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tIME' 119 7
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'tIME' 119 7 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 138 32768
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 57 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 101 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 101 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tIME' 119 7
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'tIME' 119 7 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 138 32768
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 157400 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 157449 37
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/OSA.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: racing de santander -> racing de santander for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:racing de santander
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: racing de santander -> RAC
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'racing de santander' to 'RAC' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 14323
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 14323
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 14488 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 14537 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 14586 25
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/RAC.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: rayo vallecano -> rayo vallecano for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:rayo vallecano
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: rayo vallecano -> RAY
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'rayo vallecano' to 'RAY' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 9765
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 9765
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 9930 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 9979 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 10028 25
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/RAY.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: real madrid -> real madrid for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:real madrid
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: real madrid -> REA
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'real madrid' to 'REA' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 13739
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 13739
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13904 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13953 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 14002 25
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/REA.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: real sociedad -> real sociedad for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:real sociedad
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: real sociedad -> REA
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'real sociedad' to 'REA' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 13370
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 13370
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13535 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13584 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13633 25
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/REA.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: real valladolid -> real valladolid for league laliga
+2025-04-07 16:33:53 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:real valladolid
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: real valladolid -> REA
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Abbreviated 'real valladolid' to 'REA' for 'laliga'
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 17974
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 17974
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 18139 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 18188 37
+2025-04-07 16:33:53 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 18237 25
+2025-04-07 16:33:53 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/REA.png
+2025-04-07 16:33:53 [DEBUG] bot.data.league.league_team_handler: Normalized team name: real zaragoza -> real zaragoza for league laliga
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:real zaragoza
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: real zaragoza -> REA
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'real zaragoza' to 'REA' for 'laliga'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 13583
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 13583
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/REA.png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: sevilla fc -> sevilla fc for league laliga
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:sevilla fc
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: sevilla fc -> SEV
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'sevilla fc' to 'SEV' for 'laliga'
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/SEV.png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: sporting de gijon -> sporting de gijon for league laliga
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:sporting de gijon
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: sporting de gijon -> SPO
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'sporting de gijon' to 'SPO' for 'laliga'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 4945
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 4945
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5110 37
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5159 37
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 5208 25
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/SPO.png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: valencia -> valencia for league laliga
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:valencia
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: valencia -> VAL
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'valencia' to 'VAL' for 'laliga'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 12864
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'cHRM' 70 32
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'bKGD' 114 6
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: b'bKGD' 114 6 (unknown)
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'pHYs' 132 9
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 153 12864
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13029 37
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13078 37
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 13127 25
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/VAL.png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: villarreal cf -> villarreal cf for league laliga
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:laliga:villarreal cf
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: villarreal cf -> VIL
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'villarreal cf' to 'VIL' for 'laliga'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'PLTE' 41 69
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 122 8192
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'PLTE' 41 69
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 122 8192
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/laliga/VIL.png
+2025-04-07 16:33:54 [INFO] bot.utils.image_utils: Wrote 20 entries to /home/container/bot/static/logos/laliga_logos.csv
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Processing 8 logos for DB league 'ligue 1' (standard: 'ligue1')
+2025-04-07 16:33:54 [WARNING] bot.utils.image_utils: Skipping invalid record ligue1: Team='', Blob valid=True, Row={'league': 'ligue 1', 'conference': '', 'team': '', 'logo_image': '<BLOB>'}
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: aj auxerre -> aj auxerre for league ligue1
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:aj auxerre
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: aj auxerre -> AJ 
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'aj auxerre' to 'AJ ' for 'ligue1'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 43466
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 43466
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/AJ .png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: angers sco -> angers sco for league ligue1
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:angers sco
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: angers sco -> ANG
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'angers sco' to 'ANG' for 'ligue1'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 47287
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 47287
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/ANG.png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: clermont foot -> clermont foot for league ligue1
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:clermont foot
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: clermont foot -> CLE
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'clermont foot' to 'CLE' for 'ligue1'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 53632
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 53632
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/CLE.png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: es troyes ac -> es troyes ac for league ligue1
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:es troyes ac
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: es troyes ac -> ES 
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'es troyes ac' to 'ES ' for 'ligue1'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 18361
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 18361
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/ES .png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: rc strasbourg alsace -> rc strasbourg alsace for league ligue1
+2025-04-07 16:33:54 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:rc strasbourg alsace
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: rc strasbourg alsace -> RC 
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Abbreviated 'rc strasbourg alsace' to 'RC ' for 'ligue1'
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 102642
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:54 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 102642
+2025-04-07 16:33:54 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/RC .png
+2025-04-07 16:33:54 [DEBUG] bot.data.league.league_team_handler: Normalized team name: stade brestois 29 -> stade brestois 29 for league ligue1
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:stade brestois 29
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: stade brestois 29 -> STA
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'stade brestois 29' to 'STA' for 'ligue1'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 117735
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 117735
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/STA.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: stade rennais fc -> stade rennais fc for league ligue1
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:ligue1:stade rennais fc
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: stade rennais fc -> STA
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'stade rennais fc' to 'STA' for 'ligue1'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 57608
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'tEXt' 41 25
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 78 57608
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/ligue1/STA.png
+2025-04-07 16:33:55 [INFO] bot.utils.image_utils: Wrote 7 entries to /home/container/bot/static/logos/ligue1_logos.csv
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Processing 32 logos for DB league 'mlb' (standard: 'mlb')
+2025-04-07 16:33:55 [WARNING] bot.utils.image_utils: Skipping invalid record mlb: Team='', Blob valid=True, Row={'league': 'mlb', 'conference': '', 'team': '', 'logo_image': '<BLOB>'}
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: anaheim angels -> anaheim angels for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:anaheim angels
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: anaheim angels -> ana
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'anaheim angels' to 'ana' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'PLTE' 70 42
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'tRNS' 124 5
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 141 8192
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'gAMA' 41 4
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'sRGB' 57 1
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'PLTE' 70 42
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'tRNS' 124 5
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 141 8192
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/ana.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: arizona diamondbacks -> arizona diamondbacks for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:arizona diamondbacks
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: arizona diamondbacks -> ari
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'arizona diamondbacks' to 'ari' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/ari.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: atlanta braves -> atlanta braves for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:atlanta braves
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: atlanta braves -> atl
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'atlanta braves' to 'atl' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/atl.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: baltimore orioles -> baltimore orioles for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:baltimore orioles
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: baltimore orioles -> bal
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'baltimore orioles' to 'bal' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/bal.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: boston red sox -> boston red sox for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:boston red sox
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: boston red sox -> bos
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'boston red sox' to 'bos' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 30488
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 30488
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/bos.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: chicago cubs -> chicago cubs for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:chicago cubs
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: chicago cubs -> chc
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'chicago cubs' to 'chc' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/chc.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: chicago white sox -> chicago white sox for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:chicago white sox
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: chicago white sox -> cws
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'chicago white sox' to 'cws' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/cws.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: cincinnati reds -> cincinnati reds for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:cincinnati reds
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: cincinnati reds -> cin
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'cincinnati reds' to 'cin' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/cin.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: cleveland guardians -> cleveland guardians for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:cleveland guardians
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: cleveland guardians -> cle
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'cleveland guardians' to 'cle' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/cle.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: colorado rockies -> colorado rockies for league mlb
+2025-04-07 16:33:55 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:colorado rockies
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: colorado rockies -> col
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Abbreviated 'colorado rockies' to 'col' for 'mlb'
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 28812
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:55 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 28812
+2025-04-07 16:33:55 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/col.png
+2025-04-07 16:33:55 [DEBUG] bot.data.league.league_team_handler: Normalized team name: detroit tigers -> detroit tigers for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:detroit tigers
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: detroit tigers -> det
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'detroit tigers' to 'det' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 13947
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 13947
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/det.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: houston astros -> houston astros for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:houston astros
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: houston astros -> hou
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'houston astros' to 'hou' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/hou.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: kansas city royals -> kansas city royals for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:kansas city royals
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: kansas city royals -> kc
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'kansas city royals' to 'kc' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 19573
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 19573
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/kc.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: los angeles angels -> los angeles angels for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:los angeles angels
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: los angeles angels -> LOS
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'los angeles angels' to 'LOS' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 29667
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 29667
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/LOS.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: los angeles dodgers -> los angeles dodgers for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:los angeles dodgers
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: los angeles dodgers -> lad
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'los angeles dodgers' to 'lad' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/lad.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: miami marlins -> miami marlins for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:miami marlins
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: miami marlins -> mia
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'miami marlins' to 'mia' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/mia.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: milwaukee brewers -> milwaukee brewers for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:milwaukee brewers
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: milwaukee brewers -> mil
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'milwaukee brewers' to 'mil' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/mil.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: minnesota twins -> minnesota twins for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:minnesota twins
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: minnesota twins -> min
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'minnesota twins' to 'min' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/min.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: new york mets -> new york mets for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:new york mets
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: new york mets -> nym
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'new york mets' to 'nym' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/nym.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: new york yankees -> new york yankees for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:new york yankees
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: new york yankees -> nyy
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'new york yankees' to 'nyy' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/nyy.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: oakland athletics -> oakland athletics for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:oakland athletics
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: oakland athletics -> oak
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'oakland athletics' to 'oak' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/oak.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: philadelphia phillies -> philadelphia phillies for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:philadelphia phillies
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: philadelphia phillies -> phi
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'philadelphia phillies' to 'phi' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 32768
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Saved logo to /home/container/bot/static/logos/mlb/phi.png
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Normalized team name: pittsburgh pirates -> pittsburgh pirates for league mlb
+2025-04-07 16:33:56 [DEBUG] bot.data.cache_manager: Cache hit: team_abbr:mlb:pittsburgh pirates
+2025-04-07 16:33:56 [DEBUG] bot.data.league.league_team_handler: Cache hit (string) for team abbreviation: pittsburgh pirates -> pit
+2025-04-07 16:33:56 [DEBUG] bot.utils.image_utils: Abbreviated 'pittsburgh pirates' to 'pit' for 'mlb'
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 7018
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IHDR' 16 13
+2025-04-07 16:33:56 [DEBUG] PIL.PngImagePlugin: STREAM b'IDAT' 41 7018

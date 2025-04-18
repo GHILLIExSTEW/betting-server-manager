@@ -1,0 +1,4 @@
+2025-04-06 18:20:21 [INFO] root: Logging configured successfully
+2025-04-06 18:20:21 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-06 18:20:21 [INFO] root: Logging configured successfully
+2025-04-06 18:20:21 [INFO] __main__: Starting bot initialization

@@ -1,0 +1,197 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: discord.py==2.3.2 in ./.local/lib/python3.12/site-packages (2.3.2)
+Requirement already satisfied: aiohttp<4,>=3.7.4 in ./.local/lib/python3.12/site-packages (from discord.py==2.3.2) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp==3.9.5 in ./.local/lib/python3.12/site-packages (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiomysql==0.2.0 in ./.local/lib/python3.12/site-packages (0.2.0)
+Requirement already satisfied: PyMySQL>=1.0 in ./.local/lib/python3.12/site-packages (from aiomysql==0.2.0) (1.1.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: redis==5.0.4 in ./.local/lib/python3.12/site-packages (5.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: cryptography==42.0.5 in ./.local/lib/python3.12/site-packages (42.0.5)
+Requirement already satisfied: cffi>=1.12 in ./.local/lib/python3.12/site-packages (from cryptography==42.0.5) (1.17.1)
+Requirement already satisfied: pycparser in ./.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography==42.0.5) (2.22)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp-session==2.12.0 in ./.local/lib/python3.12/site-packages (2.12.0)
+Requirement already satisfied: aiohttp>=3.8 in ./.local/lib/python3.12/site-packages (from aiohttp-session==2.12.0) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: python-dotenv==1.0.1 in ./.local/lib/python3.12/site-packages (1.0.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: Pillow==10.3.0 in ./.local/lib/python3.12/site-packages (10.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: PyTZ==2024.1 in ./.local/lib/python3.12/site-packages (2024.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: typing_extensions==4.11.0 in ./.local/lib/python3.12/site-packages (4.11.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jsonpickle==3.0.4 in ./.local/lib/python3.12/site-packages (3.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: regex==2024.5.15 in ./.local/lib/python3.12/site-packages (2024.5.15)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas==2.2.2 in ./.local/lib/python3.12/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.2.4)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas==2.2.2) (1.17.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-16 14:52:01,349 - __main__ - INFO - Starting main execution block (__name__ == '__main__')
+2025-04-16 14:52:01,350 - __main__ - INFO - --- Entered main() ---
+2025-04-16 14:52:01,350 - __main__ - INFO - Initializing BettingBot class...
+2025-04-16 14:52:01,350 - bot.core - INFO - --- BettingBot __init__ START ---
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing DB Manager instance...
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing Cache Manager instance...
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing Command Tree...
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing Game Service...
+2025-04-16 14:52:01,350 - bot.services.game_service - INFO - GameService initialized.
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing Voice Service...
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing Bet Service...
+2025-04-16 14:52:01,350 - bot.services.bet_service - INFO - BetService initialized.
+2025-04-16 14:52:01,350 - bot.core - INFO - Initializing Web App variable...
+2025-04-16 14:52:01,350 - bot.core - INFO - --- BettingBot __init__ END ---
+2025-04-16 14:52:01,350 - __main__ - INFO - BettingBot instance created.
+2025-04-16 14:52:01,350 - __main__ - INFO - Attempting to start bot...
+2025-04-16 14:52:01,351 - discord.client - INFO - logging in using static token
+2025-04-16 14:52:01,688 - bot.core - INFO - --- Running setup_hook ---
+2025-04-16 14:52:01,689 - bot.core - INFO - STEP: Connecting to Database...
+2025-04-16 14:52:01,689 - bot.data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-16 14:52:01,700 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-16 14:52:01,702 - bot.data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-16 14:52:01,702 - bot.core - INFO - STEP COMPLETE: Database connected.
+2025-04-16 14:52:01,702 - bot.core - INFO - STEP: Connecting to Cache...
+2025-04-16 14:52:01,702 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-16 14:52:01,829 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-16 14:52:01,829 - bot.core - INFO - STEP COMPLETE: Cache connected.
+2025-04-16 14:52:01,829 - bot.core - INFO - STEP: Starting Game Service...
+2025-04-16 14:52:01,829 - api.sports_api - INFO - Sports API client session started
+2025-04-16 14:52:01,829 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-16 14:52:01,860 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-16 14:52:01,860 - bot.services.game_service - INFO - Game service polling started.
+2025-04-16 14:52:01,860 - bot.core - INFO - STEP COMPLETE: Game Service started.
+2025-04-16 14:52:01,860 - bot.core - INFO - STEP: Starting Voice Service...
+2025-04-16 14:52:01,860 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-16 14:52:01,860 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-16 14:52:01,860 - bot.services.voice_service - INFO - Voice service started.
+2025-04-16 14:52:01,860 - bot.core - INFO - STEP COMPLETE: Voice Service started.
+2025-04-16 14:52:01,860 - bot.core - INFO - STEP: Starting Bet Service (includes scheduler)...
+2025-04-16 14:52:01,861 - bot.services.bet_service - INFO - Bet service starting.
+2025-04-16 14:52:01,861 - bot.services.bet_service - INFO - Setting up APScheduler jobs for tallying.
+2025-04-16 14:52:01,881 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-16 14:52:01,881 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-16 14:52:01,882 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-16 14:52:01,882 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-16 14:52:01,882 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 14:52:01,882 - bot.services.bet_service - INFO - APScheduler started successfully.
+2025-04-16 14:52:01,882 - bot.services.bet_service - INFO - Bet service started.
+2025-04-16 14:52:01,882 - bot.core - INFO - STEP COMPLETE: Bet Service started.
+2025-04-16 14:52:01,882 - bot.core - INFO - STEP: Running startup reconciliation checks...
+2025-04-16 14:52:01,882 - bot.tasks.startup_checks - INFO - Running startup checks (Logic Update 2025-04-15 v3 - FINAL)...
+2025-04-16 14:52:01,882 - bot.tasks.startup_checks - INFO - Checking for pending bets (0/0) missing unit records (will insert units=0, total=0)...
+2025-04-16 14:52:01,883 - bot.tasks.startup_checks - INFO - No pending bets (0/0) found missing unit records.
+2025-04-16 14:52:02,019 - bot.tasks.startup_checks - INFO - Fetched guild 1328116926903353398 via API for bet 202504160544592
+2025-04-16 14:52:02,121 - bot.tasks.startup_checks - INFO - Fetched channel 1328130555568455710 for bet 202504160544592
+2025-04-16 14:52:02,276 - bot.tasks.startup_checks - INFO - Loaded 1 pending bets into memory. Created 0 missing placeholder unit records. Resolved 0 bets by reaction. Skipped 0 bets.
+2025-04-16 14:52:02,276 - bot.tasks.startup_checks - INFO - Reconciling 'units' column for ALL resolved bets (Create if Missing, Update if Exists AND units=0)...
+2025-04-16 14:52:02,277 - bot.tasks.startup_checks - INFO - Found 13 resolved bets to check/reconcile.
+2025-04-16 14:52:02,285 - bot.tasks.startup_checks - INFO - Checked resolved unit records. Updated 0 entries where units were 0. Created 0 missing records for resolved bets.
+2025-04-16 14:52:02,285 - bot.tasks.startup_checks - INFO - Startup checks completed.
+2025-04-16 14:52:02,285 - bot.core - INFO - STEP COMPLETE: Startup reconciliation checks finished.
+2025-04-16 14:52:02,285 - bot.core - INFO - STEP: Setting up web server...
+2025-04-16 14:52:02,285 - web.server - INFO - Web application setup complete.
+2025-04-16 14:52:02,285 - bot.core - INFO - STEP COMPLETE: Web server setup.
+2025-04-16 14:52:02,285 - bot.core - INFO - STEP: Starting web server task...
+2025-04-16 14:52:02,285 - bot.core - INFO - STEP COMPLETE: Web server task created/started.
+2025-04-16 14:52:02,286 - bot.core - INFO - STEP: Loading command definitions...
+2025-04-16 14:52:02,286 - bot.core - INFO - --- Starting Command Loading ---
+2025-04-16 14:52:02,286 - bot.core - INFO - Loading GLOBAL commands...
+2025-04-16 14:52:02,287 - bot.core - INFO - Loaded and set up GLOBAL command module: admin
+2025-04-16 14:52:02,288 - bot.core - INFO - Loaded and set up GLOBAL command module: subscription
+2025-04-16 14:52:02,288 - bot.core - INFO - Loaded and set up GLOBAL command module: help
+2025-04-16 14:52:02,288 - bot.core - INFO - Loading GUILD command modules (storing setup functions)...
+2025-04-16 14:52:02,703 - bot.core - INFO - Loaded GUILD command module: leaderboard (setup stored)
+2025-04-16 14:52:02,704 - bot.core - INFO - Loaded GUILD command module: show_cappers (setup stored)
+2025-04-16 14:52:02,705 - bot.core - INFO - Loaded GUILD command module: profile (setup stored)
+2025-04-16 14:52:02,706 - bot.core - INFO - Loaded GUILD command module: stats (setup stored)
+2025-04-16 14:52:02,707 - bot.core - INFO - Loaded GUILD command module: load_url (setup stored)
+2025-04-16 14:52:02,708 - bot.core - INFO - Loaded GUILD command module: load_logos (setup stored)
+2025-04-16 14:52:02,708 - bot.core - INFO - Loaded GUILD command module: add_capper (setup stored)
+2025-04-16 14:52:02,712 - bot.core - INFO - Loaded GUILD command module: setid (setup stored)
+2025-04-16 14:52:02,712 - bot.core - INFO - Command loading process finished.
+2025-04-16 14:52:02,712 - bot.core - INFO - Stored setup functions for GUILD commands: ['leaderboard', 'show_cappers', 'profile', 'stats', 'load_url', 'load_logos', 'add_capper', 'setid']
+2025-04-16 14:52:02,712 - bot.core - INFO - STEP COMPLETE: Command definitions loaded.
+2025-04-16 14:52:02,712 - bot.core - INFO - STEP: Syncing GLOBAL commands...
+2025-04-16 14:52:02,713 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-16 14:52:02,864 - bot.core - INFO - STEP COMPLETE: Global commands synced: ['admin', 'subscription', 'help']
+2025-04-16 14:52:02,864 - bot.core - INFO - STEP: Fetching configured guilds for command registration...
+2025-04-16 14:52:02,865 - bot.core - INFO - Found 1 guilds marked as configured.
+2025-04-16 14:52:02,865 - bot.core - INFO - STEP: Registering guild commands for configured guilds...
+2025-04-16 14:52:02,865 - bot.core - INFO - --- Registering GUILD commands for Guild ID: 1328116926903353398 ---
+2025-04-16 14:52:02,865 - bot.commands.load_logos - INFO - Registering /load_logos command globally.
+2025-04-16 14:52:02,865 - bot.commands.setid - INFO - Registered /setid command guild 1328116926903353398.
+2025-04-16 14:52:02,865 - bot.core - INFO - Attempting to sync commands for guild 1328116926903353398...
+2025-04-16 14:52:02,965 - bot.core - INFO - Successfully synced commands for guild 1328116926903353398. Synced: ['setid']
+2025-04-16 14:52:02,965 - bot.core - INFO - --- Finished registering GUILD commands for Guild ID: 1328116926903353398 ---
+2025-04-16 14:52:02,965 - bot.core - INFO - STEP COMPLETE: Finished attempting registration for configured guilds.
+2025-04-16 14:52:02,965 - bot.core - INFO - END: setup_hook completed successfully.
+2025-04-16 14:52:03,208 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: e88a24c3e28d0815f85786a7f2d8d658).
+2025-04-16 14:52:05,243 - bot.services.game_service - INFO - GameService poll loop starting after bot ready.
+2025-04-16 14:52:05,243 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-16 14:52:05,243 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-16 14:52:05,243 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-16 14:52:05,243 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-16 14:52:05,243 - bot.core - INFO - Bot is ready and online.
+2025-04-16 14:52:10,249 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 14:55:00,255 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 14:55:00,255 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-16 14:55:00,255 - data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-16 14:55:00,267 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-16 14:55:00,269 - data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-16 14:55:00,269 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 14:55:00,270 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 14:55:00,270 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 14:55:00,271 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 14:55:00,274 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 14:55:00,275 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 14:55:00,278 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 14:57:10,258 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 15:00:00,296 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 15:00:00,297 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 15:00:00,297 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 15:00:00,297 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 15:00:00,298 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 15:00:00,301 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 15:00:00,302 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 15:00:00,305 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 15:02:10,286 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.

@@ -1,0 +1,195 @@
+2025-04-11 00:11:42 [INFO] root: Logging configured successfully
+2025-04-11 00:11:42 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-11 00:11:42 [INFO] __main__: Initializing database connection...
+2025-04-11 00:11:42 [INFO] bot.data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-11 00:11:42 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-11 00:11:42 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-11 00:11:42 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-11 00:11:42 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-11 00:11:42 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-11 00:11:42 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-11 00:11:42 [INFO] __main__: Initializing cache connection...
+2025-04-11 00:11:42 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-11 00:11:42 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-11 00:11:42 [INFO] __main__: Starting database logo synchronization...
+2025-04-11 00:11:42 [INFO] bot.utils.image_utils.helpers: Starting logo synchronization from database...
+2025-04-11 00:11:42 [DEBUG] bot.data.db_manager: Fetching DB query: SELECT league, conference, team, logo_image FROM league_teams_logos with params: None
+2025-04-11 00:11:42 [DEBUG] bot.data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:11:42 [INFO] bot.utils.image_utils.helpers: Fetched 0 logo records from database.
+2025-04-11 00:11:42 [WARNING] bot.utils.image_utils.helpers: No logo records found in database.
+2025-04-11 00:11:42 [INFO] bot.data.db_manager: Database connection pool closed
+2025-04-11 00:11:42 [DEBUG] bot.utils.image_utils.helpers: Database connection closed after logo synchronization.
+2025-04-11 00:11:42 [INFO] __main__: Database logo synchronization finished.
+2025-04-11 00:11:42 [INFO] __main__: Initializing BettingBot...
+2025-04-11 00:11:42 [INFO] __main__: Starting bot...
+2025-04-11 00:11:43 [INFO] bot.data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-11 00:11:43 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-11 00:11:43 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-11 00:11:43 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-11 00:11:43 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-11 00:11:43 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-11 00:11:43 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-11 00:11:43 [DEBUG] bot.data.cache_manager: Redis connection already active.
+2025-04-11 00:11:43 [INFO] api.sports_api: Sports API client session started
+2025-04-11 00:11:43 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-11 00:11:43 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-11 00:11:43 [INFO] data.db_manager: Attempting to connect to database customer_990306_bet_tracker_bot at na01-sql.pebblehost.com:3306
+2025-04-11 00:11:43 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-11 00:11:43 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-11 00:11:43 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-11 00:11:43 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-11 00:11:43 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-11 00:11:43 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-11 00:11:43 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-11 00:11:43 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:11:43 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-11 00:11:43 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-11 00:11:43 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-11 00:11:43 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-11 00:11:43 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-11 00:11:43 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-11 00:11:43 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-11 00:11:43 [INFO] bot.services.game_service: Game service polling started.
+2025-04-11 00:11:43 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-11 00:11:43 [INFO] web.server: Web application setup complete.
+2025-04-11 00:11:43 [INFO] bot.core: Loading application commands...
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: add_capper
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: admin
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: help
+2025-04-11 00:11:43 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-11 00:11:43 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-11 00:11:43 [DEBUG] matplotlib: interactive is False
+2025-04-11 00:11:43 [DEBUG] matplotlib: platform is linux
+2025-04-11 00:11:43 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-11 00:11:43 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: leaderboard
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: load_url
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: profile
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: setid
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: show_cappers
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: stats
+2025-04-11 00:11:43 [INFO] bot.core: Loaded command: subscription
+2025-04-11 00:11:43 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-11 00:11:43 [INFO] bot.core: Application commands loaded.
+2025-04-11 00:11:43 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-11 00:11:43 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-11 00:11:46 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-11 00:11:46 [DEBUG] bot.services.voice_service: Voice service sleeping for 194.00 seconds until next 5-min mark.
+2025-04-11 00:11:46 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-11 00:11:46 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-11 00:11:46 [INFO] bot.core: Bot is ready and online.
+2025-04-11 00:11:48 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-11 00:11:48 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-11 00:11:48 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-11 00:11:48 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-11 00:11:58 [DEBUG] bot.services.bet_service: /bet invoked: User=761388542965448767, Channel=1357136356022816798, Guild=1328126227013439601
+2025-04-11 00:11:58 [DEBUG] bot.data.db_manager: Fetching one DB query: SELECT command_channel_1, command_channel_2, embed_channel_1, embed_channel_2, authorized_role FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-11 00:11:58 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: No
+2025-04-11 00:11:58 [WARNING] bot.services.bet_service: No server settings found for Guild ID 1328126227013439601.
+2025-04-11 00:12:11 [INFO] bot.services.admin_handler: Admin command invoked by ghilliestew (ID: 761388542965448767) in guild 1328126227013439601
+2025-04-11 00:12:12 [DEBUG] bot.services.admin_handler: Deferred initial /admin interaction
+2025-04-11 00:12:12 [DEBUG] bot.services.admin_handler: Fetching settings for guild_id: 1328126227013439601
+2025-04-11 00:12:12 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+         with params: (1328126227013439601,)
+2025-04-11 00:12:12 [ERROR] bot.data.db_manager: Database query fetch_one failed: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+         | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'admin_channel_1' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'admin_channel_1' in 'field list'")
+2025-04-11 00:12:12 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'admin_channel_1' in 'field list'") | Query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-11 00:12:12 [ERROR] bot.services.admin_handler: Error fetching settings/sub for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'admin_channel_1' in 'field list'") | Query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+        
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'admin_channel_1' in 'field list'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/container/bot/services/admin_handler.py", line 84, in fetch_guild_settings_and_sub
+    server_settings_data = await db_manager.fetch_one(settings_query, (guild_id,))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/bot/data/db_manager.py", line 208, in fetch_one
+    raise DatabaseQueryError(message=f"Query fetch_one failed: {e}", query=query, original_exception=e)
+utils.errors.DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'admin_channel_1' in 'field list'") | Query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+        
+2025-04-11 00:12:12 [ERROR] bot.services.admin_handler: admin_settings_command_handler: fetch failed for guild 1328126227013439601. Error: Query fetch_one failed: (1054, "Unknown column 'admin_channel_1' in 'field list'") | Query: 
+            SELECT embed_channel_1, embed_channel_2, command_channel_1, command_channel_2,
+                   admin_channel_1, admin_role, authorized_role, daily_report_time,
+                   voice_channel_id, bot_name_mask, bot_image_mask
+            FROM server_settings
+            WHERE guild_id = %s
+        

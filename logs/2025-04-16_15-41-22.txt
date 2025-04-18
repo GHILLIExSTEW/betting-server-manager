@@ -1,0 +1,1010 @@
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Invalid requirement: '# Core dependencies for the Discord bot and async operations': Expected package name at the start of dependency specifier
+    # Core dependencies for the Discord bot and async operations
+    ^
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: discord.py==2.3.2 in ./.local/lib/python3.12/site-packages (2.3.2)
+Requirement already satisfied: aiohttp<4,>=3.7.4 in ./.local/lib/python3.12/site-packages (from discord.py==2.3.2) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp<4,>=3.7.4->discord.py==2.3.2) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp<4,>=3.7.4->discord.py==2.3.2) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp==3.9.5 in ./.local/lib/python3.12/site-packages (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp==3.9.5) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp==3.9.5) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiomysql==0.2.0 in ./.local/lib/python3.12/site-packages (0.2.0)
+Requirement already satisfied: PyMySQL>=1.0 in ./.local/lib/python3.12/site-packages (from aiomysql==0.2.0) (1.1.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: redis==5.0.4 in ./.local/lib/python3.12/site-packages (5.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: cryptography==42.0.5 in ./.local/lib/python3.12/site-packages (42.0.5)
+Requirement already satisfied: cffi>=1.12 in ./.local/lib/python3.12/site-packages (from cryptography==42.0.5) (1.17.1)
+Requirement already satisfied: pycparser in ./.local/lib/python3.12/site-packages (from cffi>=1.12->cryptography==42.0.5) (2.22)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: aiohttp-session==2.12.0 in ./.local/lib/python3.12/site-packages (2.12.0)
+Requirement already satisfied: aiohttp>=3.8 in ./.local/lib/python3.12/site-packages (from aiohttp-session==2.12.0) (3.9.5)
+Requirement already satisfied: aiosignal>=1.1.2 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.3.2)
+Requirement already satisfied: attrs>=17.3.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (6.2.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.local/lib/python3.12/site-packages (from aiohttp>=3.8->aiohttp-session==2.12.0) (1.18.3)
+Requirement already satisfied: idna>=2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (3.10)
+Requirement already satisfied: propcache>=0.2.0 in ./.local/lib/python3.12/site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8->aiohttp-session==2.12.0) (0.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jinja2==3.1.2 in ./.local/lib/python3.12/site-packages (3.1.2)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.local/lib/python3.12/site-packages (from jinja2==3.1.2) (3.0.2)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: python-dotenv==1.0.1 in ./.local/lib/python3.12/site-packages (1.0.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: Pillow==10.3.0 in ./.local/lib/python3.12/site-packages (10.3.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: PyTZ==2024.1 in ./.local/lib/python3.12/site-packages (2024.1)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: typing_extensions==4.11.0 in ./.local/lib/python3.12/site-packages (4.11.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: jsonpickle==3.0.4 in ./.local/lib/python3.12/site-packages (3.0.4)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: regex==2024.5.15 in ./.local/lib/python3.12/site-packages (2024.5.15)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pandas==2.2.2 in ./.local/lib/python3.12/site-packages (2.2.2)
+Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.2.4)
+Requirement already satisfied: python-dateutil>=2.8.2 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2024.1)
+Requirement already satisfied: tzdata>=2022.7 in ./.local/lib/python3.12/site-packages (from pandas==2.2.2) (2025.1)
+Requirement already satisfied: six>=1.5 in ./.local/lib/python3.12/site-packages (from python-dateutil>=2.8.2->pandas==2.2.2) (1.17.0)
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: apscheduler==3.10.4 in ./.local/lib/python3.12/site-packages (3.10.4)
+Requirement already satisfied: six>=1.4.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (1.17.0)
+Requirement already satisfied: pytz in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (2024.1)
+Requirement already satisfied: tzlocal!=3.*,>=2.0 in ./.local/lib/python3.12/site-packages (from apscheduler==3.10.4) (5.3.1)
+2025-04-16 15:41:40,030 - __main__ - INFO - Starting main execution block (__name__ == '__main__')
+2025-04-16 15:41:40,030 - __main__ - INFO - --- Entered main() ---
+2025-04-16 15:41:40,030 - __main__ - INFO - Initializing BettingBot class...
+2025-04-16 15:41:40,030 - bot.core - INFO - --- BettingBot __init__ START ---
+2025-04-16 15:41:40,030 - bot.core - INFO - Initializing DB Manager instance...
+2025-04-16 15:41:40,030 - bot.core - INFO - Initializing Cache Manager instance...
+2025-04-16 15:41:40,030 - bot.core - INFO - Initializing Command Tree...
+2025-04-16 15:41:40,030 - bot.core - INFO - Initializing Game Service...
+2025-04-16 15:41:40,030 - bot.services.game_service - INFO - GameService initialized.
+2025-04-16 15:41:40,030 - bot.core - INFO - Initializing Voice Service...
+2025-04-16 15:41:40,030 - bot.core - INFO - Initializing Bet Service...
+2025-04-16 15:41:40,031 - bot.services.bet_service - INFO - BetService initialized.
+2025-04-16 15:41:40,031 - bot.core - INFO - Initializing Web App variable...
+2025-04-16 15:41:40,031 - bot.core - INFO - --- BettingBot __init__ END ---
+2025-04-16 15:41:40,031 - __main__ - INFO - BettingBot instance created.
+2025-04-16 15:41:40,031 - __main__ - INFO - Attempting to start bot...
+2025-04-16 15:41:40,031 - discord.client - INFO - logging in using static token
+2025-04-16 15:41:40,402 - bot.core - INFO - --- Running setup_hook ---
+2025-04-16 15:41:40,402 - bot.core - INFO - STEP: Connecting to Database...
+2025-04-16 15:41:40,402 - bot.data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-16 15:41:40,414 - bot.data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-16 15:41:40,416 - bot.data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-16 15:41:40,416 - bot.core - INFO - STEP COMPLETE: Database connected.
+2025-04-16 15:41:40,416 - bot.core - INFO - STEP: Connecting to Cache...
+2025-04-16 15:41:40,416 - bot.data.cache_manager - INFO - Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-16 15:41:40,571 - bot.data.cache_manager - INFO - Redis connection initialized successfully
+2025-04-16 15:41:40,571 - bot.core - INFO - STEP COMPLETE: Cache connected.
+2025-04-16 15:41:40,571 - bot.core - INFO - STEP: Starting Game Service...
+2025-04-16 15:41:40,571 - api.sports_api - INFO - Sports API client session started
+2025-04-16 15:41:40,571 - bot.services.game_service - INFO - Fetching initial game data for pending bets...
+2025-04-16 15:41:40,602 - bot.services.game_service - INFO - Initial game data fetching complete.
+2025-04-16 15:41:40,602 - bot.services.game_service - INFO - Game service polling started.
+2025-04-16 15:41:40,602 - bot.core - INFO - STEP: Starting Voice Service...
+2025-04-16 15:41:40,602 - bot.services.voice_service - INFO - Voice service update loop started.
+2025-04-16 15:41:40,602 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-16 15:41:40,602 - bot.services.voice_service - INFO - Voice service started.
+2025-04-16 15:41:40,602 - bot.core - INFO - STEP: Starting Bet Service (scheduler)...
+2025-04-16 15:41:40,602 - bot.services.bet_service - INFO - Bet service starting (scheduler only).
+2025-04-16 15:41:40,602 - bot.services.bet_service - INFO - Setting up APScheduler jobs for tallying.
+2025-04-16 15:41:40,620 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-16 15:41:40,620 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-16 15:41:40,621 - apscheduler.scheduler - INFO - Added job "BetService.run_monthly_tally" to job store "default"
+2025-04-16 15:41:40,621 - apscheduler.scheduler - INFO - Added job "BetService.run_yearly_tally" to job store "default"
+2025-04-16 15:41:40,621 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-16 15:41:40,621 - bot.services.bet_service - INFO - APScheduler started successfully with tally jobs.
+2025-04-16 15:41:40,621 - bot.services.bet_service - INFO - Bet service scheduler started.
+2025-04-16 15:41:40,621 - bot.core - INFO - STEP COMPLETE: Bet Service scheduler started.
+2025-04-16 15:41:40,621 - bot.core - INFO - STEP: Running startup reconciliation checks...
+2025-04-16 15:41:40,621 - bot.tasks.startup_checks - INFO - Running startup checks (Logic Update 2025-04-15 v3 - FINAL)...
+2025-04-16 15:41:40,622 - bot.tasks.startup_checks - INFO - Checking for pending bets (0/0) missing unit records (will insert units=0, total=0)...
+2025-04-16 15:41:40,622 - bot.tasks.startup_checks - INFO - No pending bets (0/0) found missing unit records.
+2025-04-16 15:41:40,764 - bot.tasks.startup_checks - INFO - Fetched guild 1328116926903353398 via API for bet 202504160544592
+2025-04-16 15:41:40,883 - bot.tasks.startup_checks - INFO - Fetched channel 1328130555568455710 for bet 202504160544592
+2025-04-16 15:41:41,011 - bot.tasks.startup_checks - INFO - Loaded 1 pending bets into memory. Created 0 missing placeholder unit records. Resolved 0 bets by reaction. Skipped 0 bets.
+2025-04-16 15:41:41,011 - bot.tasks.startup_checks - INFO - Reconciling 'units' column for ALL resolved bets (Create if Missing, Update if Exists AND units=0)...
+2025-04-16 15:41:41,012 - bot.tasks.startup_checks - INFO - Found 13 resolved bets to check/reconcile.
+2025-04-16 15:41:41,020 - bot.tasks.startup_checks - INFO - Checked resolved unit records. Updated 0 entries where units were 0. Created 0 missing records for resolved bets.
+2025-04-16 15:41:41,020 - bot.tasks.startup_checks - INFO - Startup checks completed.
+2025-04-16 15:41:41,020 - bot.core - INFO - STEP COMPLETE: Startup reconciliation checks finished.
+2025-04-16 15:41:41,020 - bot.core - INFO - STEP: Setting up web server...
+2025-04-16 15:41:41,021 - web.server - INFO - Web application setup complete.
+2025-04-16 15:41:41,021 - bot.core - INFO - STEP COMPLETE: Web server setup.
+2025-04-16 15:41:41,021 - bot.core - INFO - STEP: Starting web server task...
+2025-04-16 15:41:41,021 - bot.core - INFO - STEP COMPLETE: Web server task created.
+2025-04-16 15:41:41,021 - bot.core - INFO - STEP: Loading ALL command definitions...
+2025-04-16 15:41:41,021 - bot.core - INFO - --- Starting Command Loading ---
+2025-04-16 15:41:41,021 - bot.core - INFO - Loading GLOBAL commands...
+2025-04-16 15:41:41,023 - bot.core - INFO - Loaded and registered GLOBAL command: admin
+2025-04-16 15:41:41,024 - bot.core - INFO - Loaded and registered GLOBAL command: subscription
+2025-04-16 15:41:41,024 - bot.core - INFO - Loaded and registered GLOBAL command: help
+2025-04-16 15:41:41,025 - bot.commands.load_logos - INFO - Registering /load_logos command globally.
+2025-04-16 15:41:41,025 - bot.core - INFO - Loaded and registered GLOBAL command: load_logos
+2025-04-16 15:41:41,025 - bot.core - INFO - Loading GUILD command modules from commands/ folder (storing setup functions)...
+2025-04-16 15:41:41,434 - bot.core - INFO - Stored setup function for GUILD command: leaderboard
+2025-04-16 15:41:41,435 - bot.core - INFO - Stored setup function for GUILD command: show_cappers
+2025-04-16 15:41:41,437 - bot.core - INFO - Stored setup function for GUILD command: profile
+2025-04-16 15:41:41,437 - bot.core - INFO - Stored setup function for GUILD command: stats
+2025-04-16 15:41:41,438 - bot.core - INFO - Stored setup function for GUILD command: load_url
+2025-04-16 15:41:41,438 - bot.core - INFO - Stored setup function for GUILD command: add_capper
+2025-04-16 15:41:41,439 - bot.core - INFO - Stored setup function for GUILD command: setid
+2025-04-16 15:41:41,439 - bot.core - INFO - Storing BetService command setup function...
+2025-04-16 15:41:41,439 - bot.core - INFO - Stored setup function for BetService commands.
+2025-04-16 15:41:41,439 - bot.core - INFO - Command loading process finished.
+2025-04-16 15:41:41,439 - bot.core - INFO - Stored setup functions for GUILD commands: ['leaderboard', 'show_cappers', 'profile', 'stats', 'load_url', 'add_capper', 'setid', 'bet_service']
+2025-04-16 15:41:41,439 - bot.core - INFO - STEP COMPLETE: Command definitions loaded/stored.
+2025-04-16 15:41:41,439 - bot.core - INFO - STEP: Syncing GLOBAL commands...
+2025-04-16 15:41:41,440 - web.server - INFO - Web server started at http://0.0.0.0:25594/
+2025-04-16 15:41:41,809 - bot.core - INFO - STEP COMPLETE: Global commands synced: ['admin', 'subscription', 'help', 'load_logos']
+2025-04-16 15:41:41,809 - bot.core - INFO - STEP: Fetching configured guilds for command registration...
+2025-04-16 15:41:41,810 - bot.core - INFO - Found 2 guilds marked as configured: [1328116926903353398, 1328126227013439601]
+2025-04-16 15:41:41,810 - bot.core - INFO - STEP: Registering and syncing GUILD commands for configured guilds...
+2025-04-16 15:41:41,810 - bot.core - INFO - --- Registering GUILD commands for Guild ID: 1328116926903353398 ---
+2025-04-16 15:41:41,810 - bot.core - ERROR - Error calling setup function for 'leaderboard' in guild 1328116926903353398: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,810 - bot.core - ERROR - Error calling setup function for 'show_cappers' in guild 1328116926903353398: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,811 - bot.core - ERROR - Error calling setup function for 'profile' in guild 1328116926903353398: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,811 - bot.core - ERROR - Error calling setup function for 'stats' in guild 1328116926903353398: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,811 - bot.core - ERROR - Error calling setup function for 'load_url' in guild 1328116926903353398: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,811 - bot.core - ERROR - Error calling setup function for 'add_capper' in guild 1328116926903353398: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,812 - bot.commands.setid - INFO - Registered /setid command guild 1328116926903353398.
+2025-04-16 15:41:41,812 - bot.core - INFO - Successfully called setup for 'setid' in guild 1328116926903353398.
+2025-04-16 15:41:41,812 - bot.services.bet_service - INFO - BetService commands (/bet, /edit_units, /cancel_bet) added to tree for guild 1328116926903353398
+2025-04-16 15:41:41,812 - bot.core - INFO - Successfully called setup for BetService commands in guild 1328116926903353398.
+2025-04-16 15:41:41,812 - bot.core - INFO - Attempting to sync all registered commands for guild 1328116926903353398...
+2025-04-16 15:41:41,961 - bot.core - INFO - Successfully synced commands for guild 1328116926903353398. Synced: ['setid', 'bet', 'edit_units', 'cancel_bet']
+2025-04-16 15:41:41,961 - bot.core - INFO - --- Finished attempting GUILD command registration for Guild ID: 1328116926903353398 ---
+2025-04-16 15:41:41,961 - bot.core - INFO - --- Registering GUILD commands for Guild ID: 1328126227013439601 ---
+2025-04-16 15:41:41,962 - bot.core - ERROR - Error calling setup function for 'leaderboard' in guild 1328126227013439601: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,962 - bot.core - ERROR - Error calling setup function for 'show_cappers' in guild 1328126227013439601: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,962 - bot.core - ERROR - Error calling setup function for 'profile' in guild 1328126227013439601: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,962 - bot.core - ERROR - Error calling setup function for 'stats' in guild 1328126227013439601: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,963 - bot.core - ERROR - Error calling setup function for 'load_url' in guild 1328126227013439601: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,963 - bot.core - ERROR - Error calling setup function for 'add_capper' in guild 1328126227013439601: setup() got an unexpected keyword argument 'guild'
+Traceback (most recent call last):
+  File "/home/container/bot/core.py", line 173, in register_guild_commands
+    result = setup_func(self.command_tree, guild=guild_object) # Pass guild
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'guild'
+2025-04-16 15:41:41,963 - bot.commands.setid - INFO - Registered /setid command guild 1328126227013439601.
+2025-04-16 15:41:41,963 - bot.core - INFO - Successfully called setup for 'setid' in guild 1328126227013439601.
+2025-04-16 15:41:41,964 - bot.services.bet_service - INFO - BetService commands (/bet, /edit_units, /cancel_bet) added to tree for guild 1328126227013439601
+2025-04-16 15:41:41,964 - bot.core - INFO - Successfully called setup for BetService commands in guild 1328126227013439601.
+2025-04-16 15:41:41,964 - bot.core - INFO - Attempting to sync all registered commands for guild 1328126227013439601...
+2025-04-16 15:41:42,145 - bot.core - INFO - Successfully synced commands for guild 1328126227013439601. Synced: ['setid', 'bet', 'edit_units', 'cancel_bet']
+2025-04-16 15:41:42,145 - bot.core - INFO - --- Finished attempting GUILD command registration for Guild ID: 1328126227013439601 ---
+2025-04-16 15:41:42,145 - bot.core - INFO - STEP COMPLETE: Finished attempting registration & sync for all configured guilds.
+2025-04-16 15:41:42,145 - bot.core - INFO - END: setup_hook completed successfully.
+2025-04-16 15:41:42,429 - discord.gateway - INFO - Shard ID None has connected to Gateway (Session ID: 4f1569e67dc2ff6a6a20daf31d3a5ee7).
+2025-04-16 15:41:44,468 - bot.services.game_service - INFO - GameService poll loop starting after bot ready.
+2025-04-16 15:41:44,469 - bot.services.voice_service - INFO - Voice service entering update loop.
+2025-04-16 15:41:44,469 - bot.services.voice_service - INFO - Monthly total update loop started.
+2025-04-16 15:41:44,469 - bot.core - INFO - Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-16 15:41:44,469 - bot.core - INFO - Discord.py version: 2.3.2
+2025-04-16 15:41:44,469 - bot.core - INFO - Bot is ready and online.
+2025-04-16 15:41:49,475 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 15:45:00,503 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 15:45:00,503 - data.db_manager - WARNING - Database pool closed or not initialized. Attempting to reconnect.
+2025-04-16 15:45:00,503 - data.db_manager - INFO - Attempting to connect to database 'customer_990306_Server_database' at na05-sql.pebblehost.com:3306
+2025-04-16 15:45:00,514 - data.db_manager - INFO - Database connection pool initialized successfully
+2025-04-16 15:45:00,516 - data.db_manager - INFO - All expected tables (bets, cappers, server_settings, subscribers, subscriptions, unit_records, users, user_images, voice_bet_updates) and server_settings.commands_registered column found in database 'customer_990306_Server_database'.
+2025-04-16 15:45:00,517 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 15:45:00,517 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 15:45:00,518 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 15:45:00,518 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 15:45:00,521 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 15:45:00,522 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 15:45:00,526 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 15:46:49,483 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 15:50:00,529 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 15:50:00,530 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 15:50:00,530 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 15:50:00,531 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 15:50:00,532 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 15:50:00,535 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 15:50:00,535 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 15:50:00,539 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 15:51:49,501 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 15:55:00,554 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 15:55:00,555 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 15:55:00,555 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 15:55:00,556 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 15:55:00,556 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 15:55:00,560 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 15:55:00,561 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 15:55:00,565 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 15:56:49,517 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:00:00,573 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:00:00,574 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:00:00,574 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:00:00,575 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:00:00,575 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:00:00,578 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:00:00,579 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:00:00,582 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:01:49,529 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:05:00,619 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:05:00,620 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:05:00,620 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:05:00,621 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:05:00,621 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:05:00,623 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:05:00,624 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:05:00,626 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:06:49,553 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:10:00,634 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:10:00,635 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:10:00,635 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:10:00,636 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:10:00,637 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:10:00,640 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:10:00,641 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:10:00,646 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:11:49,566 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:15:00,665 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:15:00,666 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:15:00,666 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:15:00,667 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:15:00,667 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:15:00,670 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:15:00,671 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:15:00,674 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:16:49,570 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:20:00,704 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:20:00,705 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:20:00,706 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:20:00,706 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:20:00,707 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:20:00,711 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:20:00,712 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:20:00,717 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:21:49,586 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:25:00,759 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:25:00,760 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:25:00,761 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:25:00,761 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:25:00,762 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:25:00,765 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:25:00,766 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:25:00,770 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:26:49,613 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:30:00,780 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:30:00,781 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:30:00,781 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:30:00,782 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:30:00,782 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:30:00,785 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:30:00,786 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:30:00,790 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:31:49,652 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:34:34,148 - bot.core - WARNING - Bot disconnected from Discord.
+2025-04-16 16:34:34,283 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4f1569e67dc2ff6a6a20daf31d3a5ee7.
+2025-04-16 16:34:34,283 - bot.core - INFO - Bot resumed connection to Discord.
+2025-04-16 16:35:00,817 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:35:00,818 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:35:00,819 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:35:00,819 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:35:00,820 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:35:00,824 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:35:00,825 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:35:00,829 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:36:49,661 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:40:00,855 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:40:00,856 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:40:00,856 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:40:00,857 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:40:00,857 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:40:00,861 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:40:00,861 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:40:00,865 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:41:49,674 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:45:00,873 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:45:00,874 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:45:00,874 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:45:00,875 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:45:00,876 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:45:00,879 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:45:00,880 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:45:00,884 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:46:49,710 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:48:13,437 - bot.core - WARNING - Bot disconnected from Discord.
+2025-04-16 16:48:13,578 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4f1569e67dc2ff6a6a20daf31d3a5ee7.
+2025-04-16 16:48:13,578 - bot.core - INFO - Bot resumed connection to Discord.
+2025-04-16 16:50:00,910 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:50:00,910 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:50:00,911 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:50:00,911 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:50:00,911 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:50:00,914 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:50:00,914 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:50:00,917 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:51:49,721 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 16:55:00,953 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 16:55:00,954 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 16:55:00,955 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 16:55:00,956 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 16:55:00,956 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 16:55:00,960 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 16:55:00,961 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 16:55:00,965 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 16:56:49,744 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:00:00,970 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:00:00,971 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:00:00,972 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:00:00,972 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:00:00,973 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:00:00,977 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:00:00,977 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:00:00,981 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:01:28,251 - bot.services.bet_service - INFO - /bet initiated by authorized user 1281393696746639517.
+2025-04-16 17:01:41,628 - bot.services.bet_service - INFO - League selected: mlb by 1281393696746639517 (Serial: 202504162101910)
+2025-04-16 17:01:41,628 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'mlb'
+2025-04-16 17:01:45,836 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1281393696746639517 (Serial: 202504162101910)
+2025-04-16 17:01:48,162 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 1281393696746639517 (Serial: 202504162101910)
+2025-04-16 17:01:49,746 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:04:06,138 - bot.services.bet_service - INFO - /bet initiated by authorized user 1281393696746639517.
+2025-04-16 17:04:11,171 - bot.services.bet_service - INFO - League selected: mlb by 1281393696746639517 (Serial: 202504162104844)
+2025-04-16 17:04:11,171 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'mlb'
+2025-04-16 17:04:14,096 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1281393696746639517 (Serial: 202504162104844)
+2025-04-16 17:05:00,983 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:05:00,984 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:05:00,984 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:05:00,985 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:05:00,985 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:05:00,987 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:05:00,988 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:05:00,990 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:05:08,220 - bot.core - WARNING - Bot disconnected from Discord.
+2025-04-16 17:05:08,375 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4f1569e67dc2ff6a6a20daf31d3a5ee7.
+2025-04-16 17:05:08,375 - bot.core - INFO - Bot resumed connection to Discord.
+2025-04-16 17:06:48,164 - bot.services.bet_service - INFO - Bet setup timed out for bet serial 202504162101910 (User: 1281393696746639517)
+2025-04-16 17:06:49,748 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:07:56,085 - bot.services.bet_service - INFO - /bet initiated by authorized user 1281393696746639517.
+2025-04-16 17:08:01,378 - bot.services.bet_service - INFO - League selected: mlb by 1281393696746639517 (Serial: 202504162107826)
+2025-04-16 17:08:01,378 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'mlb'
+2025-04-16 17:08:03,893 - bot.services.bet_service - INFO - Bet Type selected: Straight by 1281393696746639517 (Serial: 202504162107826)
+2025-04-16 17:08:05,778 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 1281393696746639517 (Serial: 202504162107826)
+2025-04-16 17:08:45,218 - bot.services.bet_service - INFO - Team Bet Modal submitted by 1281393696746639517 (Serial: 202504162107826): {'team': 'Diamondbacks', 'opponent': 'Marlins', 'line': 'ML', 'odds': '-146', 'path': 'Bet on a Team'}
+2025-04-16 17:08:45,328 - bot.services.bet_service - INFO - Generating preview for bet serial 202504162107826. Current leg data: {'team': 'Diamondbacks', 'opponent': 'Marlins', 'line': 'ML', 'odds': '-146', 'path': 'Bet on a Team'}
+2025-04-16 17:08:45,359 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:45,420 - bot.data.league.league_team_handler - INFO - Normalized 'Diamondbacks' to 'arizona diamondbacks' for league 'mlb'
+2025-04-16 17:08:45,482 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 17:08:45,482 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'arizona diamondbacks' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png'
+2025-04-16 17:08:45,512 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:45,574 - bot.data.league.league_team_handler - INFO - Normalized 'Marlins' to 'miami marlins' for league 'mlb'
+2025-04-16 17:08:45,636 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 17:08:45,637 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'miami marlins' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/miami_marlins.png'
+2025-04-16 17:08:45,667 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/miami_marlins.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:45,667 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504162107826: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': 'Diamondbacks vs Marlins\n\n**Pick:** Diamondbacks ML\n**Odds:** -146', 'team_display': 'Diamondbacks', 'opponent_display': 'Marlins'}
+2025-04-16 17:08:45,758 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:45,758 - bot.services.bet_service - INFO - Preview 202504162107826: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png' for League='mlb', Entity='Diamondbacks'
+2025-04-16 17:08:46,026 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504162107826
+2025-04-16 17:08:46,152 - aiohttp.access - INFO - 35.196.132.85 [16/Apr/2025:16:08:46 -0500] "GET /static/logos/mlb/arizona_diamondbacks.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 17:08:46,631 - aiohttp.access - INFO - 104.196.23.152 [16/Apr/2025:16:08:46 -0500] "GET /static/logos/mlb/arizona_diamondbacks.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 17:08:52,612 - bot.services.bet_service - INFO - Channel selected: 1328130555568455710 by 1281393696746639517 (Serial: 202504162107826)
+2025-04-16 17:08:52,777 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:52,868 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:52,958 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/miami_marlins.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:55,842 - bot.services.bet_service - INFO - Channel selected: 1328130555568455710 by 1281393696746639517 (Serial: 202504162107826)
+2025-04-16 17:08:55,966 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:56,057 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:56,147 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/miami_marlins.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:58,589 - bot.services.bet_service - INFO - Units selected: 1 by 1281393696746639517 (Serial: 202504162107826)
+2025-04-16 17:08:58,721 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:58,812 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/arizona_diamondbacks.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:08:58,903 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/miami_marlins.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 17:09:08,630 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504162107826 for user 1281393696746639517
+2025-04-16 17:09:08,974 - aiohttp.access - INFO - 35.227.34.53 [16/Apr/2025:16:09:08 -0500] "GET /static/logos/mlb/arizona_diamondbacks.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 17:09:09,026 - aiohttp.access - INFO - 35.227.34.53 [16/Apr/2025:16:09:08 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 17:09:09,159 - bot.services.bet_service - INFO - Bet 202504162107826 message 1362172990489497721 posted via webhook 1361940490995503164 in channel 1328130555568455710.
+2025-04-16 17:09:09,162 - bot.services.bet_service - INFO - Bet 202504162107826 saved to 'bets' table with stake=1.00.
+2025-04-16 17:09:09,163 - bot.services.bet_service - INFO - Inserted into unit_records for bet 202504162107826: units=1.00, total=0.0
+2025-04-16 17:09:09,164 - bot.services.bet_service - INFO - Transaction committed for bet 202504162107826.
+2025-04-16 17:09:09,164 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504162107826: 'ConfirmButton' object has no attribute 'bet_service'
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 947, in callback
+    self.bet_service.pending_bets[bet_message.id] = view.bet_serial
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'ConfirmButton' object has no attribute 'bet_service'
+2025-04-16 17:09:14,291 - bot.services.bet_service - INFO - Bet setup timed out for bet serial 202504162104844 (User: 1281393696746639517)
+2025-04-16 17:10:00,994 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:10:00,994 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:10:00,995 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:10:00,995 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:10:00,996 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:10:01,177 - bot.services.voice_service - INFO - Updated CURRENT UNITS channel 1361953219936518244 to 'CURRENT UNITS: +23.08' in guild 1328116926903353398
+2025-04-16 17:10:01,179 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:10:01,179 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:10:01,183 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:11:49,780 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:15:00,185 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:15:00,186 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:15:00,186 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:15:00,187 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:15:00,187 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:15:00,191 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:15:00,192 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:15:00,196 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:16:49,782 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:20:00,222 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:20:00,223 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:20:00,224 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:20:00,224 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:20:00,225 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:20:00,229 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:20:00,229 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:20:00,233 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:21:49,789 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:25:00,236 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:25:00,237 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:25:00,238 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:25:00,239 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:25:00,239 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:25:00,244 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:25:00,244 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:25:00,248 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:26:49,798 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:30:00,257 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:30:00,258 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:30:00,258 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:30:00,259 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:30:00,259 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:30:00,263 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:30:00,263 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:30:00,267 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:31:49,815 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:35:00,285 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:35:00,286 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:35:00,286 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:35:00,287 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:35:00,287 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:35:00,291 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:35:00,292 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:35:00,296 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:36:49,820 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:40:00,325 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:40:00,326 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:40:00,326 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:40:00,327 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:40:00,327 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:40:00,330 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:40:00,331 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:40:00,334 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:41:49,836 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:45:00,375 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:45:00,375 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:45:00,376 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:45:00,377 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:45:00,377 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:45:00,380 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:45:00,381 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:45:00,385 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:46:49,863 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:50:00,396 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:50:00,397 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:50:00,397 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:50:00,398 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:50:00,399 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:50:00,402 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:50:00,402 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:50:00,406 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:51:49,874 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 17:52:08,351 - aiohttp.access - INFO - 35.243.226.206 [16/Apr/2025:16:52:08 -0500] "GET /static/logos/mlb/arizona_diamondbacks.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 17:52:08,403 - aiohttp.access - INFO - 104.196.222.45 [16/Apr/2025:16:52:08 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 17:55:00,428 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 17:55:00,428 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 17:55:00,429 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 17:55:00,430 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 17:55:00,430 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 17:55:00,435 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 17:55:00,435 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 17:55:00,440 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 17:56:49,882 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:00:00,445 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:00:00,446 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:00:00,446 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:00:00,447 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:00:00,447 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:00:00,450 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:00:00,451 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:00:00,454 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:01:49,899 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:05:00,458 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:05:00,459 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:05:00,460 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:05:00,460 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:05:00,461 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:05:00,466 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:05:00,467 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:05:00,470 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:06:49,931 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:10:00,485 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:10:00,486 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:10:00,486 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:10:00,487 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:10:00,488 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:10:00,491 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:10:00,492 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:10:00,496 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:10:28,024 - aiohttp.access - INFO - 34.74.113.139 [16/Apr/2025:17:10:27 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:11:49,933 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:15:00,509 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:15:00,510 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:15:00,511 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:15:00,511 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:15:00,511 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:15:00,514 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:15:00,515 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:15:00,518 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:16:11,897 - aiohttp.access - INFO - 35.243.226.206 [16/Apr/2025:17:16:11 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:16:11,922 - aiohttp.access - INFO - 34.74.113.139 [16/Apr/2025:17:16:11 -0500] "GET /static/logos/nhl/chicago_blackhawks.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:16:49,946 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:20:00,556 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:20:00,557 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:20:00,558 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:20:00,558 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:20:00,559 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:20:00,562 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:20:00,563 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:20:00,568 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:21:49,966 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:25:00,575 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:25:00,576 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:25:00,576 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:25:00,577 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:25:00,578 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:25:00,582 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:25:00,582 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:25:00,586 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:26:50,000 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:30:00,605 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:30:00,606 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:30:00,606 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:30:00,607 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:30:00,607 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:30:00,610 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:30:00,611 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:30:00,615 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:31:46,039 - bot.core - WARNING - Bot disconnected from Discord.
+2025-04-16 18:31:46,168 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4f1569e67dc2ff6a6a20daf31d3a5ee7.
+2025-04-16 18:31:46,168 - bot.core - INFO - Bot resumed connection to Discord.
+2025-04-16 18:31:50,005 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:35:00,624 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:35:00,625 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:35:00,625 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:35:00,626 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:35:00,627 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:35:00,631 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:35:00,632 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:35:00,636 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:36:50,014 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:40:00,677 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:40:00,678 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:40:00,678 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:40:00,679 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:40:00,679 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:40:00,682 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:40:00,683 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:40:00,686 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:41:50,028 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:45:00,694 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:45:00,695 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:45:00,695 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:45:00,696 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:45:00,696 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:45:00,700 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:45:00,700 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:45:00,704 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:46:50,066 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:50:00,726 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:50:00,727 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:50:00,728 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:50:00,729 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:50:00,730 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:50:00,733 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:50:00,734 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:50:00,738 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:51:50,075 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:55:00,771 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 18:55:00,772 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 18:55:00,773 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 18:55:00,774 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 18:55:00,775 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 18:55:00,780 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 18:55:00,780 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 18:55:00,785 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 18:56:20,914 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695.
+2025-04-16 18:56:24,095 - bot.services.bet_service - INFO - League selected: nba by 821794684497690695 (Serial: 202504162256834)
+2025-04-16 18:56:24,095 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'nba'
+2025-04-16 18:56:26,708 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504162256834)
+2025-04-16 18:56:28,236 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Team' by 821794684497690695 (Serial: 202504162256834)
+2025-04-16 18:56:50,090 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 18:56:57,178 - bot.services.bet_service - INFO - Team Bet Modal submitted by 821794684497690695 (Serial: 202504162256834): {'team': 'Bulls', 'opponent': 'Heat', 'line': 'O108.5 TT', 'odds': '-159', 'path': 'Bet on a Team'}
+2025-04-16 18:56:57,331 - bot.services.bet_service - INFO - Generating preview for bet serial 202504162256834. Current leg data: {'team': 'Bulls', 'opponent': 'Heat', 'line': 'O108.5 TT', 'odds': '-159', 'path': 'Bet on a Team'}
+2025-04-16 18:56:57,362 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nba_logos.csv' (Need Team: False, Need League: True)
+2025-04-16 18:56:57,362 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nba' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:56:57,392 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:56:57,457 - bot.data.league.league_team_handler - INFO - Normalized 'Bulls' to 'chicago bulls' for league 'nba'
+2025-04-16 18:56:57,518 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nba_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 18:56:57,519 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'chicago bulls' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png'
+2025-04-16 18:56:57,549 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:56:57,610 - bot.data.league.league_team_handler - INFO - Normalized 'Heat' to 'miami heat' for league 'nba'
+2025-04-16 18:56:57,671 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nba_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 18:56:57,671 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'miami heat' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/miami_heat.png'
+2025-04-16 18:56:57,701 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/miami_heat.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:56:57,701 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504162256834: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png', 'description': 'Bulls vs Heat\n\n**Pick:** Bulls O108.5 TT\n**Odds:** -159', 'team_display': 'Bulls', 'opponent_display': 'Heat'}
+2025-04-16 18:56:57,792 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:56:57,793 - bot.services.bet_service - INFO - Preview 202504162256834: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png' for League='nba', Entity='Bulls'
+2025-04-16 18:56:57,979 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504162256834
+2025-04-16 18:56:58,088 - aiohttp.access - INFO - 35.196.132.85 [16/Apr/2025:17:56:58 -0500] "GET /static/logos/nba/chicago_bulls.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:56:58,143 - aiohttp.access - INFO - 35.227.62.178 [16/Apr/2025:17:56:58 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:56:58,690 - aiohttp.access - INFO - 34.75.19.245 [16/Apr/2025:17:56:58 -0500] "GET /static/logos/nba/chicago_bulls.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:57:05,110 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504162256834)
+2025-04-16 18:57:05,237 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:57:05,329 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:57:05,421 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/miami_heat.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:57:07,253 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504162256834)
+2025-04-16 18:57:07,364 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:57:07,458 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/chicago_bulls.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:57:07,549 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/miami_heat.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nba/nba.png'
+2025-04-16 18:57:26,031 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504162256834 for user 821794684497690695
+2025-04-16 18:57:26,438 - aiohttp.access - INFO - 34.73.62.161 [16/Apr/2025:17:57:26 -0500] "GET /static/logos/nba/chicago_bulls.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:57:26,528 - aiohttp.access - INFO - 34.73.62.161 [16/Apr/2025:17:57:26 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:57:27,353 - aiohttp.access - INFO - 35.237.169.55 [16/Apr/2025:17:57:27 -0500] "GET /static/logos/nba/chicago_bulls.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:57:27,396 - aiohttp.access - INFO - 34.73.62.161 [16/Apr/2025:17:57:27 -0500] "GET /static/logos/nba/nba.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 18:57:27,475 - bot.services.bet_service - INFO - Bet 202504162256834 message 1362200242719555737 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-16 18:57:27,478 - bot.services.bet_service - INFO - Bet 202504162256834 saved to 'bets' table with stake=1.00.
+2025-04-16 18:57:27,479 - bot.services.bet_service - INFO - Inserted into unit_records for bet 202504162256834: units=1.00, total=0.0
+2025-04-16 18:57:27,479 - bot.services.bet_service - INFO - Transaction committed for bet 202504162256834.
+2025-04-16 18:57:27,479 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504162256834: 'ConfirmButton' object has no attribute 'bet_service'
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 947, in callback
+    self.bet_service.pending_bets[bet_message.id] = view.bet_serial
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'ConfirmButton' object has no attribute 'bet_service'
+2025-04-16 19:00:00,788 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:00:00,789 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:00:00,789 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:00:00,790 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:00:00,790 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:00:00,793 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:00:00,794 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:00:01,010 - bot.services.voice_service - INFO - Updated CURRENT UNITS channel 1357135914622779402 to 'CURRENT UNITS: -2.00' in guild 1328126227013439601
+2025-04-16 19:00:01,011 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:01:50,107 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:02:48,866 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695.
+2025-04-16 19:02:51,940 - bot.services.bet_service - INFO - League selected: mlb by 821794684497690695 (Serial: 202504162302421)
+2025-04-16 19:02:51,941 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'mlb'
+2025-04-16 19:02:54,173 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504162302421)
+2025-04-16 19:02:55,937 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Player' by 821794684497690695 (Serial: 202504162302421)
+2025-04-16 19:05:00,025 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:05:00,026 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:05:00,027 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:05:00,027 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:05:00,028 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:05:00,032 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:05:00,033 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:05:00,038 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:05:45,738 - bot.services.bet_service - INFO - Player Bet Modal submitted by 821794684497690695 (Serial: 202504162302421): {'team': 'Rangers', 'opponent': 'Angels', 'player_name': 'Joc Pederson', 'prop': 'U1.5 HRR', 'odds': '-135', 'path': 'Bet on a Player'}
+2025-04-16 19:05:45,860 - bot.services.bet_service - INFO - Generating preview for bet serial 202504162302421. Current leg data: {'team': 'Rangers', 'opponent': 'Angels', 'player_name': 'Joc Pederson', 'prop': 'U1.5 HRR', 'odds': '-135', 'path': 'Bet on a Player'}
+2025-04-16 19:05:45,891 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:05:45,952 - bot.data.league.league_team_handler - INFO - Normalized 'Rangers' to 'texas rangers' for league 'mlb'
+2025-04-16 19:05:46,013 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 19:05:46,013 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'texas rangers' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png'
+2025-04-16 19:05:46,044 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:05:46,105 - bot.data.league.league_team_handler - INFO - Normalized 'Angels' to 'anaheim angels' for league 'mlb'
+2025-04-16 19:05:46,166 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/mlb_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 19:05:46,167 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'anaheim angels' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/anaheim_angels.png'
+2025-04-16 19:05:46,197 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/anaheim_angels.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:05:46,197 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504162302421: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png', 'description': '**Matchup:** Rangers vs Angels\n\n**Player:** Joc Pederson\n**Prop:** U1.5 HRR\n**Odds:** -135', 'team_display': 'Rangers', 'opponent_display': 'Angels'}
+2025-04-16 19:05:46,288 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:05:46,288 - bot.services.bet_service - INFO - Preview 202504162302421: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png' for League='mlb', Entity='Rangers'
+2025-04-16 19:05:46,417 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504162302421
+2025-04-16 19:05:46,519 - aiohttp.access - INFO - 35.196.132.85 [16/Apr/2025:18:05:46 -0500] "GET /static/logos/mlb/texas_rangers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:05:46,534 - aiohttp.access - INFO - 35.237.4.214 [16/Apr/2025:18:05:46 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:05:46,975 - aiohttp.access - INFO - 34.74.113.139 [16/Apr/2025:18:05:46 -0500] "GET /static/logos/mlb/texas_rangers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:06:50,108 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:07:23,783 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504162302421)
+2025-04-16 19:07:23,933 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:07:24,027 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:07:24,118 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/anaheim_angels.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:07:26,332 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504162302421)
+2025-04-16 19:07:26,448 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:07:26,539 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/texas_rangers.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:07:26,630 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/anaheim_angels.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/mlb/mlb.png'
+2025-04-16 19:07:28,841 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504162302421 for user 821794684497690695
+2025-04-16 19:07:29,239 - aiohttp.access - INFO - 34.75.19.245 [16/Apr/2025:18:07:29 -0500] "GET /static/logos/mlb/texas_rangers.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:07:29,270 - aiohttp.access - INFO - 34.138.20.118 [16/Apr/2025:18:07:29 -0500] "GET /static/logos/mlb/mlb.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:07:29,536 - bot.services.bet_service - INFO - Bet 202504162302421 message 1362202771067109557 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-16 19:07:29,537 - bot.services.bet_service - INFO - Bet 202504162302421 saved to 'bets' table with stake=1.00.
+2025-04-16 19:07:29,538 - bot.services.bet_service - INFO - Inserted into unit_records for bet 202504162302421: units=1.00, total=0.0
+2025-04-16 19:07:29,538 - bot.services.bet_service - INFO - Transaction committed for bet 202504162302421.
+2025-04-16 19:07:29,538 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504162302421: 'ConfirmButton' object has no attribute 'bet_service'
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 947, in callback
+    self.bet_service.pending_bets[bet_message.id] = view.bet_serial
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'ConfirmButton' object has no attribute 'bet_service'
+2025-04-16 19:10:00,064 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:10:00,065 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:10:00,066 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:10:00,067 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:10:00,068 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:10:00,071 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:10:00,072 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:10:00,281 - bot.services.voice_service - INFO - Updated CURRENT UNITS channel 1357135914622779402 to 'CURRENT UNITS: -1.00' in guild 1328126227013439601
+2025-04-16 19:10:00,283 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:11:50,121 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:12:12,321 - bot.services.bet_service - INFO - /bet initiated by authorized user 821794684497690695.
+2025-04-16 19:12:15,637 - bot.services.bet_service - INFO - League selected: nhl by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:12:15,637 - bot.services.sport_handler - INFO - SportHandlerFactory: Requested handler for specific code 'nhl'
+2025-04-16 19:12:17,927 - bot.services.bet_service - INFO - Bet Type selected: Straight by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:12:19,408 - bot.services.bet_service - INFO - Path chosen: 'Bet on a Player' by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:13:02,828 - bot.services.bet_service - INFO - Player Bet Modal submitted by 821794684497690695 (Serial: 202504162312989): {'team': 'Hurricanes', 'opponent': 'Canadiens', 'player_name': 'Jack Roslovic', 'prop': 'Under 0.5 Pts', 'odds': '-148', 'path': 'Bet on a Player'}
+2025-04-16 19:13:02,959 - bot.services.bet_service - INFO - Generating preview for bet serial 202504162312989. Current leg data: {'team': 'Hurricanes', 'opponent': 'Canadiens', 'player_name': 'Jack Roslovic', 'prop': 'Under 0.5 Pts', 'odds': '-148', 'path': 'Bet on a Player'}
+2025-04-16 19:13:02,989 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: False, Need League: True)
+2025-04-16 19:13:02,990 - bot.utils.image_utils.team_logos - INFO - CSV Match (League): Key 'nhl' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:03,022 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:03,085 - bot.data.league.league_team_handler - INFO - Normalized 'Hurricanes' to 'carolina hurricanes' for league 'nhl'
+2025-04-16 19:13:03,155 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 19:13:03,155 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'carolina hurricanes' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png'
+2025-04-16 19:13:03,191 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:03,253 - bot.data.league.league_team_handler - INFO - Normalized 'Canadiens' to 'montreal canadiens' for league 'nhl'
+2025-04-16 19:13:03,313 - bot.utils.image_utils.team_logos - INFO - Checking CSV: '/home/container/bot/static/logos/nhl_logos.csv' (Need Team: True, Need League: False)
+2025-04-16 19:13:03,313 - bot.utils.image_utils.team_logos - INFO - CSV Match (Team): Key 'montreal canadiens' -> URL 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/montreal_canadiens.png'
+2025-04-16 19:13:03,344 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/montreal_canadiens.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:03,345 - bot.services.bet_service - INFO - Preview data received from handler for bet 202504162312989: {'team_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', 'league_logo_url': 'http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png', 'description': '**Matchup:** Hurricanes vs Canadiens\n\n**Player:** Jack Roslovic\n**Prop:** Under 0.5 Pts\n**Odds:** -148', 'team_display': 'Hurricanes', 'opponent_display': 'Canadiens'}
+2025-04-16 19:13:03,436 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:03,436 - bot.services.bet_service - INFO - Preview 202504162312989: Fetched Logos - Team='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png' for League='nhl', Entity='Hurricanes'
+2025-04-16 19:13:03,602 - bot.services.bet_service - INFO - Preview shown successfully for bet serial 202504162312989
+2025-04-16 19:13:03,716 - aiohttp.access - INFO - 35.237.4.214 [16/Apr/2025:18:13:03 -0500] "GET /static/logos/nhl/nhl.png HTTP/1.1" 200 239 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:13:03,730 - aiohttp.access - INFO - 35.196.132.85 [16/Apr/2025:18:13:03 -0500] "GET /static/logos/nhl/carolina_hurricanes.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:13:04,221 - aiohttp.access - INFO - 34.74.113.139 [16/Apr/2025:18:13:04 -0500] "GET /static/logos/nhl/carolina_hurricanes.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:13:06,232 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:13:06,338 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:06,435 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:06,537 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/montreal_canadiens.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:08,100 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:13:08,264 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:08,357 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:08,448 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/montreal_canadiens.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:35,022 - bot.services.bet_service - INFO - Channel selected: 1328126391073505422 by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:13:35,169 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:35,261 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:35,352 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/montreal_canadiens.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:36,904 - bot.services.bet_service - INFO - Units selected: 1 by 821794684497690695 (Serial: 202504162312989)
+2025-04-16 19:13:37,014 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='https://cdn.discordapp.com/embed/avatars/0.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:37,114 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/carolina_hurricanes.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:37,210 - bot.utils.image_utils.team_logos - INFO - get_team_logo_url_from_csv RETURN: Team URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/montreal_canadiens.png', League URL='http://bet-bot-manager.my.pebble.host:25594/static/logos/nhl/nhl.png'
+2025-04-16 19:13:38,007 - bot.services.bet_service - INFO - ConfirmButton processing bet 202504162312989 for user 821794684497690695
+2025-04-16 19:13:38,473 - aiohttp.access - INFO - 35.227.34.53 [16/Apr/2025:18:13:38 -0500] "GET /static/logos/nhl/nhl.png HTTP/1.1" 200 239 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:13:38,478 - aiohttp.access - INFO - 34.138.20.118 [16/Apr/2025:18:13:38 -0500] "GET /static/logos/nhl/carolina_hurricanes.png HTTP/1.1" 200 240 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:13:38,706 - bot.services.bet_service - INFO - Bet 202504162312989 message 1362204319658803312 posted via webhook 1343298439215317063 in channel 1328126391073505422.
+2025-04-16 19:13:38,706 - bot.services.bet_service - INFO - Bet 202504162312989 saved to 'bets' table with stake=1.00.
+2025-04-16 19:13:38,707 - bot.services.bet_service - INFO - Inserted into unit_records for bet 202504162312989: units=1.00, total=0.0
+2025-04-16 19:13:38,708 - bot.services.bet_service - INFO - Transaction committed for bet 202504162312989.
+2025-04-16 19:13:38,708 - bot.services.bet_service - ERROR - Unexpected error confirming bet 202504162312989: 'ConfirmButton' object has no attribute 'bet_service'
+Traceback (most recent call last):
+  File "/home/container/bot/services/bet_service.py", line 947, in callback
+    self.bet_service.pending_bets[bet_message.id] = view.bet_serial
+    ^^^^^^^^^^^^^^^^
+AttributeError: 'ConfirmButton' object has no attribute 'bet_service'
+2025-04-16 19:15:00,286 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:15:00,287 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:15:00,288 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:15:00,289 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:15:00,290 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:15:00,294 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:15:00,295 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:15:00,458 - bot.services.voice_service - INFO - Updated CURRENT UNITS channel 1357135914622779402 to 'CURRENT UNITS: +0.00' in guild 1328126227013439601
+2025-04-16 19:15:00,461 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:15:18,340 - aiohttp.access - INFO - 34.75.19.245 [16/Apr/2025:18:15:18 -0500] "GET /static/logos/mlb/arizona_diamondbacks.png HTTP/1.1" 200 238 "-" "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"
+2025-04-16 19:16:50,139 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:20:00,467 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:20:00,468 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:20:00,469 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:20:00,469 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:20:00,472 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:20:00,477 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:20:00,477 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:20:00,482 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:21:50,157 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:25:00,501 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:25:00,502 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:25:00,502 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:25:00,503 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:25:00,504 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:25:00,508 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:25:00,508 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:25:00,512 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:26:50,164 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:30:00,544 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:30:00,545 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:30:00,545 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:30:00,546 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:30:00,546 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:30:00,550 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:30:00,551 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:30:00,555 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:31:50,181 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:32:36,423 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x16\x03\x01'
+      ^
+2025-04-16 19:32:36,424 - aiohttp.access - INFO - 199.45.154.123 [16/Apr/2025:18:32:36 -0500] "UNKNOWN / HTTP/1.0" 400 213 "-" "-"
+2025-04-16 19:32:39,966 - aiohttp.access - INFO - 199.45.154.123 [16/Apr/2025:18:32:39 -0500] "GET / HTTP/1.1" 200 5106 "-" "-"
+2025-04-16 19:32:43,988 - aiohttp.access - INFO - 199.45.154.123 [16/Apr/2025:18:32:43 -0500] "GET / HTTP/1.1" 200 5106 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+2025-04-16 19:32:45,541 - aiohttp.access - INFO - 199.45.154.123 [16/Apr/2025:18:32:44 -0500] "GET /favicon.ico HTTP/1.1" 200 274 "-" "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)"
+2025-04-16 19:32:47,390 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-04-16 19:32:47,390 - aiohttp.access - INFO - 199.45.154.123 [16/Apr/2025:18:32:47 -0500] "UNKNOWN / HTTP/1.0" 400 195 "-" "-"
+2025-04-16 19:32:53,281 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x16\x03\x01'
+      ^
+2025-04-16 19:32:53,281 - aiohttp.access - INFO - 199.45.154.123 [16/Apr/2025:18:32:53 -0500] "UNKNOWN / HTTP/1.0" 400 213 "-" "-"
+2025-04-16 19:35:00,596 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:35:00,597 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:35:00,597 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:35:00,598 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:35:00,598 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:35:00,602 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:35:00,602 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:35:00,607 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:36:50,207 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:40:00,618 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:40:00,619 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:40:00,620 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:40:00,620 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:40:00,621 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:40:00,624 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:40:00,625 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:40:00,630 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:40:37,067 - bot.core - WARNING - Bot disconnected from Discord.
+2025-04-16 19:40:37,216 - discord.gateway - INFO - Shard ID None has successfully RESUMED session 4f1569e67dc2ff6a6a20daf31d3a5ee7.
+2025-04-16 19:40:37,216 - bot.core - INFO - Bot resumed connection to Discord.
+2025-04-16 19:41:50,241 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:45:00,645 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:45:00,646 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:45:00,647 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:45:00,647 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:45:00,648 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:45:00,652 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:45:00,652 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:45:00,656 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:46:50,245 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:50:00,685 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:50:00,686 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:50:00,687 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:50:00,687 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:50:00,688 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:50:00,692 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:50:00,692 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:50:00,696 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:51:50,260 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 19:55:00,734 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 19:55:00,735 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 19:55:00,735 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 19:55:00,736 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 19:55:00,736 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 19:55:00,925 - bot.services.voice_service - INFO - Updated CURRENT UNITS channel 1361953219936518244 to 'CURRENT UNITS: +22.08' in guild 1328116926903353398
+2025-04-16 19:55:00,928 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 19:55:00,929 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 19:55:00,934 - bot.services.voice_service - INFO - Voice service update cycle finished.
+2025-04-16 19:55:37,373 - aiohttp.server - ERROR - Error handling request
+Traceback (most recent call last):
+  File "/home/container/.local/lib/python3.12/site-packages/aiohttp/web_protocol.py", line 350, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "aiohttp/_http_parser.pyx", line 557, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadStatusLine: 400, message:
+  Invalid method encountered:
+
+    b'\x14'
+      ^
+2025-04-16 19:55:37,373 - aiohttp.access - INFO - 73.62.224.244 [16/Apr/2025:18:55:37 -0500] "UNKNOWN / HTTP/1.0" 400 205 "-" "-"
+2025-04-16 19:56:50,285 - bot.services.game_service - INFO - Polling: No active leagues with pending bets found. Sleeping.
+2025-04-16 20:00:00,943 - bot.services.voice_service - INFO - Voice service starting synchronized update cycle.
+2025-04-16 20:00:00,944 - bot.services.voice_service - INFO - Guild 1328116926903353398 subscription_status: Paid, premium: True
+2025-04-16 20:00:00,944 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-01. Skipping total update.
+2025-04-16 20:00:00,945 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-02. Skipping total update.
+2025-04-16 20:00:00,945 - bot.services.voice_service - WARNING - No unit_records found for guild 1328116926903353398 in 2025-03. Skipping total update.
+2025-04-16 20:00:00,949 - bot.services.voice_service - INFO - Guild 1328126227013439601 subscription_status: Paid, premium: True
+2025-04-16 20:00:00,950 - bot.services.voice_service - WARNING - No unit_records found for guild 1328126227013439601 in 2025-01. Skipping total update.
+2025-04-16 20:00:00,953 - bot.services.voice_service - INFO - Voice service update cycle finished.

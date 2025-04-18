@@ -1,0 +1,175 @@
+2025-04-06 23:16:01 [INFO] root: Logging configured successfully
+2025-04-06 23:16:01 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-06 23:16:01 [INFO] root: Logging configured successfully
+2025-04-06 23:16:01 [INFO] __main__: Starting bot initialization
+2025-04-06 23:16:01 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 23:16:01 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-06 23:16:01 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-06 23:16:01 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-06 23:16:01 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-06 23:16:01 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-06 23:16:01 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-06 23:16:01 [INFO] __main__: Database connected successfully
+2025-04-06 23:16:01 [DEBUG] __main__: Starting bot with Discord token (first 5 chars: MTM0M...)
+2025-04-06 23:16:01 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 23:16:02 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-06 23:16:02 [INFO] api.sports_api: Sports API client session started
+2025-04-06 23:16:02 [INFO] bot.services.game_service: Fetching initial game data for pending bets...
+2025-04-06 23:16:02 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-06 23:16:02 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 23:16:02 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-06 23:16:02 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-06 23:16:02 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-06 23:16:02 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-06 23:16:02 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-06 23:16:02 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-06 23:16:02 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL
+                  AND bet_won IS NULL
+                  AND bet_loss IS NULL
+             with params: None
+2025-04-06 23:16:02 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 23:16:02 [DEBUG] bot.services.game_service: Found 0 unique pending bet events to initialize.
+2025-04-06 23:16:02 [WARNING] data.cache_manager: Redis client not initialized. Attempting connection.
+2025-04-06 23:16:02 [INFO] data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 23:16:02 [INFO] data.cache_manager: Redis connection initialized successfully
+2025-04-06 23:16:02 [DEBUG] data.cache_manager: Cache set: live_games (TTL: 600)
+2025-04-06 23:16:02 [DEBUG] bot.services.game_service: Updated live games cache with 0 games.
+2025-04-06 23:16:02 [INFO] bot.services.game_service: Initial game data fetching complete.
+2025-04-06 23:16:02 [INFO] bot.services.game_service: Game service polling started.
+2025-04-06 23:16:02 [INFO] bot.services.voice_service: Voice service update loop started.
+2025-04-06 23:16:02 [INFO] web.server: Web application setup complete.
+2025-04-06 23:16:02 [INFO] bot.core: Loading application commands...
+2025-04-06 23:16:02 [INFO] bot.core: Loaded command: add_capper
+2025-04-06 23:16:02 [INFO] bot.core: Loaded command: admin
+2025-04-06 23:16:02 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-06 23:16:02 [INFO] bot.core: Loaded command: help
+2025-04-06 23:16:03 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-06 23:16:03 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-06 23:16:03 [DEBUG] matplotlib: interactive is False
+2025-04-06 23:16:03 [DEBUG] matplotlib: platform is linux
+2025-04-06 23:16:03 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-06 23:16:03 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: leaderboard
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: load_url
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: profile
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: setid
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: show_cappers
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: stats
+2025-04-06 23:16:03 [INFO] bot.core: Loaded command: subscription
+2025-04-06 23:16:03 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-06 23:16:03 [INFO] bot.core: Application commands loaded.
+2025-04-06 23:16:03 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-06 23:16:03 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-06 23:16:06 [INFO] bot.services.voice_service: Voice service entering update loop.
+2025-04-06 23:16:06 [DEBUG] bot.services.voice_service: Voice service sleeping for 234.00 seconds until next 5-min mark.
+2025-04-06 23:16:06 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-06 23:16:06 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-06 23:16:06 [INFO] bot.core: Bot is ready and online.
+2025-04-06 23:16:08 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-06 23:16:08 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-06 23:16:08 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 23:16:08 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-06 23:16:11 [DEBUG] bot.services.bet_service: /bet invoked in channel ID: 1357136356022816798 by user 761388542965448767 in guild 1328126227013439601
+2025-04-06 23:16:11 [DEBUG] bot.data.db_manager: Fetching one DB query: 
+                    SELECT command_channel_1, command_channel_2, embed_channel_1, embed_channel_2, authorized_role
+                    FROM server_settings WHERE guild_id = %s
+                 with params: (1328126227013439601,)
+2025-04-06 23:16:12 [DEBUG] bot.data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:16:12 [WARNING] bot.services.bet_service: Could not convert DB value to int for guild 1328126227013439601: 'Cappers'
+2025-04-06 23:16:12 [DEBUG] bot.services.bet_service: Channel Check: Current=1357136356022816798 (type: <class 'int'>), Allowed=[1344085704984100934, 1357136356022816798] (types: [<class 'int'>, <class 'int'>])
+2025-04-06 23:16:12 [DEBUG] bot.services.bet_service: No authorized role configured for guild 1328126227013439601, allowing /bet command.
+2025-04-06 23:16:12 [INFO] bot.services.bet_service: /bet initiated by 761388542965448767 in allowed channel 1357136356022816798 for guild 1328126227013439601.
+2025-04-06 23:16:12 [DEBUG] utils.serial_utils: Generated bet serial: 202504070616585
+2025-04-06 23:16:12 [DEBUG] bot.services.bet_service: BetWorkflowView initialized (Serial: 202504070616585) Embed Channels: 1328126391073505422, 1357136356022816798
+2025-04-06 23:16:12 [DEBUG] bot.services.bet_service: Updating view state for bet serial 202504070616585. Current state: League=None, Type=None, Path=None, Preview=False
+2025-04-06 23:16:12 [DEBUG] bot.services.bet_service: View updated with 2 components.
+2025-04-06 23:16:14 [INFO] bot.services.bet_service: League selected: nba by 761388542965448767 (Serial: 202504070616585)
+2025-04-06 23:16:14 [DEBUG] bot.services.bet_service: Updating view state for bet serial 202504070616585. Current state: League=nba, Type=None, Path=None, Preview=False
+2025-04-06 23:16:14 [DEBUG] bot.services.bet_service: View updated with 2 components.
+2025-04-06 23:16:17 [INFO] bot.services.bet_service: Bet Type selected: Straight by 761388542965448767 (Serial: 202504070616585)
+2025-04-06 23:16:17 [DEBUG] bot.services.bet_service: Updating view state for bet serial 202504070616585. Current state: League=nba, Type=Straight, Path=None, Preview=False
+2025-04-06 23:16:17 [DEBUG] bot.services.bet_service: View updated with 3 components.
+2025-04-06 23:16:18 [INFO] bot.services.bet_service: Path chosen: Game Line by 761388542965448767 (Serial: 202504070616585)
+2025-04-06 23:16:40 [INFO] bot.services.bet_service: Game Line Modal submitted by 761388542965448767 (Serial: 202504070616585): {'team': 'lakers', 'opponent': 'celtics', 'line': 'ML', 'odds': '-120', 'path': 'Game Line'}
+2025-04-06 23:16:40 [DEBUG] bot.data.league.league_team_handler: Normalized team name: lakers -> lakers for league nba
+2025-04-06 23:16:40 [DEBUG] bot.data.cache_manager: Cache miss: team_logo_url_csv:nba:lakers
+2025-04-06 23:16:40 [WARNING] utils.image_utils: Logo CSV not found: /home/container/bot/static/logos/nba_logos.csv
+2025-04-06 23:16:40 [DEBUG] bot.data.league.league_team_handler: Normalized team name: celtics -> celtics for league nba
+2025-04-06 23:16:40 [DEBUG] bot.data.cache_manager: Cache miss: team_logo_url_csv:nba:celtics
+2025-04-06 23:16:40 [WARNING] utils.image_utils: Logo CSV not found: /home/container/bot/static/logos/nba_logos.csv
+2025-04-06 23:16:40 [DEBUG] bot.services.bet_service: Updating view state for bet serial 202504070616585. Current state: League=nba, Type=Straight, Path=Game Line, Preview=True
+2025-04-06 23:16:40 [DEBUG] bot.services.bet_service: Populating ChannelSelect for guild 1328126227013439601 with IDs: [1328126391073505422, 1357136356022816798]
+2025-04-06 23:16:40 [DEBUG] bot.services.bet_service: Added channel option: #📖-play-book (1328126391073505422)
+2025-04-06 23:16:40 [DEBUG] bot.services.bet_service: Added channel option: #team-chat (1357136356022816798)
+2025-04-06 23:16:40 [DEBUG] bot.services.bet_service: View updated with 5 components.
+2025-04-06 23:16:41 [DEBUG] bot.services.bet_service: Preview shown for bet serial 202504070616585
+2025-04-06 23:20:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-06 23:20:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-06 23:20:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-06 23:20:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 23:20:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:20:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-06 23:20:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-06 23:20:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:20:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: 46.0
+2025-04-06 23:20:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 6, 6, 20, 0, 106840, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 9, 6, 20, 0, 106840, tzinfo=datetime.timezone.utc))
+2025-04-06 23:20:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 23:20:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-06 23:20:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-06 23:20:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.
+2025-04-06 23:21:08 [DEBUG] bot.services.game_service: Starting game polling cycle...
+2025-04-06 23:21:08 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT DISTINCT league
+                    FROM bets
+                    WHERE bet_won IS NULL AND bet_loss IS NULL AND league IS NOT NULL
+                 with params: None
+2025-04-06 23:21:08 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 23:21:08 [INFO] bot.services.game_service: No active leagues with pending bets found. Skipping API poll.
+2025-04-06 23:21:41 [INFO] bot.services.bet_service: Bet setup timed out for bet serial 202504070616585 (User: 761388542965448767)
+2025-04-06 23:25:00 [INFO] bot.services.voice_service: Voice service starting synchronized update cycle.
+2025-04-06 23:25:00 [DEBUG] bot.services.voice_service: Updating voice channels for guild: Cookin' Books (1328126227013439601)
+2025-04-06 23:25:00 [DEBUG] bot.services.voice_service: Skipping unit reset logic for guild 1328126227013439601 due to schema incompatibility.
+2025-04-06 23:25:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 23:25:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:25:00 [DEBUG] bot.services.voice_service: Found Total Units channel 1357135914622779402 for guild 1328126227013439601
+2025-04-06 23:25:00 [DEBUG] data.db_manager: Fetching one DB query: 
+            SELECT SUM(CASE WHEN bet_won = 1 THEN units ELSE 0 END) -
+                   SUM(CASE WHEN bet_loss = 1 THEN units ELSE 0 END) as net_units
+            FROM bets
+            WHERE guild_id = %s AND (bet_won = 1 OR bet_loss = 1)
+         with params: (1328126227013439601,)
+2025-04-06 23:25:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 23:25:00 [DEBUG] bot.services.voice_service: Calculated net units for guild 1328126227013439601: 46.0
+2025-04-06 23:25:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start
+                    FROM bets
+                    WHERE guild_id = %s
+                      AND bet_won IS NULL
+                      AND bet_loss IS NULL
+                      AND game_start IS NOT NULL
+                      AND game_start BETWEEN %s AND %s
+                 with params: (1328126227013439601, datetime.datetime(2025, 4, 6, 6, 25, 0, 155632, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 9, 6, 25, 0, 155632, tzinfo=datetime.timezone.utc))
+2025-04-06 23:25:00 [DEBUG] data.db_manager: Query fetch successful. Row count: 0
+2025-04-06 23:25:00 [DEBUG] bot.services.voice_service: Found 0 relevant pending bets for guild 1328126227013439601
+2025-04-06 23:25:00 [INFO] bot.services.voice_service: Voice service update cycle finished.
+2025-04-06 23:25:00 [DEBUG] bot.services.voice_service: Voice service sleeping for 300.00 seconds until next 5-min mark.

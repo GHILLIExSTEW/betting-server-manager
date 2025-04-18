@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place Bet - Betting Bot</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        color: #ecf0f1;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      nav {
+        background: #1c2526;
+        padding: 15px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #3498db;
+      }
+      h1 {
+        color: #ecf0f1;
+        text-align: center;
+        margin: 20px 0;
+        font-size: 2.5em;
+      }
+      .section {
+        background: #34495e;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+      .form-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin: 20px 0;
+      }
+      input,
+      select {
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #4a6785;
+        font-size: 1em;
+        background: #3d566e;
+        color: #ecf0f1;
+        width: 200px;
+      }
+      button {
+        padding: 10px;
+        border-radius: 6px;
+        background: #3498db;
+        color: #ecf0f1;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background: #2980b9;
+      }
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        color: #3498db;
+        font-weight: 500;
+      }
+      .error {
+        color: #e74c3c;
+      }
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        h1 {
+          font-size: 1.8em;
+        }
+        .form-container {
+          flex-direction: column;
+        }
+        input,
+        select,
+        button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/guilds/guild123/index.html">Home</a>
+      <a href="/guilds/guild123/admin.html">Admin</a>
+      <a href="/guilds/guild123/capper-stats.html">Capper Stats</a>
+      <a href="/guilds/guild123/place-bet.html">Place Bet</a>
+      <a href="/guilds/guild123/leaderboard.html">Leaderboard</a>
+      <a href="/guilds/guild123/live-bets.html">Live Bets</a>
+      <a href="/guilds/guild123/news.html">News</a>
+      <a href="/guilds/guild123/bet-history.html">Bet History</a>
+      <a href="/guilds/guild123/challenges.html">Challenges</a>
+    </nav>
+    <div class="container">
+      <h1 id="guild-name">Place Bet</h1>
+      <div class="section">
+        <h2>Create a Bet</h2>
+        <p>
+          User ID:
+          <input type="text" id="user-id" placeholder="Enter your user ID" />
+        </p>
+        <div class="loading" id="loading">Loading...</div>
+        <p id="error" class="error"></p>
+        <div class="form-container">
+          <select id="league">
+            <option value="">Select League</option>
+          </select>
+          <select id="bet-type">
+            <option value="standard">Standard</option>
+            <option value="prop">Prop</option>
+          </select>
+          <input type="text" id="team" placeholder="Team" />
+          <input type="text" id="opponent" placeholder="Opponent" />
+          <input type="text" id="units" placeholder="Units" />
+        </div>
+        <button onclick="placeBet()">Place Bet</button>
+      </div>
+    </div>
+    <script>
+      const API_BASE_URL = 'https://api.betting-server-manager.us';
+      const guildId = "123"; // Replace dynamically
+
+      async function fetchLeagues() {
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("error").textContent = "";
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/leagues`);
+          if (!response.ok)
+            throw new Error(`Leagues fetch failed: ${response.status}`);
+          const leagues = await response.json();
+          const select = document.getElementById("league");
+          leagues.forEach((league) => {
+            const option = document.createElement("option");
+            option.value = league;
+            option.textContent = league;
+            select.appendChild(option);
+          });
+        } catch (error) {
+          console.error("Error fetching leagues:", error);
+          document.getElementById(
+            "error"
+          ).textContent = `Error: ${error.message}`;
+        } finally {
+          document.getElementById("loading").style.display = "none";
+        }
+      }
+
+      async function placeBet() {
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("error").textContent = "";
+        const userId = document.getElementById("user-id").value;
+        const league = document.getElementById("league").value;
+        const betType = document.getElementById("bet-type").value;
+        const team = document.getElementById("team").value;
+        const opponent = document.getElementById("opponent").value;
+        const units = parseFloat(document.getElementById("units").value);
+        if (!userId || !league || !betType || !units) {
+          document.getElementById("error").textContent =
+            "Please fill all required fields.";
+          document.getElementById("loading").style.display = "none";
+          return;
+        }
+        const bet = {
+          user_id: userId,
+          guild_id: guildId,
+          league,
+          bet_type: betType,
+          team,
+          opponent,
+          units,
+        };
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/bets`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bet),
+          });
+          if (!response.ok)
+            throw new Error(`Bet placement failed: ${response.status}`);
+          alert("Bet placed successfully!");
+          document.getElementById("user-id").value = "";
+          document.getElementById("league").value = "";
+          document.getElementById("bet-type").value = "standard";
+          document.getElementById("team").value = "";
+          document.getElementById("opponent").value = "";
+          document.getElementById("units").value = "";
+        } catch (error) {
+          console.error("Error placing bet:", error);
+          document.getElementById(
+            "error"
+          ).textContent = `Error: ${error.message}`;
+        } finally {
+          document.getElementById("loading").style.display = "none";
+        }
+      }
+
+      fetchLeagues();
+    </script>
+  </body>
+</html>

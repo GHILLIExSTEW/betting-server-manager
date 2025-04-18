@@ -1,0 +1,395 @@
+2025-04-06 18:29:29 [INFO] root: Logging configured successfully
+2025-04-06 18:29:29 [DEBUG] asyncio: Using selector: EpollSelector
+2025-04-06 18:29:29 [INFO] root: Logging configured successfully
+2025-04-06 18:29:29 [INFO] __main__: Starting bot initialization
+2025-04-06 18:29:29 [INFO] bot.data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 18:29:30 [INFO] bot.data.db_manager: Database connection pool initialized successfully
+2025-04-06 18:29:30 [DEBUG] bot.data.db_manager: Executing setup query 1...
+2025-04-06 18:29:30 [DEBUG] bot.data.db_manager: Executing setup query 2...
+2025-04-06 18:29:30 [DEBUG] bot.data.db_manager: Executing setup query 3...
+2025-04-06 18:29:30 [DEBUG] bot.data.db_manager: Executing setup query 4...
+2025-04-06 18:29:30 [INFO] bot.data.db_manager: Database tables checked/created successfully
+2025-04-06 18:29:30 [INFO] __main__: Database connected successfully
+2025-04-06 18:29:30 [DEBUG] __main__: Starting bot with Discord token (first 5 chars: MTM0M...)
+2025-04-06 18:29:30 [INFO] bot.data.cache_manager: Attempting to connect to Redis at redis-14768.c246.us-east-1-4.ec2.redns.redis-cloud.com:14768
+2025-04-06 18:29:30 [INFO] bot.data.cache_manager: Redis connection initialized successfully
+2025-04-06 18:29:30 [INFO] api.sports_api: Sports API client session started
+2025-04-06 18:29:30 [WARNING] data.db_manager: Database pool closed or not initialized. Attempting to reconnect.
+2025-04-06 18:29:30 [INFO] data.db_manager: Attempting to connect to database s353073_bet_tracking_db at us.mysql.db.bot-hosting.net:3306
+2025-04-06 18:29:30 [INFO] data.db_manager: Database connection pool initialized successfully
+2025-04-06 18:29:30 [DEBUG] data.db_manager: Executing setup query 1...
+2025-04-06 18:29:30 [DEBUG] data.db_manager: Executing setup query 2...
+2025-04-06 18:29:30 [DEBUG] data.db_manager: Executing setup query 3...
+2025-04-06 18:29:31 [DEBUG] data.db_manager: Executing setup query 4...
+2025-04-06 18:29:31 [INFO] data.db_manager: Database tables checked/created successfully
+2025-04-06 18:29:31 [DEBUG] data.db_manager: Fetching DB query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                 with params: None
+2025-04-06 18:29:31 [ERROR] data.db_manager: Database query fetch failed: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                 | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:29:31 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                
+2025-04-06 18:29:31 [ERROR] bot.services.game_service: Failed to fetch initial games: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: 
+                SELECT DISTINCT event_id, league, team, opponent, game_start
+                FROM bets
+                WHERE event_id IS NOT NULL AND status = 'pending'
+                
+2025-04-06 18:29:31 [INFO] bot.services.voice_service: Voice service started
+2025-04-06 18:29:31 [INFO] web.server: Web application setup complete.
+2025-04-06 18:29:31 [INFO] bot.core: Loading application commands...
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: add_capper
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: admin
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: cancel_bet
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: help
+2025-04-06 18:29:31 [DEBUG] matplotlib: matplotlib data path: /home/container/.local/lib/python3.12/site-packages/matplotlib/mpl-data
+2025-04-06 18:29:31 [DEBUG] matplotlib: CONFIGDIR=/home/container/.config/matplotlib
+2025-04-06 18:29:31 [DEBUG] matplotlib: interactive is False
+2025-04-06 18:29:31 [DEBUG] matplotlib: platform is linux
+2025-04-06 18:29:31 [DEBUG] matplotlib: CACHEDIR=/home/container/.cache/matplotlib
+2025-04-06 18:29:31 [DEBUG] matplotlib.font_manager: Using fontManager instance from /home/container/.cache/matplotlib/fontlist-v390.json
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: leaderboard
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: load_url
+2025-04-06 18:29:31 [ERROR] bot.core: Failed to load command profile: cannot import name 'BASE_URL' from 'config.settings' (/home/container/bot/config/settings.py)
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: setid
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: show_cappers
+2025-04-06 18:29:31 [ERROR] bot.core: Failed to load command stats: cannot import name 'BASE_URL' from 'config.settings' (/home/container/bot/config/settings.py)
+2025-04-06 18:29:31 [INFO] bot.core: Loaded command: subscription
+2025-04-06 18:29:31 [INFO] bot.core: Assuming 'bet' command is handled by BetService internally.
+2025-04-06 18:29:31 [INFO] bot.core: Application commands loaded.
+2025-04-06 18:29:31 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:29:31 [INFO] web.server: Web server started at http://0.0.0.0:20900/
+2025-04-06 18:29:31 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:29:31 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:29:31 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:29:32 [INFO] bot.core: Commands synced to test guild ID: 1328126227013439601
+2025-04-06 18:29:34 [INFO] bot.core: Logged in as Bet Embed Generator (ID: 1341993312915034153)
+2025-04-06 18:29:34 [INFO] bot.core: Discord.py version: 2.3.2
+2025-04-06 18:29:34 [INFO] bot.core: Bot is ready and online.
+2025-04-06 18:30:00 [INFO] bot.services.voice_service: Starting synchronized voice channel update across all guilds
+2025-04-06 18:30:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT units, total, last_reset FROM unit_records WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 18:30:00 [ERROR] data.db_manager: Database query fetch_one failed: SELECT units, total, last_reset FROM unit_records WHERE guild_id = %s | Params: (1328126227013439601,) | Error: (1054, "Unknown column 'last_reset' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 201, in fetch_one
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'last_reset' in 'field list'")
+2025-04-06 18:30:00 [ERROR] utils.errors: DatabaseQueryError: Query fetch_one failed: (1054, "Unknown column 'last_reset' in 'field list'") | Query: SELECT units, total, last_reset FROM unit_records WHERE guild_id = %s
+2025-04-06 18:30:00 [ERROR] bot.services.voice_service: Failed to reset units for guild 1328126227013439601: Query fetch_one failed: (1054, "Unknown column 'last_reset' in 'field list'") | Query: SELECT units, total, last_reset FROM unit_records WHERE guild_id = %s
+2025-04-06 18:30:00 [DEBUG] data.db_manager: Fetching one DB query: SELECT voice_channel_id FROM server_settings WHERE guild_id = %s with params: (1328126227013439601,)
+2025-04-06 18:30:00 [DEBUG] data.db_manager: Query fetch_one successful. Result found: Yes
+2025-04-06 18:30:00 [ERROR] bot.services.voice_service: Failed to get Total Units channel for guild 1328126227013439601: 0
+2025-04-06 18:30:00 [DEBUG] data.db_manager: Fetching DB query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start, voice_channel_id
+                    FROM bets
+                    WHERE status = 'pending' 
+                    AND game_start >= %s 
+                    AND game_start <= %s
+                     with params: (datetime.datetime(2025, 4, 6, 1, 30, 0, 998751, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 8, 1, 30, 0, 998751, tzinfo=datetime.timezone.utc))
+2025-04-06 18:30:01 [ERROR] data.db_manager: Database query fetch failed: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start, voice_channel_id
+                    FROM bets
+                    WHERE status = 'pending' 
+                    AND game_start >= %s 
+                    AND game_start <= %s
+                     | Params: (datetime.datetime(2025, 4, 6, 1, 30, 0, 998751, tzinfo=datetime.timezone.utc), datetime.datetime(2025, 4, 8, 1, 30, 0, 998751, tzinfo=datetime.timezone.utc)) | Error: (1054, "Unknown column 'voice_channel_id' in 'field list'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'voice_channel_id' in 'field list'")
+2025-04-06 18:30:01 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'voice_channel_id' in 'field list'") | Query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start, voice_channel_id
+                    FROM bets
+                    WHERE status = 'pending' 
+                    AND game_start >= %s 
+                    AND game_start <= %s
+                    
+2025-04-06 18:30:01 [ERROR] bot.services.voice_service: Error in updating all guilds: Query fetch failed: (1054, "Unknown column 'voice_channel_id' in 'field list'") | Query: 
+                    SELECT bet_serial, event_id, league, team, opponent, game_start, voice_channel_id
+                    FROM bets
+                    WHERE status = 'pending' 
+                    AND game_start >= %s 
+                    AND game_start <= %s
+                    
+2025-04-06 18:30:31 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:30:31 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:30:31 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:30:31 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:31:31 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:31:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:31:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:31:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:32:32 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:32:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:32:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:32:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:33:32 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:33:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:33:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:33:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:34:32 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:34:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:34:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:34:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:35:32 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:35:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:35:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:35:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:36:32 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:36:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:36:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:36:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:37:32 [DEBUG] data.db_manager: Fetching DB query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' with params: None
+2025-04-06 18:37:32 [ERROR] data.db_manager: Database query fetch failed: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending' | Params: None | Error: (1054, "Unknown column 'status' in 'where clause'")
+Traceback (most recent call last):
+  File "/home/container/bot/data/db_manager.py", line 178, in fetch
+    await cur.execute(query, params)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 239, in execute
+    await self._query(query)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/cursors.py", line 457, in _query
+    await conn.query(q)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 469, in query
+    await self._read_query_result(unbuffered=unbuffered)
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 683, in _read_query_result
+    await result.read()
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 1164, in read
+    first_packet = await self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/container/.local/lib/python3.12/site-packages/aiomysql/connection.py", line 652, in _read_packet
+    packet.raise_for_error()
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/container/.local/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'status' in 'where clause'")
+2025-04-06 18:37:32 [ERROR] utils.errors: DatabaseQueryError: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'
+2025-04-06 18:37:32 [ERROR] bot.services.game_service: Error in game polling loop: Query fetch failed: (1054, "Unknown column 'status' in 'where clause'") | Query: SELECT DISTINCT league FROM bets WHERE event_id IS NOT NULL AND status = 'pending'

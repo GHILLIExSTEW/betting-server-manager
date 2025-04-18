@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Betting Bot Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-container { margin-top: 20px; }
+        input, select, button { margin: 5px; padding: 5px; }
+        pre { white-space: pre-wrap; }
+        img { width: 24px; height: 24px; vertical-align: middle; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Betting Bot Dashboard</h1>
+    <p>Enter admin token: <input type="text" id="token" placeholder="Token"><button onclick="setToken()">Submit</button></p>
+    <h2>Guild Stats</h2>
+    <pre id="guild-stats"></pre>
+    <h2>Recent Bets</h2>
+    <table id="bets-table">
+        <thead>
+            <tr>
+                <th>Serial</th>
+                <th>User</th>
+                <th>League</th>
+                <th>Bet Details</th>
+                <th>Units</th>
+                <th>Outcome</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div class="form-container">
+        <h2>Set Total Units Channel</h2>
+        <input type="text" id="guild-id" placeholder="Guild ID">
+        <input type="text" id="channel-id" placeholder="Voice Channel ID">
+        <button onclick="setChannel()">Set Channel</button>
+        <p id="set-channel-result"></p>
+    </div>
+    <div class="form-container">
+        <h2>Edit Bet Outcome</h2>
+        <input type="text" id="edit-bet-serial" placeholder="Bet Serial">
+        <select id="edit-status">
+            <option value="pending">Pending</option>
+            <option value="won">Won</option>
+            <option value="lost">Lost</option>
+            <option value="void">Void</option>
+        </select>
+        <button onclick="updateBet()">Update Bet</button>
+        <p id="update-bet-result"></p>
+    </div>
+    <script>
+        let authToken = '';
+        function setToken() {
+            authToken = document.getElementById('token').value;
+            fetchData();
+        }
+        async function fetchData() {
+            if (!authToken) { console.log("Token not set."); return; }
+            const headers = { 'Authorization': authToken };
+            try {
+                const statsResponse = await fetch('/api/guilds', { headers });
+                if (!statsResponse.ok) throw new Error(`Stats fetch failed: ${statsResponse.status}`);
+                const stats = await statsResponse.json();
+                document.getElementById('guild-stats').textContent = JSON.stringify(stats, null, 2);
+                const betsResponse = await fetch('/api/bets', { headers });
+                if (!betsResponse.ok) throw new Error(`Bets fetch failed: ${betsResponse.status}`);
+                const bets = await betsResponse.json();
+                const table = document.getElementById('bets-table');
+                table.querySelector('tbody').innerHTML = '';
+                const tbody = table.querySelector('tbody');
+                bets.forEach(bet => {
+                    const row = tbody.insertRow();
+                    let teamLogoHtml = bet.team_logo ? `<img src="${bet.team_logo}" alt="${bet.team || ''} logo">` : '';
+                    let oppLogoHtml = bet.opponent_logo ? `<img src="${bet.opponent_logo}" alt="${bet.opponent || ''} logo">` : '';
+                    let betDetails = bet.bet_type === 'prop' ? `Player ${bet.player_id || 'N/A'} (${bet.prop_type || ''}): ${bet.opponent || 'N/A'}` : `${teamLogoHtml}${bet.team || 'N/A'} vs ${oppLogoHtml}${bet.opponent || 'N/A'}`;
+                    let outcome = bet.bet_won === 1 ? 'Won' : (bet.bet_loss === 1 ? 'Lost' : 'Pending');
+                    row.innerHTML = `<td>${bet.bet_serial || 'N/A'}</td><td>${bet.user_id || 'N/A'}</td><td>${bet.league || 'N/A'}</td><td>${betDetails}</td><td>${bet.units || 0}</td><td>${outcome}</td><td><button onclick="loadBet('${bet.bet_serial || ''}', '${outcome.toLowerCase()}')">Edit</button></td>`;
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('guild-stats').textContent = `Error: ${error.message}`;
+                document.getElementById('bets-table').querySelector('tbody').innerHTML = '<tr><td colspan="7">Error loading data. Check token/console.</td></tr>';
+            }
+        }
+        async function setChannel() {
+            if (!authToken) { alert("Submit token first."); return; }
+            const guildId = document.getElementById('guild-id').value;
+            const channelId = document.getElementById('channel-id').value;
+            const headers = { 'Authorization': authToken, 'Content-Type': 'application/json' };
+            try {
+                const response = await fetch('/api/set_channel', {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({ guild_id: guildId, voice_channel_id: channelId })
+                });
+                const result = await response.json();
+                document.getElementById('set-channel-result').textContent = JSON.stringify(result, null, 2);
+                if (response.ok) fetchData();
+            } catch (error) {
+                console.error('Error setting channel:', error);
+                document.getElementById('set-channel-result').textContent = `Error: ${error.message}`;
+            }
+        }
+        function loadBet(betSerial, currentStatus) {
+            document.getElementById('edit-bet-serial').value = betSerial;
+            document.getElementById('edit-status').value = currentStatus;
+        }
+        async function updateBet() {
+            if (!authToken) { alert("Submit token first."); return; }
+            const betSerial = document.getElementById('edit-bet-serial').value;
+            const status = document.getElementById('edit-status').value;
+            const headers = { 'Authorization': authToken, 'Content-Type': 'application/json' };
+            try {
+                const response = await fetch('/api/update_bet', {
+                    method: 'POST',
+                    headers,
+                    body: JSON.stringify({ bet_serial: betSerial, status: status })
+                });
+                const result = await response.json();
+                document.getElementById('update-bet-result').textContent = JSON.stringify(result, null, 2);
+                if (response.ok) fetchData();
+            } catch (error) {
+                console.error('Error updating bet:', error);
+                document.getElementById('update-bet-result').textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
