@@ -389,9 +389,9 @@ class BetWorkflowView(View):
         if not self.preview_embed or not self.sport_handler:
             logger.warning(f"Update preview failed {self.bet_serial}: embed/handler missing.")
             return
-
+    
         logger.debug(f"Updating preview desc/footer {self.bet_serial}: Chan={self.selected_channel_id}, Units={self.selected_units}")
-
+    
         # Rebuild base description from handler
         try:
             preview_data = await self.sport_handler.build_preview_data(self)
@@ -399,66 +399,76 @@ class BetWorkflowView(View):
         except Exception as e:
             logger.error(f"Error rebuilding preview description {self.bet_serial}: {e}", exc_info=True)
             base_description = self.preview_embed.description.split("\n\n**🔒")[0] if self.preview_embed.description else "Bet details missing."
-
+    
         if self.selected_units is not None:
             odds_raw = self.current_leg_data.get('odds', 'N/A')
             stake_text = ""
-            stake_amount = None
+            unit_display_value = self.selected_units # Use the raw unit value (1, 2, or 3)
+            unit_plural = "S" if unit_display_value > 1 else "" # Add 'S' if units > 1
+    
+            # --- MODIFIED STAKE TEXT LOGIC ---
             try:
-                # Parse odds
                 odds = None
                 if isinstance(odds_raw, (int, float)):
                     odds = float(odds_raw)
                 elif isinstance(odds_raw, str):
                     if odds_raw.upper() == 'EVEN':
-                        odds = 100.0
+                        odds = 100.0 # Treat EVEN as negative/even for display logic
                     else:
                         try:
                             odds = float(odds_raw.replace('+',''))
                         except ValueError:
                             pass
-
-                # Calculate stake based on odds
+    
+                # Determine display text based on odds sign
+                if odds is not None and odds > 0: # Positive odds
+                    stake_text = f"🔒 TO RISK {unit_display_value} UNIT{unit_plural} 🔒"
+                else: # Negative or even odds (or invalid odds handled as 'TO WIN')
+                    stake_text = f"🔒 TO WIN {unit_display_value} UNIT{unit_plural} 🔒"
+    
+                # --- Calculate and Store Stake (Risk/Win Amount) ---
+                # This part calculates the actual value for the 'stake' column in the DB
+                stake_amount = None
                 if odds is not None:
-                    if odds > 0:  # Positive odds: Stake = Risk amount
+                    if odds > 0: # Positive odds: Stake is the risk amount
                         stake_amount = float(self.selected_units)
-                        stake_text = f"🔒 TO RISK {stake_amount:.2f} UNITS 🔒"
-                    else:  # Negative or even odds: Stake = Win amount
-                        abs_odds = abs(odds) if odds != 100.0 else 100.0  # EVEN treated as 100
+                    else: # Negative or even odds: Stake is the win amount
+                        # Ensure odds are treated as float for calculation
+                        float_odds = float(odds)
+                        abs_odds = abs(float_odds) if float_odds != 100.0 else 100.0
                         stake_amount = self.selected_units * (abs_odds / 100.0)
-                        stake_text = f"🔒 TO WIN {stake_amount:.2f} UNITS 🔒"
-                else:  # Invalid or 'N/A' odds
-                    stake_amount = float(self.selected_units)  # Default to units risked
-                    stake_text = f"🔒 TO RISK {stake_amount:.2f} UNITS 🔒"
-
-                # Store calculated stake
+                else: # Fallback for invalid odds
+                    stake_amount = float(self.selected_units)
+    
                 self.current_leg_data['stake'] = stake_amount
-                logger.debug(f"Calculated Stake for bet {self.bet_serial}: {stake_amount} (Units: {self.selected_units}, Odds: {odds_raw})")
-
+                logger.debug(f"Calculated Stake for DB bet {self.bet_serial}: {stake_amount:.2f} (Units: {self.selected_units}, Odds: {odds_raw})")
+                 # --- End Stake Calculation ---
+    
             except Exception as e:
-                logger.warning(f"Error calculating stake for bet {self.bet_serial} (Odds: '{odds_raw}'): {e}")
-                stake_amount = float(self.selected_units)
-                stake_text = f"🔒 TO RISK {stake_amount:.2f} UNITS 🔒"
-                self.current_leg_data['stake'] = stake_amount
-
+                logger.warning(f"Error determining stake display/calculation for bet {self.bet_serial} (Odds: '{odds_raw}'): {e}")
+                # Fallback display if calculation fails
+                stake_text = f"🔒 TO RISK {unit_display_value} UNIT{unit_plural} 🔒"
+                self.current_leg_data['stake'] = float(unit_display_value) # Fallback stake value
+    
             # Update embed description and footer
-            self.preview_embed.description = f"{base_description}\n\n**{stake_text}**"
+            self.preview_embed.description = f"{base_description}\n\n**{stake_text}**" # Use the new stake_text
             self.preview_embed.set_footer(text="Ready to Confirm?")
             logger.debug(f"Preview {self.bet_serial}: Added stake line '{stake_text}', footer='Ready to Confirm?'")
+            # --- END MODIFIED LOGIC ---
         else:
             self.preview_embed.description = base_description
             self.preview_embed.set_footer(text="Step 5/6: Select Channel and Units")
             logger.debug(f"Preview {self.bet_serial}: Units not selected, footer='Select Channel and Units'")
-
+    
         # Enable/Disable Confirm button
         confirm_enabled = bool(self.selected_channel_id and self.selected_units)
         logger.debug(f"Updating Confirm button: enabled={confirm_enabled}")
         confirm_button = discord.utils.get(self.children, custom_id="confirm_bet")
-        if confirm_button and isinstance(confirm_button, Button):
+        if confirm_button and isinstance(confirm_button, discord.ui.Button): # Use discord.ui.Button
             confirm_button.disabled = not confirm_enabled
         else:
             logger.warning(f"Could not find ConfirmButton to update for bet {self.bet_serial}")
-
+    
         # Edit the original interaction message
         try:
             target_interaction = interaction or self.original_interaction
@@ -466,7 +476,8 @@ class BetWorkflowView(View):
             logger.debug(f"Updated preview embed {self.bet_serial} with new description/footer/button state.")
         except discord.NotFound:
             logger.error(f"Error updating preview {self.bet_serial}: Original interaction msg not found.")
-            self.stop()
+            if hasattr(self, 'stop'): # Check if stop method exists
+                 self.stop()
         except discord.HTTPException as e:
             logger.error(f"HTTPException updating preview {self.bet_serial}: {e}")
         except Exception as e:
@@ -1668,23 +1679,23 @@ class BetService:
     async def handle_final_bet_reaction(self, payload: discord.RawReactionActionEvent) -> None:
         # Early return for invalid emojis
         if payload.emoji.name not in ["✅", "❌"]:
-            logger.debug(f"Reaction ignored: Invalid emoji '{payload.emoji.name}' on MsgID={payload.message_id}")
-            return
-
+            # logger.debug(f"Reaction ignored: Invalid emoji '{payload.emoji.name}' on MsgID={payload.message_id}")
+            return # Keep debug logs minimal for common cases
+    
         logger.info(f"Entered handle_final_bet_reaction: Emoji={payload.emoji.name}, MsgID={payload.message_id}, UserID={payload.user_id}, GuildID={payload.guild_id}")
-
+    
         # Ignore bot's own reactions
         if payload.user_id == self.bot.user.id:
-            logger.debug("Ignoring bot's own reaction.")
+            # logger.debug("Ignoring bot's own reaction.")
             return
-
+    
         # Check if message is a pending bet
         bet_serial = self.pending_bets.get(payload.message_id)
-        logger.debug(f"Checking pending_bets: MsgID={payload.message_id}, BetSerial={bet_serial}, PendingBets={self.pending_bets}")
+        # logger.debug(f"Checking pending_bets: MsgID={payload.message_id}, BetSerial={bet_serial}, PendingBets={self.pending_bets}")
         if not bet_serial:
-            logger.debug(f"Reaction ignored: MsgID {payload.message_id} not in pending_bets.")
+            # logger.debug(f"Reaction ignored: MsgID {payload.message_id} not in pending_bets.")
             return
-
+    
         # Validate guild, member, and channel
         guild = self.bot.get_guild(payload.guild_id)
         if not guild:
@@ -1698,26 +1709,27 @@ class BetService:
         if not isinstance(channel, discord.TextChannel):
             logger.warning(f"Channel {payload.channel_id} invalid for bet {bet_serial}")
             return
-
+    
         # Check bot permissions
         perms = channel.permissions_for(guild.me)
         if not (perms.view_channel and perms.read_message_history):
             logger.error(f"Missing permissions in channel {payload.channel_id}: View={perms.view_channel}, ReadHistory={perms.read_message_history}")
             return
-
+    
         try:
             # Fetch bet info to verify bettor
             bet_info_query = "SELECT user_id, units FROM bets WHERE bet_serial = %s AND guild_id = %s"
             bet_info = await db_manager.fetch_one(bet_info_query, (bet_serial, guild.id))
             if not bet_info:
-                logger.warning(f"Bet {bet_serial} not found in DB.")
+                logger.warning(f"Bet {bet_serial} (MsgID {payload.message_id}) not found in DB for reaction.")
                 if payload.message_id in self.pending_bets:
                     del self.pending_bets[payload.message_id]
+                    logger.info(f"Removed MsgID {payload.message_id} from pending_bets (bet not found).")
                 return
             bettor_id = bet_info.get("user_id")
-            units_risked = float(bet_info.get("units", 0.0))
-            logger.debug(f"Bet info: BettorID={bettor_id}, UnitsRisked={units_risked}")
-
+            # units_risked = float(bet_info.get("units", 0.0)) # Fetched later from locked record
+            # logger.debug(f"Bet info check: BettorID={bettor_id}")
+    
             # Check if reaction is from the bettor
             if payload.user_id != bettor_id:
                 logger.info(f"Reaction ignored: User {payload.user_id} is not the bettor {bettor_id} for bet {bet_serial}")
@@ -1729,129 +1741,201 @@ class BetService:
                     except Exception as e:
                         logger.warning(f"Failed to remove unauthorized reaction for bet {bet_serial}: {e}")
                 return
-
+    
             logger.info(f"Processing reaction '{payload.emoji.name}' by bettor {member.id} for bet {bet_serial}")
-
+    
             # Transaction for valid reaction
             async with db_manager._pool.acquire() as conn:
                 async with conn.cursor(aiomysql.DictCursor) as cur:
                     await cur.execute("START TRANSACTION")
                     try:
                         # Lock and check bet
+                        # Fetch necessary fields: user_id, guild_id, units (raw), bet_won, bet_loss, odds, stake
                         query = "SELECT user_id, guild_id, units, bet_won, bet_loss, odds, stake FROM bets WHERE bet_serial = %s FOR UPDATE"
                         await cur.execute(query, (bet_serial,))
                         bet_record = await cur.fetchone()
-                        logger.debug(f"Bet record for {bet_serial}: {bet_record}")
+                        logger.debug(f"Locked Bet record for {bet_serial}: {bet_record}")
                         if not bet_record:
-                            logger.info(f"Bet {bet_serial} not found.")
+                            logger.warning(f"Bet {bet_serial} (MsgID {payload.message_id}) not found during transaction lock.")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
-                            await cur.execute("ROLLBACK")
+                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (bet disappeared during lock).")
+                            await cur.execute("ROLLBACK") # Use ROLLBACK explicitly
                             return
                         if bet_record.get('bet_won') == 1 or bet_record.get('bet_loss') == 1:
                             logger.info(f"Bet {bet_serial} already resolved: Won={bet_record.get('bet_won')}, Loss={bet_record.get('bet_loss')}")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
+                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (already resolved).")
                             await cur.execute("ROLLBACK")
                             try:
+                                # Use limit_discord_call if available, otherwise direct call
                                 await channel.send(f"Bet #{bet_serial} is already resolved.", delete_after=10)
                             except discord.Forbidden:
                                 logger.warning(f"Cannot notify user about resolved bet {bet_serial}: Missing permissions")
+                            except Exception as send_err:
+                                 logger.warning(f"Error sending 'already resolved' message for bet {bet_serial}: {send_err}")
                             return
-
-                        # Verify unit_records row
+    
+                        # Verify unit_records row exists
                         check_query = "SELECT units, total FROM unit_records WHERE guild_id = %s AND user_id = %s AND bet_serial = %s"
                         await cur.execute(check_query, (bet_record.get("guild_id"), bet_record.get("user_id"), bet_serial))
                         unit_record = await cur.fetchone()
                         if not unit_record:
-                            logger.error(f"No unit_records row found for bet {bet_serial}, guild {bet_record.get('guild_id')}, user {bet_record.get('user_id')}")
+                            logger.error(f"CRITICAL: No unit_records row found for bet {bet_serial}, guild {bet_record.get('guild_id')}, user {bet_record.get('user_id')}. Cannot resolve.")
                             await cur.execute("ROLLBACK")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
+                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (missing unit_record).")
+                            # Maybe notify user or admin?
                             return
                         logger.debug(f"Unit_records before update for bet {bet_serial}: units={unit_record.get('units')}, total={unit_record.get('total')}")
-
+    
+    
                         # Fetch message
                         try:
                             message = await channel.fetch_message(payload.message_id)
                             if not message.embeds:
-                                raise ValueError("No embeds in message")
+                                raise ValueError("No embeds found in the target message")
                         except Exception as e:
-                            logger.error(f"Failed to fetch message for bet {bet_serial}: {e}")
+                            logger.error(f"Failed to fetch message or embeds for bet {bet_serial} (MsgID {payload.message_id}): {e}")
                             await cur.execute("ROLLBACK")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
+                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (message fetch failed).")
                             return
-
+    
                         embed = message.embeds[0]
                         db_guild_id = bet_record.get("guild_id")
                         original_bettor_id = bet_record.get("user_id")
-                        stake_db = float(bet_record.get("stake", units_risked))
-                        logger.debug(f"Processing bet {bet_serial}: units_risked={units_risked}, stake_db={stake_db}")
-
-                        # Set outcome
-                        set_won, set_loss, new_status, units_update, net_unit_change, new_color = None, None, "Error", 0.0, 0.0, embed.color
-                        if payload.emoji.name == "✅":
+                        stake_db = float(bet_record.get("stake", 0.0)) # Amount risked (+) or to win (-)
+                        odds_db = bet_record.get("odds") # Raw odds value (float or None)
+                        # units_selected is the raw unit value (1, 2, or 3) from the 'units' column in 'bets' table
+                        units_selected = float(bet_record.get("units", 0.0))
+    
+                        # Convert odds_db to float for calculations, handle None
+                        float_odds_db = None
+                        if odds_db is not None:
+                            try:
+                                float_odds_db = float(odds_db)
+                            except (ValueError, TypeError):
+                                logger.warning(f"Could not convert odds '{odds_db}' to float for bet {bet_serial}. Calculations may be incorrect.")
+                                float_odds_db = None # Ensure it's None if conversion fails
+    
+                        # --- MODIFIED CALCULATION FOR unit_records.total ---
+                        set_won, set_loss, new_status, net_unit_change, new_color = None, None, "Error", 0.0, embed.color
+    
+                        # Calculate net_unit_change (for unit_records.total)
+                        if payload.emoji.name == "✅": # WIN
                             set_won, set_loss, new_status = 1, 0, "Won"
-                            units_update = stake_db  # stake for win
-                            net_unit_change = stake_db  # Total is stake for win
+                            if float_odds_db is not None and units_selected > 0:
+                                if float_odds_db > 0: # Positive odds: Win = units * (odds / 100)
+                                    net_unit_change = units_selected * (float_odds_db / 100.0)
+                                else: # Negative/Even odds: Win = units selected
+                                    net_unit_change = units_selected
+                            else: # Fallback if odds or units invalid/missing
+                                net_unit_change = units_selected # Assume win amount is units risked
+                                logger.warning(f"Bet {bet_serial} Win: Odds ({float_odds_db}) or Units ({units_selected}) invalid. Using fallback net_unit_change.")
                             new_color = discord.Color.green()
-                        elif payload.emoji.name == "❌":
+    
+                        elif payload.emoji.name == "❌": # LOSS
                             set_won, set_loss, new_status = 0, 1, "Lost"
-                            units_update = -stake_db  # negative stake for loss
-                            net_unit_change = -units_risked  # Total is -units for loss
+                            if float_odds_db is not None and units_selected > 0:
+                                if float_odds_db > 0: # Positive odds: Loss = -units selected
+                                    net_unit_change = -units_selected
+                                else: # Negative/Even odds: Loss = -risk amount = - (units * (|odds| / 100))
+                                    if float_odds_db == 0 or float_odds_db == 100.0: # Treat 0 or EVEN (100) as 1:1 loss
+                                        net_unit_change = -units_selected
+                                    else: # Negative odds calculation
+                                        risk_amount = units_selected * (abs(float_odds_db) / 100.0)
+                                        net_unit_change = -risk_amount
+                            else: # Fallback if odds or units invalid/missing
+                                net_unit_change = -units_selected # Assume loss amount is units risked
+                                logger.warning(f"Bet {bet_serial} Loss: Odds ({float_odds_db}) or Units ({units_selected}) invalid. Using fallback net_unit_change.")
                             new_color = discord.Color.red()
-                        logger.debug(f"Outcome: Status={new_status}, UnitsUpdate={units_update}, NetUnitChange={net_unit_change}")
-
-                        # Update bets
+    
+                        # Calculate units_update (for unit_records.units - keeping current logic based on stake)
+                        # Stake_db should represent the amount risked (if odds > 0) or amount to win (if odds <= 0)
+                        units_update = 0.0
+                        if set_won == 1:
+                            # If odds were positive, stake = units risked, profit = net_unit_change. This seems complex.
+                            # Let's try: Win always adds the positive net_unit_change amount.
+                            units_update = net_unit_change # Amount won
+                        elif set_loss == 1:
+                            # Loss always subtracts the calculated loss amount.
+                            units_update = net_unit_change # Amount lost (already negative)
+    
+                        logger.debug(f"Outcome for bet {bet_serial}: Status={new_status}, UnitsUpdate (for units col)={units_update:.2f}, NetUnitChange (for total col)={net_unit_change:.2f}")
+                        # --- END MODIFIED CALCULATION ---
+    
+                        # Update bets table
                         update_bets_query = "UPDATE bets SET bet_won = %s, bet_loss = %s, resolved_by = %s, resolved_at = NOW() WHERE bet_serial = %s"
                         await cur.execute(update_bets_query, (set_won, set_loss, payload.user_id, bet_serial))
-                        rows_updated = cur.rowcount
-                        logger.debug(f"Bets update affected {rows_updated} rows")
-
-                        if rows_updated > 0:
-                            # Update cappers
+                        rows_updated_bets = cur.rowcount
+                        logger.debug(f"Bets update affected {rows_updated_bets} rows")
+    
+                        if rows_updated_bets > 0:
+                            # Update cappers table (Example - adjust if your schema differs)
                             cappers_update_query = """
                                 INSERT INTO cappers (guild_id, user_id, bet_won, bet_loss) VALUES (%s, %s, %s, %s)
                                 ON DUPLICATE KEY UPDATE bet_won = bet_won + VALUES(bet_won), bet_loss = bet_loss + VALUES(bet_loss)
                             """
-                            await cur.execute(cappers_update_query, (db_guild_id, original_bettor_id, set_won or 0, set_loss or 0))
-                            logger.debug(f"Cappers updated")
-
-                            # Update unit_records
+                            # Ensure values are int for bet_won/bet_loss counts
+                            capper_won = 1 if set_won else 0
+                            capper_loss = 1 if set_loss else 0
+                            await cur.execute(cappers_update_query, (db_guild_id, original_bettor_id, capper_won, capper_loss))
+                            logger.debug(f"Cappers updated/inserted for user {original_bettor_id}")
+    
+                            # Update unit_records table using the calculated values
                             unit_records_update_query = """
                                 UPDATE unit_records SET units = %s, total = %s WHERE guild_id = %s AND user_id = %s AND bet_serial = %s
                             """
+                            # Use units_update for 'units' column and net_unit_change for 'total' column
                             await cur.execute(unit_records_update_query, (units_update, net_unit_change, db_guild_id, original_bettor_id, bet_serial))
-                            rows_updated = cur.rowcount
-                            logger.debug(f"Unit_records update for bet {bet_serial} affected {rows_updated} rows")
-                            if rows_updated == 0:
-                                logger.error(f"Failed to update unit_records for bet {bet_serial}: No rows matched")
-
+                            rows_updated_units = cur.rowcount
+                            logger.debug(f"Unit_records update for bet {bet_serial} affected {rows_updated_units} rows. Set units={units_update:.2f}, total={net_unit_change:.2f}")
+                            if rows_updated_units == 0:
+                                logger.error(f"CRITICAL: Failed to update unit_records for bet {bet_serial}: No rows matched. Rolling back.")
+                                await conn.rollback() # Explicit rollback
+                                # Remove from pending? Should already be out if unit_record didn't exist.
+                                if payload.message_id in self.pending_bets:
+                                    del self.pending_bets[payload.message_id]
+                                return # Exit after rollback
+    
                             await conn.commit()
-                            logger.info(f"Transaction committed for bet {bet_serial}")
-
+                            logger.info(f"Transaction committed successfully for bet {bet_serial}")
+    
                             # Update embed
                             try:
                                 embed.color = new_color
                                 embed.set_footer(text=f"Resolved as {new_status} by {member.display_name} | Bet #{bet_serial}")
                                 embed.timestamp = discord.utils.utcnow()
+                                # Use limit_discord_call if available
                                 await message.edit(embed=embed)
                                 await message.clear_reactions()
-                                logger.debug(f"Message updated and reactions cleared")
+                                logger.debug(f"Message {message.id} updated and reactions cleared for bet {bet_serial}")
                             except Exception as e:
-                                logger.warning(f"Failed to edit message for bet {bet_serial}: {e}")
-
+                                logger.warning(f"Failed to edit message or clear reactions for bet {bet_serial} after DB commit: {e}")
+    
+                            # Remove from pending list *after* successful commit and processing attempt
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
+                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (successfully processed).")
                         else:
-                            logger.warning(f"Bet {bet_serial} update failed: 0 rows affected")
-                            await conn.rollback()
+                            logger.warning(f"Bet {bet_serial} update failed (bets table): 0 rows affected. Rolling back.")
+                            await conn.rollback() # Explicit rollback
+                            # Do not remove from pending_bets here, as the bet state didn't change
                     except Exception as trans_err:
-                        logger.error(f"Transaction error for bet {bet_serial}: {trans_err}", exc_info=True)
-                        await conn.rollback()
+                        logger.error(f"Transaction error processing reaction for bet {bet_serial}: {trans_err}", exc_info=True)
+                        try:
+                            await conn.rollback() # Ensure rollback on any transaction error
+                            logger.info(f"Transaction rolled back for bet {bet_serial} due to error.")
+                        except Exception as rb_err:
+                            logger.error(f"Error during rollback for bet {bet_serial}: {rb_err}")
+                        # Do not remove from pending_bets here, let retry happen if applicable
         except Exception as e:
-            logger.error(f"Unexpected error for bet {bet_serial}: {e}", exc_info=True)
+            logger.error(f"Unexpected error handling reaction for bet {bet_serial} (MsgID {payload.message_id}): {e}", exc_info=True)
+        # Do not remove from pending_bets on unexpected outer error
 
 # --- Setup Function for Core ---
 # This MUST be at the top level (no indentation)
