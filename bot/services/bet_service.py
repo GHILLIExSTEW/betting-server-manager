@@ -1,36 +1,32 @@
-# bot/services/bet_service.py
-# ADDED member_role fetching and mention logic in ConfirmButton callback.
-# ADDED member_role_id to bets table insert.
-
+"""Bet service module for handling betting functionality in a Discord bot."""
 import asyncio
 import logging
-import discord
-import aiomysql
-from discord import app_commands, Interaction, SelectOption, TextStyle
-from discord.ui import View, Select, Button, Modal, TextInput
-from datetime import datetime, timezone, timedelta
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from datetime import datetime, timedelta, timezone
+from typing import Any, Dict, List, Optional
 
-# Assuming db_manager and other necessary imports are available
-from bot.data.db_manager import db_manager
+import aiomysql
+import discord
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from discord import app_commands, Interaction
+from discord.ui import Button, Modal, Select, TextInput, View
+
+from bot.config.settings import DEFAULT_AVATAR_URL, LOGO_BASE_URL, TEST_GUILD_ID
 from bot.data.cache_manager import cache_manager
+from bot.data.db_manager import db_manager
+from bot.data.league.league_dictionaries import SUPPORTED_LEAGUES
 from bot.data.league.league_team_handler import standardize_league_code
+from bot.services.cancel_bet_handler import cancel_bet_command_handler
+from bot.services.sport_handler import SportHandler, SportHandlerFactory
+from bot.utils.buttons import CancelButton
+from bot.utils.errors import BettingBotError, DatabaseError, PermissionError, ValidationError
+from bot.utils.image_utils.team_logos import get_team_logo_url_from_csv
+from bot.utils.rate_limiter import limit_discord_call
 from bot.utils.serial_utils import generate_bet_serial
 from bot.utils.validation import is_valid_league, is_valid_units
-from bot.utils.errors import ValidationError, PermissionError, DatabaseError, BettingBotError
-from bot.utils.rate_limiter import limit_discord_call
-from bot.utils.image_utils.team_logos import get_team_logo_url_from_csv
-from bot.data.league.league_dictionaries import SUPPORTED_LEAGUES
-from bot.config.settings import TEST_GUILD_ID, DEFAULT_AVATAR_URL, LOGO_BASE_URL
-from bot.services.sport_handler import SportHandlerFactory, SportHandler
-# Make sure cancel_bet_handler exists and is importable
-from bot.services.cancel_bet_handler import cancel_bet_command_handler
-from bot.utils.buttons import CancelButton # Ensure this import is correct
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 logger = logging.getLogger(__name__)
 
-# --- LEAGUE EXAMPLES ---
+# League examples for modal placeholders
 LEAGUE_EXAMPLES = {
     "nba": {"team": "Lakers", "opponent": "Celtics", "player": "LeBron James"},
     "nfl": {"team": "Chiefs", "opponent": "Eagles", "player": "Patrick Mahomes"},
@@ -61,37 +57,43 @@ LEAGUE_EXAMPLES = {
     "valorant": {"team": "Sentinels", "opponent": "Fnatic", "player": "TenZ"},
     "esports_players": {"player": "s1mple", "team": "Natus Vincere"},
     "kentucky_derby": {"horse": "Flightline", "event": "Kentucky Derby"},
-    "horseracing": {"horse": "White Abarrio", "event": "Breeders’ Cup"}
-    }
+    "horseracing": {"horse": "White Abarrio", "event": "Breeders’ Cup"},
+}
+
 
 # --- Helper Functions ---
-
-def create_league_select_options() -> List[SelectOption]:
-    """Creates SelectOption list for league selection, including only top-level leagues."""
+def create_league_select_options() -> List[discord.SelectOption]:
+    """Creates a list of SelectOption for league selection, including only top-level leagues."""
     options = []
     top_level_leagues = [
         "NBA", "NFL", "MLB", "NHL", "EPL", "LaLiga", "SerieA", "Bundesliga", "Ligue1",
-        "MLS", "WNBA", "CFL", "NASCAR", "UFC",
-        "NCAA", "Golf", "Tennis", "Esports", "HorseRacing"
+        "MLS", "WNBA", "CFL", "NASCAR", "UFC", "NCAA", "Golf", "Tennis", "Esports",
+        "HorseRacing",
     ]
     code_map = {
-        "laliga": "laliga", "seriea": "seriea", "bundesliga": "bundesliga", "ligue1": "ligue1",
-        "golf": "golf", "tennis": "tennis", "esports": "esports", "horseracing": "horseracing",
-        "ncaa": "ncaa", "ufc": "ufc", "nascar": "nascar", "nba": "nba", "nfl": "nfl",
-        "mlb": "mlb", "nhl": "nhl", "epl": "epl", "mls": "mls", "wnba": "wnba", "cfl": "cfl"
+        "laliga": "laliga", "seriea": "seriea", "bundesliga": "bundesliga",
+        "ligue1": "ligue1", "golf": "golf", "tennis": "tennis", "esports": "esports",
+        "horseracing": "horseracing", "ncaa": "ncaa", "ufc": "ufc", "nascar": "nascar",
+        "nba": "nba", "nfl": "nfl", "mlb": "mlb", "nhl": "nhl", "epl": "epl",
+        "mls": "mls", "wnba": "wnba", "cfl": "cfl",
     }
+
     for league_display in top_level_leagues:
         league_code = code_map.get(league_display.lower(), league_display.lower())
         if league_code in SUPPORTED_LEAGUES:
-            options.append(SelectOption(label=league_display.upper(), value=league_code))
+            options.append(discord.SelectOption(label=league_display.upper(), value=league_code))
         else:
-            logger.warning(f"Skipping league '{league_display}' in options: Code '{league_code}' not found in SUPPORTED_LEAGUES.")
+            logger.warning(
+                f"Skipping league '{league_display}' in options: Code '{league_code}' not in SUPPORTED_LEAGUES."
+            )
+
     if not options:
         logger.error("No valid top-level league options generated.")
-        return []
     return options
 
-def to_int_or_none(val):
+
+def to_int_or_none(val: Any) -> Optional[int]:
+    """Converts a value to an integer or returns None if conversion fails."""
     if val is None:
         return None
     try:
@@ -99,23 +101,24 @@ def to_int_or_none(val):
     except (ValueError, TypeError):
         return None
 
-async def fetch_guild_settings_and_sub(guild_id: int) -> dict:
+
+async def fetch_guild_settings_and_sub(guild_id: int) -> Dict[str, Optional[int]]:
     """Fetches key guild settings including channels and roles."""
-    # ADDED member_role to the list of columns
-    columns = ['command_channel_1', 'command_channel_2', 'embed_channel_1', 'embed_channel_2', 'authorized_role', 'admin_role', 'member_role']
+    columns = [
+        "command_channel_1", "command_channel_2", "embed_channel_1", "embed_channel_2",
+        "authorized_role", "admin_role", "member_role",
+    ]
     default_settings = {col: None for col in columns}
     try:
         query = f"SELECT {', '.join(columns)} FROM server_settings WHERE guild_id = %s"
         settings_record = await db_manager.fetch_one(query, (guild_id,))
         if settings_record:
-            # Convert fetched IDs to int, keeping None if originally None or conversion fails
             converted_settings = {col: to_int_or_none(settings_record.get(col)) for col in columns}
             final_settings = {**default_settings, **converted_settings}
             logger.debug(f"Fetched settings for guild {guild_id}: {final_settings}")
             return final_settings
-        else:
-            logger.debug(f"No settings found for guild {guild_id}.")
-            return default_settings
+        logger.debug(f"No settings found for guild {guild_id}.")
+        return default_settings
     except DatabaseError as e:
         logger.error(f"DB error fetching settings for guild {guild_id}: {e}")
         return default_settings
@@ -124,27 +127,1636 @@ async def fetch_guild_settings_and_sub(guild_id: int) -> dict:
         return default_settings
 
 
-# --- BetWorkflowView Class and other UI Components ---
-# (Includes BetWorkflowView, SubLeague Selects, LeagueSelect, BetTypeSelect, PathButton, ChannelSelect, UnitsSelect, Modals, Confirm/Edit/Cancel Buttons)
+# --- UI Components ---
+class EsportsSubLeagueSelect(Select):
+    """Select menu for choosing an Esports sub-league."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="Counter-Strike (CS:GO)", value="csgo"),
+            discord.SelectOption(label="League of Legends (LoL)", value="lol"),
+            discord.SelectOption(label="Valorant", value="valorant"),
+            discord.SelectOption(label="Generic Esports Players", value="esports_players"),
+        ]
+        super().__init__(
+            placeholder="3. Select Esports Game...", options=options, custom_id="esports_sub_league_select"
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.selected_sub_league = self.values[0]
+        view.path = None
+        view.preview_embed = None
+        view.current_leg_data = {}
+        view.sport_handler = None
+        logger.info(
+            f"Esports Sub-League selected: {view.selected_sub_league} by {interaction.user.id} "
+            f"(Serial: {view.bet_serial})"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content="Step 4: Choose Bet Specifics", view=view, embed=None)
+
+
+class TennisSubLeagueSelect(Select):
+    """Select menu for choosing a Tennis sub-league."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="Men's Tennis (ATP)", value="atp"),
+            discord.SelectOption(label="Women's Tennis (WTA)", value="wta"),
+        ]
+        super().__init__(
+            placeholder="1b. Select Tennis Tour...", options=options, custom_id="tennis_sub_league_select"
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.selected_sub_league = self.values[0]
+        logger.info(
+            f"Tennis Sub-League selected: {view.selected_sub_league} by {interaction.user.id} "
+            f"(Serial: {view.bet_serial})"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
+
+
+class GolfSubLeagueSelect(Select):
+    """Select menu for choosing a Golf sub-league."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="PGA Tour", value="pga"),
+            discord.SelectOption(label="LPGA Tour", value="lpga"),
+            discord.SelectOption(label="European Tour", value="europeantour"),
+            discord.SelectOption(label="The Masters", value="masters"),
+        ]
+        super().__init__(
+            placeholder="1b. Select Golf Tour/Event...", options=options, custom_id="golf_sub_league_select"
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.selected_sub_league = self.values[0]
+        logger.info(
+            f"Golf Sub-League selected: {view.selected_sub_league} by {interaction.user.id} "
+            f"(Serial: {view.bet_serial})"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
+
+
+class HorseRacingSubLeagueSelect(Select):
+    """Select menu for choosing a Horse Racing sub-league."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="Kentucky Derby", value="kentucky_derby"),
+            discord.SelectOption(label="Other Horse Racing", value="horseracing"),
+        ]
+        super().__init__(
+            placeholder="1b. Select Horse Race/Event...",
+            options=options,
+            custom_id="horseracing_sub_league_select",
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.selected_sub_league = self.values[0]
+        logger.info(
+            f"Horse Racing Sub-League selected: {view.selected_sub_league} by {interaction.user.id} "
+            f"(Serial: {view.bet_serial})"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
+
+
+class LeagueSelect(Select):
+    """Select menu for choosing a league or category."""
+    def __init__(self, league_options: List[discord.SelectOption]):
+        placeholder = "2. Select League/Category..."
+        disabled = False
+        if not league_options:
+            options = [discord.SelectOption(label="No leagues configured", value="error", default=True)]
+            placeholder = "Error: No leagues found"
+            disabled = True
+        else:
+            options = league_options
+        super().__init__(
+            placeholder=placeholder, options=options, custom_id="league_select", disabled=disabled
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        selected_value = self.values[0]
+        if selected_value == "error":
+            await interaction.response.send_message("League selection is currently unavailable.", ephemeral=True)
+            return
+        view.selected_league = selected_value
+        view.selected_sub_league = None
+        view.path = None
+        view.preview_embed = None
+        view.current_leg_data = {}
+        view.sport_handler = None
+        logger.info(
+            f"League selected: {view.selected_league} by {interaction.user.id} (Serial: {view.bet_serial})"
+        )
+        generic_parents = ["ncaa", "golf", "tennis", "esports", "horseracing"]
+        next_step_message = (
+            f"Step 3: Select {view.selected_league.capitalize()} Sub-Category"
+            if view.selected_league in generic_parents
+            else "Step 3: Choose Bet Specifics"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content=next_step_message, view=view, embed=None)
+
+class SubLeagueSelect(Select):
+    """Select menu for choosing an NCAA sub-league."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="NCAA Football (NCAAF)", value="ncaaf"),
+            discord.SelectOption(label="NCAA Men's Basketball (NCAAM)", value="ncaam"),
+            discord.SelectOption(label="NCAA Women's Basketball (NCAAW)", value="ncaaw"),
+            discord.SelectOption(label="NCAA Women's Volleyball (NCAAWVB)", value="ncaawvb"),
+        ]
+        super().__init__(
+            placeholder="3. Select NCAA Sport...", options=options, custom_id="sub_league_select"
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.selected_sub_league = self.values[0]
+        view.path = None
+        view.preview_embed = None
+        view.current_leg_data = {}
+        view.sport_handler = None
+        logger.info(
+            f"NCAA Sub-League selected: {view.selected_sub_league} by {interaction.user.id} "
+            f"(Serial: {view.bet_serial})"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content="Step 4: Choose Bet Specifics", view=view, embed=None)
+
+
+class BetTypeSelect(Select):
+    """Select menu for choosing the bet type (Straight or Parlay)."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label="Straight Bet", value="Straight"),
+            discord.SelectOption(label="Parlay", value="Parlay"),
+        ]
+        super().__init__(
+            placeholder="1. Select Bet Type...", options=options, custom_id="bet_type_select"
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.bet_type = self.values[0]
+        view.path = None
+        view.preview_embed = None
+        view.current_leg_data = {}
+        view.legs = []
+        view.parlay_type = None
+        logger.info(
+            f"Bet Type selected: {view.bet_type} by {interaction.user.id} (Serial: {view.bet_serial})"
+        )
+        if view.bet_type == "Parlay":
+            view.update_view()
+            await interaction.response.edit_message(content="Step 2: Choose Parlay Type", view=view, embed=None)
+        else:
+            view.update_view()
+            await interaction.response.edit_message(content="Step 3: Choose Bet Specifics", view=view, embed=None)
+
+
+class PathButton(Button):
+    """Button for selecting a specific betting path."""
+    def __init__(self, label: str, custom_id: str):
+        super().__init__(label=label, style=discord.ButtonStyle.primary, custom_id=custom_id)
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        if not view.sport_handler:
+            logger.error(
+                f"Sport handler not set when path button '{self.label}' clicked for bet {view.bet_serial}"
+            )
+            league_context = view.selected_sub_league or view.selected_league
+            if league_context:
+                try:
+                    view.sport_handler = SportHandlerFactory.get_handler(league_context, SUPPORTED_LEAGUES)
+                except Exception as e:
+                    logger.error(f"Failed to re-acquire handler on path click for {league_context}: {e}")
+            if not view.sport_handler:
+                await interaction.response.send_message(
+                    "Error: Sport context lost. Please restart.", ephemeral=True
+                )
+                view.stop()
+                return
+        view.path = self.label
+        logger.info(f"Path chosen: '{view.path}' by {interaction.user.id} (Serial: {view.bet_serial})")
+        try:
+            modal = view.sport_handler.get_modal(view, view.path)
+            await interaction.response.send_modal(modal)
+            logger.debug(f"Modal for path '{view.path}' sent successfully.")
+        except ValueError as e:
+            logger.error(f"Error getting modal for path '{view.path}', league '{view.sport_handler.league}': {e}")
+            await interaction.response.send_message(
+                f"Error: Could not load input form for '{view.path}'.", ephemeral=True
+            )
+            view.path = None
+            view.update_view()
+            await interaction.edit_original_response(view=view)
+        except Exception as e:
+            logger.error(f"Unexpected error generating modal for bet {view.bet_serial}: {e}", exc_info=True)
+            if not interaction.response.is_done():
+                await interaction.response.send_message(
+                    "An unexpected error occurred setting up the bet form.", ephemeral=True
+                )
+
+
+class ParlayTypeButton(Button):
+    """Button for selecting the parlay type (Same-Game or Multi-Team)."""
+    def __init__(self, label: str, parlay_type: str):
+        super().__init__(
+            label=label, style=discord.ButtonStyle.primary, custom_id=f"parlay_type_{parlay_type}"
+        )
+        self.parlay_type = parlay_type
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.parlay_type = self.parlay_type
+        logger.info(
+            f"Parlay Type chosen: '{view.parlay_type}' by {interaction.user.id} (Serial: {view.bet_serial})"
+        )
+        view.update_view()
+        await interaction.response.edit_message(content="Step 3: Select League", view=view, embed=None)
+
+
+class ChannelSelect(Select):
+    """Select menu for choosing the channel to post the bet."""
+    def __init__(
+        self,
+        guild: Optional[discord.Guild],
+        embed_channel_id_1: Optional[int],
+        embed_channel_id_2: Optional[int],
+    ):
+        options = []
+        placeholder = "5. Select Channel..."
+        disabled = True
+        if guild:
+            channel_ids = [ch_id for ch_id in [embed_channel_id_1, embed_channel_id_2] if ch_id]
+            if not channel_ids:
+                options = [discord.SelectOption(label="No embed channels set", value="none")]
+                placeholder = "Error: Configure embed channels"
+            else:
+                valid_channels_found = False
+                for ch_id in channel_ids:
+                    channel = guild.get_channel(ch_id)
+                    if channel and isinstance(channel, discord.TextChannel):
+                        perms = channel.permissions_for(guild.me)
+                        if perms.send_messages and perms.embed_links and perms.manage_webhooks:
+                            options.append(discord.SelectOption(label=f"#{channel.name}", value=str(channel.id)))
+                            valid_channels_found = True
+                        else:
+                            logger.warning(
+                                f"Bot lacks Send/Embed/Webhook perms in channel {channel.id} ({channel.name})"
+                            )
+                    else:
+                        logger.warning(
+                            f"Configured embed channel {ch_id} not found or not text channel in guild {guild.id}"
+                        )
+                if not valid_channels_found:
+                    options = [discord.SelectOption(label="Invalid configured channels", value="none")]
+                    placeholder = "Error: Check channel config/perms"
+                else:
+                    disabled = False
+        else:
+            options = [discord.SelectOption(label="Error: Use in server", value="error")]
+            placeholder = "Error: Command must be used in a server"
+        super().__init__(
+            placeholder=placeholder,
+            options=options,
+            custom_id="channel_select",
+            min_values=1,
+            max_values=1,
+            disabled=disabled,
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        selected_value = self.values[0]
+        if selected_value in ["none", "error"]:
+            view.selected_channel_id = None
+            await interaction.response.send_message("Please select a valid channel.", ephemeral=True)
+        else:
+            try:
+                view.selected_channel_id = int(selected_value)
+                logger.info(
+                    f"Channel selected: {view.selected_channel_id} by {interaction.user.id} "
+                    f"(Serial: {view.bet_serial})"
+                )
+                await interaction.response.defer()
+                await view.update_preview_description_and_footer(interaction)
+            except ValueError:
+                logger.error(f"Invalid channel value selected: {selected_value} for bet {view.bet_serial}")
+                view.selected_channel_id = None
+                await interaction.response.send_message("Invalid channel value selected.", ephemeral=True)
+            except Exception as e:
+                logger.error(f"Error in ChannelSelect callback: {e}", exc_info=True)
+                if not interaction.response.is_done():
+                    await interaction.response.send_message(
+                        "An error occurred processing your channel selection.", ephemeral=True
+                    )
+
+
+class UnitsSelect(Select):
+    """Select menu for choosing the number of units to bet."""
+    def __init__(self):
+        options = [
+            discord.SelectOption(label=f"{i} Unit{'s' if i > 1 else ''}", value=str(i))
+            for i in range(1, 4)
+        ]
+        super().__init__(
+            placeholder="6. Select Units...", options=options, custom_id="units_select", min_values=1, max_values=1
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        try:
+            view.selected_units = int(self.values[0])
+            logger.info(
+                f"Units selected: {view.selected_units} by {interaction.user.id} (Serial: {view.bet_serial})"
+            )
+            await interaction.response.defer()
+            await view.update_preview_description_and_footer(interaction)
+        except ValueError:
+            logger.error(f"Invalid units value selected: {self.values[0]} for bet {view.bet_serial}")
+            view.selected_units = None
+            await interaction.response.send_message("Invalid units value selected.", ephemeral=True)
+        except Exception as e:
+            logger.error(f"Error in UnitsSelect callback: {e}", exc_info=True)
+            if not interaction.response.is_done():
+                await interaction.response.send_message(
+                    "An error occurred processing your unit selection.", ephemeral=True
+                )
+
+
+class ConfirmButton(Button):
+    """Button to confirm and place the bet."""
+    def __init__(self, disabled: bool = True, row: Optional[int] = None):
+        super().__init__(
+            label="Confirm Bet",
+            style=discord.ButtonStyle.success,
+            custom_id="confirm_bet",
+            disabled=disabled,
+            row=row,
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        if not all([view.selected_channel_id, view.selected_units, view.preview_embed, view.current_leg_data]):
+            logger.warning(
+                f"Confirm bet {view.bet_serial} failed: Missing Chan={view.selected_channel_id}, "
+                f"Units={view.selected_units}, Embed={view.preview_embed is not None}, "
+                f"Data={view.current_leg_data is not None}"
+            )
+            await interaction.response.send_message(
+                "Error: Missing channel, units, or bet details. Please select them.", ephemeral=True
+            )
+            return
+        await interaction.response.defer(ephemeral=True, thinking=True)
+        logger.info(f"ConfirmButton processing bet {view.bet_serial} for user {interaction.user.id}")
+        try:
+            guild = interaction.guild
+            if not guild:
+                raise ValueError("Interaction missing guild context for confirmation.")
+            target_channel = guild.get_channel(view.selected_channel_id)
+            if not target_channel or not isinstance(target_channel, discord.TextChannel):
+                raise ValueError(f"Selected channel {view.selected_channel_id} is invalid or not found.")
+            target_perms = target_channel.permissions_for(guild.me)
+            if not target_perms.send_messages or not target_perms.embed_links:
+                raise PermissionError(f"Missing Send/Embed permissions in channel {target_channel.mention}")
+            webhook = None
+            webhook_name = f"{guild.me.display_name} Bets"
+            try:
+                webhooks = await target_channel.webhooks()
+                webhook = next((wh for wh in webhooks if wh.user and wh.user.id == guild.me.id), None)
+                if not webhook and target_perms.manage_webhooks:
+                    webhook = await target_channel.create_webhook(name=webhook_name)
+                    logger.info(
+                        f"Created webhook {webhook.id} named '{webhook_name}' in channel {target_channel.id}"
+                    )
+                elif not webhook and webhooks:
+                    webhook = webhooks[0]
+                    logger.warning(
+                        f"Using existing webhook {webhook.id} (owned by {webhook.user}) in channel "
+                        f"{target_channel.id}"
+                    )
+                elif not webhook:
+                    raise BettingBotError("Webhook required but none available/creatable.")
+            except discord.Forbidden:
+                logger.error(f"Forbidden error managing webhooks in channel {target_channel.id}.")
+                raise PermissionError("Bot lacks permissions for webhooks.")
+            except Exception as e:
+                logger.error(f"Error getting/creating webhook for channel {target_channel.id}: {e}", exc_info=True)
+                raise BettingBotError("Error setting up webhook for posting.")
+            if not webhook:
+                raise BettingBotError("Could not obtain a webhook instance.")
+            settings = await fetch_guild_settings_and_sub(guild.id)
+            member_role_id = settings.get("member_role")
+            mention_content = ""
+            logger.info(f"--- Debug Mention Logic (Bet: {view.bet_serial}) ---")
+            logger.info(f"Fetched member_role_id: {member_role_id} (Type: {type(member_role_id)})")
+            if member_role_id:
+                try:
+                    role_id_int = int(member_role_id)
+                    logger.info(f"Attempting to find role with ID: {role_id_int}")
+                    role = guild.get_role(role_id_int)
+                except (ValueError, TypeError) as e:
+                    logger.error(f"Could not convert role ID '{member_role_id}' to int: {e}")
+                    role = None
+                if role:
+                    logger.info(f"Role Found: Name='{role.name}', ID={role.id}, Mentionable={role.mentionable}")
+                    if role.mentionable:
+                        mention_content = f"{role.mention} "
+                        logger.info(f"SUCCESS: Setting mention_content to '{mention_content}'")
+                    else:
+                        logger.warning(
+                            f"Role '{role.name}' (ID: {role.id}) is NOT mentionable. Check Discord settings."
+                        )
+                else:
+                    logger.warning(f"Role with ID {member_role_id} NOT FOUND in guild {guild.id}.")
+            else:
+                logger.info(f"No member_role ID configured for guild {guild.id}.")
+            logger.info(f"Final mention_content: '{mention_content}'")
+            logger.info("--- End Debug Mention Logic ---")
+            capper_display_name = interaction.user.display_name
+            capper_avatar_url = interaction.user.display_avatar.url
+            IMAGE_BASE_URL = "http://bet-bot-manager.my.pebble.host:25594"
+            try:
+                capper_query = "SELECT display_name, image_path FROM cappers WHERE user_id = %s AND guild_id = %s"
+                capper_record = await db_manager.fetch_one(capper_query, (interaction.user.id, guild.id))
+                if capper_record:
+                    db_display_name = capper_record.get("display_name")
+                    db_image_path = capper_record.get("image_path")
+                    if db_display_name:
+                        capper_display_name = db_display_name
+                    if db_image_path:
+                        if not db_image_path.lower().startswith(("http://", "https://")):
+                            db_image_path = f"{IMAGE_BASE_URL}{db_image_path.lstrip('/')}"
+                        if db_image_path.lower().startswith(("http://", "https://")):
+                            capper_avatar_url = db_image_path
+                        else:
+                            logger.warning(
+                                f"Invalid image_path URL: '{db_image_path}'. Using Discord avatar."
+                            )
+                    logger.debug(
+                        f"Using capper profile: Name='{capper_display_name}', Avatar='{capper_avatar_url}'"
+                    )
+                else:
+                    logger.debug(f"No capper record for user {interaction.user.id}, using Discord profile.")
+            except DatabaseError as db_e:
+                logger.error(f"DB Error fetching capper info: {db_e}. Using Discord defaults.")
+                capper_avatar_url = DEFAULT_AVATAR_URL
+            except Exception as e:
+                logger.error(f"Unexpected error fetching capper info: {e}. Using defaults.", exc_info=True)
+                capper_avatar_url = DEFAULT_AVATAR_URL
+            if not capper_avatar_url or not capper_avatar_url.lower().startswith(("http://", "https://")):
+                logger.warning(f"Invalid avatar URL: '{capper_avatar_url}'. Using default.")
+                capper_avatar_url = DEFAULT_AVATAR_URL
+            final_embed = view.preview_embed
+            final_embed.timestamp = discord.utils.utcnow()
+            final_embed.color = discord.Color.gold()
+            final_embed.set_footer(text=f"Bet #{view.bet_serial}")
+            bet_message = await webhook.send(
+                content=mention_content,
+                embed=final_embed,
+                username=capper_display_name,
+                avatar_url=capper_avatar_url,
+                wait=True,
+            )
+            logger.info(
+                f"Bet {view.bet_serial} message {bet_message.id} posted via webhook {webhook.id} in channel "
+                f"{target_channel.id} with content '{mention_content}'."
+            )
+            async with db_manager._pool.acquire() as conn:
+                async with conn.cursor(aiomysql.DictCursor) as cur:
+                    await cur.execute("START TRANSACTION")
+                    try:
+                        fb_data = view.current_leg_data
+                        db_bet_type = "standard"
+                        player_prop_value = None
+                        line_value = None
+                        path = view.path
+                        team_db = (
+                            fb_data.get("team")
+                            or fb_data.get("player1")
+                            or fb_data.get("team1")
+                            or fb_data.get("fighter1")
+                            or fb_data.get("horse")
+                            or fb_data.get("driver")
+                            or fb_data.get("golfer")
+                            or fb_data.get("player")
+                            or "N/A"
+                        )
+                        opponent_db = (
+                            fb_data.get("opponent")
+                            or fb_data.get("player2")
+                            or fb_data.get("team2")
+                            or fb_data.get("fighter2")
+                            or "N/A"
+                        )
+                        player_name_db = (
+                            fb_data.get("player_name")
+                            or fb_data.get("player")
+                            or fb_data.get("fighter")
+                            or fb_data.get("driver")
+                            or fb_data.get("golfer")
+                        )
+                        line_value = fb_data.get("line")
+                        player_prop_value = fb_data.get("prop")
+                        if path == "Bet on a Player":
+                            db_bet_type = "prop"
+                        elif path == "Bet on a Team":
+                            pass
+                        elif path == "Bet on a Driver":
+                            opponent_db = fb_data.get("car_number", "N/A")
+                            player_prop_value = fb_data.get("line")
+                            db_bet_type = "prop"
+                        elif path == "Bet on a Race Prop":
+                            team_db = fb_data.get("event", "N/A")
+                            opponent_db = fb_data.get("pick", fb_data.get("outcome", "N/A"))
+                            player_prop_value = f"{fb_data.get('laps', 'Prop')}: {opponent_db}"
+                            db_bet_type = "prop"
+                        else:
+                            logger.warning(f"Bet {view.bet_serial}: Unhandled path '{path}' for DB mapping.")
+                        league_db = (view.selected_sub_league or view.selected_league or "UNK").upper()
+                        odds_raw = fb_data.get("odds", "N/A")
+                        odds_db = None
+                        try:
+                            if isinstance(odds_raw, (int, float)):
+                                odds_db = float(odds_raw)
+                            elif isinstance(odds_raw, str):
+                                if odds_raw.upper() == "EVEN":
+                                    odds_db = 100.0
+                                else:
+                                    odds_db = float(odds_raw.replace("+", ""))
+                        except Exception as parse_err:
+                            logger.warning(
+                                f"Error parsing odds '{odds_raw}' for bet {view.bet_serial}: {parse_err}"
+                            )
+                        line_db = None
+                        if line_value is not None:
+                            try:
+                                line_db = float(line_value)
+                            except (ValueError, TypeError):
+                                if isinstance(line_value, str) and line_value.strip():
+                                    line_db = line_value.strip().upper()
+                        player_id_db = fb_data.get("player_id")
+                        event_id_db = fb_data.get("event_id")
+                        stake_db = fb_data.get("stake", float(view.selected_units))
+                        bets_query = """
+                            INSERT INTO bets
+                            (bet_serial, user_id, guild_id, league, team, opponent, units, bet_type, message_id,
+                             player_id, player_prop, odds, event_id, line, legs, stake, created_at, bet_won, bet_loss)
+                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW(), %s, %s)
+                        """
+                        bets_params = (
+                            view.bet_serial,
+                            interaction.user.id,
+                            guild.id,
+                            league_db,
+                            team_db,
+                            opponent_db,
+                            view.selected_units,
+                            db_bet_type,
+                            bet_message.id,
+                            player_id_db,
+                            player_prop_value,
+                            odds_db,
+                            event_id_db,
+                            line_db,
+                            1,
+                            stake_db,
+                            0,
+                            0,
+                        )
+                        await cur.execute(bets_query, bets_params)
+                        logger.info(
+                            f"Bet {view.bet_serial} saved to 'bets' table. Units={view.selected_units}, "
+                            f"Stake={stake_db:.2f}"
+                        )
+                        unit_records_query = """
+                            INSERT INTO unit_records (guild_id, bet_serial, user_id, units, timestamp, total)
+                            VALUES (%s, %s, %s, %s, NOW(), %s)
+                        """
+                        unit_records_params = (guild.id, view.bet_serial, interaction.user.id, 0.0, 0.0)
+                        await cur.execute(unit_records_query, unit_records_params)
+                        logger.info(f"Inserted initial row into unit_records for bet {view.bet_serial}")
+                        await conn.commit()
+                        logger.info(f"Transaction committed successfully for bet {view.bet_serial}.")
+                    except Exception as db_trans_err:
+                        logger.error(
+                            f"Error during DB transaction for bet {view.bet_serial}: {db_trans_err}",
+                            exc_info=True,
+                        )
+                        await conn.rollback()
+                        logger.info(f"Transaction rolled back for bet {view.bet_serial}.")
+                        try:
+                            await bet_message.delete()
+                            logger.info(
+                                f"Deleted message {bet_message.id} after DB rollback for bet {view.bet_serial}"
+                            )
+                        except Exception as del_err:
+                            logger.warning(
+                                f"Failed to delete message {bet_message.id} after rollback: {del_err}"
+                            )
+                        raise DatabaseError("Failed to save bet details to database.") from db_trans_err
+            view.bet_service.pending_bets[bet_message.id] = view.bet_serial
+            logger.debug(f"Added Bet {view.bet_serial} (MsgID: {bet_message.id}) to pending_bets.")
+            await interaction.followup.send(
+                f"Bet #{view.bet_serial} placed successfully in {target_channel.mention}! "
+                f"Please add ✅ or ❌ to resolve.",
+                ephemeral=True,
+            )
+            await view.original_interaction.edit_original_response(
+                content=f"✅ Bet #{view.bet_serial} Placed!", view=None, embed=None
+            )
+            view.stop()
+        except (ValidationError, PermissionError, DatabaseError, BettingBotError) as e:
+            logger.warning(f"Error confirming bet {view.bet_serial}: {type(e).__name__} - {e}")
+            await interaction.followup.send(f"Error placing bet: {e}", ephemeral=True)
+            if isinstance(e, (DatabaseError, BettingBotError)):
+                if not view.is_finished():
+                    view.stop()
+        except Exception as e:
+            logger.error(f"Unexpected error confirming bet {view.bet_serial}: {e}", exc_info=True)
+            await interaction.followup.send(
+                "An unexpected error occurred while placing the bet. Please try again.", ephemeral=True
+            )
+            if not view.is_finished():
+                view.stop()
+
+
+class EditButton(Button):
+    """Button to edit the current bet details."""
+    def __init__(self, row: Optional[int] = None):
+        super().__init__(label="Edit Bet", style=discord.ButtonStyle.secondary, custom_id="edit_bet", row=row)
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        if not view.path or not view.current_leg_data or not view.sport_handler:
+            logger.warning(
+                f"Cannot edit bet {view.bet_serial}: Missing path, data, or handler. Resetting to path selection."
+            )
+            view.path = None
+            view.preview_embed = None
+            view.current_leg_data = {}
+            view.selected_channel_id = None
+            view.selected_units = None
+            if not view.sport_handler:
+                league_context = view.selected_sub_league or view.selected_league
+                if league_context:
+                    try:
+                        view.sport_handler = SportHandlerFactory.get_handler(league_context, SUPPORTED_LEAGUES)
+                    except Exception as e:
+                        logger.error(f"Failed to re-acquire handler for edit fallback: {e}")
+                if not view.sport_handler:
+                    await interaction.response.send_message(
+                        "Error: Cannot edit bet, context lost. Please restart.", ephemeral=True
+                    )
+                    view.stop()
+                    return
+            view.update_view()
+            try:
+                await interaction.response.edit_message(
+                    content="Step 3: Choose Bet Specifics (Editing)", view=view, embed=None
+                )
+            except discord.HTTPException as e:
+                logger.error(f"HTTPException editing message for edit fallback {view.bet_serial}: {e}")
+                if not interaction.response.is_done():
+                    await interaction.response.send_message(
+                        "Error updating bet setup. Please try again.", ephemeral=True
+                    )
+            return
+        try:
+            modal = view.sport_handler.get_modal(view, view.path)
+            for child in modal.children:
+                if isinstance(child, TextInput) and child.custom_id in view.current_leg_data:
+                    child.default = str(view.current_leg_data.get(child.custom_id, ""))
+            logger.info(
+                f"Re-opening modal for edit by {interaction.user.id} for bet serial {view.bet_serial}: "
+                f"Path='{view.path}'"
+            )
+            await interaction.response.send_modal(modal)
+            view.preview_embed = None
+        except ValueError as e:
+            logger.error(f"Error getting modal for edit in bet {view.bet_serial}: {e}")
+            await interaction.response.send_message(f"Error generating edit form: {e}", ephemeral=True)
+        except discord.HTTPException as e:
+            logger.error(f"HTTPException sending modal for edit {view.bet_serial}: {e}")
+            if not interaction.response.is_done():
+                await interaction.response.send_message(
+                    "Error opening edit form. Please try again.", ephemeral=True
+                )
+        except Exception as e:
+            logger.error(f"Unexpected error generating modal for edit {view.bet_serial}: {e}", exc_info=True)
+            if not interaction.response.is_done():
+                await interaction.response.send_message("An unexpected error occurred.", ephemeral=True)
+
+
+class AddLegButton(Button):
+    """Button to add a new leg to a parlay bet."""
+    def __init__(self, row: Optional[int] = None):
+        super().__init__(label="Add Leg?", style=discord.ButtonStyle.secondary, custom_id="add_leg", row=row)
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        view.selected_league = None
+        view.selected_sub_league = None
+        view.path = None
+        view.current_leg_data = {}
+        view.sport_handler = None
+        view.is_adding_leg = True
+        logger.info(f"Add Leg initiated by {interaction.user.id} for bet serial {view.bet_serial}")
+        view.update_view()
+        await interaction.response.edit_message(
+            content="Step: Select League for New Leg", view=view, embed=None
+        )
+
+
+class ParlayTotalOddsButton(Button):
+    """Button to trigger the Parlay Total Odds modal."""
+    def __init__(self, row: Optional[int] = None):
+        super().__init__(
+            label="Set Total Odds",
+            style=discord.ButtonStyle.secondary,
+            custom_id="parlay_total_odds",
+            row=row,
+        )
+
+    async def callback(self, interaction: Interaction):
+        view: "BetWorkflowView" = self.view
+        if not await view.interaction_check(interaction):
+            return
+        modal = ParlayTotalOddsModal(view)
+        await interaction.response.send_modal(modal)
+
+
+class PlayerBetModal(Modal):
+    """Modal for entering player bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Player Bet Details"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or parent_view.selected_league or "nba"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["nba"])
+        league_display = league.upper()
+        self.add_item(
+            TextInput(
+                label="Team Name (Player's Team)",
+                required=True,
+                custom_id="team",
+                placeholder=f"e.g., {examples['team']} ({league_display})",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Opponent Name",
+                required=True,
+                custom_id="opponent",
+                placeholder=f"e.g., {examples['opponent']} ({league_display})",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Player Name",
+                required=True,
+                custom_id="player_name",
+                placeholder=f"e.g., {examples['player']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Prop (e.g., Points Over 25.5)",
+                required=True,
+                custom_id="prop",
+                placeholder="Points Over 25.5",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds (e.g., -110 or +150)",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Player"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(
+            f"Player Bet Modal submitted by {interaction.user.id} (Serial: {self.parent_view.bet_serial}): {data}"
+        )
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class TeamBetModal(Modal):
+    """Modal for entering team bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Team Bet Details"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or parent_view.selected_league or "nba"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["nba"])
+        league_display = league.upper()
+        self.add_item(
+            TextInput(
+                label="Team Pick",
+                required=True,
+                custom_id="team",
+                placeholder=f"e.g., {examples['team']} ({league_display})",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Opponent",
+                required=True,
+                custom_id="opponent",
+                placeholder=f"e.g., {examples['opponent']} ({league_display})",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Line (e.g., -7.5 or ML)",
+                required=True,
+                custom_id="line",
+                placeholder="-7.5 or ML",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds (e.g., -110)",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Team"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(
+            f"Team Bet Modal submitted by {interaction.user.id} (Serial: {self.parent_view.bet_serial}): {data}"
+        )
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class NASCARDriverBetModal(Modal):
+    """Modal for entering NASCAR driver bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter NASCAR Driver Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        examples = LEAGUE_EXAMPLES["nascar"]
+        self.add_item(
+            TextInput(
+                label="Driver",
+                required=True,
+                custom_id="driver",
+                placeholder=f"e.g., {examples['driver']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Car #",
+                required=True,
+                custom_id="car_number",
+                placeholder=f"e.g., {examples['car_number']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., Top 5 Finish)",
+                required=True,
+                custom_id="line",
+                placeholder="Top 5 Finish",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Driver"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"NASCAR Driver Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class NASCRaceBetModal(Modal):
+    """Modal for entering NASCAR race prop bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter NASCAR Race Prop"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        examples = LEAGUE_EXAMPLES["nascar"]
+        self.add_item(
+            TextInput(
+                label="Event Name/Prop",
+                required=True,
+                custom_id="event",
+                placeholder=f"e.g., {examples['event']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Prop Condition (e.g., Laps)",
+                required=True,
+                custom_id="laps",
+                placeholder="e.g., Total Laps",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Your Pick (e.g., Over 10.5)",
+                required=True,
+                custom_id="outcome",
+                placeholder="e.g., Over 10.5",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Race Prop"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"NASCAR Race Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class GolfGolferBetModal(Modal):
+    """Modal for entering golfer bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Golfer Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "pga"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["pga"])
+        self.add_item(
+            TextInput(
+                label="Golfer",
+                required=True,
+                custom_id="golfer",
+                placeholder=f"e.g., {examples['golfer']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., Top 10 Finish)",
+                required=True,
+                custom_id="line",
+                placeholder="e.g., Top 10 Finish",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Golfer"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Golf Golfer Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class GolfTournamentBetModal(Modal):
+    """Modal for entering golf tournament prop bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Tournament Prop"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "pga"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["pga"])
+        self.add_item(
+            TextInput(
+                label="Tournament Prop",
+                required=True,
+                custom_id="event",
+                placeholder=f"e.g., {examples['event']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., Over 5.5 Birdies)",
+                required=True,
+                custom_id="outcome",
+                placeholder="e.g., Over 5.5 Birdies",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Tournament Prop"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Golf Tournament Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class TennisPlayerBetModal(Modal):
+    """Modal for entering tennis player prop bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Player Prop Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "atp"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["atp"])
+        self.add_item(
+            TextInput(
+                label="Player",
+                required=True,
+                custom_id="player",
+                placeholder=f"e.g., {examples['player']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Opponent",
+                required=True,
+                custom_id="opponent",
+                placeholder=f"e.g., {examples['opponent']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Prop",
+                required=True,
+                custom_id="prop",
+                placeholder="e.g., Over 22.5 Games",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Player Prop"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Tennis Player Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class TennisMatchBetModal(Modal):
+    """Modal for entering tennis match bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Match Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "atp"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["atp"])
+        self.add_item(
+            TextInput(
+                label="Player 1",
+                required=True,
+                custom_id="player1",
+                placeholder=f"e.g., {examples['player']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Player 2",
+                required=True,
+                custom_id="player2",
+                placeholder=f"e.g., {examples['opponent']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., -1.5 Sets)",
+                required=True,
+                custom_id="line",
+                placeholder="e.g., -1.5 Sets",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Match"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Tennis Match Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class UFCFighterBetModal(Modal):
+    """Modal for entering UFC fighter prop bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Fighter Prop Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        examples = LEAGUE_EXAMPLES["ufc"]
+        self.add_item(
+            TextInput(
+                label="Fighter",
+                required=True,
+                custom_id="fighter",
+                placeholder=f"e.g., {examples['fighter']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Opponent",
+                required=True,
+                custom_id="opponent",
+                placeholder=f"e.g., {examples['opponent']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Prop (e.g., KO/TKO)",
+                required=True,
+                custom_id="prop",
+                placeholder=f"e.g., {examples['prop']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Fighter Prop"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"UFC Fighter Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class UFCFightBetModal(Modal):
+    """Modal for entering UFC fight bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Fight Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        examples = LEAGUE_EXAMPLES["ufc"]
+        self.add_item(
+            TextInput(
+                label="Fighter 1",
+                required=True,
+                custom_id="fighter1",
+                placeholder=f"e.g., {examples['fighter']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Fighter 2",
+                required=True,
+                custom_id="fighter2",
+                placeholder=f"e.g., {examples['opponent']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., Over 2.5 Rds)",
+                required=True,
+                custom_id="line",
+                placeholder="e.g., Over 2.5 Rounds",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Fight"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"UFC Fight Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class EsportsPlayerBetModal(Modal):
+    """Modal for entering Esports player bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Esports Player Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "csgo"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["csgo"])
+        self.add_item(
+            TextInput(
+                label="Player",
+                required=True,
+                custom_id="player",
+                placeholder=f"e.g., {examples['player']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Team",
+                required=True,
+                custom_id="team",
+                placeholder=f"e.g., {examples['team']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Prop (e.g., Kills Over 20.5)",
+                required=True,
+                custom_id="prop",
+                placeholder="e.g., Kills Over 20.5",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Player"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Esports Player Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class EsportsMatchBetModal(Modal):
+    """Modal for entering Esports match bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Esports Match Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "csgo"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["csgo"])
+        self.add_item(
+            TextInput(
+                label="Team 1",
+                required=True,
+                custom_id="team1",
+                placeholder=f"e.g., {examples['team']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Team 2",
+                required=True,
+                custom_id="team2",
+                placeholder=f"e.g., {examples['opponent']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., Map 1 Winner)",
+                required=True,
+                custom_id="line",
+                placeholder="e.g., Map 1 Winner",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Match"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Esports Match Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class HorseBetModal(Modal):
+    """Modal for entering horse bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Horse Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "kentucky_derby"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["kentucky_derby"])
+        self.add_item(
+            TextInput(
+                label="Horse",
+                required=True,
+                custom_id="horse",
+                placeholder=f"e.g., {examples['horse']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Pick (e.g., Win/Place/Show)",
+                required=True,
+                custom_id="line",
+                placeholder="e.g., Win/Place/Show",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Horse"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Horse Bet Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class HorseRaceBetModal(Modal):
+    """Modal for entering horse race prop bet details."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Race Prop Bet"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        league = parent_view.selected_sub_league or "kentucky_derby"
+        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["kentucky_derby"])
+        self.add_item(
+            TextInput(
+                label="Race Name/Event",
+                required=True,
+                custom_id="event",
+                placeholder=f"e.g., {examples['event']}",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Prop Description",
+                required=True,
+                custom_id="outcome",
+                placeholder="e.g., Total Finishers",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Your Pick (e.g., Over/Under Value)",
+                required=True,
+                custom_id="pick",
+                placeholder="e.g., Over 8.5",
+            )
+        )
+        self.add_item(
+            TextInput(
+                label="Odds",
+                required=True,
+                custom_id="odds",
+                placeholder="-110 or +150",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        data = {
+            child.custom_id: child.value.strip()
+            for child in self.children
+            if isinstance(child, TextInput)
+        }
+        data["path"] = "Bet on a Race Prop"
+        if not all(data.values()):
+            await interaction.response.send_message("All fields are required.", ephemeral=True)
+            return
+        self.parent_view.current_leg_data = data
+        logger.info(f"Horse Race Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
+        await interaction.response.defer()
+        await self.parent_view.show_preview()
+
+
+class ParlayTotalOddsModal(Modal):
+    """Modal for entering total parlay odds."""
+    def __init__(self, parent_view: "BetWorkflowView", title: str = "Enter Parlay Total Odds"):
+        super().__init__(title=title)
+        self.parent_view = parent_view
+        self.add_item(
+            TextInput(
+                label="Total Parlay Odds",
+                required=True,
+                custom_id="total_odds",
+                placeholder="e.g., +200 or -110",
+                default=parent_view.total_odds or "+200",
+            )
+        )
+
+    async def on_submit(self, interaction: Interaction):
+        total_odds = self.children[0].value.strip()
+        if not total_odds or (
+            not total_odds.startswith(("-", "+"))
+            and total_odds.upper() != "EVEN"
+            and not total_odds.isdigit()
+        ):
+            await interaction.response.send_message(
+                "Invalid odds format. Use e.g., +200, -110, or EVEN.", ephemeral=True
+            )
+            return
+        self.parent_view.total_odds = total_odds
+        logger.info(
+            f"Total Parlay Odds submitted: {total_odds} for bet serial {self.parent_view.bet_serial}"
+        )
+        await interaction.response.defer()
+        await self.parent_view.update_preview_description_and_footer(interaction)
 
 class BetWorkflowView(View):
+    """View for managing the interactive bet placement process."""
     selected_league: Optional[str] = None
     selected_sub_league: Optional[str] = None
     bet_type: Optional[str] = None
+    parlay_type: Optional[str] = None
     path: Optional[str] = None
     legs: List[Dict[str, Any]] = []
     current_leg_data: Dict[str, Any] = {}
     preview_embed: Optional[discord.Embed] = None
     selected_channel_id: Optional[int] = None
     selected_units: Optional[int] = None
+    total_odds: Optional[str] = None
+    is_adding_leg: bool = False
     original_interaction: Interaction
     bet_serial: int
-    bet_service: 'BetService' # Forward reference for type hint
+    bet_service: "BetService"
     embed_channel_id_1: Optional[int] = None
     embed_channel_id_2: Optional[int] = None
     sport_handler: Optional[SportHandler] = None
 
-    def __init__(self, interaction: Interaction, bet_service: 'BetService', embed_ch_id_1: Optional[int], embed_ch_id_2: Optional[int], timeout=300):
+    def __init__(
+        self,
+        interaction: Interaction,
+        bet_service: "BetService",
+        embed_ch_id_1: Optional[int],
+        embed_ch_id_2: Optional[int],
+        timeout: int = 300,
+    ):
         super().__init__(timeout=timeout)
         self.original_interaction = interaction
         self.bet_service = bet_service
@@ -153,99 +1765,150 @@ class BetWorkflowView(View):
         self.legs = []
         self.current_leg_data = {}
         self.bet_serial = generate_bet_serial()
-        logger.debug(f"BetWorkflowView initialized (Serial: {self.bet_serial}) Embed Channels: {embed_ch_id_1}, {embed_ch_id_2}")
+        logger.debug(
+            f"BetWorkflowView initialized (Serial: {self.bet_serial}) Embed Channels: "
+            f"{embed_ch_id_1}, {embed_ch_id_2}"
+        )
         self.update_view()
 
     async def on_timeout(self):
-        logger.info(f"Bet setup timed out for bet serial {self.bet_serial} (User: {self.original_interaction.user.id})")
+        """Handles view timeout by stopping the interaction."""
+        logger.info(
+            f"Bet setup timed out for bet serial {self.bet_serial} "
+            f"(User: {self.original_interaction.user.id})"
+        )
         if self.is_finished():
             return
         self.stop()
         try:
-            await self.original_interaction.edit_original_response(content="*Bet setup timed out.*", view=None, embed=None)
+            pass  # Add your logic here
+        except Exception as e:
+            logger.error(f"An error occurred: {e}", exc_info=True)
+            pass  # Add your logic here
+        except Exception as e:
+            logger.error(f"An error occurred: {e}", exc_info=True)
+            pass  # Add your logic here
+        except Exception as e:
+            logger.error(f"An error occurred: {e}", exc_info=True)
+            pass  # Add your logic here
+        except Exception as e:
+            logger.error(f"An error occurred: {e}", exc_info=True)
+            pass  # Add your logic here
+        except Exception as e:
+            logger.error(f"An error occurred: {e}", exc_info=True)
+            await self.original_interaction.edit_original_response(
+                content="*Bet setup timed out.*", view=None, embed=None
+            )
         except discord.NotFound:
-            logger.warning(f"Original interaction message not found on timeout for bet {self.bet_serial}.")
+            logger.warning(f"Original message not found on timeout for bet {self.bet_serial}.")
         except discord.HTTPException as e:
             logger.error(f"HTTPException editing message on timeout for bet {self.bet_serial}: {e}")
         except Exception as e:
             logger.error(f"Error editing message on timeout for bet {self.bet_serial}: {e}", exc_info=True)
 
     async def interaction_check(self, interaction: Interaction) -> bool:
+        """Ensures only the original user can interact with the view."""
         if interaction.user.id != self.original_interaction.user.id:
             await interaction.response.send_message("This isn't your bet setup!", ephemeral=True)
             return False
         if self.is_finished():
-            # Prevent further interactions if view is stopped (e.g., after confirmation/cancellation/timeout)
             if not interaction.response.is_done():
-                 await interaction.response.send_message("This bet setup has finished.", ephemeral=True)
+                await interaction.response.send_message("This bet setup has finished.", ephemeral=True)
             return False
         return True
 
     def update_view(self):
-        logger.debug(f"Updating view state for bet {self.bet_serial}: L={self.selected_league}, SL={self.selected_sub_league}, T={self.bet_type}, P={self.path}, Chan={self.selected_channel_id}, Units={self.selected_units}, Preview={self.preview_embed is not None}")
+        """Updates the view based on the current state of the bet setup."""
+        logger.debug(
+            f"Updating view state for bet {self.bet_serial}: L={self.selected_league}, "
+            f"SL={self.selected_sub_league}, T={self.bet_type}, PT={self.parlay_type}, "
+            f"P={self.path}, Chan={self.selected_channel_id}, Units={self.selected_units}, "
+            f"Legs={len(self.legs)}, AddingLeg={self.is_adding_leg}, "
+            f"Preview={self.preview_embed is not None}"
+        )
         self.clear_items()
         current_league_context = self.selected_sub_league or self.selected_league
         logger.debug(f"View Update: current_league_context = {current_league_context}")
 
-        # State 1: No league selected
-        if self.selected_league is None:
+        if self.bet_type is None:
+            logger.debug("View Update: Showing bet type selection")
+            self.add_item(BetTypeSelect())
+        elif self.bet_type == "Parlay" and self.parlay_type is None and not self.is_adding_leg:
+            logger.debug("View Update: Adding parlay type buttons")
+            self.add_item(ParlayTypeButton("Same-Game", "same_game"))
+            self.add_item(ParlayTypeButton("Multi-Team", "multi_team"))
+        elif self.bet_type is not None and self.selected_league is None:
+            logger.debug("View Update: Adding league selection")
             opts = create_league_select_options()
             if opts:
                 self.add_item(LeagueSelect(opts))
             else:
-                # Handle error: No leagues available
-                self.add_item(Button(label="Error: No Leagues Configured", style=discord.ButtonStyle.danger, disabled=True))
-
-        # State 1b: League selected, requires sub-league
-        elif self.selected_league in ["ncaa", "golf", "tennis", "esports", "horseracing"] and self.selected_sub_league is None:
+                self.add_item(
+                    Button(
+                        label="Error: No Leagues Configured",
+                        style=discord.ButtonStyle.danger,
+                        disabled=True,
+                    )
+                )
+        elif self.selected_league in ["ncaa", "golf", "tennis", "esports", "horseracing"] and \
+                self.selected_sub_league is None:
             logger.debug(f"View Update: Adding sub-league select for {self.selected_league}")
-            # Add appropriate sub-league selector
-            if self.selected_league == "ncaa": self.add_item(SubLeagueSelect())
-            elif self.selected_league == "esports": self.add_item(EsportsSubLeagueSelect())
-            elif self.selected_league == "tennis": self.add_item(TennisSubLeagueSelect())
-            elif self.selected_league == "golf": self.add_item(GolfSubLeagueSelect())
-            elif self.selected_league == "horseracing": self.add_item(HorseRacingSubLeagueSelect())
-            else: logger.error(f"No sub-league selector defined for generic league: {self.selected_league}")
-
-        # State 2: League context decided, need bet type
-        elif self.bet_type is None and current_league_context:
-            logger.debug(f"View Update: Getting handler for {current_league_context}")
-            try:
-                # Ensure handler is obtained before adding BetTypeSelect
-                self.sport_handler = SportHandlerFactory.get_handler(current_league_context, SUPPORTED_LEAGUES)
-                logger.debug(f"View Update: Handler acquired: {type(self.sport_handler).__name__}")
-                self.add_item(BetTypeSelect()) # Now add the select
-            except ValueError as e:
-                 logger.error(f"Could not find a SportHandler for league: {current_league_context}. Error: {e}")
-                 self.add_item(Button(label=f"Error: Handler not found", style=discord.ButtonStyle.danger, disabled=True))
-            except Exception as e:
-                 logger.error(f"Error getting handler for '{current_league_context}' in State 2: {e}", exc_info=True)
-                 self.add_item(Button(label="Error: Handler Issue", style=discord.ButtonStyle.danger, disabled=True))
-
-        # State 3: Bet type selected, need path
-        elif self.path is None and self.sport_handler:
-            logger.debug(f"View Update: Adding path buttons from handler {type(self.sport_handler).__name__}")
-            path_options = self.sport_handler.get_path_options()
-            if not path_options:
-                 logger.error(f"No path options returned by handler for league: {current_league_context}")
-                 self.add_item(Button(label="Error: No bet paths available", style=discord.ButtonStyle.danger, disabled=True))
+            if self.selected_league == "ncaa":
+                self.add_item(SubLeagueSelect())
+            elif self.selected_league == "esports":
+                self.add_item(EsportsSubLeagueSelect())
+            elif self.selected_league == "tennis":
+                self.add_item(TennisSubLeagueSelect())
+            elif self.selected_league == "golf":
+                self.add_item(GolfSubLeagueSelect())
+            elif self.selected_league == "horseracing":
+                self.add_item(HorseRacingSubLeagueSelect())
             else:
-                 for option in path_options:
-                     self.add_item(PathButton(option["label"], option["custom_id"]))
-
-        # State 4: Path selected, Modal expected/submitted, waiting for preview
+                logger.error(f"No sub-league selector defined for league: {self.selected_league}")
+        elif current_league_context and self.path is None:
+            logger.debug(
+                f"View Update: Adding path buttons from handler "
+                f"{type(self.sport_handler).__name__ if self.sport_handler else 'None'}"
+            )
+            try:
+                if not self.sport_handler:
+                    self.sport_handler = SportHandlerFactory.get_handler(
+                        current_league_context, SUPPORTED_LEAGUES
+                    )
+                path_options = self.sport_handler.get_path_options()
+                if not path_options:
+                    logger.error(f"No path options returned by handler for league: {current_league_context}")
+                    self.add_item(
+                        Button(
+                            label="Error: No bet paths available",
+                            style=discord.ButtonStyle.danger,
+                            disabled=True,
+                        )
+                    )
+                else:
+                    for option in path_options:
+                        self.add_item(PathButton(option["label"], option["custom_id"]))
+            except ValueError as e:
+                logger.error(f"Could not find a SportHandler for league: {current_league_context}: {e}")
+                self.add_item(
+                    Button(label="Error: Handler not found", style=discord.ButtonStyle.danger, disabled=True)
+                )
+            except Exception as e:
+                logger.error(f"Error getting handler or path options for '{current_league_context}': {e}", exc_info=True)
+                self.add_item(
+                    Button(label="Error: Handler Issue", style=discord.ButtonStyle.danger, disabled=True)
+                )
         elif self.path is not None and self.preview_embed is None:
-             # Usually means modal interaction is pending or just happened
-             logger.debug(f"View update skipped: Modal expected or just submitted for path '{self.path}'")
-             pass # Don't add items here, wait for modal submission to call show_preview
-
-        # State 5: Preview shown, need channel/units
+            logger.debug(f"View update skipped: Modal expected or submitted for path '{self.path}'")
         elif self.preview_embed is not None:
-            logger.debug(f"View Update: Adding ChannelSelect, UnitsSelect, ConfirmButton, EditButton, CancelButton")
-            # Row 0: ChannelSelect
-            chan_select = ChannelSelect(self.original_interaction.guild, self.embed_channel_id_1, self.embed_channel_id_2)
+            logger.debug(
+                "View Update: Adding ChannelSelect, UnitsSelect, ConfirmButton, EditButton, "
+                "AddLegButton, CancelButton"
+            )
+            chan_select = ChannelSelect(
+                self.original_interaction.guild, self.embed_channel_id_1, self.embed_channel_id_2
+            )
             chan_select.row = 0
-            # Pre-select if already chosen
             if self.selected_channel_id:
                 for o in chan_select.options:
                     if o.value.isdigit() and int(o.value) == self.selected_channel_id:
@@ -253,10 +1916,8 @@ class BetWorkflowView(View):
                         break
             self.add_item(chan_select)
 
-            # Row 1: UnitsSelect
             unit_select = UnitsSelect()
             unit_select.row = 1
-            # Pre-select if already chosen
             if self.selected_units:
                 for o in unit_select.options:
                     if o.value.isdigit() and int(o.value) == self.selected_units:
@@ -264,1122 +1925,338 @@ class BetWorkflowView(View):
                         break
             self.add_item(unit_select)
 
-            # Row 2: Buttons
-            confirm_enabled = bool(self.selected_channel_id and self.selected_units)
-            logger.debug(f"Confirm button enabled={confirm_enabled}: Chan={self.selected_channel_id}, Units={self.selected_units}")
+            confirm_enabled = bool(
+                self.selected_channel_id
+                and self.selected_units
+                and (self.bet_type != "Parlay" or len(self.legs) >= 2)
+            )
+            logger.debug(
+                f"Confirm button enabled={confirm_enabled}: Chan={self.selected_channel_id}, "
+                f"Units={self.selected_units}, Legs={len(self.legs)}"
+            )
             self.add_item(ConfirmButton(disabled=not confirm_enabled, row=2))
             self.add_item(EditButton(row=2))
-            self.add_item(CancelButton(row=2)) # Use imported CancelButton
-
-        # Fallback for unexpected state
+            self.add_item(AddLegButton(row=2))
+            if self.bet_type == "Parlay" and len(self.legs) >= 2:
+                self.add_item(ParlayTotalOddsButton(row=2))
+            self.add_item(CancelButton(row=2))
         else:
             logger.warning(f"BetWorkflowView unexpected state for bet {self.bet_serial}.")
-            self.add_item(Button(label="Error: Unexpected State", style=discord.ButtonStyle.danger, disabled=True))
+            self.add_item(
+                Button(label="Error: Unexpected State", style=discord.ButtonStyle.danger, disabled=True)
+            )
 
         logger.debug(f"View updated with {len(self.children)} components for bet {self.bet_serial}.")
 
-
     async def show_preview(self):
-        interaction = self.original_interaction # Use the initial interaction for editing
-        logger.info(f"Generating preview for bet serial {self.bet_serial}. Current leg data: {self.current_leg_data}")
+        """Generates and displays a preview of the bet."""
+        interaction = self.original_interaction
+        logger.info(f"Generating preview for bet serial {self.bet_serial}. Data: {self.current_leg_data}")
 
-        # Ensure sport handler is available (might need re-acquisition if view state was lost/rebuilt)
         if not self.sport_handler:
             logger.error(f"Preview error for bet {self.bet_serial}: Sport handler is not set!")
             league_context = self.selected_sub_league or self.selected_league
             if league_context:
                 try:
                     self.sport_handler = SportHandlerFactory.get_handler(league_context, SUPPORTED_LEAGUES)
-                    logger.info(f"Re-acquired sport handler: {type(self.sport_handler).__name__} for {league_context}")
+                    logger.info(
+                        f"Re-acquired sport handler: {type(self.sport_handler).__name__} for {league_context}"
+                    )
                 except Exception as e:
                     logger.error(f"Failed to re-acquire handler for {league_context}: {e}")
-            if not self.sport_handler: # If still no handler
-                 await interaction.edit_original_response(content="Error: Critical state error (handler lost). Please restart.", view=None, embed=None)
-                 self.stop()
-                 return
+            if not self.sport_handler:
+                await interaction.edit_original_response(
+                    content="Error: Critical state error (handler lost). Please restart.",
+                    view=None,
+                    embed=None,
+                )
+                self.stop()
+                return
 
-        # Validate data using the handler
         try:
-             self.current_leg_data['path'] = self.path # Ensure path is in data for validation context
-             is_valid = await self.sport_handler.validate_data(self.current_leg_data)
-             if not is_valid:
-                 logger.error(f"Invalid bet data entered for bet {self.bet_serial}: {self.current_leg_data}")
-                 self.preview_embed = None # Clear potential old preview
-                 # Don't update view here, let the edit message handle components
-                 edit_message = "Error: Invalid or missing bet details entered. Please use the 'Edit Bet' button to try again."
-                 # Make sure Edit button is available
-                 if not discord.utils.get(self.children, custom_id="edit_bet"):
-                      self.add_item(EditButton(row=2)) # Add it if missing
-                 await interaction.edit_original_response(content=edit_message, view=self, embed=None)
-                 return # Stop processing, user needs to edit
+            self.current_leg_data["path"] = self.path
+            is_valid = await self.sport_handler.validate_data(self.current_leg_data)
+            if not is_valid:
+                logger.error(f"Invalid bet data entered for bet {self.bet_serial}: {self.current_leg_data}")
+                self.preview_embed = None
+                edit_message = (
+                    "Error: Invalid or missing bet details entered. "
+                    "Please use the 'Edit Bet' button to try again."
+                )
+                if not discord.utils.get(self.children, custom_id="edit_bet"):
+                    self.add_item(EditButton(row=2))
+                self.update_view()
+                await interaction.edit_original_response(content=edit_message, view=self, embed=None)
+                return
         except Exception as val_err:
-             logger.error(f"Error during data validation via handler for bet {self.bet_serial}: {val_err}", exc_info=True)
-             await interaction.edit_original_response(content="Error validating bet details. Please restart.", view=None, embed=None)
-             self.stop()
-             return
-
-        # Build preview data using the handler
-        try:
-            logger.debug(f"Calling sport_handler.build_preview_data for bet {self.bet_serial}...")
-            preview_data = await self.sport_handler.build_preview_data(self) # Pass self (view)
-            logger.info(f"Preview data received from handler for bet {self.bet_serial}: {preview_data}")
-        except Exception as e:
-            logger.error(f"Error building preview data via handler for bet {self.bet_serial}: {e}", exc_info=True)
-            await interaction.edit_original_response(content="Error generating preview details. Please restart.", view=None, embed=None)
+            logger.error(f"Error during data validation for bet {self.bet_serial}: {val_err}", exc_info=True)
+            await interaction.edit_original_response(
+                content="Error validating bet details. Please restart.", view=None, embed=None
+            )
             self.stop()
             return
 
-        # Create Embed
-        league_display = self.selected_sub_league or self.selected_league or "Unknown League"
-        title = f"{league_display.upper()} Bet Preview"
-        if self.bet_type == "Straight": title = f"{league_display.upper()} - Straight Bet"
-        embed = discord.Embed(title=title, description=preview_data.get('description', 'Bet details missing.'), color=discord.Color.blue())
-
-        # Set Logos (using helper function)
-        primary_entity_name = preview_data.get('team_display') # Handler should provide primary name
         try:
-             team_logo_url, league_logo_url = await get_team_logo_url_from_csv(league_display.lower(), primary_entity_name)
-             logger.info(f"Preview {self.bet_serial}: Fetched Logos - Team='{team_logo_url}', League='{league_logo_url}' for League='{league_display}', Entity='{primary_entity_name}'")
+            logger.debug(f"Calling sport_handler.build_preview_data for bet {self.bet_serial}...")
+            preview_data = await self.sport_handler.build_preview_data(self)
+            logger.info(f"Preview data received from handler for bet {self.bet_serial}: {preview_data}")
+        except Exception as e:
+            logger.error(f"Error building preview data for bet {self.bet_serial}: {e}", exc_info=True)
+            await interaction.edit_original_response(
+                content="Error generating preview details. Please restart.", view=None, embed=None
+            )
+            self.stop()
+            return
 
-             # Prefer handler's specific URLs if provided, otherwise use fetched ones
-             main_image_url = preview_data.get('team_logo_url', team_logo_url or DEFAULT_AVATAR_URL)
-             thumb_url = preview_data.get('league_logo_url', league_logo_url or DEFAULT_AVATAR_URL)
+        if self.bet_type == "Parlay" and self.current_leg_data:
+            self.current_leg_data["description"] = preview_data.get("description", "Bet details missing.")
+            self.legs.append(self.current_leg_data.copy())
+            self.current_leg_data = {}
+            self.is_adding_leg = False
+            logger.info(f"Added leg {len(self.legs)} to parlay {self.bet_serial}.")
 
-             if main_image_url and isinstance(main_image_url, str) and main_image_url.lower().startswith(('http://', 'https://')):
-                  logger.debug(f"Preview {self.bet_serial}: Setting image to '{main_image_url}'")
-                  embed.set_image(url=main_image_url)
-             elif main_image_url: logger.warning(f"Preview {self.bet_serial}: Invalid primary image URL received/fetched: '{main_image_url}'.")
-             else: logger.debug(f"Preview {self.bet_serial}: No primary image URL provided or found.")
+        league_display = self.selected_sub_league or self.selected_league or "Unknown League"
+        if self.bet_type == "Parlay":
+            title = "Multi-Team Parlay Bet" if self.parlay_type == "multi_team" else \
+                    f"{league_display.upper()} - Parlay Bet"
+        elif self.bet_type == "Straight":
+            title = f"{league_display.upper()} - Straight Bet"
+        else:
+            logger.warning(f"Unexpected bet_type '{self.bet_type}' for bet {self.bet_serial}.")
+            title = f"{league_display.upper()} - Bet"
 
-             if thumb_url and isinstance(thumb_url, str) and thumb_url.lower().startswith(('http://', 'https://')):
-                 logger.debug(f"Preview {self.bet_serial}: Setting thumbnail to '{thumb_url}'")
-                 embed.set_thumbnail(url=thumb_url)
-             elif thumb_url: logger.warning(f"Preview {self.bet_serial}: Invalid league logo URL received/fetched: '{thumb_url}'.")
-             else: logger.debug(f"Preview {self.bet_serial}: No league logo URL provided or found.")
+        description = []
+        if self.bet_type == "Parlay":
+            for i, leg in enumerate(self.legs, 1):
+                leg_desc = leg.get("description", "Bet details missing.")
+                description.append(f"**Leg {i}:** {leg_desc}")
+            if self.total_odds:
+                description.append(f"**Total Parlay Odds:** {self.total_odds}")
+        else:
+            description.append(preview_data.get("description", "Bet details missing."))
 
+        embed = discord.Embed(title=title, description="\n".join(description), color=discord.Color.blue())
+
+        try:
+            primary_entity_name = preview_data.get("team_display")
+            team_logo_url, league_logo_url = await get_team_logo_url_from_csv(
+                league_display.lower(), primary_entity_name
+            )
+            logger.info(
+                f"Preview {self.bet_serial}: Fetched Logos - Team='{team_logo_url}', "
+                f"League='{league_logo_url}' for League='{league_display}', Entity='{primary_entity_name}'"
+            )
+
+            if self.bet_type == "Parlay" and self.parlay_type == "multi_team":
+                query = "SELECT guild_url FROM server_settings WHERE guild_id = %s"
+                result = await db_manager.fetch_one(query, (self.original_interaction.guild_id,))
+                guild_url = result.get("guild_url") if result else None
+                logger.debug(f"Multi-Team Parlay: Fetched guild_url='{guild_url}'")
+                main_image_url = guild_url if guild_url and \
+                    guild_url.lower().startswith(("http://", "https://")) else DEFAULT_AVATAR_URL
+                logger.debug(f"Multi-Team Parlay: Using main_image_url='{main_image_url}'")
+            else:
+                main_image_url = team_logo_url or DEFAULT_AVATAR_URL
+                logger.debug(
+                    f"{'Same-Game Parlay' if self.bet_type == 'Parlay' else 'Straight Bet'}: "
+                    f"Using team logo URL '{main_image_url}'"
+                )
+
+            thumb_url = league_logo_url or DEFAULT_AVATAR_URL
+            if main_image_url and isinstance(main_image_url, str) and \
+                    main_image_url.lower().startswith(("http://", "https://")):
+                logger.debug(f"Preview {self.bet_serial}: Setting image to '{main_image_url}'")
+                embed.set_image(url=main_image_url)
+            else:
+                logger.warning(f"Preview {self.bet_serial}: Invalid image URL: '{main_image_url}'.")
+                embed.set_image(url=DEFAULT_AVATAR_URL)
+
+            if thumb_url and isinstance(thumb_url, str) and \
+                    thumb_url.lower().startswith(("http://", "https://")):
+                logger.debug(f"Preview {self.bet_serial}: Setting thumbnail to '{thumb_url}'")
+                embed.set_thumbnail(url=thumb_url)
+            else:
+                logger.debug(f"Preview {self.bet_serial}: No valid league logo URL. Using default.")
+                embed.set_thumbnail(url=DEFAULT_AVATAR_URL)
         except Exception as logo_err:
-            logger.error(f"Error fetching logos for preview {self.bet_serial}: {logo_err}", exc_info=True)
-            # Use defaults if fetch fails
-            if preview_data.get('team_logo_url', '').startswith('http'): embed.set_image(url=preview_data['team_logo_url'])
-            else: embed.set_image(url=DEFAULT_AVATAR_URL)
-            if preview_data.get('league_logo_url', '').startswith('http'): embed.set_thumbnail(url=preview_data['league_logo_url'])
-            else: embed.set_thumbnail(url=DEFAULT_AVATAR_URL)
-
+            logger.error(f"Error fetching/setting logos for preview {self.bet_serial}: {logo_err}", exc_info=True)
+            embed.set_image(url=DEFAULT_AVATAR_URL)
+            embed.set_thumbnail(url=DEFAULT_AVATAR_URL)
 
         embed.set_footer(text="Step 5/6: Select Channel and Units")
-
-        # Store the generated embed and update the view to show confirmation options
         self.preview_embed = embed
-        self.update_view() # This will add channel/unit selects and buttons
+        self.update_view()
 
-        # Edit the original interaction message
         try:
-            await interaction.edit_original_response(content="**Bet Preview:**", embed=self.preview_embed, view=self)
+            await interaction.edit_original_response(
+                content="**Bet Preview:**", embed=self.preview_embed, view=self
+            )
             logger.info(f"Preview shown successfully for bet serial {self.bet_serial}")
         except discord.NotFound:
-            logger.error(f"Error showing preview {self.bet_serial}: Original interaction msg not found.")
+            logger.error(f"Error showing preview {self.bet_serial}: Original message not found.")
             self.stop()
         except discord.HTTPException as e:
             logger.error(f"HTTPException editing interaction for preview {self.bet_serial}: {e}")
         except Exception as e:
             logger.error(f"Error editing interaction for preview {self.bet_serial}: {e}", exc_info=True)
 
-    async def update_preview_description_and_footer(self, interaction=None):
-        """Updates the description and footer of the preview embed, typically after unit selection."""
+    async def update_preview_description_and_footer(self, interaction: Optional[Interaction] = None):
+        """Updates the description and footer of the preview embed."""
         if not self.preview_embed or not self.sport_handler:
             logger.warning(f"Update preview failed {self.bet_serial}: embed/handler missing.")
             return
-    
-        logger.debug(f"Updating preview desc/footer {self.bet_serial}: Chan={self.selected_channel_id}, Units={self.selected_units}")
-    
-        # Rebuild base description from handler
-        try:
-            preview_data = await self.sport_handler.build_preview_data(self)
-            base_description = preview_data.get('description', 'Bet details missing.')
-        except Exception as e:
-            logger.error(f"Error rebuilding preview description {self.bet_serial}: {e}", exc_info=True)
-            base_description = self.preview_embed.description.split("\n\n**🔒")[0] if self.preview_embed.description else "Bet details missing."
-    
+        logger.debug(
+            f"Updating preview desc/footer {self.bet_serial}: Chan={self.selected_channel_id}, "
+            f"Units={self.selected_units}, TotalOdds={self.total_odds}"
+        )
+
+        base_description = ""
+        if self.bet_type != "Parlay":
+            try:
+                preview_data = await self.sport_handler.build_preview_data(self)
+                base_description = preview_data.get("description", "Bet details missing.")
+            except Exception as e:
+                logger.error(f"Error rebuilding preview for straight bet {self.bet_serial}: {e}", exc_info=True)
+                base_description = self.preview_embed.description.split("\n\n**🔒")[0] if \
+                    self.preview_embed.description else "Bet details missing."
+
         if self.selected_units is not None:
-            odds_raw = self.current_leg_data.get('odds', 'N/A')
+            odds_raw = self.total_odds if self.bet_type == "Parlay" else \
+                (self.legs[0].get("odds", "N/A") if self.bet_type == "Straight" and self.legs else "N/A")
+            if not odds_raw and self.current_leg_data and self.bet_type == "Straight":
+                odds_raw = self.current_leg_data.get("odds", "N/A")
             stake_text = ""
-            unit_display_value = self.selected_units # Use the raw unit value (1, 2, or 3)
-            unit_plural = "S" if unit_display_value > 1 else "" # Add 'S' if units > 1
-    
-            # --- MODIFIED STAKE TEXT LOGIC ---
+            unit_display_value = self.selected_units
+            unit_plural = "S" if unit_display_value > 1 else ""
             try:
                 odds = None
                 if isinstance(odds_raw, (int, float)):
                     odds = float(odds_raw)
                 elif isinstance(odds_raw, str):
-                    if odds_raw.upper() == 'EVEN':
-                        odds = 100.0 # Treat EVEN as negative/even for display logic
+                    if odds_raw.upper() == "EVEN":
+                        odds = 100.0
                     else:
-                        try:
-                            odds = float(odds_raw.replace('+',''))
-                        except ValueError:
-                            pass
-    
-                # Determine display text based on odds sign
-                if odds is not None and odds > 0: # Positive odds
+                        odds = float(odds_raw.replace("+", ""))
+                if odds is not None and odds > 0:
                     stake_text = f"🔒 TO RISK {unit_display_value} UNIT{unit_plural} 🔒"
-                else: # Negative or even odds (or invalid odds handled as 'TO WIN')
+                else:
                     stake_text = f"🔒 TO WIN {unit_display_value} UNIT{unit_plural} 🔒"
-    
-                # --- Calculate and Store Stake (Risk/Win Amount) ---
-                # This part calculates the actual value for the 'stake' column in the DB
                 stake_amount = None
                 if odds is not None:
-                    if odds > 0: # Positive odds: Stake is the risk amount
+                    if odds > 0:
                         stake_amount = float(self.selected_units)
-                    else: # Negative or even odds: Stake is the win amount
-                        # Ensure odds are treated as float for calculation
+                    else:
                         float_odds = float(odds)
                         abs_odds = abs(float_odds) if float_odds != 100.0 else 100.0
                         stake_amount = self.selected_units * (abs_odds / 100.0)
-                else: # Fallback for invalid odds
+                else:
                     stake_amount = float(self.selected_units)
-    
-                self.current_leg_data['stake'] = stake_amount
-                logger.debug(f"Calculated Stake for DB bet {self.bet_serial}: {stake_amount:.2f} (Units: {self.selected_units}, Odds: {odds_raw})")
-                 # --- End Stake Calculation ---
-    
+                if self.bet_type == "Parlay":
+                    self.current_leg_data["parlay_stake"] = stake_amount
+                elif self.legs:
+                    self.legs[0]["stake"] = stake_amount
+                elif self.current_leg_data:
+                    self.current_leg_data["stake"] = stake_amount
+                logger.debug(
+                    f"Calculated Stake for DB bet {self.bet_serial}: {stake_amount:.2f} "
+                    f"(Units: {self.selected_units}, Odds: {odds_raw})"
+                )
             except Exception as e:
-                logger.warning(f"Error determining stake display/calculation for bet {self.bet_serial} (Odds: '{odds_raw}'): {e}")
-                # Fallback display if calculation fails
+                logger.warning(
+                    f"Error determining stake for bet {self.bet_serial} (Odds: '{odds_raw}'): {e}"
+                )
                 stake_text = f"🔒 TO RISK {unit_display_value} UNIT{unit_plural} 🔒"
-                self.current_leg_data['stake'] = float(unit_display_value) # Fallback stake value
-    
-            # Update embed description and footer
-            self.preview_embed.description = f"{base_description}\n\n**{stake_text}**" # Use the new stake_text
+                fallback_stake = float(unit_display_value)
+                if self.bet_type == "Parlay":
+                    self.current_leg_data["parlay_stake"] = fallback_stake
+                elif self.legs:
+                    self.legs[0]["stake"] = fallback_stake
+                elif self.current_leg_data:
+                    self.current_leg_data["stake"] = fallback_stake
+
+            description_parts = []
+            if self.bet_type == "Parlay":
+                for i, leg in enumerate(self.legs, 1):
+                    leg_desc = leg.get("description", "Bet details missing.")
+                    description_parts.append(f"**Leg {i}:** {leg_desc}")
+                if self.total_odds:
+                    description_parts.append(f"**Total Parlay Odds:** {self.total_odds}")
+            else:
+                description_parts.append(base_description)
+            description_parts.append(f"\n**{stake_text}**")
+            self.preview_embed.description = "\n".join(description_parts)
             self.preview_embed.set_footer(text="Ready to Confirm?")
-            logger.debug(f"Preview {self.bet_serial}: Added stake line '{stake_text}', footer='Ready to Confirm?'")
-            # --- END MODIFIED LOGIC ---
+            logger.debug(
+                f"Preview {self.bet_serial}: Added stake line '{stake_text}', footer='Ready to Confirm?'"
+            )
         else:
-            self.preview_embed.description = base_description
+            description_parts = []
+            if self.bet_type == "Parlay":
+                for i, leg in enumerate(self.legs, 1):
+                    leg_desc = leg.get("description", "Bet details missing.")
+                    description_parts.append(f"**Leg {i}:** {leg_desc}")
+                if self.total_odds:
+                    description_parts.append(f"**Total Parlay Odds:** {self.total_odds}")
+            else:
+                description_parts.append(base_description)
+            self.preview_embed.description = "\n".join(description_parts)
             self.preview_embed.set_footer(text="Step 5/6: Select Channel and Units")
             logger.debug(f"Preview {self.bet_serial}: Units not selected, footer='Select Channel and Units'")
-    
-        # Enable/Disable Confirm button
-        confirm_enabled = bool(self.selected_channel_id and self.selected_units)
-        logger.debug(f"Updating Confirm button: enabled={confirm_enabled}")
+
+        confirm_enabled = bool(
+            self.selected_channel_id
+            and self.selected_units
+            and (
+                (self.bet_type == "Parlay" and len(self.legs) >= 2 and self.total_odds)
+                or (self.bet_type == "Straight" and (self.legs or self.current_leg_data))
+            )
+        )
+        logger.debug(
+            f"Updating Confirm button: enabled={confirm_enabled} (Chan={self.selected_channel_id}, "
+            f"Units={self.selected_units}, Legs={len(self.legs)}, TotalOdds={self.total_odds}, "
+            f"Type={self.bet_type})"
+        )
         confirm_button = discord.utils.get(self.children, custom_id="confirm_bet")
-        if confirm_button and isinstance(confirm_button, discord.ui.Button): # Use discord.ui.Button
+        if confirm_button and isinstance(confirm_button, discord.ui.Button):
             confirm_button.disabled = not confirm_enabled
-        else:
-            logger.warning(f"Could not find ConfirmButton to update for bet {self.bet_serial}")
-    
-        # Edit the original interaction message
+
         try:
             target_interaction = interaction or self.original_interaction
-            await target_interaction.edit_original_response(embed=self.preview_embed, view=self)
+            if not target_interaction.response.is_done():
+                if interaction and interaction.message and \
+                        interaction.message.id == self.original_interaction.message.id:
+                    await interaction.response.edit_message(embed=self.preview_embed, view=self)
+                else:
+                    await self.original_interaction.edit_original_response(
+                        embed=self.preview_embed, view=self
+                    )
+            else:
+                await self.original_interaction.edit_original_response(
+                    embed=self.preview_embed, view=self
+                )
             logger.debug(f"Updated preview embed {self.bet_serial} with new description/footer/button state.")
         except discord.NotFound:
-            logger.error(f"Error updating preview {self.bet_serial}: Original interaction msg not found.")
-            if hasattr(self, 'stop'): # Check if stop method exists
-                 self.stop()
+            logger.error(f"Error updating preview {self.bet_serial}: Original message not found.")
+            if hasattr(self, "stop"):
+                self.stop()
         except discord.HTTPException as e:
-            logger.error(f"HTTPException updating preview {self.bet_serial}: {e}")
+            if e.code == 40060:
+                try:
+                    await self.original_interaction.edit_original_response(
+                        embed=self.preview_embed, view=self
+                    )
+                    logger.debug("Edited original response after initial edit failed (40060).")
+                except Exception as edit_err:
+                    logger.error(f"Failed to edit original response for {self.bet_serial}: {edit_err}")
+            else:
+                logger.error(f"HTTPException updating preview {self.bet_serial}: {e}")
         except Exception as e:
             logger.error(f"Error updating preview {self.bet_serial}: {e}", exc_info=True)
 
-# --- Sub-League Select Classes ---
-class EsportsSubLeagueSelect(Select):
-    def __init__(self):
-        options = [
-            SelectOption(label="Counter-Strike (CS:GO)", value="csgo"),
-            SelectOption(label="League of Legends (LoL)", value="lol"),
-            SelectOption(label="Valorant", value="valorant"),
-            SelectOption(label="Generic Esports Players", value="esports_players"), # Keep if needed
-        ]
-        super().__init__(placeholder="1b. Select Esports Game...", options=options, custom_id="esports_sub_league_select")
 
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        view.selected_sub_league = self.values[0]
-        logger.info(f"Esports Sub-League selected: {view.selected_sub_league} by {interaction.user.id} (Serial: {view.bet_serial})")
-        view.update_view() # This will now trigger State 2 (BetTypeSelect)
-        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
-
-class TennisSubLeagueSelect(Select):
-    def __init__(self):
-        options = [
-            SelectOption(label="Men's Tennis (ATP)", value="atp"),
-            SelectOption(label="Women's Tennis (WTA)", value="wta"),
-        ]
-        super().__init__(placeholder="1b. Select Tennis Tour...", options=options, custom_id="tennis_sub_league_select")
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        view.selected_sub_league = self.values[0]
-        logger.info(f"Tennis Sub-League selected: {view.selected_sub_league} by {interaction.user.id} (Serial: {view.bet_serial})")
-        view.update_view()
-        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
-
-class GolfSubLeagueSelect(Select):
-    def __init__(self):
-        options = [
-            SelectOption(label="PGA Tour", value="pga"),
-            SelectOption(label="LPGA Tour", value="lpga"),
-            SelectOption(label="European Tour", value="europeantour"),
-            SelectOption(label="The Masters", value="masters"), # Example major
-        ]
-        super().__init__(placeholder="1b. Select Golf Tour/Event...", options=options, custom_id="golf_sub_league_select")
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        view.selected_sub_league = self.values[0]
-        logger.info(f"Golf Sub-League selected: {view.selected_sub_league} by {interaction.user.id} (Serial: {view.bet_serial})")
-        view.update_view()
-        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
-
-class HorseRacingSubLeagueSelect(Select):
-    def __init__(self):
-        options = [
-            SelectOption(label="Kentucky Derby", value="kentucky_derby"), # Example specific race
-            # Add other major races as needed (Preakness, Belmont, Breeders' Cup?)
-            SelectOption(label="Other Horse Racing", value="horseracing"), # Generic fallback
-        ]
-        super().__init__(placeholder="1b. Select Horse Race/Event...", options=options, custom_id="horseracing_sub_league_select")
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        view.selected_sub_league = self.values[0]
-        logger.info(f"Horse Racing Sub-League selected: {view.selected_sub_league} by {interaction.user.id} (Serial: {view.bet_serial})")
-        view.update_view()
-        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
-
-
-# --- Standard Component Classes ---
-class LeagueSelect(Select):
-    def __init__(self, league_options: List[SelectOption]):
-        placeholder = "1. Select League/Category..."
-        disabled = False
-        if not league_options:
-            options = [SelectOption(label="No leagues configured", value="error", default=True)]
-            placeholder = "Error: No leagues found"
-            disabled = True
-        else: options = league_options
-        super().__init__(placeholder=placeholder, options=options, custom_id="league_select", disabled=disabled)
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        selected_value = self.values[0]
-        if selected_value == "error":
-             await interaction.response.send_message("League selection is currently unavailable.", ephemeral=True)
-             return
-        # Reset subsequent state
-        view.selected_league = selected_value
-        view.selected_sub_league = None
-        view.bet_type = None
-        view.path = None
-        view.preview_embed = None
-        view.current_leg_data = {}
-        view.sport_handler = None # Reset handler
-        logger.info(f"League selected: {view.selected_league} by {interaction.user.id} (Serial: {view.bet_serial})")
-        generic_parents = ["ncaa", "golf", "tennis", "esports", "horseracing"]
-        next_step_message = f"Step 1b: Select {view.selected_league.capitalize()} Sub-Category" if view.selected_league in generic_parents else "Step 2: Select Bet Type"
-        view.update_view() # Update view based on selection
-        await interaction.response.edit_message(content=next_step_message, view=view, embed=None)
-
-class SubLeagueSelect(Select): # Specifically for NCAA
-    def __init__(self):
-        placeholder = "1b. Select NCAA Sport..."
-        options = [
-            SelectOption(label="NCAA Football (NCAAF)", value="ncaaf"),
-            SelectOption(label="NCAA Men's Basketball (NCAAM)", value="ncaam"),
-            SelectOption(label="NCAA Women's Basketball (NCAAW)", value="ncaaw"),
-            SelectOption(label="NCAA Women's Volleyball (NCAAWVB)", value="ncaawvb"),
-        ]
-        super().__init__(placeholder=placeholder, options=options, custom_id="sub_league_select")
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        view.selected_sub_league = self.values[0]
-        # Reset subsequent state
-        view.bet_type = None
-        view.path = None
-        view.preview_embed = None
-        view.current_leg_data = {}
-        view.sport_handler = None # Reset handler
-        logger.info(f"NCAA Sub-League selected: {view.selected_sub_league} by {interaction.user.id} (Serial: {view.bet_serial})")
-        view.update_view() # Update view based on selection
-        await interaction.response.edit_message(content="Step 2: Select Bet Type", view=view, embed=None)
-
-
-class BetTypeSelect(Select):
-    def __init__(self):
-        options = [
-            SelectOption(label="Straight Bet", value="Straight"),
-            SelectOption(label="Parlay", value="Parlay", description="Coming Soon!") # Keep disabled if needed
-        ]
-        super().__init__(placeholder="2. Select Bet Type...", options=options, custom_id="bet_type_select")
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        selected_type = self.values[0]
-        if selected_type == "Parlay": # Handle unavailable option
-            await interaction.response.send_message("Parlay functionality is not yet available!", ephemeral=True)
-            # Do not update view state if option is unavailable
-            # Re-edit message to keep current state? Or just let the ephemeral message show.
-            # await interaction.edit_original_response(view=view) # Optional: Keep the BetTypeSelect visible
-            return
-        view.bet_type = selected_type
-        # Reset subsequent state
-        view.path = None
-        view.preview_embed = None
-        view.current_leg_data = {}
-        logger.info(f"Bet Type selected: {view.bet_type} by {interaction.user.id} (Serial: {view.bet_serial})")
-        view.update_view() # Update view to show path options
-        await interaction.response.edit_message(content="Step 3: Choose Bet Specifics", view=view, embed=None)
-
-
-class PathButton(Button):
-    def __init__(self, label: str, custom_id: str):
-        super().__init__(label=label, style=discord.ButtonStyle.primary, custom_id=custom_id)
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-
-        # Ensure sport handler is still set
-        if not view.sport_handler:
-             logger.error(f"Sport handler not set when path button '{self.label}' clicked for bet {view.bet_serial}")
-             # Try to re-acquire handler
-             league_context = view.selected_sub_league or view.selected_league
-             if league_context:
-                 try: view.sport_handler = SportHandlerFactory.get_handler(league_context, SUPPORTED_LEAGUES)
-                 except Exception as e: logger.error(f"Failed to re-acquire handler on path click for {league_context}: {e}")
-             if not view.sport_handler: # If still no handler
-                 await interaction.response.send_message("Error: Sport context lost. Please restart.", ephemeral=True)
-                 view.stop()
-                 return
-
-        view.path = self.label # Store the path selected
-        logger.info(f"Path chosen: '{view.path}' by {interaction.user.id} (Serial: {view.bet_serial})")
-
-        # Get and send the appropriate modal
-        try:
-            modal = view.sport_handler.get_modal(view, view.path) # Pass view and path
-            await interaction.response.send_modal(modal)
-            logger.debug(f"Modal for path '{view.path}' sent successfully.")
-            # View state doesn't change until modal submission, so no view.update_view() here
-        except ValueError as e: # Specific error from get_modal if path is invalid
-            logger.error(f"Error getting modal for path '{view.path}', league '{view.sport_handler.league}': {e}")
-            await interaction.response.send_message(f"Error: Could not load input form for '{view.path}'.", ephemeral=True)
-            view.path = None # Reset path if modal failed
-            view.update_view() # Go back to showing path buttons
-            await interaction.edit_original_response(view=view)
-        except Exception as e: # Catch other errors
-            logger.error(f"Unexpected error generating modal for bet {view.bet_serial}, path '{view.path}': {e}", exc_info=True)
-            if not interaction.response.is_done(): # Check if modal response already happened (unlikely but possible)
-                 await interaction.response.send_message("An unexpected error occurred setting up the bet form.", ephemeral=True)
-            # Optionally reset state or stop view if modal fails critically
-            # view.path = None
-            # view.update_view()
-            # await interaction.edit_original_response(view=view)
-
-
-class ChannelSelect(Select):
-    def __init__(self, guild: Optional[discord.Guild], embed_channel_id_1: Optional[int], embed_channel_id_2: Optional[int]):
-        options = []
-        placeholder = "5. Select Channel..."
-        disabled = True
-
-        if guild:
-            channel_ids = [ch_id for ch_id in [embed_channel_id_1, embed_channel_id_2] if ch_id is not None]
-            if not channel_ids:
-                options = [SelectOption(label="No embed channels set", value="none")]
-                placeholder = "Error: Configure embed channels"
-            else:
-                valid_channels_found = False
-                for ch_id in channel_ids:
-                    channel = guild.get_channel(ch_id)
-                    # Check if channel exists, is text, and bot has permissions
-                    if channel and isinstance(channel, discord.TextChannel):
-                        perms = channel.permissions_for(guild.me)
-                        # Ensure webhook perm needed for posting
-                        if perms.send_messages and perms.embed_links and perms.manage_webhooks:
-                            options.append(SelectOption(label=f"#{channel.name}", value=str(channel.id)))
-                            valid_channels_found = True
-                        else: logger.warning(f"Bot lacks Send/Embed/Webhook perms in configured channel {channel.id} ({channel.name})")
-                    else: logger.warning(f"Configured embed channel {ch_id} not found or not text channel in guild {guild.id}")
-
-                if not valid_channels_found:
-                    options = [SelectOption(label="Invalid configured channels", value="none")]
-                    placeholder = "Error: Check channel config/perms"
-                else:
-                    disabled = False # Enable select only if valid options exist
-        else: # Should not happen if command is guild_only
-            options = [SelectOption(label="Error: Use in server", value="error")]
-            placeholder = "Error: Command must be used in a server"
-
-        super().__init__(placeholder=placeholder, options=options, custom_id="channel_select", min_values=1, max_values=1, disabled=disabled)
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        selected_value = self.values[0]
-        if selected_value in ["none", "error"]:
-            view.selected_channel_id = None
-            await interaction.response.send_message("Please select a valid channel.", ephemeral=True)
-        else:
-            try:
-                view.selected_channel_id = int(selected_value)
-                logger.info(f"Channel selected: {view.selected_channel_id} by {interaction.user.id} (Serial: {view.bet_serial})")
-                await interaction.response.defer() # Acknowledge interaction
-                # Update preview with selection (will also enable/disable confirm button)
-                await view.update_preview_description_and_footer(interaction)
-            except ValueError:
-                 logger.error(f"Invalid channel value selected: {selected_value} for bet {view.bet_serial}")
-                 view.selected_channel_id = None
-                 await interaction.response.send_message("Invalid channel value selected.", ephemeral=True)
-            except Exception as e:
-                 logger.error(f"Error in ChannelSelect callback: {e}", exc_info=True)
-                 if not interaction.response.is_done():
-                      await interaction.response.send_message("An error occurred processing your channel selection.", ephemeral=True)
-
-
-class UnitsSelect(Select):
-    def __init__(self):
-        # Consider fetching unit options from config or DB if variable
-        options = [SelectOption(label=f"{i} Unit{'s' if i > 1 else ''}", value=str(i)) for i in range(1, 4)] # Example: 1-3 units
-        super().__init__(placeholder="6. Select Units...", options=options, custom_id="units_select", min_values=1, max_values=1)
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-        try:
-            view.selected_units = int(self.values[0])
-            logger.info(f"Units selected: {view.selected_units} by {interaction.user.id} (Serial: {view.bet_serial})")
-            await interaction.response.defer() # Acknowledge interaction
-            # Update preview with selection (will add stake line and enable/disable confirm button)
-            await view.update_preview_description_and_footer(interaction)
-        except ValueError:
-             logger.error(f"Invalid units value selected: {self.values[0]} for bet {view.bet_serial}")
-             view.selected_units = None
-             await interaction.response.send_message("Invalid units value selected.", ephemeral=True)
-        except Exception as e:
-             logger.error(f"Error in UnitsSelect callback: {e}", exc_info=True)
-             if not interaction.response.is_done():
-                  await interaction.response.send_message("An error occurred processing your unit selection.", ephemeral=True)
-
-
-class ConfirmButton(Button):
-    def __init__(self, disabled: bool = True, row: Optional[int] = None):
-        super().__init__(label="Confirm Bet", style=discord.ButtonStyle.success, custom_id="confirm_bet", disabled=disabled, row=row)
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-
-        if not view.selected_channel_id or not view.selected_units or not view.preview_embed or not view.current_leg_data:
-            logger.warning(f"Confirm bet {view.bet_serial} attempt failed: Missing Chan={view.selected_channel_id}, Units={view.selected_units}, Embed={view.preview_embed is not None}, Data={view.current_leg_data is not None}")
-            await interaction.response.send_message("Error: Missing channel, units, or bet details. Please select them.", ephemeral=True)
-            return
-
-        await interaction.response.defer(ephemeral=True, thinking=True)
-        logger.info(f"ConfirmButton processing bet {view.bet_serial} for user {interaction.user.id}")
-
-        try:
-            guild = interaction.guild
-            if not guild: raise ValueError("Interaction missing guild context for confirmation.")
-
-            target_channel = guild.get_channel(view.selected_channel_id)
-            if not target_channel or not isinstance(target_channel, discord.TextChannel):
-                raise ValueError(f"Selected channel {view.selected_channel_id} is invalid or not found.")
-            target_perms = target_channel.permissions_for(guild.me)
-            if not target_perms.send_messages or not target_perms.embed_links:
-                raise PermissionError(f"Missing Send/Embed permissions in target channel {target_channel.mention}")
-
-            webhook = None
-            webhook_name = f"{guild.me.display_name} Bets"
-            try:
-                webhooks = await target_channel.webhooks()
-                webhook = next((wh for wh in webhooks if wh.user and wh.user.id == guild.me.id), None)
-                if not webhook and target_perms.manage_webhooks:
-                    webhook = await target_channel.create_webhook(name=webhook_name)
-                    logger.info(f"Created new webhook {webhook.id} named '{webhook_name}' in channel {target_channel.id}")
-                elif not webhook and webhooks:
-                    webhook = webhooks[0]
-                    logger.warning(f"Using existing webhook {webhook.id} (owned by {webhook.user}) in channel {target_channel.id}")
-                elif not webhook:
-                    raise BettingBotError("Webhook required but none available/creatable. Check permissions.")
-            except discord.Forbidden:
-                logger.error(f"Forbidden error managing/using webhooks in channel {target_channel.id}.")
-                raise PermissionError("Bot lacks permissions for webhooks.") from None
-            except Exception as e:
-                logger.error(f"Error getting/creating webhook for channel {target_channel.id}: {e}", exc_info=True)
-                raise BettingBotError("Error setting up webhook for posting.") from e
-
-            if not webhook: raise BettingBotError("Could not obtain a webhook instance.")
-
-            # --- MEMBER ROLE MENTION LOGIC ---
-            settings = await fetch_guild_settings_and_sub(guild.id)
-            member_role_id = settings.get('member_role') # Fetch the role ID
-            mention_content = "" # Default to no mention
-            if member_role_id:
-                role = guild.get_role(member_role_id)
-                # Check if role exists AND if the bot can mention it (role setting)
-                if role and role.mentionable:
-                    mention_content = f"{role.mention} " # Add the mention + space
-                    logger.debug(f"Adding mention for member_role ID {member_role_id} ('{role.name}') in bet {view.bet_serial}")
-                elif role:
-                    logger.warning(f"Member role ID {member_role_id} ('{role.name}') found but is not mentionable in guild {guild.id}. Cannot ping.")
-                    member_role_id = None # Don't save non-mentionable role ID to bet
-                else:
-                    logger.warning(f"Configured member role ID {member_role_id} not found in guild {guild.id}. Cannot ping.")
-                    member_role_id = None # Don't save invalid role ID to bet
-            else:
-                logger.debug(f"No member_role configured for guild {guild.id}.")
-            # --- END MEMBER ROLE MENTION LOGIC ---
-
-
-            capper_display_name = interaction.user.display_name
-            capper_avatar_url = interaction.user.display_avatar.url
-            try:
-                capper_query = "SELECT display_name, image_path FROM cappers WHERE user_id = %s AND guild_id = %s"
-                capper_record = await db_manager.fetch_one(capper_query, (interaction.user.id, guild.id))
-                if capper_record:
-                    db_display_name = capper_record.get("display_name")
-                    db_image_path = capper_record.get("image_path")
-                    if db_display_name: capper_display_name = db_display_name
-                    if db_image_path: capper_avatar_url = db_image_path
-                    logger.debug(f"Using capper profile: Name='{capper_display_name}', Avatar='{capper_avatar_url}'")
-                else: logger.debug(f"No capper record for user {interaction.user.id}, using Discord profile.")
-            except DatabaseError as db_e: logger.error(f"DB Error fetching capper info: {db_e}. Using Discord defaults.")
-            except Exception as e: logger.error(f"Unexpected error fetching capper info: {e}. Using Discord defaults.", exc_info=True)
-
-            final_embed = view.preview_embed
-            final_embed.timestamp = discord.utils.utcnow()
-            final_embed.color = discord.Color.gold()
-            final_embed.set_footer(text=f"Bet #{view.bet_serial}")
-
-            # Use mention_content in webhook send
-            bet_message = await webhook.send(
-                content=mention_content, # Pass the mention string here
-                embed=final_embed,
-                username=capper_display_name,
-                avatar_url=capper_avatar_url,
-                wait=True
-            )
-            logger.info(f"Bet {view.bet_serial} message {bet_message.id} posted via webhook {webhook.id} in channel {target_channel.id} with content '{mention_content}'.")
-
-            async with db_manager._pool.acquire() as conn:
-                async with conn.cursor() as cur:
-                    await cur.execute("START TRANSACTION")
-                    try:
-                        fb_data = view.current_leg_data
-                        db_bet_type = 'standard'
-                        player_prop_value = None
-                        line_value = None
-                        path = view.path
-
-                        if path == "Bet on a Player":
-                            db_bet_type = 'prop'
-                            player_prop_value = fb_data.get('prop')
-                        elif path == "Bet on a Team":
-                            line_value = fb_data.get('line')
-                        elif path == "Bet on a Driver":
-                            db_bet_type = 'prop'
-                            player_prop_value = fb_data.get('line')
-                        elif path == "Bet on a Race Prop":
-                            db_bet_type = 'prop'
-                            player_prop_value = f"{fb_data.get('event','?')}: {fb_data.get('laps','?')} {fb_data.get('outcome','?')}"
-                        elif path == "Bet on a Golfer":
-                            db_bet_type = 'prop'
-                            player_prop_value = fb_data.get('line')
-                        elif path == "Bet on a Tournament Prop":
-                            db_bet_type = 'prop'
-                            player_prop_value = f"{fb_data.get('event','?')}: {fb_data.get('outcome','?')}"
-                        elif path == "Bet on a Player Prop":
-                            db_bet_type = 'prop'
-                            player_prop_value = fb_data.get('prop')
-                        elif path == "Bet on a Match":
-                            line_value = fb_data.get('line')
-                        elif path == "Bet on a Fight":
-                            line_value = fb_data.get('line')
-                        elif path == "Bet on a Horse":
-                            line_value = fb_data.get('line')
-                        elif path == "Bet on a Race Prop": # Duplicate path name - check logic
-                            db_bet_type = 'prop'
-                            player_prop_value = f"{fb_data.get('event','?')}: {fb_data.get('outcome','?')} {fb_data.get('pick','?')}"
-
-                        team_db = fb_data.get('team') or fb_data.get('player1') or fb_data.get('team1') or fb_data.get('fighter1') or fb_data.get('horse') or fb_data.get('driver') or fb_data.get('golfer') or fb_data.get('player') or 'N/A'
-                        opponent_db = fb_data.get('opponent') or fb_data.get('player2') or fb_data.get('team2') or fb_data.get('fighter2') or 'N/A'
-                        if path == "Bet on a Driver":
-                            opponent_db = fb_data.get('car_number', 'N/A')
-                        elif path == "Bet on a Golfer":
-                            opponent_db = "Tournament"
-                        elif path == "Bet on a Tournament Prop":
-                            team_db = fb_data.get('event', 'N/A')
-                            opponent_db = "Tournament"
-                        elif path == "Bet on a Horse":
-                            opponent_db = "Race Field"
-                        elif path == "Bet on a Race Prop": # Duplicate path name - check logic
-                            team_db = fb_data.get('event', 'N/A')
-                            opponent_db = fb_data.get('pick', fb_data.get('outcome', 'N/A'))
-
-                        player_name_db = fb_data.get('player_name') or fb_data.get('player') or fb_data.get('fighter') or fb_data.get('driver') or fb_data.get('golfer')
-                        league_db = (view.selected_sub_league or view.selected_league or 'UNK').upper()
-
-                        odds_raw = fb_data.get('odds', 'N/A')
-                        odds_db = None
-                        try:
-                            if isinstance(odds_raw, (int, float)):
-                                odds_db = float(odds_raw)
-                            elif isinstance(odds_raw, str):
-                                if odds_raw.upper() == 'EVEN':
-                                    odds_db = 100.0
-                                else:
-                                    try:
-                                        odds_db = float(odds_raw.replace('+',''))
-                                    except ValueError:
-                                        pass
-                        except Exception:
-                            pass
-
-                        line_db_value = line_value
-                        line_db = None
-                        try:
-                            if isinstance(line_db_value, (int, float)):
-                                line_db = float(line_db_value)
-                            elif isinstance(line_db_value, str) and line_db_value.upper() not in ['N/A', '']:
-                                line_db = line_db_value
-                        except Exception:
-                            pass
-
-                        player_id_db = fb_data.get('player_id')
-                        event_id_db = fb_data.get('event_id')
-                        stake_db = fb_data.get('stake', float(view.selected_units))
-
-                        # ADDED member_role_id to the query and params
-                        bets_query = """
-                            INSERT INTO bets
-                            (bet_serial, user_id, guild_id, league, team, opponent, units, bet_type, message_id,
-                             player_id, player_prop, odds, event_id, line, legs, stake, created_at, bet_won, bet_loss, member_role_id)
-                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, NOW(), %s, %s, %s)
-                        """
-                        bets_params = (
-                            view.bet_serial, interaction.user.id, guild.id, league_db, team_db, opponent_db,
-                            view.selected_units, db_bet_type, bet_message.id, player_id_db, player_prop_value,
-                            odds_db, event_id_db, line_db, 1, stake_db, 0, 0, member_role_id # Pass the ID here
-                        )
-                        await cur.execute(bets_query, bets_params)
-                        logger.info(f"Bet {view.bet_serial} saved to 'bets' table with units={view.selected_units}, stake={stake_db:.2f}, bet_won=0, bet_loss=0, member_role_id={member_role_id}")
-
-                        unit_records_query = """
-                            INSERT INTO unit_records (guild_id, bet_serial, user_id, units, timestamp, total)
-                            VALUES (%s, %s, %s, %s, NOW(), %s)
-                        """
-                        unit_records_params = (guild.id, view.bet_serial, interaction.user.id, 0.0, 0.0)
-                        await cur.execute(unit_records_query, unit_records_params)
-                        logger.info(f"Inserted into unit_records for bet {view.bet_serial}: units=0.0, total=0.0")
-
-                        await conn.commit()
-                        logger.info(f"Transaction committed for bet {view.bet_serial}.")
-
-                    except Exception as db_trans_err:
-                        logger.error(f"Error during DB transaction for bet {view.bet_serial}: {db_trans_err}", exc_info=True)
-                        await conn.rollback()
-                        try:
-                            await bet_message.delete()
-                        except:
-                            logger.warning(f"Failed to delete message {bet_message.id} after DB rollback for bet {view.bet_serial}")
-                        raise DatabaseError("Failed to save bet details to database.") from db_trans_err
-
-            view.bet_service.pending_bets[bet_message.id] = view.bet_serial
-
-            await interaction.followup.send(f"Bet #{view.bet_serial} placed successfully in {target_channel.mention}! Please add ✅ or ❌ to resolve.", ephemeral=True)
-            await view.original_interaction.edit_original_response(content=f"✅ Bet #{view.bet_serial} Placed!", view=None, embed=None)
-            view.stop()
-
-        except (ValidationError, PermissionError, DatabaseError, BettingBotError) as e:
-            logger.warning(f"Error confirming bet {view.bet_serial}: {e}")
-            await interaction.followup.send(f"Error placing bet: {e}", ephemeral=True)
-            if isinstance(e, (DatabaseError, BettingBotError)):
-                 view.stop()
-        except Exception as e:
-            logger.error(f"Unexpected error confirming bet {view.bet_serial}: {e}", exc_info=True)
-            await interaction.followup.send(f"An unexpected error occurred while placing the bet.", ephemeral=True)
-            if not view.is_finished(): view.stop()
-
-
-class EditButton(Button):
-    def __init__(self, row: Optional[int] = None):
-        super().__init__(label="Edit Bet", style=discord.ButtonStyle.secondary, custom_id="edit_bet", row=row)
-
-    async def callback(self, interaction: Interaction):
-        view: BetWorkflowView = self.view
-        if not await view.interaction_check(interaction): return
-
-        # Check if we have the necessary info to re-open the modal
-        if not view.path or not view.current_leg_data or not view.sport_handler:
-            logger.warning(f"Cannot edit bet {view.bet_serial}: Missing path, data, or handler. Resetting to path selection.")
-            # Reset state to allow user to re-select path
-            view.path = None
-            view.preview_embed = None
-            view.current_leg_data = {}
-            view.selected_channel_id = None
-            view.selected_units = None
-
-            # Ensure handler exists before updating view
-            if not view.sport_handler:
-                league_context = view.selected_sub_league or view.selected_league
-                if league_context:
-                     try: view.sport_handler = SportHandlerFactory.get_handler(league_context, SUPPORTED_LEAGUES)
-                     except Exception as e: logger.error(f"Failed to re-acquire handler for edit fallback: {e}")
-                if not view.sport_handler: # Still no handler
-                     await interaction.response.send_message("Error: Cannot edit bet, context lost. Please restart.", ephemeral=True)
-                     view.stop(); return
-
-            view.update_view() # Go back to path selection state
-            try:
-                await interaction.response.edit_message(content="Step 3: Choose Bet Specifics (Editing)", view=view, embed=None)
-            except discord.HTTPException as e:
-                 logger.error(f"HTTPException editing message for edit fallback {view.bet_serial}: {e}")
-                 # If original edit fails, try ephemeral response
-                 if not interaction.response.is_done():
-                      await interaction.response.send_message("Error updating bet setup. Please try again.", ephemeral=True)
-            return
-
-        # Re-open the modal, pre-filling with current_leg_data
-        try:
-            modal = view.sport_handler.get_modal(view, view.path)
-            # Populate modal fields from stored data
-            for child in modal.children:
-                if isinstance(child, TextInput) and child.custom_id in view.current_leg_data:
-                     # Ensure value is string for default
-                     child.default = str(view.current_leg_data.get(child.custom_id, ''))
-
-            logger.info(f"Re-opening modal for edit by {interaction.user.id} for bet serial {view.bet_serial}: Path='{view.path}'")
-            await interaction.response.send_modal(modal)
-            # Clear preview embed AFTER sending modal to signify editing state
-            view.preview_embed = None
-            # Don't update view here, wait for modal submission
-
-        except ValueError as e: # Handle errors from get_modal
-             logger.error(f"Error getting modal for edit in bet {view.bet_serial}: {e}")
-             await interaction.response.send_message(f"Error generating edit form: {e}", ephemeral=True)
-        except discord.HTTPException as e:
-             logger.error(f"HTTPException sending modal for edit {view.bet_serial}: {e}")
-             # If modal send fails, maybe interaction already responded to?
-             if not interaction.response.is_done():
-                  await interaction.response.send_message("Error opening edit form. Please try again.", ephemeral=True)
-        except Exception as e:
-             logger.error(f"Unexpected error generating modal for edit {view.bet_serial}: {e}", exc_info=True)
-             if not interaction.response.is_done():
-                  await interaction.response.send_message("An unexpected error occurred.", ephemeral=True)
-
-
-# --- Modal Classes ---
-# (Keep all modal classes as they were in the provided file)
-class PlayerBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Player Bet Details"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or parent_view.selected_league or "nba"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["nba"])
-        league_display = league.upper()
-        self.add_item(TextInput(
-            label="Team Name (Player's Team)", required=True, custom_id="team",
-            placeholder=f"e.g., {examples['team']} ({league_display})"
-        ))
-        self.add_item(TextInput(
-            label="Opponent Name", required=True, custom_id="opponent",
-            placeholder=f"e.g., {examples['opponent']} ({league_display})"
-        ))
-        self.add_item(TextInput(
-            label="Player Name", required=True, custom_id="player_name",
-            placeholder=f"e.g., {examples['player']}"
-        ))
-        self.add_item(TextInput(
-            label="Prop (e.g., Points Over 25.5)", required=True, custom_id="prop",
-            placeholder="Points Over 25.5"
-        ))
-        self.add_item(TextInput(
-            label="Odds (e.g., -110 or +150)", required=True, custom_id="odds",
-            placeholder="-110 or +150"
-        ))
-
-    async def on_submit(self, interaction: Interaction):
-        # Extract data, ensuring keys match TextInput custom_ids
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Player" # Add path context
-        if not all(data.values()): # Basic check for empty fields
-            await interaction.response.send_message("All fields are required.", ephemeral=True)
-            return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Player Bet Modal submitted by {interaction.user.id} (Serial: {self.parent_view.bet_serial}): {data}")
-        await interaction.response.defer() # Acknowledge modal submission
-        await self.parent_view.show_preview() # Trigger preview generation
-
-class TeamBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Team Bet Details"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or parent_view.selected_league or "nba"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["nba"])
-        league_display = league.upper()
-        self.add_item(TextInput(label="Team Pick", required=True, custom_id="team", placeholder=f"e.g., {examples['team']} ({league_display})"))
-        self.add_item(TextInput(label="Opponent", required=True, custom_id="opponent", placeholder=f"e.g., {examples['opponent']} ({league_display})"))
-        self.add_item(TextInput(label="Line (e.g., -7.5 or ML)", required=True, custom_id="line", placeholder="-7.5 or ML"))
-        self.add_item(TextInput(label="Odds (e.g., -110)", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Team"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Team Bet Modal submitted by {interaction.user.id} (Serial: {self.parent_view.bet_serial}): {data}")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class NASCARDriverBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter NASCAR Driver Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        examples = LEAGUE_EXAMPLES["nascar"]
-        self.add_item(TextInput(label="Driver", required=True, custom_id="driver", placeholder=f"e.g., {examples['driver']}"))
-        self.add_item(TextInput(label="Car #", required=True, custom_id="car_number", placeholder=f"e.g., {examples['car_number']}"))
-        self.add_item(TextInput(label="Pick (e.g., Top 5 Finish)", required=True, custom_id="line", placeholder="Top 5 Finish"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Driver"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"NASCAR Driver Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class NASCRaceBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter NASCAR Race Prop"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        examples = LEAGUE_EXAMPLES["nascar"]
-        self.add_item(TextInput(label="Event Name/Prop", required=True, custom_id="event", placeholder=f"e.g., {examples['event']}"))
-        self.add_item(TextInput(label="Prop Condition (e.g., Laps)", required=True, custom_id="laps", placeholder="e.g., Total Laps"))
-        self.add_item(TextInput(label="Your Pick (e.g., Over 10.5)", required=True, custom_id="outcome", placeholder="e.g., Over 10.5"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Race Prop"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"NASCAR Race Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class GolfGolferBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Golfer Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "pga"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["pga"])
-        self.add_item(TextInput(label="Golfer", required=True, custom_id="golfer", placeholder=f"e.g., {examples['golfer']}"))
-        self.add_item(TextInput(label="Pick (e.g., Top 10 Finish)", required=True, custom_id="line", placeholder="e.g., Top 10 Finish"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Golfer"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Golf Golfer Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class GolfTournamentBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Tournament Prop"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "pga"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["pga"])
-        self.add_item(TextInput(label="Tournament Prop", required=True, custom_id="event", placeholder=f"e.g., {examples['event']}"))
-        self.add_item(TextInput(label="Pick (e.g., Over 5.5 Birdies)", required=True, custom_id="outcome", placeholder="e.g., Over 5.5 Birdies"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Tournament Prop"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Golf Tournament Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class TennisPlayerBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Player Prop Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "atp"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["atp"])
-        self.add_item(TextInput(label="Player", required=True, custom_id="player", placeholder=f"e.g., {examples['player']}"))
-        self.add_item(TextInput(label="Opponent", required=True, custom_id="opponent", placeholder=f"e.g., {examples['opponent']}"))
-        self.add_item(TextInput(label="Prop", required=True, custom_id="prop", placeholder="e.g., Over 22.5 Games"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Player Prop"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Tennis Player Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class TennisMatchBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Match Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "atp"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["atp"])
-        self.add_item(TextInput(label="Player 1", required=True, custom_id="player1", placeholder=f"e.g., {examples['player']}"))
-        self.add_item(TextInput(label="Player 2", required=True, custom_id="player2", placeholder=f"e.g., {examples['opponent']}"))
-        self.add_item(TextInput(label="Pick (e.g., -1.5 Sets)", required=True, custom_id="line", placeholder="e.g., -1.5 Sets"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Match"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Tennis Match Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class UFCFighterBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Fighter Prop Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        examples = LEAGUE_EXAMPLES["ufc"]
-        self.add_item(TextInput(label="Fighter", required=True, custom_id="fighter", placeholder=f"e.g., {examples['fighter']}"))
-        self.add_item(TextInput(label="Opponent", required=True, custom_id="opponent", placeholder=f"e.g., {examples['opponent']}"))
-        self.add_item(TextInput(label="Prop (e.g., KO/TKO)", required=True, custom_id="prop", placeholder=f"e.g., {examples['prop']}"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Fighter Prop"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"UFC Fighter Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class UFCFightBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Fight Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        examples = LEAGUE_EXAMPLES["ufc"]
-        self.add_item(TextInput(label="Fighter 1", required=True, custom_id="fighter1", placeholder=f"e.g., {examples['fighter']}"))
-        self.add_item(TextInput(label="Fighter 2", required=True, custom_id="fighter2", placeholder=f"e.g., {examples['opponent']}"))
-        self.add_item(TextInput(label="Pick (e.g., Over 2.5 Rds)", required=True, custom_id="line", placeholder="e.g., Over 2.5 Rounds"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Fight"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"UFC Fight Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class EsportsPlayerBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Esports Player Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "csgo"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["csgo"])
-        self.add_item(TextInput(label="Player", required=True, custom_id="player", placeholder=f"e.g., {examples['player']}"))
-        self.add_item(TextInput(label="Team", required=True, custom_id="team", placeholder=f"e.g., {examples['team']}"))
-        self.add_item(TextInput(label="Prop (e.g., Kills Over 20.5)", required=True, custom_id="prop", placeholder="e.g., Kills Over 20.5"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Player"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Esports Player Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class EsportsMatchBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Esports Match Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "csgo"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["csgo"])
-        self.add_item(TextInput(label="Team 1", required=True, custom_id="team1", placeholder=f"e.g., {examples['team']}"))
-        self.add_item(TextInput(label="Team 2", required=True, custom_id="team2", placeholder=f"e.g., {examples['opponent']}"))
-        self.add_item(TextInput(label="Pick (e.g., Map 1 Winner)", required=True, custom_id="line", placeholder="e.g., Map 1 Winner"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Match"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Esports Match Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class HorseBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Horse Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "kentucky_derby"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["kentucky_derby"])
-        self.add_item(TextInput(label="Horse", required=True, custom_id="horse", placeholder=f"e.g., {examples['horse']}"))
-        self.add_item(TextInput(label="Pick (e.g., Win/Place/Show)", required=True, custom_id="line", placeholder="e.g., Win/Place/Show"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Horse"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Horse Bet Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-class HorseRaceBetModal(Modal):
-    def __init__(self, parent_view: 'BetWorkflowView', title="Enter Race Prop Bet"):
-        super().__init__(title=title)
-        self.parent_view = parent_view
-        league = parent_view.selected_sub_league or "kentucky_derby"
-        examples = LEAGUE_EXAMPLES.get(league.lower(), LEAGUE_EXAMPLES["kentucky_derby"])
-        self.add_item(TextInput(label="Race Name/Event", required=True, custom_id="event", placeholder=f"e.g., {examples['event']}"))
-        self.add_item(TextInput(label="Prop Description", required=True, custom_id="outcome", placeholder="e.g., Total Finishers"))
-        self.add_item(TextInput(label="Your Pick (e.g., Over/Under Value)", required=True, custom_id="pick", placeholder="e.g., Over 8.5"))
-        self.add_item(TextInput(label="Odds", required=True, custom_id="odds", placeholder="-110 or +150"))
-
-    async def on_submit(self, interaction: Interaction):
-        data = {child.custom_id: child.value.strip() for child in self.children if isinstance(child, TextInput)}
-        data['path'] = "Bet on a Race Prop"
-        if not all(data.values()): await interaction.response.send_message("All fields are required.", ephemeral=True); return
-        self.parent_view.current_leg_data = data
-        logger.info(f"Horse Race Modal submitted: {data} (Serial: {self.parent_view.bet_serial})")
-        await interaction.response.defer()
-        await self.parent_view.show_preview()
-
-# --- Command Logic/Interaction Handlers ---
-# These functions MUST be defined before setup_bet_service_commands
-
-async def bet_command_interaction(interaction: Interaction, bet_service_instance: 'BetService'):
-    """Handles the logic for the /bet command."""
+    # --- Command Handlers ---
+async def bet_command_interaction(interaction: Interaction, bet_service_instance: "BetService"):
+    """Handles the /bet command to start the interactive bet placement process."""
     if not interaction.guild or not interaction.channel or not isinstance(interaction.channel, discord.TextChannel):
         await interaction.response.send_message("Use in server text channel.", ephemeral=True)
         return
@@ -1389,23 +2266,29 @@ async def bet_command_interaction(interaction: Interaction, bet_service_instance
     logger.debug(f"/bet invoked: User={user_id}, Chan={current_channel_id}, Guild={guild_id}")
     try:
         settings = await fetch_guild_settings_and_sub(guild_id)
-        cmd_ch_1_id = settings.get('command_channel_1')
-        cmd_ch_2_id = settings.get('command_channel_2')
-        embed_ch_1_id = settings.get('embed_channel_1')
-        embed_ch_2_id = settings.get('embed_channel_2')
-        auth_role_id = settings.get('authorized_role')
-        admin_role_id = settings.get('admin_role')
+        cmd_ch_1_id = settings.get("command_channel_1")
+        cmd_ch_2_id = settings.get("command_channel_2")
+        embed_ch_1_id = settings.get("embed_channel_1")
+        embed_ch_2_id = settings.get("embed_channel_2")
+        auth_role_id = settings.get("authorized_role")
+        admin_role_id = settings.get("admin_role")
 
         allowed_command_channels = [ch for ch in [cmd_ch_1_id, cmd_ch_2_id] if ch]
         if not allowed_command_channels:
-            await interaction.response.send_message("Cmd channels not configured.", ephemeral=True)
+            await interaction.response.send_message("Command channels not configured.", ephemeral=True)
             return
         if current_channel_id not in allowed_command_channels:
-            channel_mentions = [f"<#{ch_id}>" for ch_id in allowed_command_channels if interaction.guild.get_channel(ch_id)]
-            await interaction.response.send_message(f"Please use `/bet` in: {', '.join(channel_mentions) or 'configured channels'}", ephemeral=True)
+            channel_mentions = [
+                f"<#{ch_id}>" for ch_id in allowed_command_channels if interaction.guild.get_channel(ch_id)
+            ]
+            await interaction.response.send_message(
+                f"Please use `/bet` in: {', '.join(channel_mentions) or 'configured channels'}",
+                ephemeral=True,
+            )
             return
 
-        valid_embed_channels = bool(embed_ch_1_id and interaction.guild.get_channel(embed_ch_1_id)) or bool(embed_ch_2_id and interaction.guild.get_channel(embed_ch_2_id))
+        valid_embed_channels = bool(embed_ch_1_id and interaction.guild.get_channel(embed_ch_1_id)) or \
+            bool(embed_ch_2_id and interaction.guild.get_channel(embed_ch_2_id))
         if not valid_embed_channels:
             await interaction.response.send_message("Embed channels not configured.", ephemeral=True)
             return
@@ -1414,21 +2297,23 @@ async def bet_command_interaction(interaction: Interaction, bet_service_instance
             if not isinstance(interaction.user, discord.Member):
                 await interaction.response.send_message("Error checking roles.", ephemeral=True)
                 return
-            member = interaction.user # Already checked it's a Member
+            member = interaction.user
             is_authorized = any(role.id == auth_role_id for role in member.roles)
-            is_admin_role = (admin_role_id and any(role.id == admin_role_id for role in member.roles))
+            is_admin_role = admin_role_id and any(role.id == admin_role_id for role in member.roles)
             has_admin_perm = member.guild_permissions.administrator
             if not (is_authorized or is_admin_role or has_admin_perm):
                 auth_role = interaction.guild.get_role(auth_role_id)
                 role_name = auth_role.name if auth_role else f"ID {auth_role_id}"
-                await interaction.response.send_message(f"Need '{role_name}' role or admin perms.", ephemeral=True)
+                await interaction.response.send_message(
+                    f"Need '{role_name}' role or admin perms.", ephemeral=True
+                )
                 return
 
         logger.info(f"/bet initiated by authorized user {user_id}.")
-        # Pass the bet_service_instance (self equivalent) to the view
         view = BetWorkflowView(interaction, bet_service_instance, embed_ch_1_id, embed_ch_2_id)
-        await interaction.response.send_message("Starting bet setup...\nStep 1: Select League/Category", view=view, ephemeral=True)
-
+        await interaction.response.send_message(
+            "Starting bet setup...\nStep 1: Select League/Category", view=view, ephemeral=True
+        )
     except DatabaseError as e:
         logger.error(f"DB error during /bet setup: {e}", exc_info=True)
         await interaction.response.send_message("Error accessing config.", ephemeral=True)
@@ -1437,46 +2322,60 @@ async def bet_command_interaction(interaction: Interaction, bet_service_instance
         if not interaction.response.is_done():
             await interaction.response.send_message("Unexpected error.", ephemeral=True)
 
+
 async def edit_units_command_interaction(interaction: Interaction, bet_serial: int, units: float, total: float):
-    """Handles the logic for the /edit_units command."""
+    """Handles the /edit_units command to modify unit records for a bet."""
     if not interaction.guild:
         await interaction.response.send_message("Use in server.", ephemeral=True)
         return
     guild_id = interaction.guild_id
     user_id = interaction.user.id
-    logger.debug(f"/edit_units: User={user_id}, Guild={guild_id}, BetSerial={bet_serial}, Units={units}, Total={total}")
+    logger.debug(
+        f"/edit_units: User={user_id}, Guild={guild_id}, BetSerial={bet_serial}, "
+        f"Units={units}, Total={total}"
+    )
     await interaction.response.defer(ephemeral=True, thinking=True)
     try:
         settings = await fetch_guild_settings_and_sub(guild_id)
-        admin_role_id = settings.get('admin_role')
+        admin_role_id = settings.get("admin_role")
         is_admin = False
         if isinstance(interaction.user, discord.Member):
-            is_admin = interaction.user.guild_permissions.administrator or (admin_role_id and any(role.id == admin_role_id for role in interaction.user.roles))
+            is_admin = interaction.user.guild_permissions.administrator or (
+                admin_role_id and any(role.id == admin_role_id for role in interaction.user.roles)
+            )
 
-        bet_query = "SELECT user_id FROM bets WHERE bet_serial = %s AND guild_id = %s" # Removed message_id fetch unless needed
+        bet_query = "SELECT user_id FROM bets WHERE bet_serial = %s AND guild_id = %s"
         bet_record = await db_manager.fetch_one(bet_query, (bet_serial, guild_id))
         if not bet_record:
             await interaction.followup.send(f"Bet #{bet_serial} not found.", ephemeral=True)
             return
 
-        bettor_id = bet_record.get('user_id')
-
+        bettor_id = bet_record.get("user_id")
         if user_id != bettor_id and not is_admin:
-            await interaction.followup.send("Must be the bettor or an admin to edit units.", ephemeral=True)
+            await interaction.followup.send(
+                "Must be the bettor or an admin to edit units.", ephemeral=True
+            )
             return
 
-        # Perform the update
-        update_query = "UPDATE unit_records SET units = %s, total = %s WHERE bet_serial = %s AND user_id = %s AND guild_id = %s"
+        update_query = (
+            "UPDATE unit_records SET units = %s, total = %s WHERE bet_serial = %s AND "
+            "user_id = %s AND guild_id = %s"
+        )
         params = (units, total, bet_serial, bettor_id, guild_id)
         rows_affected = await db_manager.execute(update_query, params)
 
         if rows_affected > 0:
             logger.info(f"Updated unit_records for bet {bet_serial} by user {user_id}")
-            await interaction.followup.send(f"Successfully updated unit records for bet #{bet_serial}.", ephemeral=True)
+            await interaction.followup.send(
+                f"Successfully updated unit records for bet #{bet_serial}.", ephemeral=True
+            )
         else:
-            logger.warning(f"Failed to update unit_records for bet {bet_serial} (0 rows affected). User: {user_id}")
-            await interaction.followup.send(f"Could not find or update unit records for bet #{bet_serial}.", ephemeral=True)
-
+            logger.warning(
+                f"Failed to update unit_records for bet {bet_serial} (0 rows affected). User: {user_id}"
+            )
+            await interaction.followup.send(
+                f"Could not find or update unit records for bet #{bet_serial}.", ephemeral=True
+            )
     except DatabaseError as e:
         logger.error(f"DB error in /edit_units: {e}", exc_info=True)
         await interaction.followup.send("A database error occurred.", ephemeral=True)
@@ -1484,68 +2383,80 @@ async def edit_units_command_interaction(interaction: Interaction, bet_serial: i
         logger.error(f"Unexpected error in /edit_units: {e}", exc_info=True)
         await interaction.followup.send("An unexpected error occurred.", ephemeral=True)
 
-async def cancel_bet_command_interaction(interaction: Interaction, bet_service_instance: 'BetService'):
-    """Handles the logic for the /cancel_bet command."""
-    # We pass the bet_service_instance (self equivalent) to the handler
-    # Ensure cancel_bet_command_handler is imported and accepts these args
+
+async def cancel_bet_command_interaction(interaction: Interaction, bet_service_instance: "BetService"):
+    """Handles the /cancel_bet command to cancel a pending bet."""
     await cancel_bet_command_handler(interaction, bet_service_instance)
 
 
-# --- BetService Class Definition ---
+# --- BetService Class ---
 class BetService:
-    # Keep __init__ as is
+    """Service class for managing betting functionality in the Discord bot."""
     def __init__(self, bot: discord.Client, command_tree: app_commands.CommandTree):
         self.bot = bot
-        self.tree = command_tree # Keep reference if needed for other purposes
-        self.pending_bets: Dict[int, int] = {} # message_id: bet_serial
+        self.tree = command_tree
+        self.pending_bets: Dict[int, int] = {}  # message_id: bet_serial
         self.scheduler = AsyncIOScheduler()
         logger.info("BetService initialized.")
 
-    # Modify start() to ONLY handle scheduler setup
     async def start(self) -> None:
         """Starts the BetService scheduler."""
-        # REMOVED command registration and sync logic from here
         logger.info("Bet service starting (scheduler only).")
         self._setup_scheduler()
         logger.info("Bet service scheduler started.")
 
-    # Keep stop() as is
     async def stop(self) -> None:
         """Stops the BetService scheduler."""
         logger.info("Bet service stopping.")
         try:
             if self.scheduler.running:
-                self.scheduler.shutdown(wait=False) # Don't wait for jobs to finish
+                self.scheduler.shutdown(wait=False)
                 logger.info("APScheduler shut down.")
         except Exception as e:
             logger.error(f"Error shutting down APScheduler: {e}", exc_info=True)
         self.pending_bets.clear()
         logger.info("Bet service stopped.")
 
-    # Keep _fetch_configured_guilds (if needed elsewhere)
     async def _fetch_configured_guilds(self) -> List[int]:
-        """Fetch guild IDs from server_settings where commands should be registered."""
-        # This might be redundant if core.py already fetches, but can be used internally
+        """Fetches guild IDs from server_settings where commands should be registered."""
         try:
-            query = "SELECT DISTINCT guild_id FROM server_settings WHERE guild_id IS NOT NULL" # Or check subscription status
+            query = "SELECT DISTINCT guild_id FROM server_settings WHERE guild_id IS NOT NULL"
             guilds = await db_manager.fetch(query)
-            guild_ids = [int(guild['guild_id']) for guild in guilds if guild.get('guild_id')] # Ensure IDs are int
+            guild_ids = [int(guild["guild_id"]) for guild in guilds if guild.get("guild_id")]
             logger.debug(f"BetService fetched configured guild IDs: {guild_ids}")
             return guild_ids
         except Exception as e:
             logger.error(f"BetService failed to fetch configured guilds: {e}", exc_info=True)
-            return [] # Return empty list on error
+            return []
 
-    # Keep _setup_scheduler() as is
     def _setup_scheduler(self):
-        """Sets up the APScheduler jobs."""
+        """Sets up the APScheduler jobs for tallying."""
         if not self.scheduler.running:
             logger.info("Setting up APScheduler jobs for tallying.")
             try:
-                # Schedule monthly tally slightly after midnight UTC on the 1st
-                self.scheduler.add_job(self.run_monthly_tally, 'cron', day=1, hour=0, minute=1, timezone='utc', misfire_grace_time=3600, replace_existing=True, id='monthly_tally_job')
-                # Schedule yearly tally slightly after midnight UTC on Jan 1st
-                self.scheduler.add_job(self.run_yearly_tally, 'cron', month=1, day=1, hour=0, minute=5, timezone='utc', misfire_grace_time=3600, replace_existing=True, id='yearly_tally_job')
+                self.scheduler.add_job(
+                    self.run_monthly_tally,
+                    "cron",
+                    day=1,
+                    hour=0,
+                    minute=1,
+                    timezone="utc",
+                    misfire_grace_time=3600,
+                    replace_existing=True,
+                    id="monthly_tally_job",
+                )
+                self.scheduler.add_job(
+                    self.run_yearly_tally,
+                    "cron",
+                    month=1,
+                    day=1,
+                    hour=0,
+                    minute=5,
+                    timezone="utc",
+                    misfire_grace_time=3600,
+                    replace_existing=True,
+                    id="yearly_tally_job",
+                )
                 self.scheduler.start()
                 logger.info("APScheduler started successfully with tally jobs.")
             except Exception as e:
@@ -1553,60 +2464,63 @@ class BetService:
         else:
             logger.info("APScheduler already running.")
 
-    # Keep tally methods as is
     async def run_monthly_tally(self):
         """Runs the monthly tally process for all relevant guilds."""
         now = datetime.now(timezone.utc)
-        # Calculate the year and month of the *previous* month
         first_day_of_current_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         last_day_of_previous_month = first_day_of_current_month - timedelta(days=1)
         year = last_day_of_previous_month.year
         month = last_day_of_previous_month.month
         logger.info(f"Running monthly tally job for Year: {year}, Month: {month}")
         try:
-            # Fetch all guilds that might have records (consider fetching from unit_records if settings isn't definitive)
-            query = "SELECT DISTINCT guild_id FROM unit_records WHERE YEAR(timestamp) = %s AND MONTH(timestamp) = %s AND guild_id IS NOT NULL" # Added NOT NULL check
-            guilds = await db_manager.fetch(query, (year, month)) # Fetch guilds with activity in the target month
+            query = (
+                "SELECT DISTINCT guild_id FROM unit_records WHERE YEAR(timestamp) = %s AND "
+                "MONTH(timestamp) = %s AND guild_id IS NOT NULL"
+            )
+            guilds = await db_manager.fetch(query, (year, month))
             if not guilds:
                 logger.info(f"Monthly Tally: No guilds with activity found for {year}-{month:02d}.")
                 return
-
             for guild_data in guilds:
-                guild_id = guild_data.get('guild_id')
+                guild_id = guild_data.get("guild_id")
                 if guild_id:
-                    await self.tally_monthly_totals(int(guild_id), year, month) # Ensure int
-                else: logger.warning("Monthly Tally: Found null guild_id in unit_records.")
-
-        except DatabaseError as e: logger.error(f"Database error running monthly tally scheduler: {e}", exc_info=True)
-        except Exception as e: logger.error(f"Unexpected error running monthly tally scheduler: {e}", exc_info=True)
+                    await self.tally_monthly_totals(int(guild_id), year, month)
+                else:
+                    logger.warning("Monthly Tally: Found null guild_id in unit_records.")
+        except DatabaseError as e:
+            logger.error(f"Database error running monthly tally scheduler: {e}", exc_info=True)
+        except Exception as e:
+            logger.error(f"Unexpected error running monthly tally scheduler: {e}", exc_info=True)
 
     async def run_yearly_tally(self):
         """Runs the yearly tally process for all relevant guilds."""
         now = datetime.now(timezone.utc)
-        year = now.year - 1 # Tally for the previous year
+        year = now.year - 1
         logger.info(f"Running yearly tally job for Year: {year}")
         try:
-             # Fetch guilds active in the target year
-            query = "SELECT DISTINCT guild_id FROM unit_records WHERE YEAR(timestamp) = %s AND guild_id IS NOT NULL" # Added NOT NULL check
+            query = (
+                "SELECT DISTINCT guild_id FROM unit_records WHERE YEAR(timestamp) = %s AND "
+                "guild_id IS NOT NULL"
+            )
             guilds = await db_manager.fetch(query, (year,))
             if not guilds:
                 logger.info(f"Yearly Tally: No guilds with activity found for year {year}.")
                 return
-
             for guild_data in guilds:
-                guild_id = guild_data.get('guild_id')
+                guild_id = guild_data.get("guild_id")
                 if guild_id:
-                    await self.tally_yearly_totals(int(guild_id), year) # Ensure int
-                else: logger.warning("Yearly Tally: Found null guild_id in unit_records.")
-
-        except DatabaseError as e: logger.error(f"Database error running yearly tally scheduler: {e}", exc_info=True)
-        except Exception as e: logger.error(f"Unexpected error running yearly tally scheduler: {e}", exc_info=True)
+                    await self.tally_yearly_totals(int(guild_id), year)
+                else:
+                    logger.warning("Yearly Tally: Found null guild_id in unit_records.")
+        except DatabaseError as e:
+            logger.error(f"Database error running yearly tally scheduler: {e}", exc_info=True)
+        except Exception as e:
+            logger.error(f"Unexpected error running yearly tally scheduler: {e}", exc_info=True)
 
     async def tally_monthly_totals(self, guild_id: int, year: int, month: int):
         """Calculates and stores the net unit total for a specific guild and month."""
         logger.info(f"Calculating monthly total for Guild: {guild_id}, Year: {year}, Month: {month}")
         try:
-             # Sum 'total' from unit_records for the given guild/month/year, excluding the summary rows (where user_id is NULL)
             query = """
                 SELECT SUM(total) as monthly_net_units
                 FROM unit_records
@@ -1616,87 +2530,82 @@ class BetService:
                   AND user_id IS NOT NULL
             """
             result = await db_manager.fetch_one(query, (guild_id, year, month))
-            monthly_total = float(result.get('monthly_net_units') or 0.0) if result else 0.0
-
-            # Insert or update the summary record (user_id = NULL)
-            summary_timestamp = datetime(year, month, 1, 0, 0, 0, tzinfo=timezone.utc) # Use start of month for timestamp
+            monthly_total = float(result.get("monthly_net_units") or 0.0) if result else 0.0
+            summary_timestamp = datetime(year, month, 1, 0, 0, 0, tzinfo=timezone.utc)
             upsert_query = """
-                 INSERT INTO unit_records (guild_id, user_id, units, total, timestamp)
-                 VALUES (%s, NULL, %s, %s, %s)
-                 ON DUPLICATE KEY UPDATE total = VALUES(total), units = VALUES(units)
+                INSERT INTO unit_records (guild_id, user_id, units, total, timestamp)
+                VALUES (%s, NULL, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE total = VALUES(total), units = VALUES(units)
             """
-            # Store 0 for units in summary row, monthly_total for total
             await db_manager.execute(upsert_query, (guild_id, 0.0, monthly_total, summary_timestamp))
-            logger.info(f"Stored/Updated monthly tally for Guild {guild_id}, {year}-{month:02d}: Net Units = {monthly_total:.2f}")
-
-        except DatabaseError as e: logger.error(f"Database error tallying monthly totals for guild {guild_id}: {e}", exc_info=True)
-        except Exception as e: logger.error(f"Unexpected error tallying monthly totals for guild {guild_id}: {e}", exc_info=True)
-
+            logger.info(
+                f"Stored/Updated monthly tally for Guild {guild_id}, {year}-{month:02d}: "
+                f"Net Units = {monthly_total:.2f}"
+            )
+        except DatabaseError as e:
+            logger.error(f"Database error tallying monthly totals for guild {guild_id}: {e}", exc_info=True)
+        except Exception as e:
+            logger.error(f"Unexpected error tallying monthly totals for guild {guild_id}: {e}", exc_info=True)
 
     async def tally_yearly_totals(self, guild_id: int, year: int):
-        """Calculates and potentially stores yearly totals per user (e.g., in a 'cappers' table)."""
+        """Calculates and stores yearly totals per user in the cappers table."""
         logger.info(f"Calculating yearly totals for Guild: {guild_id}, Year: {year}")
         try:
-            # Calculate yearly total per user from unit_records
             query = """
-                 SELECT user_id, SUM(total) as yearly_net_units
-                 FROM unit_records
-                 WHERE guild_id = %s
-                   AND user_id IS NOT NULL
-                   AND YEAR(timestamp) = %s
-                 GROUP BY user_id
+                SELECT user_id, SUM(total) as yearly_net_units
+                FROM unit_records
+                WHERE guild_id = %s
+                  AND user_id IS NOT NULL
+                  AND YEAR(timestamp) = %s
+                GROUP BY user_id
             """
             results = await db_manager.fetch(query, (guild_id, year))
             if not results:
                 logger.info(f"Yearly Tally: No user records found for guild {guild_id} in year {year}.")
                 return
-
             updated_count = 0
             for record in results:
-                user_id = record.get('user_id')
-                yearly_total = float(record.get('yearly_net_units') or 0.0)
+                user_id = record.get("user_id")
+                yearly_total = float(record.get("yearly_net_units") or 0.0)
                 if user_id:
-                    # --- ADJUST THIS QUERY if your table/column is different ---
-                    update_query = "UPDATE cappers SET year_total = %s WHERE guild_id = %s AND user_id = %s" # Example: updating 'cappers' table
+                    update_query = (
+                        "UPDATE cappers SET year_total = %s WHERE guild_id = %s AND user_id = %s"
+                    )
                     params = (yearly_total, guild_id, user_id)
-                    # --- END ADJUST ---
                     try:
-                         rows_updated = await db_manager.execute(update_query, params)
-                         if rows_updated > 0:
-                              logger.info(f"Updated year_total for user {user_id}, year {year}: Net Units = {yearly_total:.2f}")
-                              updated_count += 1
-                         # else: logger.debug(f"No record found for user {user_id} in guild {guild_id} to update year_total.")
+                        rows_updated = await db_manager.execute(update_query, params)
+                        if rows_updated > 0:
+                            logger.info(
+                                f"Updated year_total for user {user_id}, year {year}: "
+                                f"Net Units = {yearly_total:.2f}"
+                            )
+                            updated_count += 1
                     except DatabaseError as e_update:
-                         logger.error(f"DB error updating yearly total for user {user_id}: {e_update}")
+                        logger.error(f"DB error updating yearly total for user {user_id}: {e_update}")
                     except Exception as e_other:
-                         logger.error(f"Unexpected error updating yearly total for user {user_id}: {e_other}")
-
-            logger.info(f"Yearly tally completed for Guild {guild_id}, Year {year}. Attempted updates for {len(results)} users, successful updates: {updated_count}.")
-
-        except DatabaseError as e: logger.error(f"Database error tallying yearly totals for guild {guild_id}: {e}", exc_info=True)
-        except Exception as e: logger.error(f"Unexpected error tallying yearly totals for guild {guild_id}: {e}", exc_info=True)
+                        logger.error(f"Unexpected error updating yearly total for user {user_id}: {e_other}")
+            logger.info(
+                f"Yearly tally completed for Guild {guild_id}, Year {year}. "
+                f"Attempted updates for {len(results)} users, successful updates: {updated_count}."
+            )
+        except DatabaseError as e:
+            logger.error(f"Database error tallying yearly totals for guild {guild_id}: {e}", exc_info=True)
+        except Exception as e:
+            logger.error(f"Unexpected error tallying yearly totals for guild {guild_id}: {e}", exc_info=True)
 
     async def handle_final_bet_reaction(self, payload: discord.RawReactionActionEvent) -> None:
-        # Early return for invalid emojis
+        """Handles reactions (✅ or ❌) to resolve bets."""
         if payload.emoji.name not in ["✅", "❌"]:
-            # logger.debug(f"Reaction ignored: Invalid emoji '{payload.emoji.name}' on MsgID={payload.message_id}")
-            return # Keep debug logs minimal for common cases
-    
-        logger.info(f"Entered handle_final_bet_reaction: Emoji={payload.emoji.name}, MsgID={payload.message_id}, UserID={payload.user_id}, GuildID={payload.guild_id}")
-    
-        # Ignore bot's own reactions
+            return
+        logger.info(
+            f"Handling reaction: Emoji={payload.emoji.name}, MsgID={payload.message_id}, "
+            f"UserID={payload.user_id}, GuildID={payload.guild_id}"
+        )
         if payload.user_id == self.bot.user.id:
-            # logger.debug("Ignoring bot's own reaction.")
             return
-    
-        # Check if message is a pending bet
         bet_serial = self.pending_bets.get(payload.message_id)
-        # logger.debug(f"Checking pending_bets: MsgID={payload.message_id}, BetSerial={bet_serial}, PendingBets={self.pending_bets}")
         if not bet_serial:
-            # logger.debug(f"Reaction ignored: MsgID {payload.message_id} not in pending_bets.")
             return
-    
-        # Validate guild, member, and channel
         guild = self.bot.get_guild(payload.guild_id)
         if not guild:
             logger.warning(f"Guild {payload.guild_id} not found for bet {bet_serial}")
@@ -1709,252 +2618,278 @@ class BetService:
         if not isinstance(channel, discord.TextChannel):
             logger.warning(f"Channel {payload.channel_id} invalid for bet {bet_serial}")
             return
-    
-        # Check bot permissions
         perms = channel.permissions_for(guild.me)
         if not (perms.view_channel and perms.read_message_history):
-            logger.error(f"Missing permissions in channel {payload.channel_id}: View={perms.view_channel}, ReadHistory={perms.read_message_history}")
+            logger.error(
+                f"Missing permissions in channel {payload.channel_id}: "
+                f"View={perms.view_channel}, ReadHistory={perms.read_message_history}"
+            )
             return
-    
         try:
-            # Fetch bet info to verify bettor
             bet_info_query = "SELECT user_id, units FROM bets WHERE bet_serial = %s AND guild_id = %s"
             bet_info = await db_manager.fetch_one(bet_info_query, (bet_serial, guild.id))
             if not bet_info:
-                logger.warning(f"Bet {bet_serial} (MsgID {payload.message_id}) not found in DB for reaction.")
+                logger.warning(f"Bet {bet_serial} (MsgID {payload.message_id}) not found in DB.")
                 if payload.message_id in self.pending_bets:
                     del self.pending_bets[payload.message_id]
                     logger.info(f"Removed MsgID {payload.message_id} from pending_bets (bet not found).")
                 return
             bettor_id = bet_info.get("user_id")
-            # units_risked = float(bet_info.get("units", 0.0)) # Fetched later from locked record
-            # logger.debug(f"Bet info check: BettorID={bettor_id}")
-    
-            # Check if reaction is from the bettor
             if payload.user_id != bettor_id:
-                logger.info(f"Reaction ignored: User {payload.user_id} is not the bettor {bettor_id} for bet {bet_serial}")
+                logger.info(
+                    f"Reaction ignored: User {payload.user_id} is not the bettor {bettor_id} for bet {bet_serial}"
+                )
                 if perms.manage_messages:
                     try:
                         message = await channel.fetch_message(payload.message_id)
                         await message.remove_reaction(payload.emoji, member)
-                        logger.debug(f"Removed unauthorized reaction '{payload.emoji.name}' by {payload.user_id} from bet {bet_serial}")
+                        logger.debug(
+                            f"Removed unauthorized reaction '{payload.emoji.name}' by "
+                            f"{payload.user_id} from bet {bet_serial}"
+                        )
                     except Exception as e:
                         logger.warning(f"Failed to remove unauthorized reaction for bet {bet_serial}: {e}")
                 return
-    
             logger.info(f"Processing reaction '{payload.emoji.name}' by bettor {member.id} for bet {bet_serial}")
-    
-            # Transaction for valid reaction
             async with db_manager._pool.acquire() as conn:
                 async with conn.cursor(aiomysql.DictCursor) as cur:
                     await cur.execute("START TRANSACTION")
                     try:
-                        # Lock and check bet
-                        # Fetch necessary fields: user_id, guild_id, units (raw), bet_won, bet_loss, odds, stake
-                        query = "SELECT user_id, guild_id, units, bet_won, bet_loss, odds, stake FROM bets WHERE bet_serial = %s FOR UPDATE"
+                        query = (
+                            "SELECT user_id, guild_id, units, bet_won, bet_loss, odds, stake "
+                            "FROM bets WHERE bet_serial = %s FOR UPDATE"
+                        )
                         await cur.execute(query, (bet_serial,))
                         bet_record = await cur.fetchone()
                         logger.debug(f"Locked Bet record for {bet_serial}: {bet_record}")
                         if not bet_record:
-                            logger.warning(f"Bet {bet_serial} (MsgID {payload.message_id}) not found during transaction lock.")
+                            logger.warning(f"Bet {bet_serial} not found during transaction lock.")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
-                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (bet disappeared during lock).")
-                            await cur.execute("ROLLBACK") # Use ROLLBACK explicitly
+                                logger.info(
+                                    f"Removed MsgID {payload.message_id} from pending_bets "
+                                    "(bet disappeared during lock)."
+                                )
+                            await cur.execute("ROLLBACK")
                             return
-                        if bet_record.get('bet_won') == 1 or bet_record.get('bet_loss') == 1:
-                            logger.info(f"Bet {bet_serial} already resolved: Won={bet_record.get('bet_won')}, Loss={bet_record.get('bet_loss')}")
+                        if bet_record.get("bet_won") == 1 or bet_record.get("bet_loss") == 1:
+                            logger.info(
+                                f"Bet {bet_serial} already resolved: Won={bet_record.get('bet_won')}, "
+                                f"Loss={bet_record.get('bet_loss')}"
+                            )
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
-                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (already resolved).")
+                                logger.info(
+                                    f"Removed MsgID {payload.message_id} from pending_bets "
+                                    "(already resolved)."
+                                )
                             await cur.execute("ROLLBACK")
                             try:
-                                # Use limit_discord_call if available, otherwise direct call
                                 await channel.send(f"Bet #{bet_serial} is already resolved.", delete_after=10)
                             except discord.Forbidden:
-                                logger.warning(f"Cannot notify user about resolved bet {bet_serial}: Missing permissions")
+                                logger.warning(
+                                    f"Cannot notify user about resolved bet {bet_serial}: Missing permissions"
+                                )
                             except Exception as send_err:
-                                 logger.warning(f"Error sending 'already resolved' message for bet {bet_serial}: {send_err}")
+                                logger.warning(
+                                    f"Error sending 'already resolved' message for bet {bet_serial}: {send_err}"
+                                )
                             return
-    
-                        # Verify unit_records row exists
-                        check_query = "SELECT units, total FROM unit_records WHERE guild_id = %s AND user_id = %s AND bet_serial = %s"
+                        check_query = (
+                            "SELECT units, total FROM unit_records WHERE guild_id = %s AND "
+                            "user_id = %s AND bet_serial = %s"
+                        )
                         await cur.execute(check_query, (bet_record.get("guild_id"), bet_record.get("user_id"), bet_serial))
                         unit_record = await cur.fetchone()
                         if not unit_record:
-                            logger.error(f"CRITICAL: No unit_records row found for bet {bet_serial}, guild {bet_record.get('guild_id')}, user {bet_record.get('user_id')}. Cannot resolve.")
+                            logger.error(
+                                f"CRITICAL: No unit_records row found for bet {bet_serial}, "
+                                f"guild {bet_record.get('guild_id')}, user {bet_record.get('user_id')}."
+                            )
                             await cur.execute("ROLLBACK")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
-                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (missing unit_record).")
-                            # Maybe notify user or admin?
+                                logger.info(
+                                    f"Removed MsgID {payload.message_id} from pending_bets "
+                                    "(missing unit_record)."
+                                )
                             return
-                        logger.debug(f"Unit_records before update for bet {bet_serial}: units={unit_record.get('units')}, total={unit_record.get('total')}")
-    
-    
-                        # Fetch message
+                        logger.debug(
+                            f"Unit_records before update for bet {bet_serial}: "
+                            f"units={unit_record.get('units')}, total={unit_record.get('total')}"
+                        )
                         try:
                             message = await channel.fetch_message(payload.message_id)
                             if not message.embeds:
                                 raise ValueError("No embeds found in the target message")
                         except Exception as e:
-                            logger.error(f"Failed to fetch message or embeds for bet {bet_serial} (MsgID {payload.message_id}): {e}")
+                            logger.error(
+                                f"Failed to fetch message or embeds for bet {bet_serial} "
+                                f"(MsgID {payload.message_id}): {e}"
+                            )
                             await cur.execute("ROLLBACK")
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
-                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (message fetch failed).")
+                                logger.info(
+                                    f"Removed MsgID {payload.message_id} from pending_bets "
+                                    "(message fetch failed)."
+                                )
                             return
-    
                         embed = message.embeds[0]
                         db_guild_id = bet_record.get("guild_id")
                         original_bettor_id = bet_record.get("user_id")
-                        stake_db = float(bet_record.get("stake", 0.0)) # Amount risked (+) or to win (-)
-                        odds_db = bet_record.get("odds") # Raw odds value (float or None)
-                        # units_selected is the raw unit value (1, 2, or 3) from the 'units' column in 'bets' table
+                        stake_db = float(bet_record.get("stake", 0.0))
+                        odds_db = bet_record.get("odds")
                         units_selected = float(bet_record.get("units", 0.0))
-    
-                        # Convert odds_db to float for calculations, handle None
                         float_odds_db = None
                         if odds_db is not None:
                             try:
                                 float_odds_db = float(odds_db)
                             except (ValueError, TypeError):
-                                logger.warning(f"Could not convert odds '{odds_db}' to float for bet {bet_serial}. Calculations may be incorrect.")
-                                float_odds_db = None # Ensure it's None if conversion fails
-    
-                        # --- MODIFIED CALCULATION FOR unit_records.total ---
+                                logger.warning(
+                                    f"Could not convert odds '{odds_db}' to float for bet {bet_serial}."
+                                )
                         set_won, set_loss, new_status, net_unit_change, new_color = None, None, "Error", 0.0, embed.color
-    
-                        # Calculate net_unit_change (for unit_records.total)
-                        if payload.emoji.name == "✅": # WIN
+                        if payload.emoji.name == "✅":
                             set_won, set_loss, new_status = 1, 0, "Won"
                             if float_odds_db is not None and units_selected > 0:
-                                if float_odds_db > 0: # Positive odds: Win = units * (odds / 100)
+                                if float_odds_db > 0:
                                     net_unit_change = units_selected * (float_odds_db / 100.0)
-                                else: # Negative/Even odds: Win = units selected
+                                else:
                                     net_unit_change = units_selected
-                            else: # Fallback if odds or units invalid/missing
-                                net_unit_change = units_selected # Assume win amount is units risked
-                                logger.warning(f"Bet {bet_serial} Win: Odds ({float_odds_db}) or Units ({units_selected}) invalid. Using fallback net_unit_change.")
+                            else:
+                                net_unit_change = units_selected
+                                logger.warning(
+                                    f"Bet {bet_serial} Win: Odds ({float_odds_db}) or Units "
+                                    f"({units_selected}) invalid. Using fallback net_unit_change."
+                                )
                             new_color = discord.Color.green()
-    
-                        elif payload.emoji.name == "❌": # LOSS
+                        elif payload.emoji.name == "❌":
                             set_won, set_loss, new_status = 0, 1, "Lost"
                             if float_odds_db is not None and units_selected > 0:
-                                if float_odds_db > 0: # Positive odds: Loss = -units selected
+                                if float_odds_db > 0:
                                     net_unit_change = -units_selected
-                                else: # Negative/Even odds: Loss = -risk amount = - (units * (|odds| / 100))
-                                    if float_odds_db == 0 or float_odds_db == 100.0: # Treat 0 or EVEN (100) as 1:1 loss
+                                else:
+                                    if float_odds_db == 0 or float_odds_db == 100.0:
                                         net_unit_change = -units_selected
-                                    else: # Negative odds calculation
+                                    else:
                                         risk_amount = units_selected * (abs(float_odds_db) / 100.0)
                                         net_unit_change = -risk_amount
-                            else: # Fallback if odds or units invalid/missing
-                                net_unit_change = -units_selected # Assume loss amount is units risked
-                                logger.warning(f"Bet {bet_serial} Loss: Odds ({float_odds_db}) or Units ({units_selected}) invalid. Using fallback net_unit_change.")
+                            else:
+                                net_unit_change = -units_selected
+                                logger.warning(
+                                    f"Bet {bet_serial} Loss: Odds ({float_odds_db}) or Units "
+                                    f"({units_selected}) invalid. Using fallback net_unit_change."
+                                )
                             new_color = discord.Color.red()
-    
-                        # Calculate units_update (for unit_records.units - keeping current logic based on stake)
-                        # Stake_db should represent the amount risked (if odds > 0) or amount to win (if odds <= 0)
-                        units_update = 0.0
-                        if set_won == 1:
-                            # If odds were positive, stake = units risked, profit = net_unit_change. This seems complex.
-                            # Let's try: Win always adds the positive net_unit_change amount.
-                            units_update = net_unit_change # Amount won
-                        elif set_loss == 1:
-                            # Loss always subtracts the calculated loss amount.
-                            units_update = net_unit_change # Amount lost (already negative)
-    
-                        logger.debug(f"Outcome for bet {bet_serial}: Status={new_status}, UnitsUpdate (for units col)={units_update:.2f}, NetUnitChange (for total col)={net_unit_change:.2f}")
-                        # --- END MODIFIED CALCULATION ---
-    
-                        # Update bets table
-                        update_bets_query = "UPDATE bets SET bet_won = %s, bet_loss = %s, resolved_by = %s, resolved_at = NOW() WHERE bet_serial = %s"
+                        units_update = net_unit_change
+                        logger.debug(
+                            f"Outcome for bet {bet_serial}: Status={new_status}, "
+                            f"UnitsUpdate={units_update:.2f}, NetUnitChange={net_unit_change:.2f}"
+                        )
+                        update_bets_query = (
+                            "UPDATE bets SET bet_won = %s, bet_loss = %s, resolved_by = %s, "
+                            "resolved_at = NOW() WHERE bet_serial = %s"
+                        )
                         await cur.execute(update_bets_query, (set_won, set_loss, payload.user_id, bet_serial))
                         rows_updated_bets = cur.rowcount
                         logger.debug(f"Bets update affected {rows_updated_bets} rows")
-    
                         if rows_updated_bets > 0:
-                            # Update cappers table (Example - adjust if your schema differs)
                             cappers_update_query = """
-                                INSERT INTO cappers (guild_id, user_id, bet_won, bet_loss) VALUES (%s, %s, %s, %s)
-                                ON DUPLICATE KEY UPDATE bet_won = bet_won + VALUES(bet_won), bet_loss = bet_loss + VALUES(bet_loss)
+                                INSERT INTO cappers (guild_id, user_id, bet_won, bet_loss)
+                                VALUES (%s, %s, %s, %s)
+                                ON DUPLICATE KEY UPDATE bet_won = bet_won + VALUES(bet_won),
+                                bet_loss = bet_loss + VALUES(bet_loss)
                             """
-                            # Ensure values are int for bet_won/bet_loss counts
                             capper_won = 1 if set_won else 0
                             capper_loss = 1 if set_loss else 0
-                            await cur.execute(cappers_update_query, (db_guild_id, original_bettor_id, capper_won, capper_loss))
+                            await cur.execute(
+                                cappers_update_query, (db_guild_id, original_bettor_id, capper_won, capper_loss)
+                            )
                             logger.debug(f"Cappers updated/inserted for user {original_bettor_id}")
-    
-                            # Update unit_records table using the calculated values
                             unit_records_update_query = """
-                                UPDATE unit_records SET units = %s, total = %s WHERE guild_id = %s AND user_id = %s AND bet_serial = %s
+                                UPDATE unit_records SET units = %s, total = %s WHERE guild_id = %s
+                                AND user_id = %s AND bet_serial = %s
                             """
-                            # Use units_update for 'units' column and net_unit_change for 'total' column
-                            await cur.execute(unit_records_update_query, (units_update, net_unit_change, db_guild_id, original_bettor_id, bet_serial))
+                            await cur.execute(
+                                unit_records_update_query,
+                                (units_update, net_unit_change, db_guild_id, original_bettor_id, bet_serial),
+                            )
                             rows_updated_units = cur.rowcount
-                            logger.debug(f"Unit_records update for bet {bet_serial} affected {rows_updated_units} rows. Set units={units_update:.2f}, total={net_unit_change:.2f}")
+                            logger.debug(
+                                f"Unit_records update for bet {bet_serial} affected {rows_updated_units} rows. "
+                                f"Set units={units_update:.2f}, total={net_unit_change:.2f}"
+                            )
                             if rows_updated_units == 0:
-                                logger.error(f"CRITICAL: Failed to update unit_records for bet {bet_serial}: No rows matched. Rolling back.")
-                                await conn.rollback() # Explicit rollback
-                                # Remove from pending? Should already be out if unit_record didn't exist.
+                                logger.error(
+                                    f"CRITICAL: Failed to update unit_records for bet {bet_serial}: No rows matched."
+                                )
+                                await conn.rollback()
                                 if payload.message_id in self.pending_bets:
                                     del self.pending_bets[payload.message_id]
-                                return # Exit after rollback
-    
+                                return
                             await conn.commit()
                             logger.info(f"Transaction committed successfully for bet {bet_serial}")
-    
-                            # Update embed
                             try:
                                 embed.color = new_color
-                                embed.set_footer(text=f"Resolved as {new_status} by {member.display_name} | Bet #{bet_serial}")
+                                embed.set_footer(
+                                    text=f"Resolved as {new_status} by {member.display_name} | Bet #{bet_serial}"
+                                )
                                 embed.timestamp = discord.utils.utcnow()
-                                # Use limit_discord_call if available
                                 await message.edit(embed=embed)
                                 await message.clear_reactions()
-                                logger.debug(f"Message {message.id} updated and reactions cleared for bet {bet_serial}")
+                                logger.debug(
+                                    f"Message {message.id} updated and reactions cleared for bet {bet_serial}"
+                                )
                             except Exception as e:
-                                logger.warning(f"Failed to edit message or clear reactions for bet {bet_serial} after DB commit: {e}")
-    
-                            # Remove from pending list *after* successful commit and processing attempt
+                                logger.warning(
+                                    f"Failed to edit message or clear reactions for bet {bet_serial}: {e}"
+                                )
                             if payload.message_id in self.pending_bets:
                                 del self.pending_bets[payload.message_id]
-                                logger.info(f"Removed MsgID {payload.message_id} from pending_bets (successfully processed).")
+                                logger.info(
+                                    f"Removed MsgID {payload.message_id} from pending_bets (successfully processed)."
+                                )
                         else:
-                            logger.warning(f"Bet {bet_serial} update failed (bets table): 0 rows affected. Rolling back.")
-                            await conn.rollback() # Explicit rollback
-                            # Do not remove from pending_bets here, as the bet state didn't change
+                            logger.warning(
+                                f"Bet {bet_serial} update failed (bets table): 0 rows affected. Rolling back."
+                            )
+                            await conn.rollback()
                     except Exception as trans_err:
-                        logger.error(f"Transaction error processing reaction for bet {bet_serial}: {trans_err}", exc_info=True)
-                        try:
-                            await conn.rollback() # Ensure rollback on any transaction error
-                            logger.info(f"Transaction rolled back for bet {bet_serial} due to error.")
-                        except Exception as rb_err:
-                            logger.error(f"Error during rollback for bet {bet_serial}: {rb_err}")
-                        # Do not remove from pending_bets here, let retry happen if applicable
+                        logger.error(
+                            f"Transaction error processing reaction for bet {bet_serial}: {trans_err}",
+                            exc_info=True,
+                        )
+                        await conn.rollback()
+                        logger.info(f"Transaction rolled back for bet {bet_serial} due to error.")
         except Exception as e:
-            logger.error(f"Unexpected error handling reaction for bet {bet_serial} (MsgID {payload.message_id}): {e}", exc_info=True)
-        # Do not remove from pending_bets on unexpected outer error
+            logger.error(
+                f"Unexpected error handling reaction for bet {bet_serial} "
+                f"(MsgID {payload.message_id}): {e}", exc_info=True
+            )
 
-# --- Setup Function for Core ---
-# This MUST be at the top level (no indentation)
 
+# --- Setup Function ---
 def setup_bet_service_commands(tree: app_commands.CommandTree, bet_service_instance: BetService, guild: discord.Object):
-    """Adds BetService specific commands (/bet, /edit_units, /cancel_bet) to the tree for a specific guild."""
+    """Adds BetService commands (/bet, /edit_units, /cancel_bet) to the command tree for a guild."""
     logger.debug(f"Setting up BetService commands for guild {guild.id}")
 
-    # Use wrapper functions or lambdas to correctly pass the bet_service_instance
-
     @tree.command(name="bet", description="Start the interactive bet placement process.", guild=guild)
-    @app_commands.guild_only() # Ensure guild_only decorator if needed
+    @app_commands.guild_only()
     async def bet_cmd_wrapper(interaction: Interaction):
-        # Calls the logic function, passing the service instance
         await bet_command_interaction(interaction, bet_service_instance)
 
-    @tree.command(name="edit_units", description="Admin/Bettor: Edit units/total for a bet in unit_records.", guild=guild)
+    @tree.command(
+        name="edit_units",
+        description="Admin/Bettor: Edit units/total for a bet in unit_records.",
+        guild=guild,
+    )
     @app_commands.guild_only()
-    @app_commands.describe(bet_serial="The serial number of the bet to edit.", units="New units risked value (e.g., 1.0).", total="New potential profit/loss value.")
+    @app_commands.describe(
+        bet_serial="The serial number of the bet to edit.",
+        units="New units risked value (e.g., 1.0).",
+        total="New potential profit/loss value.",
+    )
     async def edit_units_cmd_wrapper(interaction: Interaction, bet_serial: int, units: float, total: float):
         await edit_units_command_interaction(interaction, bet_serial, units, total)
 
@@ -1964,5 +2899,3 @@ def setup_bet_service_commands(tree: app_commands.CommandTree, bet_service_insta
         await cancel_bet_command_interaction(interaction, bet_service_instance)
 
     logger.info(f"BetService commands (/bet, /edit_units, /cancel_bet) added to tree for guild {guild.id}")
-
-# --- End of bet_service.py ---
